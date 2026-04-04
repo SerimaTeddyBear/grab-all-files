@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - File Bulk Downloader</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.7; color: #1a1a1a; background: #f8f9fa; padding: 2rem 1rem; }
+    .container { max-width: 720px; margin: 0 auto; background: #fff; border-radius: 12px; padding: 2.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    h1 { font-size: 1.6rem; margin-bottom: 0.3rem; }
+    .updated { color: #666; font-size: 0.85rem; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; margin-top: 1.8rem; margin-bottom: 0.5rem; color: #2563eb; }
+    p, li { font-size: 0.95rem; margin-bottom: 0.6rem; }
+    ul { padding-left: 1.5rem; margin-bottom: 0.8rem; }
+    table { width: 100%; border-collapse: collapse; margin: 0.8rem 0; font-size: 0.9rem; }
+    th, td { border: 1px solid #e2e8f0; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #f1f5f9; font-weight: 600; }
+    .contact { background: #f1f5f9; border-radius: 8px; padding: 1rem 1.2rem; margin-top: 1.5rem; }
+    .contact a { color: #2563eb; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: April 4, 2026</p>
+    <p><strong>File Bulk Downloader</strong> ("the Extension") is a browser extension that helps users find and download files from web pages. This policy explains what data the Extension accesses, how it is used, and how it is stored.</p>
+
+    <h2>1. Data We Collect</h2>
+    <p>The Extension does <strong>not</strong> collect, transmit, or sell any personal data, browsing history, or analytics. There are no tracking scripts, cookies, or third-party analytics services.</p>
+    <p>The only network requests the Extension makes are:</p>
+    <ul>
+      <li><strong>License verification</strong> &mdash; When a license key is entered, it is sent to our server solely to verify its validity. No other data is included in this request.</li>
+      <li><strong>File scanning &amp; downloading</strong> &mdash; When you use the "Enter URL" feature, the Extension fetches web pages you specify to find downloadable files. These requests go directly to the target website; no data passes through our servers.</li>
+    </ul>
+
+    <h2>2. Data Stored Locally</h2>
+    <p>The Extension stores the following data locally on your device using the browser's built-in storage (<code>chrome.storage.local</code> and <code>chrome.storage.session</code>). This data never leaves your device.</p>
+    <table>
+      <tr><th>Data</th><th>Purpose</th></tr>
+      <tr><td>License key</td><td>To keep you signed in after activation</td></tr>
+      <tr><td>Install date</td><td>To manage the free trial period</td></tr>
+      <tr><td>Download history (URLs)</td><td>To mark previously downloaded files as "DL'd"</td></tr>
+      <tr><td>Scan history</td><td>To show recently scanned pages for quick access</td></tr>
+      <tr><td>Window size</td><td>To remember your preferred window dimensions</td></tr>
+    </table>
+    <p>You can clear all stored data at any time by uninstalling the Extension or by using your browser's extension data management.</p>
+
+    <h2>3. Permissions</h2>
+    <table>
+      <tr><th>Permission</th><th>Why it is needed</th></tr>
+      <tr><td>activeTab</td><td>To scan the current page for downloadable files when you click the icon</td></tr>
+      <tr><td>tabs</td><td>To detect tab switches for the Auto Scan feature</td></tr>
+      <tr><td>scripting</td><td>To inject a content script that finds file links on the current page</td></tr>
+      <tr><td>downloads</td><td>To save files to your computer</td></tr>
+      <tr><td>storage</td><td>To persist settings, license key, and download history locally</td></tr>
+      <tr><td>Host permissions</td><td>To fetch pages and files from URLs you specify in the "Enter URL" mode</td></tr>
+    </table>
+
+    <h2>4. Third-Party Services</h2>
+    <p>The Extension communicates with a license verification server hosted on <strong>Supabase</strong>. Only the license key string is sent; no personal information, browsing data, or device identifiers are transmitted. See <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabase's Privacy Policy</a> for their data handling practices.</p>
+
+    <h2>5. Children's Privacy</h2>
+    <p>The Extension is not directed at children under 13. We do not knowingly collect any personal information from children.</p>
+
+    <h2>6. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated date. Continued use of the Extension after changes constitutes acceptance.</p>
+
+    <div class="contact">
+      <h2 style="margin-top:0;">7. Contact</h2>
+      <p>If you have questions about this Privacy Policy, please contact us at:</p>
+      <p><strong>Email:</strong> <a href="mailto:oldemail@example.invalid">oldemail@example.invalid</a></p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/SerimaTeddyBear" target="_blank" rel="noopener">github.com/SerimaTeddyBear</a></p>
+    </div>
+  </div>
+</body>
+</html>
