@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta name="robots" content="noindex, nofollow">
   <meta charset="UTF-8">
@@ -7,7 +7,7 @@
   <title>Purchase - File Bulk Downloader</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #f8f9fa; color: #1a1a1a; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", Roboto, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #f8f9fa; color: #1a1a1a; }
     .container { text-align: center; max-width: 480px; background: #fff; border-radius: 12px; padding: 2.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
     h1 { font-size: 1.4rem; margin-bottom: 1rem; }
     p { font-size: 0.95rem; margin-bottom: 1.2rem; line-height: 1.6; color: #555; }
@@ -25,13 +25,19 @@
     .links { font-size: 0.8rem; color: #888; margin-top: 1.2rem; }
     .links a { color: #2563eb; text-decoration: none; }
     .links a:hover { text-decoration: underline; }
+    .lang-toggle { position: fixed; top: 1rem; right: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.8rem; cursor: pointer; color: #2563eb; }
+    .lang-toggle:hover { background: #f1f5f9; }
+    [data-lang] { display: none; }
+    [data-lang].active { display: block; }
+    [data-lang].active { display: flex; }
   </style>
 </head>
 <body>
-  <div class="container">
+  <button class="lang-toggle" onclick="toggleLang()">EN / JA</button>
+
+  <div class="container" data-lang="en">
     <h1>File Bulk Downloader</h1>
     <p>One-time purchase &mdash; <strong>$9.99</strong></p>
-
     <div class="consent-box">
       <details>
         <summary>About the right of withdrawal (EU/EEA)</summary>
@@ -44,37 +50,59 @@
           </ul>
         </div>
       </details>
-
       <label class="consent-label">
-        <input type="checkbox" id="consent-check">
+        <input type="checkbox" id="consent-check-en">
         <span>I agree that the license key will be delivered immediately upon purchase, and I acknowledge that I thereby <strong>waive my 14-day right of withdrawal</strong>. I understand that this extension offers a 14-day free trial to evaluate before purchasing.</span>
       </label>
     </div>
-
-    <a class="btn" id="purchase-btn" href="https://buy.stripe.com/dRm6oH4SR8ck1Bgaea2Ry00" disabled>Proceed to Payment</a>
+    <a class="btn" id="purchase-btn-en" href="https://buy.stripe.com/dRm6oH4SR8ck1Bgaea2Ry00" disabled>Proceed to Payment</a>
     <p class="note">After purchase, your license key will be sent to your email.</p>
-    <p class="links">
-      <a href="../terms.html">Terms of Service</a> &middot;
-      <a href="../privacy-policy.html">Privacy Policy</a>
-    </p>
+    <p class="links"><a href="../terms.html">Terms of Service</a> &middot; <a href="../privacy-policy.html">Privacy Policy</a></p>
+  </div>
+
+  <div class="container" data-lang="ja">
+    <h1>File Bulk Downloader</h1>
+    <p>買い切り &mdash; <strong>$9.99</strong></p>
+    <div class="consent-box">
+      <details>
+        <summary>撤回権について（EU/EEA）</summary>
+        <div class="detail-text">
+          <p>EU消費者権利指令（2011/83/EU）に基づき、EU/EEA内の消費者はオンライン購入に対して14日間の撤回権を有します。ただし、消費者が事前に明示的な同意を与え、撤回権の喪失を確認した上で即時提供されるデジタルコンテンツには適用されません（第16条(m)）。</p>
+          <ul>
+            <li>本拡張機能は購入前に<strong>14日間の無料トライアル</strong>を提供しています。</li>
+            <li>購入後、ライセンスキーはメールで即時送付されます。</li>
+            <li>以下のチェックボックスにチェックすることで、即時提供に同意し撤回権を放棄します。</li>
+          </ul>
+        </div>
+      </details>
+      <label class="consent-label">
+        <input type="checkbox" id="consent-check-ja">
+        <span>ライセンスキーが購入後即時提供されることに同意し、これにより<strong>14日間の撤回権を放棄する</strong>ことを確認します。本拡張機能が購入前に14日間の無料トライアルを提供していることを理解しています。</span>
+      </label>
+    </div>
+    <a class="btn" id="purchase-btn-ja" href="https://buy.stripe.com/dRm6oH4SR8ck1Bgaea2Ry00" disabled>お支払いへ進む</a>
+    <p class="note">購入後、ライセンスキーがメールで送信されます。</p>
+    <p class="links"><a href="../terms.html">利用規約</a> &middot; <a href="../privacy-policy.html">プライバシーポリシー</a></p>
   </div>
 
   <script>
-    const checkbox = document.getElementById("consent-check");
-    const btn = document.getElementById("purchase-btn");
+    function getLang() { var s = localStorage.getItem('fbd-lang'); if (s) return s; return (navigator.language || '').startsWith('ja') ? 'ja' : 'en'; }
+    function setLang(l) { localStorage.setItem('fbd-lang', l); document.querySelectorAll('[data-lang]').forEach(function(e) { e.classList.toggle('active', e.getAttribute('data-lang') === l); }); document.documentElement.lang = l; }
+    function toggleLang() { setLang(getLang() === 'ja' ? 'en' : 'ja'); }
+    setLang(getLang());
 
-    function updateBtn() {
-      if (checkbox.checked) {
-        btn.removeAttribute("disabled");
-        btn.style.pointerEvents = "";
-      } else {
-        btn.setAttribute("disabled", "");
-        btn.style.pointerEvents = "none";
+    function setupConsent(checkId, btnId) {
+      var cb = document.getElementById(checkId);
+      var btn = document.getElementById(btnId);
+      function update() {
+        if (cb.checked) { btn.removeAttribute('disabled'); btn.style.pointerEvents = ''; }
+        else { btn.setAttribute('disabled', ''); btn.style.pointerEvents = 'none'; }
       }
+      cb.addEventListener('change', update);
+      update();
     }
-
-    checkbox.addEventListener("change", updateBtn);
-    updateBtn();
+    setupConsent('consent-check-en', 'purchase-btn-en');
+    setupConsent('consent-check-ja', 'purchase-btn-ja');
   </script>
 </body>
 </html>

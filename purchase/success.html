@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta name="robots" content="noindex, nofollow">
   <meta charset="UTF-8">
@@ -7,7 +7,7 @@
   <title>Purchase Complete - File Bulk Downloader</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.7; color: #1a1a1a; background: #f8f9fa; padding: 2rem 1rem; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", Roboto, sans-serif; line-height: 1.7; color: #1a1a1a; background: #f8f9fa; padding: 2rem 1rem; }
     .container { max-width: 560px; margin: 60px auto; background: #fff; border-radius: 12px; padding: 2.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08); text-align: center; }
     .icon { font-size: 48px; margin-bottom: 16px; }
     h1 { font-size: 1.5rem; margin-bottom: 0.5rem; color: #16a34a; }
@@ -20,32 +20,66 @@
     .support { background: #f1f5f9; border-radius: 8px; padding: 16px; margin-top: 24px; }
     .support p { font-size: 0.85rem; color: #666; margin-bottom: 0.3rem; }
     .support a { color: #2563eb; }
+    .lang-toggle { position: fixed; top: 1rem; right: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.8rem; cursor: pointer; color: #2563eb; }
+    .lang-toggle:hover { background: #f1f5f9; }
+    [data-lang] { display: none; }
+    [data-lang].active { display: block; }
   </style>
 </head>
 <body>
+  <button class="lang-toggle" onclick="toggleLang()">EN / JA</button>
   <div class="container">
-    <div class="icon">&#10003;</div>
-    <h1>Thank you for your purchase!</h1>
-    <p>Your license key has been sent to your email address.</p>
 
-    <div class="highlight">
-      <p>Please check your inbox (and spam folder) for an email from File Bulk Downloader.</p>
+    <div data-lang="en">
+      <div class="icon">&#10003;</div>
+      <h1>Thank you for your purchase!</h1>
+      <p>Your license key has been sent to your email address.</p>
+      <div class="highlight">
+        <p>Please check your inbox (and spam folder) for an email from File Bulk Downloader.</p>
+      </div>
+      <div class="steps">
+        <p style="font-weight:600; color:#1a1a1a;">How to activate:</p>
+        <ol>
+          <li>Open the File Bulk Downloader extension in your browser</li>
+          <li>Go to the license activation screen</li>
+          <li>Paste the license key from the email and click <strong>Activate</strong></li>
+        </ol>
+      </div>
+      <div class="support">
+        <p>Didn't receive the email? Please wait a few minutes and check your spam folder.</p>
+        <p>Still having trouble? Contact us:</p>
+        <p><a href="mailto:oldemail@example.invalid">oldemail@example.invalid</a></p>
+      </div>
     </div>
 
-    <div class="steps">
-      <p style="font-weight:600; color:#1a1a1a;">How to activate:</p>
-      <ol>
-        <li>Open the File Bulk Downloader extension in your browser</li>
-        <li>Go to the license activation screen</li>
-        <li>Paste the license key from the email and click <strong>Activate</strong></li>
-      </ol>
+    <div data-lang="ja">
+      <div class="icon">&#10003;</div>
+      <h1>ご購入ありがとうございます！</h1>
+      <p>ライセンスキーをメールアドレス宛に送信しました。</p>
+      <div class="highlight">
+        <p>File Bulk Downloader からのメールを受信トレイ（および迷惑メールフォルダ）でご確認ください。</p>
+      </div>
+      <div class="steps">
+        <p style="font-weight:600; color:#1a1a1a;">アクティベーション方法：</p>
+        <ol>
+          <li>ブラウザで File Bulk Downloader 拡張機能を開く</li>
+          <li>ライセンスアクティベーション画面に移動</li>
+          <li>メールに記載されたライセンスキーを貼り付けて<strong>「Activate」</strong>をクリック</li>
+        </ol>
+      </div>
+      <div class="support">
+        <p>メールが届かない場合は、数分お待ちいただき迷惑メールフォルダもご確認ください。</p>
+        <p>問題が解決しない場合はお問い合わせください：</p>
+        <p><a href="mailto:oldemail@example.invalid">oldemail@example.invalid</a></p>
+      </div>
     </div>
 
-    <div class="support">
-      <p>Didn't receive the email? Please wait a few minutes and check your spam folder.</p>
-      <p>Still having trouble? Contact us:</p>
-      <p><a href="mailto:oldemail@example.invalid">oldemail@example.invalid</a></p>
-    </div>
   </div>
+  <script>
+    function getLang() { var s = localStorage.getItem('fbd-lang'); if (s) return s; return (navigator.language || '').startsWith('ja') ? 'ja' : 'en'; }
+    function setLang(l) { localStorage.setItem('fbd-lang', l); document.querySelectorAll('[data-lang]').forEach(function(e) { e.classList.toggle('active', e.getAttribute('data-lang') === l); }); document.documentElement.lang = l; }
+    function toggleLang() { setLang(getLang() === 'ja' ? 'en' : 'ja'); }
+    setLang(getLang());
+  </script>
 </body>
 </html>

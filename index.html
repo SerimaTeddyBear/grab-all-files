@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta name="robots" content="noindex, nofollow">
   <meta charset="UTF-8">
@@ -7,26 +7,62 @@
   <title>File Bulk Downloader</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.7; color: #1a1a1a; background: #f8f9fa; padding: 2rem 1rem; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", Roboto, sans-serif; line-height: 1.7; color: #1a1a1a; background: #f8f9fa; padding: 2rem 1rem; }
     .container { max-width: 640px; margin: 0 auto; background: #fff; border-radius: 12px; padding: 2.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08); text-align: center; }
     h1 { font-size: 1.6rem; margin-bottom: 0.5rem; }
     p { font-size: 0.95rem; color: #555; margin-bottom: 1rem; }
     .links { margin-top: 1.5rem; }
     .links a { display: inline-block; margin: 0.4rem 0.6rem; color: #2563eb; text-decoration: none; font-weight: 500; }
     .links a:hover { text-decoration: underline; }
+    .lang-toggle { position: fixed; top: 1rem; right: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.8rem; cursor: pointer; color: #2563eb; }
+    .lang-toggle:hover { background: #f1f5f9; }
+    [data-lang] { display: none; }
+    [data-lang].active { display: block; }
   </style>
 </head>
 <body>
+  <button class="lang-toggle" onclick="toggleLang()">EN / JA</button>
   <div class="container">
-    <h1>File Bulk Downloader</h1>
-    <p>Bulk-download, merge, and manage PDF/DOC/XLS and other files with smart filtering, auto-retry, and duplicate detection.</p>
-    <div class="links">
-      <a href="privacy-policy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
-      <a href="legal.html">Legal Notice</a>
-      <a href="tokushoho.html">特定商取引法に基づく表記</a>
-      <a href="purchase/">Purchase License</a>
+    <div data-lang="en">
+      <h1>File Bulk Downloader</h1>
+      <p>Bulk-download, merge, and manage PDF/DOC/XLS and other files with smart filtering, auto-retry, and duplicate detection.</p>
+      <div class="links">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="legal.html">Legal Notice</a>
+        <a href="tokushoho.html">特定商取引法に基づく表記</a>
+        <a href="purchase/">Purchase License</a>
+      </div>
+    </div>
+    <div data-lang="ja">
+      <h1>File Bulk Downloader</h1>
+      <p>PDF・DOC・XLSなどのファイルを一括ダウンロード。スマートフィルタリング、自動リトライ、重複検出機能を搭載。</p>
+      <div class="links">
+        <a href="privacy-policy.html">プライバシーポリシー</a>
+        <a href="terms.html">利用規約</a>
+        <a href="tokushoho.html">特定商取引法に基づく表記</a>
+        <a href="legal.html">Legal Notice (English)</a>
+        <a href="purchase/">ライセンス購入</a>
+      </div>
     </div>
   </div>
+  <script>
+    function getLang() {
+      var saved = localStorage.getItem('fbd-lang');
+      if (saved) return saved;
+      return (navigator.language || '').startsWith('ja') ? 'ja' : 'en';
+    }
+    function setLang(lang) {
+      localStorage.setItem('fbd-lang', lang);
+      document.querySelectorAll('[data-lang]').forEach(function(el) {
+        el.classList.toggle('active', el.getAttribute('data-lang') === lang);
+      });
+      document.documentElement.lang = lang;
+    }
+    function toggleLang() {
+      setLang(getLang() === 'ja' ? 'en' : 'ja');
+    }
+    setLang(getLang());
+  </script>
 </body>
 </html>
