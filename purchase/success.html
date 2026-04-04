@@ -20,65 +20,181 @@
     .support { background: #f1f5f9; border-radius: 8px; padding: 16px; margin-top: 24px; }
     .support p { font-size: 0.85rem; color: #666; margin-bottom: 0.3rem; }
     .support a { color: #2563eb; }
-    .lang-toggle { position: fixed; top: 1rem; right: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.8rem; cursor: pointer; color: #2563eb; }
-    .lang-toggle:hover { background: #f1f5f9; }
+    .lang-sel { position: fixed; top: 1rem; right: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.3rem 0.5rem; font-size: 0.8rem; color: #2563eb; cursor: pointer; }
     [data-lang] { display: none; }
     [data-lang].active { display: block; }
   </style>
 </head>
 <body>
-  <button class="lang-toggle" onclick="toggleLang()">EN / JA</button>
+  <select id="lang-sel" class="lang-sel" onchange="onLangChange(event)"><option value="en">English</option><option value="ja">日本語</option><option value="es">Español</option><option value="fr">Français</option><option value="ko">한국어</option><option value="it">Italiano</option><option value="zh_CN">简体中文</option><option value="zh_TW">繁體中文</option><option value="pt_BR">Português</option><option value="de">Deutsch</option></select>
   <div class="container">
-
     <div data-lang="en">
       <div class="icon">&#10003;</div>
       <h1>Thank you for your purchase!</h1>
       <p>Your license key has been sent to your email address.</p>
-      <div class="highlight">
-        <p>Please check your inbox (and spam folder) for an email from File Bulk Downloader.</p>
-      </div>
+      <div class="highlight"><p>Please check your inbox (and spam folder) for an email from File Bulk Downloader.</p></div>
       <div class="steps">
-        <p style="font-weight:600; color:#1a1a1a;">How to activate:</p>
-        <ol>
-          <li>Open the File Bulk Downloader extension in your browser</li>
-          <li>Go to the license activation screen</li>
-          <li>Paste the license key from the email and click <strong>Activate</strong></li>
-        </ol>
+        <p style="font-weight:600;color:#1a1a1a;">How to activate:</p>
+        <ol><li>Open the File Bulk Downloader extension in your browser</li><li>Go to the license activation screen</li><li>Paste the license key from the email and click <strong>Activate</strong></li></ol>
       </div>
       <div class="support">
-        <p>Didn't receive the email? Please wait a few minutes and check your spam folder.</p>
-        <p>Still having trouble? Contact us:</p>
+        <p>Didn't receive the email? Please wait a few minutes and check your spam folder.</p><p>Still having trouble? Contact us:</p>
         <p><a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
       </div>
     </div>
-
     <div data-lang="ja">
       <div class="icon">&#10003;</div>
       <h1>ご購入ありがとうございます！</h1>
       <p>ライセンスキーをメールアドレス宛に送信しました。</p>
-      <div class="highlight">
-        <p>File Bulk Downloader からのメールを受信トレイ（および迷惑メールフォルダ）でご確認ください。</p>
-      </div>
+      <div class="highlight"><p>File Bulk Downloader からのメールを受信トレイ（および迷惑メールフォルダ）でご確認ください。</p></div>
       <div class="steps">
-        <p style="font-weight:600; color:#1a1a1a;">アクティベーション方法：</p>
-        <ol>
-          <li>ブラウザで File Bulk Downloader 拡張機能を開く</li>
-          <li>ライセンスアクティベーション画面に移動</li>
-          <li>メールに記載されたライセンスキーを貼り付けて<strong>「Activate」</strong>をクリック</li>
-        </ol>
+        <p style="font-weight:600;color:#1a1a1a;">アクティベーション方法：</p>
+        <ol><li>ブラウザで File Bulk Downloader 拡張機能を開く</li><li>ライセンス���クティベーション画面に移動</li><li>メールに記載されたライセン���キーを貼り付けて<strong>「Activate」</strong>をクリック</li></ol>
       </div>
       <div class="support">
-        <p>メールが届かない場合は、数分お待ちいただき迷惑メールフォルダもご確認ください。</p>
-        <p>問題が解決しない場合はお問い合わせください：</p>
+        <p>メールが届かない場合は、数分お待ちいただき迷惑メールフォルダもご確認ください。</p><p>問題が解決しない場合はお問い合わせください：</p>
         <p><a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
       </div>
     </div>
-
+    <div data-lang="es">
+      <div class="icon">&#10003;</div>
+      <h1>¡Gracias por su compra!</h1>
+      <p>Su clave de licencia ha sido enviada a su dirección de correo electrónico.</p>
+      <div class="highlight"><p>Por favor revise su bandeja de entrada (y carpeta de spam) para un correo de File Bulk Downloader.</p></div>
+      <div class="steps">
+        <p style="font-weight:600;color:#1a1a1a;">Cómo activar:</p>
+        <ol><li>Abra la extensión File Bulk Downloader en su navegador</li><li>Vaya a la pantalla de activación de licencia</li><li>Pegue la clave de licencia del correo y haga clic en <strong>Activate</strong></li></ol>
+      </div>
+      <div class="support">
+        <p>¿No recibió el correo? Espere unos minutos y revise su carpeta de spam.</p><p>¿Aún tiene problemas? Contáctenos:</p>
+        <p><a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      </div>
+    </div>
+    <div data-lang="fr">
+      <div class="icon">&#10003;</div>
+      <h1>Merci pour votre achat !</h1>
+      <p>Votre clé de licence a été envoyée à votre adresse e-mail.</p>
+      <div class="highlight"><p>Veuillez vérifier votre boîte de réception (et dossier spam) pour un e-mail de File Bulk Downloader.</p></div>
+      <div class="steps">
+        <p style="font-weight:600;color:#1a1a1a;">Comment activer :</p>
+        <ol><li>Ouvrez l'extension File Bulk Downloader dans votre navigateur</li><li>Accédez à l'écran d'activation de licence</li><li>Collez la clé de licence de l'e-mail et cliquez sur <strong>Activate</strong></li></ol>
+      </div>
+      <div class="support">
+        <p>Vous n'avez pas reçu l'e-mail ? Veuillez patienter quelques minutes et vérifier votre dossier spam.</p><p>Encore des problèmes ? Contactez-nous :</p>
+        <p><a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      </div>
+    </div>
+    <div data-lang="ko">
+      <div class="icon">&#10003;</div>
+      <h1>구매해 주셔서 감사합니다!</h1>
+      <p>라이선스 키가 이메일 주소로 전송되었습니다.</p>
+      <div class="highlight"><p>File Bulk Downloader에서 보낸 이메일을 받은편지함(및 스팸 폴더)에서 확인해 주세요.</p></div>
+      <div class="steps">
+        <p style="font-weight:600;color:#1a1a1a;">활성화 방법:</p>
+        <ol><li>브라우저에서 File Bulk Downloader 확장 프로그램을 엽니다</li><li>라이선스 활성화 화면으로 이동합니다</li><li>이메일의 라이선스 키를 붙여넣고 <strong>Activate</strong>를 클릭합니다</li></ol>
+      </div>
+      <div class="support">
+        <p>이메일을 받지 못했나요? 몇 분 기다린 후 스팸 폴더를 확인해 주세요.</p><p>여전히 문제가 있으신가요? 문의해 주세요:</p>
+        <p><a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      </div>
+    </div>
+    <div data-lang="it">
+      <div class="icon">&#10003;</div>
+      <h1>Grazie per il tuo acquisto!</h1>
+      <p>La tua chiave di licenza è stata inviata al tuo indirizzo email.</p>
+      <div class="highlight"><p>Controlla la tua casella di posta (e la cartella spam) per un'email da File Bulk Downloader.</p></div>
+      <div class="steps">
+        <p style="font-weight:600;color:#1a1a1a;">Come attivare:</p>
+        <ol><li>Apri l'estensione File Bulk Downloader nel tuo browser</li><li>Vai alla schermata di attivazione della licenza</li><li>Incolla la chiave di licenza dall'email e clicca <strong>Activate</strong></li></ol>
+      </div>
+      <div class="support">
+        <p>Non hai ricevuto l'email? Attendi qualche minuto e controlla la cartella spam.</p><p>Hai ancora problemi? Contattaci:</p>
+        <p><a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      </div>
+    </div>
+    <div data-lang="zh_CN">
+      <div class="icon">&#10003;</div>
+      <h1>感谢您的购买！</h1>
+      <p>您的许可证密钥已发送至您的电子邮箱。</p>
+      <div class="highlight"><p>请检查您的收件箱（和垃圾邮件文件夹）以查收来自 File Bulk Downloader 的邮件。</p></div>
+      <div class="steps">
+        <p style="font-weight:600;color:#1a1a1a;">如何激活：</p>
+        <ol><li>在浏览器中打开 File Bulk Downloader 扩展程序</li><li>进入许可证激活页面</li><li>粘贴邮件中的许可证密钥并点击 <strong>Activate</strong></li></ol>
+      </div>
+      <div class="support">
+        <p>没有收到邮件？请等待几分钟并检查垃圾邮件文件夹。</p><p>仍有问题？请联系我们：</p>
+        <p><a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      </div>
+    </div>
+    <div data-lang="zh_TW">
+      <div class="icon">&#10003;</div>
+      <h1>感謝您的購買！</h1>
+      <p>您的授權金鑰已傳送至您的電子郵件地址。</p>
+      <div class="highlight"><p>請檢查您的收件匣（和垃圾郵件資料夾）以查收來自 File Bulk Downloader 的郵件���</p></div>
+      <div class="steps">
+        <p style="font-weight:600;color:#1a1a1a;">如何啟動：</p>
+        <ol><li>在瀏覽器中開��� File Bulk Downloader 擴充功能</li><li>前往授權啟動畫面</li><li>貼上郵件中的授權金鑰並點擊 <strong>Activate</strong></li></ol>
+      </div>
+      <div class="support">
+        <p>沒有收到郵件？請等待幾分鐘並檢查垃圾郵件資料夾。</p><p>仍有問題？請聯繫我們：</p>
+        <p><a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      </div>
+    </div>
+    <div data-lang="pt_BR">
+      <div class="icon">&#10003;</div>
+      <h1>Obrigado pela sua compra!</h1>
+      <p>Sua chave de licença foi enviada para seu endereço de e-mail.</p>
+      <div class="highlight"><p>Verifique sua caixa de entrada (e pasta de spam) para um e-mail do File Bulk Downloader.</p></div>
+      <div class="steps">
+        <p style="font-weight:600;color:#1a1a1a;">Como ativar:</p>
+        <ol><li>Abra a extensão File Bulk Downloader no seu navegador</li><li>Vá para a tela de ativação de licença</li><li>Cole a chave de licença do e-mail e clique em <strong>Activate</strong></li></ol>
+      </div>
+      <div class="support">
+        <p>Não recebeu o e-mail? Aguarde alguns minutos e verifique sua pasta de spam.</p><p>Ainda com problemas? Entre em contato:</p>
+        <p><a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      </div>
+    </div>
+    <div data-lang="de">
+      <div class="icon">&#10003;</div>
+      <h1>Vielen Dank für Ihren Kauf!</h1>
+      <p>Ihr Lizenzschlüssel wurde an Ihre E-Mail-Adresse gesendet.</p>
+      <div class="highlight"><p>Bitte überprüfen Sie Ihren Posteingang (und Spam-Ordner) auf eine E-Mail von File Bulk Downloader.</p></div>
+      <div class="steps">
+        <p style="font-weight:600;color:#1a1a1a;">So aktivieren Sie:</p>
+        <ol><li>Öffnen Sie die File Bulk Downloader-Erweiterung in Ihrem Browser</li><li>Gehen Sie zum Lizenzaktivierungsbildschirm</li><li>Fügen Sie den Lizenzschlüssel aus der E-Mail ein und klicken Sie auf <strong>Activate</strong></li></ol>
+      </div>
+      <div class="support">
+        <p>Keine E-Mail erhalten? Bitte warten Sie einige Minuten und überprüfen Sie Ihren Spam-Ordner.</p><p>Immer noch Probleme? Kontaktieren Sie uns:</p>
+        <p><a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      </div>
+    </div>
   </div>
   <script>
-    function getLang() { var s = localStorage.getItem('fbd-lang'); if (s) return s; return (navigator.language || '').startsWith('ja') ? 'ja' : 'en'; }
-    function setLang(l) { localStorage.setItem('fbd-lang', l); document.querySelectorAll('[data-lang]').forEach(function(e) { e.classList.toggle('active', e.getAttribute('data-lang') === l); }); document.documentElement.lang = l; }
-    function toggleLang() { setLang(getLang() === 'ja' ? 'en' : 'ja'); }
+    function getLang() {
+      var s = localStorage.getItem('fbd-lang');
+      if (s) return s;
+      var n = (navigator.language || '').toLowerCase();
+      if (n.startsWith('ja')) return 'ja';
+      if (n.startsWith('ko')) return 'ko';
+      if (n.startsWith('it')) return 'it';
+      if (n.startsWith('de')) return 'de';
+      if (n.startsWith('es')) return 'es';
+      if (n.startsWith('fr')) return 'fr';
+      if (n.startsWith('pt')) return 'pt_BR';
+      if (n === 'zh-tw' || n === 'zh-hant' || n.startsWith('zh-hant')) return 'zh_TW';
+      if (n.startsWith('zh')) return 'zh_CN';
+      return 'en';
+    }
+    function setLang(l) {
+      localStorage.setItem('fbd-lang', l);
+      document.querySelectorAll('[data-lang]').forEach(function(e) {
+        e.classList.toggle('active', e.getAttribute('data-lang') === l);
+      });
+      document.documentElement.lang = l.replace('_','-');
+      var sel = document.getElementById('lang-sel');
+      if (sel) sel.value = l;
+    }
+    function onLangChange(e) { setLang(e.target.value); }
     setLang(getLang());
   </script>
 </body>

@@ -19,31 +19,25 @@
     th { background: #f1f5f9; font-weight: 600; }
     .contact { background: #f1f5f9; border-radius: 8px; padding: 1rem 1.2rem; margin-top: 1.5rem; }
     .contact a { color: #2563eb; }
-    .lang-toggle { position: fixed; top: 1rem; right: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.8rem; cursor: pointer; color: #2563eb; }
-    .lang-toggle:hover { background: #f1f5f9; }
+    .lang-sel { position: fixed; top: 1rem; right: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.3rem 0.5rem; font-size: 0.8rem; color: #2563eb; cursor: pointer; }
     [data-lang] { display: none; }
     [data-lang].active { display: block; }
   </style>
 </head>
 <body>
-  <button class="lang-toggle" onclick="toggleLang()">EN / JA</button>
+  <select id="lang-sel" class="lang-sel" onchange="onLangChange(event)"><option value="en">English</option><option value="ja">日本語</option><option value="es">Español</option><option value="fr">Français</option><option value="ko">한국어</option><option value="it">Italiano</option><option value="zh_CN">简体中文</option><option value="zh_TW">繁體中文</option><option value="pt_BR">Português</option><option value="de">Deutsch</option></select>
   <div class="container">
-
     <div data-lang="en">
       <h1>Privacy Policy</h1>
-      <p class="updated">Last updated: April 5, 2026</p>
+      <p class="updated">Last updated: April 4, 2026</p>
       <p><strong>File Bulk Downloader</strong> ("the Extension") is a browser extension that helps users find and download files from web pages. This policy explains what data the Extension accesses, how it is used, and how it is stored.</p>
-
       <h2>1. Data We Collect</h2>
       <p>The Extension does <strong>not</strong> collect, transmit, or sell any personal data, browsing history, or analytics. There are no tracking scripts, cookies, or third-party analytics services.</p>
       <p>The only network requests the Extension makes are:</p>
       <ul>
         <li><strong>License verification</strong> &mdash; When a license key is entered, it is sent to our server along with a randomly generated device identifier (UUID) to verify its validity and enforce device limits. No personal information, browsing data, or hardware fingerprints are included.</li>
-        <li><strong>Trial verification</strong> &mdash; During the free trial period, the Extension sends your device identifier (UUID) to our server to verify trial eligibility. No license key or personal data is included.</li>
-        <li><strong>Device management</strong> &mdash; When you view or manage your activated devices on the license screen, the Extension sends your license key and device identifier to our server to retrieve and update the device list.</li>
         <li><strong>File scanning &amp; downloading</strong> &mdash; When you use the "Enter URL" feature, the Extension fetches web pages you specify to find downloadable files. These requests go directly to the target website; no data passes through our servers.</li>
       </ul>
-
       <h2>2. Data Stored Locally</h2>
       <p>The Extension stores the following data locally on your device using the browser's built-in storage (<code>chrome.storage.local</code> and <code>chrome.storage.session</code>). This data never leaves your device.</p>
       <table>
@@ -53,11 +47,9 @@
         <tr><td>Install date</td><td>To manage the free trial period</td></tr>
         <tr><td>Download history (URLs)</td><td>To mark previously downloaded files as "DL'd"</td></tr>
         <tr><td>Scan history</td><td>To show recently scanned pages for quick access</td></tr>
-        <tr><td>Last verified timestamp</td><td>To allow offline usage for a limited grace period</td></tr>
         <tr><td>Window size</td><td>To remember your preferred window dimensions</td></tr>
       </table>
       <p>You can clear all stored data at any time by uninstalling the Extension or by using your browser's extension data management.</p>
-
       <h2>3. Permissions</h2>
       <table>
         <tr><th>Permission</th><th>Why it is needed</th></tr>
@@ -68,136 +60,480 @@
         <tr><td>storage</td><td>To persist settings, license key, and download history locally</td></tr>
         <tr><td>Host permissions</td><td>To fetch pages and files from URLs you specify in the "Enter URL" mode</td></tr>
       </table>
-
       <h2>4. Legal Basis for Processing (GDPR Article 6)</h2>
       <p>For users in the EU/EEA, we process data on the following legal bases:</p>
       <ul>
         <li><strong>Contract performance</strong> (Article 6(1)(b)) &mdash; License key verification and device ID processing are necessary to fulfill the license agreement.</li>
-        <li><strong>Legitimate interest</strong> (Article 6(1)(f)) &mdash; Storing install date and scan history locally to provide core Extension functionality. These are stored only on your device and not transmitted to us.</li>
+        <li><strong>Legitimate interest</strong> (Article 6(1)(f)) &mdash; Storing install date and scan history locally to provide core Extension functionality.</li>
       </ul>
-
       <h2>5. Third-Party Services and Data Transfers</h2>
-      <p>The Extension communicates with a license verification server hosted on <strong>Supabase</strong>. The data sent consists of the license key and a randomly generated device identifier (UUID). No personal information, browsing data, or hardware fingerprints are transmitted. The device identifier is used solely to enforce the per-license device limit and cannot be used to identify you personally.</p>
-      <p>Supabase infrastructure is hosted on Amazon Web Services (AWS). Your data may be processed outside the EU/EEA. Supabase relies on <strong>Standard Contractual Clauses (SCCs)</strong> approved by the European Commission as the legal mechanism for international data transfers. See <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabase's Privacy Policy</a> for their data handling practices.</p>
-
+      <p>The Extension communicates with a license verification server hosted on <strong>Supabase</strong>. The data sent consists of the license key and a randomly generated device identifier (UUID). No personal information is transmitted.</p>
+      <p>Supabase infrastructure is hosted on Amazon Web Services (AWS). Your data may be processed outside the EU/EEA. Supabase relies on <strong>Standard Contractual Clauses (SCCs)</strong> approved by the European Commission. See <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabase's Privacy Policy</a>.</p>
       <h2>6. Your Rights (EU/EEA Users)</h2>
-      <p>Under the GDPR, you have the following rights regarding your data:</p>
+      <p>Under the GDPR, you have the following rights:</p>
       <ul>
         <li><strong>Right of access</strong> &mdash; Request a copy of any data we hold about you.</li>
         <li><strong>Right to rectification</strong> &mdash; Request correction of inaccurate data.</li>
-        <li><strong>Right to erasure</strong> &mdash; Request deletion of your data. You can also delete all local data by uninstalling the Extension.</li>
+        <li><strong>Right to erasure</strong> &mdash; Request deletion of your data.</li>
         <li><strong>Right to restriction of processing</strong> &mdash; Request that we limit how we use your data.</li>
         <li><strong>Right to data portability</strong> &mdash; Request your data in a machine-readable format.</li>
         <li><strong>Right to object</strong> &mdash; Object to processing based on legitimate interest.</li>
-        <li><strong>Right to lodge a complaint</strong> &mdash; You may file a complaint with your local data protection authority (supervisory authority).</li>
+        <li><strong>Right to lodge a complaint</strong> &mdash; File a complaint with your local data protection authority.</li>
       </ul>
-      <p>To exercise any of these rights, contact us at <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a>. We will respond within <strong>30 days</strong>.</p>
-
+      <p>Contact us at <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a>. We will respond within <strong>30 days</strong>.</p>
       <h2>7. Data Retention</h2>
-      <p>License key and device ID records are retained on our server for the duration of your license. If you request deletion, we will remove your records within 30 days. All locally stored data is deleted when you uninstall the Extension.</p>
-
+      <p>License key and device ID records are retained for the duration of your license. If you request deletion, we will remove your records within 30 days. Local data is deleted when you uninstall the Extension.</p>
       <h2>8. Children's Privacy</h2>
-      <p>The Extension is not directed at children under 16 (or the applicable age in your jurisdiction). We do not knowingly collect any personal information from children.</p>
-
+      <p>The Extension is not directed at children under 16. We do not knowingly collect personal information from children.</p>
       <h2>9. Changes to This Policy</h2>
-      <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated date. Continued use of the Extension after changes constitutes acceptance.</p>
-
+      <p>We may update this Privacy Policy from time to time. Continued use constitutes acceptance.</p>
       <div class="contact">
         <h2 style="margin-top:0;">10. Contact / Data Controller</h2>
         <p><strong>Data Controller:</strong> Tetsunobu Kawai</p>
-        <p>If you have questions about this Privacy Policy or wish to exercise your data rights, please contact us at:</p>
         <p><strong>Email:</strong> <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
         <p><strong>GitHub:</strong> <a href="https://github.com/SerimaTeddyBear" target="_blank" rel="noopener">github.com/SerimaTeddyBear</a></p>
       </div>
     </div>
-
     <div data-lang="ja">
       <h1>プライバシーポリシー</h1>
-      <p class="updated">最終更新日: 2026年4月5日</p>
-      <p><strong>File Bulk Downloader</strong>（以下「本拡張機能」）は、Webページ上のファイルを検索・ダウンロードするブラウザ拡張機能です。本ポリシーでは、本拡張機能がアクセスするデータ、その利用方法、および保存方法について説明します。</p>
-
+      <p class="updated">最終更新日: 2026年4月4日</p>
+      <p><strong>File Bulk Downloader</strong>（以下「本拡張機能」）は、Webページ上のファイルを検索・ダウンロードするブラウザ拡張機能です。本ポリシーでは、本拡張機能がアクセスするデータ、その利用方法、保存方法について説明します。</p>
       <h2>1. 収集するデータ</h2>
-      <p>本拡張機能は、個人データ、閲覧履歴、アナリティクス情報を<strong>一切収集、送信、販売しません</strong>。トラッキングスクリプト、Cookie、サードパーティのアナリティクスサービスは使用していません。</p>
+      <p>本拡張機能は、個人データ、閲覧履歴、アナリティクス情報を<strong>一切収集、送信、販売しません</strong>。</p>
       <p>本拡張機能が行うネットワークリクエストは以下のみです：</p>
       <ul>
-        <li><strong>ライセンス認証</strong> &mdash; ライセンスキー入力時に、キーとランダム生成されたデバイス識別子（UUID）をサーバーに送信し、有効性の確認とデバイス数制限を行います。個人情報、閲覧データ、ハードウェアフィンガープリントは含まれません。</li>
-        <li><strong>トライアル認証</strong> &mdash; 無料トライアル期間中、デバイス識別子（UUID）をサーバーに送信しトライアル資格を確認します。ライセンスキーや個人データは含まれません。</li>
-        <li><strong>デバイス管理</strong> &mdash; ライセンス画面でアクティブなデバイスを表示・管理する際、ライセンスキーとデバイス識別子をサーバーに送信しデバイス一覧の取得・更新を行います。</li>
-        <li><strong>ファイルスキャン・ダウンロード</strong> &mdash;「URL入力」機能使用時、指定されたWebページを取得しダウンロード可能なファイルを検索します。これらのリクエストは対象Webサイトに直接送信され、当社サーバーを経由しません。</li>
+        <li><strong>ライセンス認証</strong> &mdash; ライセンスキー入力時に、キーとランダム生成されたデバイス識別子（UUID）をサーバーに送信し、有効性確認とデバイス数制限を行います。</li>
+        <li><strong>ファイルスキャン・ダウンロード</strong> &mdash;「URL入力」機能使用時、指定されたWebページを取得しダウンロード可能なファイルを検索します。リクエストは対象サイトに直接送信されます。</li>
       </ul>
-
       <h2>2. ローカルに保存されるデータ</h2>
-      <p>本拡張機能は、ブラウザ内蔵のストレージ（<code>chrome.storage.local</code> および <code>chrome.storage.session</code>）を使用して、以下のデータをお使いのデバイスにローカル保存します。これらのデータがデバイスの外部に送信されることはありません。</p>
+      <p>ブラウザのストレージ（<code>chrome.storage.local</code>/<code>chrome.storage.session</code>）を使用してローカルに保存します。デバイス外に送信されません。</p>
       <table>
         <tr><th>データ</th><th>目的</th></tr>
-        <tr><td>ライセンスキー</td><td>アクティベーション後のログイン状態維持</td></tr>
-        <tr><td>デバイスID（ランダムUUID）</td><td>ライセンスごとのデバイス数制限（最大3台）</td></tr>
-        <tr><td>インストール日</td><td>無料トライアル期間の管理</td></tr>
-        <tr><td>ダウンロード履歴（URL）</td><td>ダウンロード済みファイルの「DL済」表示</td></tr>
-        <tr><td>スキャン履歴</td><td>最近スキャンしたページのクイックアクセス</td></tr>
-        <tr><td>最終認証タイムスタンプ</td><td>限定的なオフライン使用のための猶予期間管理</td></tr>
-        <tr><td>ウィンドウサイズ</td><td>ウィンドウサイズの記憶</td></tr>
+        <tr><td>ライセンスキー</td><td>ログイン状態維持</td></tr>
+        <tr><td>デバイスID（UUID）</td><td>デバイス数制限（最大3台）</td></tr>
+        <tr><td>インストール日</td><td>トライアル期間管理</td></tr>
+        <tr><td>ダウンロード履歴</td><td>DL済み表示</td></tr>
+        <tr><td>スキャン履歴</td><td>クイックアクセス</td></tr>
+        <tr><td>ウィンドウサイズ</td><td>サイズの記憶</td></tr>
       </table>
-      <p>保存されたデータは、拡張機能のアンインストールまたはブラウザの拡張機能データ管理からいつでも削除できます。</p>
-
-      <h2>3. 権限（パーミッション）</h2>
+      <h2>3. 権限</h2>
       <table>
-        <tr><th>権限</th><th>必要な理由</th></tr>
-        <tr><td>activeTab</td><td>アイコンクリック時に現在のページからダウンロード可能なファイルをスキャン</td></tr>
-        <tr><td>tabs</td><td>自動スキャン機能のためのタブ切り替え検出</td></tr>
-        <tr><td>scripting</td><td>ページ上のファイルリンクを検索するコンテンツスクリプトの注入</td></tr>
-        <tr><td>downloads</td><td>ファイルをコンピュータに保存</td></tr>
-        <tr><td>storage</td><td>設定、ライセンスキー、ダウンロード履歴のローカル保存</td></tr>
-        <tr><td>ホスト権限</td><td>「URL入力」モードで指定されたURLからページやファイルを取得</td></tr>
+        <tr><th>権限</th><th>理由</th></tr>
+        <tr><td>activeTab</td><td>現在のページのファイルスキャン</td></tr>
+        <tr><td>tabs</td><td>自動スキャンのタブ切替検��</td></tr>
+        <tr><td>scripting</td><td>コンテンツスクリプト注入</td></tr>
+        <tr><td>downloads</td><td>ファイル保存</td></tr>
+        <tr><td>storage</td><td>設定・履歴のローカル保存</td></tr>
+        <tr><td>ホスト権限</td><td>URL指定でのページ・ファイル取得</td></tr>
       </table>
-
       <h2>4. 処理の法的根拠（GDPR 第6条）</h2>
-      <p>EU/EEA内のユーザーに対して、以下の法的根拠に基づきデータを処理します：</p>
       <ul>
-        <li><strong>契約の履行</strong>（第6条1項(b)） &mdash; ライセンスキーの認証およびデバイスIDの処理は、ライセンス契約の履行に必要です。</li>
-        <li><strong>正当な利益</strong>（第6条1項(f)） &mdash; インストール日やスキャン履歴のローカル保存は、拡張機能の基本機能を提供するために必要です。これらはデバイスにのみ保存され、当社には送信されません。</li>
+        <li><strong>契約の履行</strong>（第6条1項(b)） &mdash; ライセンス認証とデバイスID処理。</li>
+        <li><strong>正当な利益</strong>（第6条1項(f)） &mdash; ローカルデータ保存による基本機能提供。</li>
       </ul>
-
       <h2>5. サードパーティサービスとデータ移転</h2>
-      <p>本拡張機能は、<strong>Supabase</strong>でホストされたライセンス認証サーバーと通信します。送信されるデータはライセンスキーとランダム生成されたデバイス識別子（UUID）のみです。個人情報、閲覧データ、ハードウェアフィンガープリントは送信されません。デバイス識別子はライセンスごとのデバイス数制限のためにのみ使用され、個人を特定するために使用されることはありません。</p>
-      <p>SupabaseのインフラはAmazon Web Services（AWS）でホストされています。データはEU/EEA外で処理される場合があります。Supabaseは、国際データ移転の法的メカニズムとして欧州委員会承認の<strong>標準契約条項（SCC）</strong>を採用しています。データ取り扱いの詳細は<a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabaseのプライバシーポリシー</a>をご覧ください。</p>
-
-      <h2>6. お客様の権利（EU/EEAユーザー）</h2>
-      <p>GDPRに基づき、以下の権利があります：</p>
+      <p><strong>Supabase</strong>（AWS上）でホストされたライセンス認証サーバーと通信します。<strong>標準契約条項（SCC）</strong>に基づく国際データ移転。<a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabaseプライバシーポリシー</a></p>
+      <h2>6. お客様の権利（EU/EEA）</h2>
       <ul>
-        <li><strong>アクセス権</strong> &mdash; 当社が保有するデータのコピーを請求できます。</li>
-        <li><strong>訂正権</strong> &mdash; 不正確なデータの訂正を請求できます。</li>
-        <li><strong>消去権</strong> &mdash; データの削除を請求できます。拡張機能のアンインストールでローカルデータも削除できます。</li>
-        <li><strong>処理制限権</strong> &mdash; データの利用を制限するよう請求できます。</li>
-        <li><strong>データポータビリティ権</strong> &mdash; 機械可読形式でデータを請求できます。</li>
-        <li><strong>異議申立権</strong> &mdash; 正当な利益に基づく処理に異議を申し立てることができます。</li>
-        <li><strong>監督機関への苦情申立権</strong> &mdash; お住まいの地域のデータ保護機関に苦情を申し立てることができます。</li>
+        <li><strong>アクセス権</strong>、<strong>訂正権</strong>、<strong>消去権</strong>、<strong>処理制限権</strong>、<strong>データポータビリティ権</strong>、<strong>異議申立権</strong>、<strong>監督機関への苦情申立権</strong></li>
       </ul>
-      <p>これらの権利を行使するには、<a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a> までご連絡ください。<strong>30日以内</strong>に回答いたします。</p>
-
+      <p><a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a> まで。<strong>30日以内</strong>に回答。</p>
       <h2>7. データ保持期間</h2>
-      <p>ライセンスキーとデバイスIDの記録は、ライセンス有効期間中サーバーに保持されます。削除を請求された場合、30日以内に記録を削除します。ローカルに保存されたデータは拡張機能のアンインストール時にすべて削除されます。</p>
-
+      <p>ライセンス有効期間中保持。削除請求から30日以内に削除。ローカルデータはアンインストール時に削除。</p>
       <h2>8. 児童のプライバシー</h2>
-      <p>本拡張機能は16歳未満（またはお住まいの地域で適用される年齢未満）の児童を対象としていません。児童の個人情報を故意に収集することはありません。</p>
-
+      <p>16歳未満を対象としていません。</p>
       <h2>9. 本ポリシーの変更</h2>
-      <p>本プライバシーポリシーは随時更新される場合があります。変更は更新日とともにこのページに掲載されます。変更後も本拡張機能を継続使用した場合、変更に同意したものとみなされます。</p>
-
+      <p>随時更新。継続使用は同意とみなします。</p>
       <div class="contact">
         <h2 style="margin-top:0;">10. お問い合わせ / データ管理者</h2>
         <p><strong>データ管理者:</strong> 河合 哲伸</p>
-        <p>本プライバシーポリシーに関するご質問やデータに関する権利の行使については、以下までご連絡ください：</p>
         <p><strong>メール:</strong> <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
         <p><strong>GitHub:</strong> <a href="https://github.com/SerimaTeddyBear" target="_blank" rel="noopener">github.com/SerimaTeddyBear</a></p>
       </div>
     </div>
-
+    <div data-lang="es">
+      <h1>Política de Privacidad</h1>
+      <p class="updated">Última actualización: 4 de abril de 2026</p>
+      <p><strong>File Bulk Downloader</strong> ("la Extensión") es una extensión de navegador que ayuda a encontrar y descargar archivos de páginas web.</p>
+      <h2>1. Datos que Recopilamos</h2>
+      <p>La Extensión <strong>no</strong> recopila, transmite ni vende datos personales, historial de navegación ni analíticas.</p>
+      <p>Las únicas solicitudes de red son:</p>
+      <ul>
+        <li><strong>Verificación de licencia</strong> &mdash; Se envía la clave y un UUID al servidor para validación.</li>
+        <li><strong>Escaneo y descarga</strong> &mdash; Las solicitudes van directamente al sitio web objetivo.</li>
+      </ul>
+      <h2>2. Datos Almacenados Localmente</h2>
+      <table>
+        <tr><th>Dato</th><th>Propósito</th></tr>
+        <tr><td>Clave de licencia</td><td>Mantener sesión activa</td></tr>
+        <tr><td>ID de dispositivo (UUID)</td><td>Límite de dispositivos (máx. 3)</td></tr>
+        <tr><td>Fecha de instalación</td><td>Gestión del período de prueba</td></tr>
+        <tr><td>Historial de descargas</td><td>Marcar archivos descargados</td></tr>
+        <tr><td>Historial de escaneos</td><td>Acceso rápido</td></tr>
+        <tr><td>Tamaño de ventana</td><td>Recordar dimensiones</td></tr>
+      </table>
+      <h2>3. Permisos</h2>
+      <table>
+        <tr><th>Permiso</th><th>Razón</th></tr>
+        <tr><td>activeTab</td><td>Escanear la página actual</td></tr>
+        <tr><td>tabs</td><td>Detección de cambio de pestaña</td></tr>
+        <tr><td>scripting</td><td>Inyectar script de contenido</td></tr>
+        <tr><td>downloads</td><td>Guardar archivos</td></tr>
+        <tr><td>storage</td><td>Almacenamiento local</td></tr>
+        <tr><td>Host permissions</td><td>Acceder a URLs especificadas</td></tr>
+      </table>
+      <h2>4. Base Legal (GDPR Artículo 6)</h2>
+      <ul>
+        <li><strong>Ejecución de contrato</strong> (Art. 6(1)(b))</li>
+        <li><strong>Interés legítimo</strong> (Art. 6(1)(f))</li>
+      </ul>
+      <h2>5. Servicios de Terceros</h2>
+      <p>Servidor en <strong>Supabase</strong> (AWS). Transferencias bajo <strong>SCCs</strong>. <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Política de Supabase</a></p>
+      <h2>6. Sus Derechos (EU/EEA)</h2>
+      <p>Acceso, rectificación, supresión, limitación, portabilidad, oposición, reclamación. Contacto: <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a> (30 días).</p>
+      <h2>7-9. Retención, Menores, Cambios</h2>
+      <p>Datos retenidos durante la licencia. No dirigido a menores de 16. Cambios publicados aquí.</p>
+      <div class="contact">
+        <h2 style="margin-top:0;">10. Contacto</h2>
+        <p><strong>Responsable:</strong> Tetsunobu Kawai</p>
+        <p><strong>Email:</strong> <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      </div>
+    </div>
+    <div data-lang="fr">
+      <h1>Politique de Confidentialité</h1>
+      <p class="updated">Dernière mise à jour : 4 avril 2026</p>
+      <p><strong>File Bulk Downloader</strong> ("l'Extension") est une extension de navigateur pour rechercher et télécharger des fichiers.</p>
+      <h2>1. Données Collectées</h2>
+      <p>L'Extension ne collecte, transmet ni vend <strong>aucune</strong> donnée personnelle.</p>
+      <ul>
+        <li><strong>Vérification de licence</strong> &mdash; Clé + UUID envoyés au serveur.</li>
+        <li><strong>Scan et téléchargement</strong> &mdash; Requêtes directes vers le site cible.</li>
+      </ul>
+      <h2>2. Données Stockées Localement</h2>
+      <table>
+        <tr><th>Donnée</th><th>Objectif</th></tr>
+        <tr><td>Clé de licence</td><td>Session active</td></tr>
+        <tr><td>ID appareil (UUID)</td><td>Limite d'appareils (max 3)</td></tr>
+        <tr><td>Date d'installation</td><td>Gestion de l'essai</td></tr>
+        <tr><td>Historique téléchargements</td><td>Marquage des fichiers</td></tr>
+        <tr><td>Historique de scan</td><td>Accès rapide</td></tr>
+        <tr><td>Taille de fenêtre</td><td>Mémorisation</td></tr>
+      </table>
+      <h2>3. Permissions</h2>
+      <table>
+        <tr><th>Permission</th><th>Raison</th></tr>
+        <tr><td>activeTab</td><td>Scanner la page actuelle</td></tr>
+        <tr><td>tabs</td><td>Détection changement d'onglet</td></tr>
+        <tr><td>scripting</td><td>Injection de script</td></tr>
+        <tr><td>downloads</td><td>Sauvegarder les fichiers</td></tr>
+        <tr><td>storage</td><td>Stockage local</td></tr>
+        <tr><td>Host permissions</td><td>Accéder aux URLs spécifiées</td></tr>
+      </table>
+      <h2>4. Base Légale (RGPD Article 6)</h2>
+      <ul><li><strong>Exécution du contrat</strong> (Art. 6(1)(b))</li><li><strong>Intérêt légitime</strong> (Art. 6(1)(f))</li></ul>
+      <h2>5. Services Tiers</h2>
+      <p>Serveur sur <strong>Supabase</strong> (AWS). Transferts sous <strong>CCT</strong>. <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Politique de Supabase</a></p>
+      <h2>6. Vos Droits (UE/EEE)</h2>
+      <p>Accès, rectification, effacement, limitation, portabilité, opposition, plainte. Contact : <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a> (30 jours).</p>
+      <h2>7-9. Conservation, Mineurs, Modifications</h2>
+      <p>Données conservées pendant la licence. Non destiné aux moins de 16 ans. Modifications publiées ici.</p>
+      <div class="contact">
+        <h2 style="margin-top:0;">10. Contact</h2>
+        <p><strong>Responsable :</strong> Tetsunobu Kawai</p>
+        <p><strong>Email :</strong> <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      </div>
+    </div>
+    <div data-lang="ko">
+      <h1>개인정보 처리방침</h1>
+      <p class="updated">최종 업데이트: 2026년 4월 4일</p>
+      <p><strong>File Bulk Downloader</strong>("확장 프로그램")는 웹 페이지에서 파일을 검색하고 다운로드하는 브라우저 확장 프로그램입니다.</p>
+      <h2>1. 수집하는 데이터</h2>
+      <p>확장 프로그램은 개인 데이터, 검색 기록, 분석 정보를 <strong>수집, 전송, 판매하지 않습니다</strong>.</p>
+      <ul>
+        <li><strong>라이선스 인증</strong> &mdash; 키와 UUID를 서버에 전송하여 검증합니다.</li>
+        <li><strong>파일 스캔 및 다운로드</strong> &mdash; 요청은 대상 웹사이트로 직접 전송됩니다.</li>
+      </ul>
+      <h2>2. 로컬 저장 데이터</h2>
+      <table>
+        <tr><th>데이터</th><th>목적</th></tr>
+        <tr><td>라이선스 키</td><td>로그인 유지</td></tr>
+        <tr><td>기기 ID (UUID)</td><td>기기 제한 (최대 3대)</td></tr>
+        <tr><td>설치 날짜</td><td>체험판 관리</td></tr>
+        <tr><td>다운로드 기록</td><td>다운로드 표시</td></tr>
+        <tr><td>스캔 기록</td><td>빠른 접근</td></tr>
+        <tr><td>창 크기</td><td>크기 기억</td></tr>
+      </table>
+      <h2>3. 권한</h2>
+      <table>
+        <tr><th>권한</th><th>이유</th></tr>
+        <tr><td>activeTab</td><td>현재 페이지 스캔</td></tr>
+        <tr><td>tabs</td><td>탭 전환 감지</td></tr>
+        <tr><td>scripting</td><td>콘텐츠 스크립트 삽입</td></tr>
+        <tr><td>downloads</td><td>파일 저장</td></tr>
+        <tr><td>storage</td><td>로컬 저장</td></tr>
+        <tr><td>호스트 권한</td><td>지정 URL 접근</td></tr>
+      </table>
+      <h2>4. 법적 근거 (GDPR 제6조)</h2>
+      <ul><li><strong>계약 이행</strong> (제6조1항(b))</li><li><strong>정당한 이익</strong> (제6��1항(f))</li></ul>
+      <h2>5. 제3자 서비스</h2>
+      <p><strong>Supabase</strong>(AWS)의 서버. <strong>SCC</strong> 기반 데이터 이전. <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabase 정책</a></p>
+      <h2>6. 권리 (EU/EEA)</h2>
+      <p>접근, 정정, 삭제, 제한, 이동성, 이의제기, 불만신고. 연락: <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a> (30일).</p>
+      <h2>7-9. 보유, 아동, 변경</h2>
+      <p>라이선스 기간 동안 보유. 16세 미만 비대상. 변경사항 게시.</p>
+      <div class="contact">
+        <h2 style="margin-top:0;">10. 연락처</h2>
+        <p><strong>관리자:</strong> Tetsunobu Kawai</p>
+        <p><strong>이메일:</strong> <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      </div>
+    </div>
+    <div data-lang="it">
+      <h1>Informativa sulla Privacy</h1>
+      <p class="updated">Ultimo aggiornamento: 4 aprile 2026</p>
+      <p><strong>File Bulk Downloader</strong> ("l'Estensione") è un'estensione del browser per cercare e scaricare file dalle pagine web.</p>
+      <h2>1. Dati Raccolti</h2>
+      <p>L'Estensione <strong>non</strong> raccoglie, trasmette né vende dati personali.</p>
+      <ul>
+        <li><strong>Verifica licenza</strong> &mdash; Chiave + UUID inviati al server.</li>
+        <li><strong>Scansione e download</strong> &mdash; Richieste dirette al sito target.</li>
+      </ul>
+      <h2>2. Dati Locali</h2>
+      <table>
+        <tr><th>Dato</th><th>Scopo</th></tr>
+        <tr><td>Chiave di licenza</td><td>Sessione attiva</td></tr>
+        <tr><td>ID dispositivo (UUID)</td><td>Limite dispositivi (max 3)</td></tr>
+        <tr><td>Data installazione</td><td>Gestione prova</td></tr>
+        <tr><td>Cronologia download</td><td>Contrassegno file</td></tr>
+        <tr><td>Cronologia scansioni</td><td>Accesso rapido</td></tr>
+        <tr><td>Dimensione finestra</td><td>Memorizzazione</td></tr>
+      </table>
+      <h2>3. Permessi</h2>
+      <table>
+        <tr><th>Permesso</th><th>Motivo</th></tr>
+        <tr><td>activeTab</td><td>Scansione pagina corrente</td></tr>
+        <tr><td>tabs</td><td>Rilevamento cambio scheda</td></tr>
+        <tr><td>scripting</td><td>Iniezione script</td></tr>
+        <tr><td>downloads</td><td>Salvataggio file</td></tr>
+        <tr><td>storage</td><td>Archiviazione locale</td></tr>
+        <tr><td>Host permissions</td><td>Accesso URL specificati</td></tr>
+      </table>
+      <h2>4. Base Giuridica (GDPR Art. 6)</h2>
+      <ul><li><strong>Esecuzione contratto</strong> (Art. 6(1)(b))</li><li><strong>Interesse legittimo</strong> (Art. 6(1)(f))</li></ul>
+      <h2>5. Servizi Terzi</h2>
+      <p>Server su <strong>Supabase</strong> (AWS). Trasferimenti sotto <strong>SCC</strong>. <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Policy Supabase</a></p>
+      <h2>6. Diritti (UE/SEE)</h2>
+      <p>Accesso, rettifica, cancellazione, limitazione, portabilità, opposizione, reclamo. Contatto: <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a> (30 giorni).</p>
+      <h2>7-9. Conservazione, Minori, Modifiche</h2>
+      <p>Dati conservati durante la licenza. Non destinato a minori di 16 anni. Modifiche pubblicate qui.</p>
+      <div class="contact">
+        <h2 style="margin-top:0;">10. Contatto</h2>
+        <p><strong>Titolare:</strong> Tetsunobu Kawai</p>
+        <p><strong>Email:</strong> <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      </div>
+    </div>
+    <div data-lang="zh_CN">
+      <h1>隐私政策</h1>
+      <p class="updated">最后更新：2026年4月4日</p>
+      <p><strong>File Bulk Downloader</strong>（"本扩展程序"）是一款帮助用户从网页查找和下载文件的浏览器扩展程序。</p>
+      <h2>1. 我们收集的数据</h2>
+      <p>本扩展程序<strong>不会</strong>收集、传输或出售任何个人数据。</p>
+      <ul>
+        <li><strong>许可证验证</strong> &mdash; 将密钥和UUID发送到服务器进行验证。</li>
+        <li><strong>文件扫描和下载</strong> &mdash; 请求直接发送到目标网站。</li>
+      </ul>
+      <h2>2. 本地存储数据</h2>
+      <table>
+        <tr><th>数据</th><th>目的</th></tr>
+        <tr><td>许可证密钥</td><td>保持登录状态</td></tr>
+        <tr><td>设备ID (UUID)</td><td>设备数限制（最多3台）</td></tr>
+        <tr><td>安装日期</td><td>试用��管理</td></tr>
+        <tr><td>下载历史</td><td>已下载标记</td></tr>
+        <tr><td>扫描历史</td><td>快速访问</td></tr>
+        <tr><td>窗口大小</td><td>记忆尺寸</td></tr>
+      </table>
+      <h2>3. 权限</h2>
+      <table>
+        <tr><th>权限</th><th>原因</th></tr>
+        <tr><td>activeTab</td><td>扫描当前页面</td></tr>
+        <tr><td>tabs</td><td>标签切换检测</td></tr>
+        <tr><td>scripting</td><td>注入内容脚本</td></tr>
+        <tr><td>downloads</td><td>保存文件</td></tr>
+        <tr><td>storage</td><td>本地存储</td></tr>
+        <tr><td>主机权限</td><td>访问指定URL</td></tr>
+      </table>
+      <h2>4. 法律依据（GDPR 第6条）</h2>
+      <ul><li><strong>合同履行</strong>（第6(1)(b)条）</li><li><strong>合法利益</strong>（第6(1)(f)条）</li></ul>
+      <h2>5. 第三方服务</h2>
+      <p><strong>Supabase</strong>（AWS）服务器。基于<strong>SCC</strong>的数据传输。<a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabase政策</a></p>
+      <h2>6. 您的权利（EU/EEA）</h2>
+      <p>访问、更正、删除、限制、可移植性、反对、投诉。联系：<a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a>（30天）。</p>
+      <h2>7-9. 保留、儿童、变更</h2>
+      <p>许可证期间保留数据。不面向16岁以下。变更在此发布。</p>
+      <div class="contact">
+        <h2 style="margin-top:0;">10. 联系方式</h2>
+        <p><strong>数据控制者：</strong>Tetsunobu Kawai</p>
+        <p><strong>电子邮件：</strong><a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      </div>
+    </div>
+    <div data-lang="zh_TW">
+      <h1>隱私權政策</h1>
+      <p class="updated">最後更新：2026年4月4日</p>
+      <p><strong>File Bulk Downloader</strong>（「本擴充功能」）是一款幫助使用者從網頁尋找和下載檔案的瀏覽器擴充功能。</p>
+      <h2>1. 我們收集的資料</h2>
+      <p>本擴充功能<strong>不會</strong>收集、傳輸或出售任何個人資料。</p>
+      <ul>
+        <li><strong>授權驗證</strong> &mdash; 將金鑰和UUID傳送至伺服器進行驗證。</li>
+        <li><strong>檔案掃描和下載</strong> &mdash; 請求直接傳送至目標網站。</li>
+      </ul>
+      <h2>2. 本機儲存資料</h2>
+      <table>
+        <tr><th>資料</th><th>目的</th></tr>
+        <tr><td>授權金鑰</td><td>保持登入狀態</td></tr>
+        <tr><td>裝置ID (UUID)</td><td>裝置數限制（最多3台）</td></tr>
+        <tr><td>安裝日期</td><td>試用期管理</td></tr>
+        <tr><td>下載紀錄</td><td>已下載標記</td></tr>
+        <tr><td>掃描紀錄</td><td>快速存取</td></tr>
+        <tr><td>視窗大小</td><td>記憶尺���</td></tr>
+      </table>
+      <h2>3. 權限</h2>
+      <table>
+        <tr><th>權限</th><th>原因</th></tr>
+        <tr><td>activeTab</td><td>掃描目前頁面</td></tr>
+        <tr><td>tabs</td><td>分頁切換偵測</td></tr>
+        <tr><td>scripting</td><td>注入內容腳本</td></tr>
+        <tr><td>downloads</td><td>儲存檔案</td></tr>
+        <tr><td>storage</td><td>本機儲存</td></tr>
+        <tr><td>主機權限</td><td>存取指定URL</td></tr>
+      </table>
+      <h2>4. 法律依據（GDPR 第6條）</h2>
+      <ul><li><strong>合約履行</strong>（第6(1)(b)條）</li><li><strong>合法利益</strong>（第6(1)(f)條）</li></ul>
+      <h2>5. 第三方服務</h2>
+      <p><strong>Supabase</strong>（AWS）伺服器。基於<strong>SCC</strong>的資料傳輸。<a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabase政策</a></p>
+      <h2>6. 您的權利（EU/EEA）</h2>
+      <p>存取、更正、刪除、限制、可攜性、反對、投訴。聯繫：<a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a>（30天）。</p>
+      <h2>7-9. 保留、兒童、變更</h2>
+      <p>授權期間保留資料。不面向16歲以下。變更在此發布。</p>
+      <div class="contact">
+        <h2 style="margin-top:0;">10. 聯絡方式</h2>
+        <p><strong>資料控管者：</strong>Tetsunobu Kawai</p>
+        <p><strong>電子郵件：</strong><a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      </div>
+    </div>
+    <div data-lang="pt_BR">
+      <h1>Política de Privacidade</h1>
+      <p class="updated">Última atualização: 4 de abril de 2026</p>
+      <p><strong>File Bulk Downloader</strong> ("a Extensão") é uma extensão de navegador para encontrar e baixar arquivos de páginas da web.</p>
+      <h2>1. Dados Coletados</h2>
+      <p>A Extensão <strong>não</strong> coleta, transmite ou vende dados pessoais.</p>
+      <ul>
+        <li><strong>Verificação de licença</strong> &mdash; Chave + UUID enviados ao servidor.</li>
+        <li><strong>Varredura e download</strong> &mdash; Requisições diretas ao site alvo.</li>
+      </ul>
+      <h2>2. Dados Armazenados Localmente</h2>
+      <table>
+        <tr><th>Dado</th><th>Finalidade</th></tr>
+        <tr><td>Chave de licença</td><td>Manter sessão ativa</td></tr>
+        <tr><td>ID do dispositivo (UUID)</td><td>Limite de dispositivos (máx. 3)</td></tr>
+        <tr><td>Data de instalação</td><td>Gerenciamento do teste</td></tr>
+        <tr><td>Histórico de downloads</td><td>Marcação de arquivos</td></tr>
+        <tr><td>Histórico de varreduras</td><td>Acesso rápido</td></tr>
+        <tr><td>Tamanho da janela</td><td>Memorizar dimensões</td></tr>
+      </table>
+      <h2>3. Permissões</h2>
+      <table>
+        <tr><th>Permissão</th><th>Motivo</th></tr>
+        <tr><td>activeTab</td><td>Varrer página atual</td></tr>
+        <tr><td>tabs</td><td>Detecção de troca de aba</td></tr>
+        <tr><td>scripting</td><td>Injeção de script</td></tr>
+        <tr><td>downloads</td><td>Salvar arquivos</td></tr>
+        <tr><td>storage</td><td>Armazenamento local</td></tr>
+        <tr><td>Host permissions</td><td>Acessar URLs especificadas</td></tr>
+      </table>
+      <h2>4. Base Legal (LGPD / GDPR Art. 6)</h2>
+      <ul><li><strong>Execução de contrato</strong> (Art. 6(1)(b))</li><li><strong>Interesse legítimo</strong> (Art. 6(1)(f))</li></ul>
+      <h2>5. Serviços Terceiros</h2>
+      <p>Servidor em <strong>Supabase</strong> (AWS). Transferências sob <strong>SCCs</strong>. <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Política do Supabase</a></p>
+      <h2>6. Seus Direitos (UE/EEE)</h2>
+      <p>Acesso, retificação, exclusão, limitação, portabilidade, oposição, reclamação. Contato: <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a> (30 dias).</p>
+      <h2>7-9. Retenção, Menores, Alterações</h2>
+      <p>Dados retidos durante a licença. Não destinado a menores de 16 anos. Alterações publicadas aqui.</p>
+      <div class="contact">
+        <h2 style="margin-top:0;">10. Contato</h2>
+        <p><strong>Controlador:</strong> Tetsunobu Kawai</p>
+        <p><strong>Email:</strong> <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      </div>
+    </div>
+    <div data-lang="de">
+      <h1>Datenschutzrichtlinie</h1>
+      <p class="updated">Letzte Aktualisierung: 4. April 2026</p>
+      <p><strong>File Bulk Downloader</strong> ("die Erweiterung") ist eine Browser-Erweiterung zum Suchen und Herunterladen von Dateien.</p>
+      <h2>1. Erhobene Daten</h2>
+      <p>Die Erweiterung erhebt, überträgt oder verkauft <strong>keine</strong> personenbezogenen Daten.</p>
+      <ul>
+        <li><strong>Lizenzprüfung</strong> &mdash; Schlüssel + UUID werden zur Validierung an den Server gesendet.</li>
+        <li><strong>Scan und Download</strong> &mdash; Anfragen gehen direkt an die Zielwebsite.</li>
+      </ul>
+      <h2>2. Lokal Gespeicherte Daten</h2>
+      <table>
+        <tr><th>Daten</th><th>Zweck</th></tr>
+        <tr><td>Lizenzschlüssel</td><td>Anmeldung beibehalten</td></tr>
+        <tr><td>Geräte-ID (UUID)</td><td>Gerätelimit (max. 3)</td></tr>
+        <tr><td>Installationsdatum</td><td>Testverwaltung</td></tr>
+        <tr><td>Download-Verlauf</td><td>Dateien markieren</td></tr>
+        <tr><td>Scan-Verlauf</td><td>Schnellzugriff</td></tr>
+        <tr><td>Fenstergröße</td><td>Größe merken</td></tr>
+      </table>
+      <h2>3. Berechtigungen</h2>
+      <table>
+        <tr><th>Berechtigung</th><th>Grund</th></tr>
+        <tr><td>activeTab</td><td>Aktuelle Seite scannen</td></tr>
+        <tr><td>tabs</td><td>Tab-Wechsel erkennen</td></tr>
+        <tr><td>scripting</td><td>Content-Script einfügen</td></tr>
+        <tr><td>downloads</td><td>Dateien speichern</td></tr>
+        <tr><td>storage</td><td>Lokaler Speicher</td></tr>
+        <tr><td>Host-Berechtigungen</td><td>Angegebene URLs abrufen</td></tr>
+      </table>
+      <h2>4. Rechtsgrundlage (DSGVO Art. 6)</h2>
+      <ul><li><strong>Vertragserfüllung</strong> (Art. 6(1)(b))</li><li><strong>Berechtigtes Interesse</strong> (Art. 6(1)(f))</li></ul>
+      <h2>5. Drittanbieter</h2>
+      <p>Server auf <strong>Supabase</strong> (AWS). Übertragung unter <strong>SCCs</strong>. <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabase-Richtlinie</a></p>
+      <h2>6. Ihre Rechte (EU/EWR)</h2>
+      <p>Auskunft, Berichtigung, Löschung, Einschränkung, Übertragbarkeit, Widerspruch, Beschwerde. Kontakt: <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a> (30 Tage).</p>
+      <h2>7-9. Aufbewahrung, Kinder, Änderungen</h2>
+      <p>Daten während der Lizenz aufbewahrt. Nicht für unter 16-Jährige. Änderungen hier veröffentlicht.</p>
+      <div class="contact">
+        <h2 style="margin-top:0;">10. Kontakt</h2>
+        <p><strong>Verantwortlicher:</strong> Tetsunobu Kawai</p>
+        <p><strong>E-Mail:</strong> <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      </div>
+    </div>
   </div>
   <script>
-    function getLang() { var s = localStorage.getItem('fbd-lang'); if (s) return s; return (navigator.language || '').startsWith('ja') ? 'ja' : 'en'; }
-    function setLang(l) { localStorage.setItem('fbd-lang', l); document.querySelectorAll('[data-lang]').forEach(function(e) { e.classList.toggle('active', e.getAttribute('data-lang') === l); }); document.documentElement.lang = l; }
-    function toggleLang() { setLang(getLang() === 'ja' ? 'en' : 'ja'); }
+    function getLang() {
+      var s = localStorage.getItem('fbd-lang');
+      if (s) return s;
+      var n = (navigator.language || '').toLowerCase();
+      if (n.startsWith('ja')) return 'ja';
+      if (n.startsWith('ko')) return 'ko';
+      if (n.startsWith('it')) return 'it';
+      if (n.startsWith('de')) return 'de';
+      if (n.startsWith('es')) return 'es';
+      if (n.startsWith('fr')) return 'fr';
+      if (n.startsWith('pt')) return 'pt_BR';
+      if (n === 'zh-tw' || n === 'zh-hant' || n.startsWith('zh-hant')) return 'zh_TW';
+      if (n.startsWith('zh')) return 'zh_CN';
+      return 'en';
+    }
+    function setLang(l) {
+      localStorage.setItem('fbd-lang', l);
+      document.querySelectorAll('[data-lang]').forEach(function(e) {
+        e.classList.toggle('active', e.getAttribute('data-lang') === l);
+      });
+      document.documentElement.lang = l.replace('_','-');
+      var sel = document.getElementById('lang-sel');
+      if (sel) sel.value = l;
+    }
+    function onLangChange(e) { setLang(e.target.value); }
     setLang(getLang());
   </script>
 </body>

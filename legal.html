@@ -15,68 +15,234 @@
     th, td { border: 1px solid #e2e8f0; padding: 0.75rem 1rem; text-align: left; vertical-align: top; }
     th { background: #f1f5f9; font-weight: 600; width: 30%; white-space: nowrap; }
     .back { margin-top: 1.5rem; text-align: center; }
-    .back a { color: #2563eb; text-decoration: none; margin: 0 0.6rem; }
+    .back a { color: #2563eb; text-decoration: none; }
     .back a:hover { text-decoration: underline; }
-    .lang-toggle { position: fixed; top: 1rem; right: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.8rem; cursor: pointer; color: #2563eb; }
-    .lang-toggle:hover { background: #f1f5f9; }
+    .lang-sel { position: fixed; top: 1rem; right: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.3rem 0.5rem; font-size: 0.8rem; color: #2563eb; cursor: pointer; }
     [data-lang] { display: none; }
     [data-lang].active { display: block; }
   </style>
 </head>
 <body>
-  <button class="lang-toggle" onclick="toggleLang()">EN / JA</button>
+  <select id="lang-sel" class="lang-sel" onchange="onLangChange(event)"><option value="en">English</option><option value="ja">日本語</option><option value="es">Español</option><option value="fr">Français</option><option value="ko">한국어</option><option value="it">Italiano</option><option value="zh_CN">简体中文</option><option value="zh_TW">繁體中文</option><option value="pt_BR">Português</option><option value="de">Deutsch</option></select>
   <div class="container">
-
     <div data-lang="en">
       <h1>Legal Notice / Commercial Disclosure</h1>
       <p class="subtitle">Required under the Japanese Act on Specified Commercial Transactions</p>
       <table>
         <tr><th>Seller</th><td>Tetsunobu Kawai</td></tr>
         <tr><th>Responsible Person</th><td>Tetsunobu Kawai</td></tr>
-        <tr><th>Address</th><td>Disclosed upon request. Please contact us via the email address below.</td></tr>
-        <tr><th>Phone Number</th><td>Disclosed upon request. Please contact us via the email address below.</td></tr>
+        <tr><th>Address</th><td>Disclosed upon request via email below.</td></tr>
+        <tr><th>Phone</th><td>Disclosed upon request via email below.</td></tr>
         <tr><th>Email</th><td>filebulkdownloader@gmail.com</td></tr>
         <tr><th>Website</th><td>https://serimateddybear.github.io/file-bulk-downloader/</td></tr>
         <tr><th>Product</th><td>File Bulk Downloader License Key</td></tr>
         <tr><th>Price</th><td>$9.99 (tax included)</td></tr>
         <tr><th>Additional Fees</th><td>None</td></tr>
-        <tr><th>Payment Method</th><td>Credit card (via Stripe)</td></tr>
-        <tr><th>Delivery</th><td>License key is delivered immediately via email after purchase.</td></tr>
-        <tr><th>Refund / Cancellation</th><td>A 14-day free trial is provided before purchase, so all sales are final. At the time of purchase, you consent to immediate delivery and waive your right of withdrawal. However, if the product is defective and we are unable to resolve the issue within 30 days of your report, a full refund will be issued. To request support, please email us with your license key or the email address used for purchase.</td></tr>
-        <tr><th>System Requirements</th><td>Google Chrome / Microsoft Edge (Manifest V3 compatible browsers)</td></tr>
+        <tr><th>Payment</th><td>Credit card (Stripe)</td></tr>
+        <tr><th>Delivery</th><td>License key delivered immediately via email.</td></tr>
+        <tr><th>Refund</th><td>14-day free trial provided. All sales final. Refund if defect not resolved in 30 days.</td></tr>
+        <tr><th>Requirements</th><td>Chrome / Edge (Manifest V3)</td></tr>
       </table>
-      <div class="back">
-        <a href="index.html">&larr; Back to Home</a>
-      </div>
+      <div class="back"><a href="index.html">&larr; Back to Home</a></div>
     </div>
-
     <div data-lang="ja">
       <h1>特定商取引法に基づく表記</h1>
       <table>
         <tr><th>販売業者</th><td>河合 哲伸</td></tr>
         <tr><th>運営統括責任者</th><td>河合 哲伸</td></tr>
-        <tr><th>所在地</th><td>請求があった場合に遅滞なく開示いたします。<br>お問い合わせ先メールアドレスまでご連絡ください。</td></tr>
-        <tr><th>電話番号</th><td>請求があった場合に遅滞なく開示いたします。<br>お問い合わせ先メールアドレスまでご連絡ください。</td></tr>
+        <tr><th>所在地</th><td>請求があった場合に遅滞なく開示いたします。</td></tr>
+        <tr><th>電話番号</th><td>請求があった場合に遅滞なく開示いたします。</td></tr>
         <tr><th>メールアドレス</th><td>filebulkdownloader@gmail.com</td></tr>
         <tr><th>販売URL</th><td>https://serimateddybear.github.io/file-bulk-downloader/</td></tr>
         <tr><th>商品名</th><td>File Bulk Downloader ライセンスキー</td></tr>
         <tr><th>販売価格</th><td>$9.99（税込）</td></tr>
         <tr><th>商品代金以外の必要料金</th><td>なし</td></tr>
         <tr><th>お支払い方法</th><td>クレジットカード（Stripe決済）</td></tr>
-        <tr><th>商品の引渡し時期</th><td>購入完了後、即時メールにてライセンスキーを送付いたします。</td></tr>
-        <tr><th>返品・キャンセル</th><td>本製品は購入前に14日間の無料トライアルを提供しているため、購入後の返金は原則としてお受けしておりません。購入時に、デジタルコンテンツの即時提供への同意および撤回権の放棄に同意いただいております。<br>ただし、製品に不具合があり、ご報告から30日以内に当方で解決できない場合は返金いたします。<br>お問い合わせはライセンスキーまたはご購入時のメールアドレスを添えてメールにてご連絡ください。</td></tr>
-        <tr><th>動作環境</th><td>Google Chrome / Microsoft Edge（Manifest V3対応ブラウザ）</td></tr>
+        <tr><th>商品の引渡し時期</th><td>購入完了後、即時メールにて送付。</td></tr>
+        <tr><th>返品・キャンセル</th><td>14日間無料トライアル提供のため原則返金不可。不具合が30日以内に解決できない場合は返金。</td></tr>
+        <tr><th>動作環境</th><td>Chrome / Edge（Manifest V3対応）</td></tr>
       </table>
-      <div class="back">
-        <a href="index.html">&larr; トップページに戻る</a>
-      </div>
+      <div class="back"><a href="index.html">&larr; トップページに戻る</a></div>
     </div>
-
+    <div data-lang="es">
+      <h1>Aviso Legal</h1>
+      <table>
+        <tr><th>Vendedor</th><td>Tetsunobu Kawai</td></tr>
+        <tr><th>Responsable</th><td>Tetsunobu Kawai</td></tr>
+        <tr><th>Dirección</th><td>Disclosed upon request via email.</td></tr>
+        <tr><th>Teléfono</th><td>Disclosed upon request via email.</td></tr>
+        <tr><th>Email</th><td>filebulkdownloader@gmail.com</td></tr>
+        <tr><th>Website</th><td>https://serimateddybear.github.io/file-bulk-downloader/</td></tr>
+        <tr><th>Producto</th><td>File Bulk Downloader License Key</td></tr>
+        <tr><th>Precio</th><td>$9.99</td></tr>
+        <tr><th>Cargos adicionales</th><td>Ninguno</td></tr>
+        <tr><th>Pago</th><td>Tarjeta de crédito (Stripe)</td></tr>
+        <tr><th>Entrega</th><td>Clave entregada por email inmediatamente.</td></tr>
+        <tr><th>Reembolso</th><td>Prueba de 14 días. Ventas finales. Reembolso si defecto no resuelto en 30 días.</td></tr>
+        <tr><th>Requisitos</th><td>Chrome / Edge (Manifest V3)</td></tr>
+      </table>
+      <div class="back"><a href="index.html">&larr; Volver al inicio</a></div>
+    </div>
+    <div data-lang="fr">
+      <h1>Mentions Légales</h1>
+      <table>
+        <tr><th>Vendeur</th><td>Tetsunobu Kawai</td></tr>
+        <tr><th>Responsable</th><td>Tetsunobu Kawai</td></tr>
+        <tr><th>Adresse</th><td>Disclosed upon request via email.</td></tr>
+        <tr><th>Téléphone</th><td>Disclosed upon request via email.</td></tr>
+        <tr><th>Email</th><td>filebulkdownloader@gmail.com</td></tr>
+        <tr><th>Website</th><td>https://serimateddybear.github.io/file-bulk-downloader/</td></tr>
+        <tr><th>Produit</th><td>File Bulk Downloader License Key</td></tr>
+        <tr><th>Prix</th><td>$9.99</td></tr>
+        <tr><th>Frais supplémentaires</th><td>Aucun</td></tr>
+        <tr><th>Paiement</th><td>Carte de crédit (Stripe)</td></tr>
+        <tr><th>Livraison</th><td>Clé livrée immédiatement par email.</td></tr>
+        <tr><th>Remboursement</th><td>Essai de 14 jours. Ventes finales. Remboursement si problème non résolu en 30 jours.</td></tr>
+        <tr><th>Configuration</th><td>Chrome / Edge (Manifest V3)</td></tr>
+      </table>
+      <div class="back"><a href="index.html">&larr; Retour à l'accueil</a></div>
+    </div>
+    <div data-lang="ko">
+      <h1>법적 고지</h1>
+      <table>
+        <tr><th>판매자</th><td>Tetsunobu Kawai</td></tr>
+        <tr><th>책임자</th><td>Tetsunobu Kawai</td></tr>
+        <tr><th>주소</th><td>Disclosed upon request via email.</td></tr>
+        <tr><th>전화</th><td>Disclosed upon request via email.</td></tr>
+        <tr><th>Email</th><td>filebulkdownloader@gmail.com</td></tr>
+        <tr><th>Website</th><td>https://serimateddybear.github.io/file-bulk-downloader/</td></tr>
+        <tr><th>제품</th><td>File Bulk Downloader License Key</td></tr>
+        <tr><th>가격</th><td>$9.99</td></tr>
+        <tr><th>추가 요금</th><td>없음</td></tr>
+        <tr><th>결제</th><td>신용카드 (Stripe)</td></tr>
+        <tr><th>배송</th><td>이메일로 즉시 전송.</td></tr>
+        <tr><th>환불</th><td>14일 체험 제공. 판매 최종. 30일 내 미해결 시 환불.</td></tr>
+        <tr><th>요구사항</th><td>Chrome / Edge (Manifest V3)</td></tr>
+      </table>
+      <div class="back"><a href="index.html">&larr; 홈으로</a></div>
+    </div>
+    <div data-lang="it">
+      <h1>Avviso Legale</h1>
+      <table>
+        <tr><th>Venditore</th><td>Tetsunobu Kawai</td></tr>
+        <tr><th>Responsabile</th><td>Tetsunobu Kawai</td></tr>
+        <tr><th>Indirizzo</th><td>Disclosed upon request via email.</td></tr>
+        <tr><th>Telefono</th><td>Disclosed upon request via email.</td></tr>
+        <tr><th>Email</th><td>filebulkdownloader@gmail.com</td></tr>
+        <tr><th>Website</th><td>https://serimateddybear.github.io/file-bulk-downloader/</td></tr>
+        <tr><th>Prodotto</th><td>File Bulk Downloader License Key</td></tr>
+        <tr><th>Prezzo</th><td>$9.99</td></tr>
+        <tr><th>Costi aggiuntivi</th><td>Nessuno</td></tr>
+        <tr><th>Pagamento</th><td>Carta di credito (Stripe)</td></tr>
+        <tr><th>Consegna</th><td>Chiave inviata immediatamente via email.</td></tr>
+        <tr><th>Rimborso</th><td>Prova di 14 giorni. Vendite finali. Rimborso se difetto non risolto in 30 giorni.</td></tr>
+        <tr><th>Requisiti</th><td>Chrome / Edge (Manifest V3)</td></tr>
+      </table>
+      <div class="back"><a href="index.html">&larr; Torna alla home</a></div>
+    </div>
+    <div data-lang="zh_CN">
+      <h1>法律声明</h1>
+      <table>
+        <tr><th>销售商</th><td>Tetsunobu Kawai</td></tr>
+        <tr><th>负责人</th><td>Tetsunobu Kawai</td></tr>
+        <tr><th>地址</th><td>Disclosed upon request via email.</td></tr>
+        <tr><th>电话</th><td>Disclosed upon request via email.</td></tr>
+        <tr><th>Email</th><td>filebulkdownloader@gmail.com</td></tr>
+        <tr><th>Website</th><td>https://serimateddybear.github.io/file-bulk-downloader/</td></tr>
+        <tr><th>产品</th><td>File Bulk Downloader License Key</td></tr>
+        <tr><th>价格</th><td>$9.99</td></tr>
+        <tr><th>额外费用</th><td>无</td></tr>
+        <tr><th>付款</th><td>信用卡（Stripe）</td></tr>
+        <tr><th>交付</th><td>许可证密钥通过电子邮件立即发送。</td></tr>
+        <tr><th>退款</th><td>提供14天免费试用。售后不退。30天内未解决可退款。</td></tr>
+        <tr><th>系统要求</th><td>Chrome / Edge (Manifest V3)</td></tr>
+      </table>
+      <div class="back"><a href="index.html">&larr; 返回首页</a></div>
+    </div>
+    <div data-lang="zh_TW">
+      <h1>法律聲明</h1>
+      <table>
+        <tr><th>銷售商</th><td>Tetsunobu Kawai</td></tr>
+        <tr><th>負責人</th><td>Tetsunobu Kawai</td></tr>
+        <tr><th>地址</th><td>Disclosed upon request via email.</td></tr>
+        <tr><th>電話</th><td>Disclosed upon request via email.</td></tr>
+        <tr><th>Email</th><td>filebulkdownloader@gmail.com</td></tr>
+        <tr><th>Website</th><td>https://serimateddybear.github.io/file-bulk-downloader/</td></tr>
+        <tr><th>產品</th><td>File Bulk Downloader License Key</td></tr>
+        <tr><th>價格</th><td>$9.99</td></tr>
+        <tr><th>額外費用</th><td>無</td></tr>
+        <tr><th>付款</th><td>信用卡（Stripe）</td></tr>
+        <tr><th>交付</th><td>授權金鑰透過電子郵件立即傳送。</td></tr>
+        <tr><th>退款</th><td>提供14天免費試用。售後不退。30天內未解決可退款。</td></tr>
+        <tr><th>系統需求</th><td>Chrome / Edge (Manifest V3)</td></tr>
+      </table>
+      <div class="back"><a href="index.html">&larr; 返回首頁</a></div>
+    </div>
+    <div data-lang="pt_BR">
+      <h1>Aviso Legal</h1>
+      <table>
+        <tr><th>Vendedor</th><td>Tetsunobu Kawai</td></tr>
+        <tr><th>Responsável</th><td>Tetsunobu Kawai</td></tr>
+        <tr><th>Endereço</th><td>Disclosed upon request via email.</td></tr>
+        <tr><th>Telefone</th><td>Disclosed upon request via email.</td></tr>
+        <tr><th>Email</th><td>filebulkdownloader@gmail.com</td></tr>
+        <tr><th>Website</th><td>https://serimateddybear.github.io/file-bulk-downloader/</td></tr>
+        <tr><th>Produto</th><td>File Bulk Downloader License Key</td></tr>
+        <tr><th>Preço</th><td>$9.99</td></tr>
+        <tr><th>Taxas adicionais</th><td>Nenhuma</td></tr>
+        <tr><th>Pagamento</th><td>Cartão de crédito (Stripe)</td></tr>
+        <tr><th>Entrega</th><td>Chave entregue imediatamente por email.</td></tr>
+        <tr><th>Reembolso</th><td>Teste de 14 dias. Vendas finais. Reembolso se defeito não resolvido em 30 dias.</td></tr>
+        <tr><th>Requisitos</th><td>Chrome / Edge (Manifest V3)</td></tr>
+      </table>
+      <div class="back"><a href="index.html">&larr; Voltar ao início</a></div>
+    </div>
+    <div data-lang="de">
+      <h1>Impressum</h1>
+      <table>
+        <tr><th>Verkäufer</th><td>Tetsunobu Kawai</td></tr>
+        <tr><th>Verantwortlicher</th><td>Tetsunobu Kawai</td></tr>
+        <tr><th>Adresse</th><td>Disclosed upon request via email.</td></tr>
+        <tr><th>Telefon</th><td>Disclosed upon request via email.</td></tr>
+        <tr><th>Email</th><td>filebulkdownloader@gmail.com</td></tr>
+        <tr><th>Website</th><td>https://serimateddybear.github.io/file-bulk-downloader/</td></tr>
+        <tr><th>Produkt</th><td>File Bulk Downloader License Key</td></tr>
+        <tr><th>Preis</th><td>$9.99</td></tr>
+        <tr><th>Zusätzliche Gebühren</th><td>Keine</td></tr>
+        <tr><th>Zahlung</th><td>Kreditkarte (Stripe)</td></tr>
+        <tr><th>Lieferung</th><td>Lizenzschlüssel sofort per E-Mail.</td></tr>
+        <tr><th>Erstattung</th><td>14-Tage-Test. Endgültige Verkäufe. Erstattung wenn Mangel nicht in 30 Tagen behoben.</td></tr>
+        <tr><th>Anforderungen</th><td>Chrome / Edge (Manifest V3)</td></tr>
+      </table>
+      <div class="back"><a href="index.html">&larr; Zurück zur Startseite</a></div>
+    </div>
   </div>
   <script>
-    function getLang() { var s = localStorage.getItem('fbd-lang'); if (s) return s; return (navigator.language || '').startsWith('ja') ? 'ja' : 'en'; }
-    function setLang(l) { localStorage.setItem('fbd-lang', l); document.querySelectorAll('[data-lang]').forEach(function(e) { e.classList.toggle('active', e.getAttribute('data-lang') === l); }); document.documentElement.lang = l; }
-    function toggleLang() { setLang(getLang() === 'ja' ? 'en' : 'ja'); }
+    function getLang() {
+      var s = localStorage.getItem('fbd-lang');
+      if (s) return s;
+      var n = (navigator.language || '').toLowerCase();
+      if (n.startsWith('ja')) return 'ja';
+      if (n.startsWith('ko')) return 'ko';
+      if (n.startsWith('it')) return 'it';
+      if (n.startsWith('de')) return 'de';
+      if (n.startsWith('es')) return 'es';
+      if (n.startsWith('fr')) return 'fr';
+      if (n.startsWith('pt')) return 'pt_BR';
+      if (n === 'zh-tw' || n === 'zh-hant' || n.startsWith('zh-hant')) return 'zh_TW';
+      if (n.startsWith('zh')) return 'zh_CN';
+      return 'en';
+    }
+    function setLang(l) {
+      localStorage.setItem('fbd-lang', l);
+      document.querySelectorAll('[data-lang]').forEach(function(e) {
+        e.classList.toggle('active', e.getAttribute('data-lang') === l);
+      });
+      document.documentElement.lang = l.replace('_','-');
+      var sel = document.getElementById('lang-sel');
+      if (sel) sel.value = l;
+    }
+    function onLangChange(e) { setLang(e.target.value); }
     setLang(getLang());
   </script>
 </body>

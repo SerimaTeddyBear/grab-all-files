@@ -14,14 +14,13 @@
     .links { margin-top: 1.5rem; }
     .links a { display: inline-block; margin: 0.4rem 0.6rem; color: #2563eb; text-decoration: none; font-weight: 500; }
     .links a:hover { text-decoration: underline; }
-    .lang-toggle { position: fixed; top: 1rem; right: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.8rem; cursor: pointer; color: #2563eb; }
-    .lang-toggle:hover { background: #f1f5f9; }
+    .lang-sel { position: fixed; top: 1rem; right: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.3rem 0.5rem; font-size: 0.8rem; color: #2563eb; cursor: pointer; }
     [data-lang] { display: none; }
     [data-lang].active { display: block; }
   </style>
 </head>
 <body>
-  <button class="lang-toggle" onclick="toggleLang()">EN / JA</button>
+  <select id="lang-sel" class="lang-sel" onchange="onLangChange(event)"><option value="en">English</option><option value="ja">日本語</option><option value="es">Español</option><option value="fr">Français</option><option value="ko">한국어</option><option value="it">Italiano</option><option value="zh_CN">简体中文</option><option value="zh_TW">繁體中文</option><option value="pt_BR">Português</option><option value="de">Deutsch</option></select>
   <div class="container">
     <div data-lang="en">
       <h1>File Bulk Downloader</h1>
@@ -30,7 +29,6 @@
         <a href="privacy-policy.html">Privacy Policy</a>
         <a href="terms.html">Terms of Service</a>
         <a href="legal.html">Legal Notice</a>
-        <a href="tokushoho.html">特定商取引法に基づく表記</a>
         <a href="purchase/">Purchase License</a>
       </div>
     </div>
@@ -40,28 +38,117 @@
       <div class="links">
         <a href="privacy-policy.html">プライバシーポリシー</a>
         <a href="terms.html">利用規約</a>
-        <a href="tokushoho.html">特定商取引法に基づく表記</a>
-        <a href="legal.html">Legal Notice (English)</a>
-        <a href="purchase/">ライセンス購入</a>
+        <a href="legal.html">特定商取引法に基づく表記</a>
+        <a href="purchase/">ライセンス購��</a>
+      </div>
+    </div>
+    <div data-lang="es">
+      <h1>File Bulk Downloader</h1>
+      <p>Descarga masiva, fusión y gestión de archivos PDF/DOC/XLS y otros con filtrado inteligente, reintento automático y detección de duplicados.</p>
+      <div class="links">
+        <a href="privacy-policy.html">Política de privacidad</a>
+        <a href="terms.html">Términos de servicio</a>
+        <a href="legal.html">Aviso legal</a>
+        <a href="purchase/">Comprar licencia</a>
+      </div>
+    </div>
+    <div data-lang="fr">
+      <h1>File Bulk Downloader</h1>
+      <p>Téléchargement en masse, fusion et gestion de fichiers PDF/DOC/XLS avec filtrage intelligent, réessai automatique et détection des doublons.</p>
+      <div class="links">
+        <a href="privacy-policy.html">Politique de confidentialité</a>
+        <a href="terms.html">Conditions d'utilisation</a>
+        <a href="legal.html">Mentions légales</a>
+        <a href="purchase/">Acheter une licence</a>
+      </div>
+    </div>
+    <div data-lang="ko">
+      <h1>File Bulk Downloader</h1>
+      <p>PDF/DOC/XLS 등의 파일을 스마트 필터링, 자동 재시도, 중복 감지 기능으로 일괄 다운로드, 병합 및 관리합니��.</p>
+      <div class="links">
+        <a href="privacy-policy.html">개인정보 처리방침</a>
+        <a href="terms.html">이용약관</a>
+        <a href="legal.html">법적 고지</a>
+        <a href="purchase/">라이선스 구매</a>
+      </div>
+    </div>
+    <div data-lang="it">
+      <h1>File Bulk Downloader</h1>
+      <p>Download massivo, unione e gestione di file PDF/DOC/XLS con filtro intelligente, ripetizione automatica e rilevamento duplicati.</p>
+      <div class="links">
+        <a href="privacy-policy.html">Informativa sulla privacy</a>
+        <a href="terms.html">Termini di servizio</a>
+        <a href="legal.html">Avviso legale</a>
+        <a href="purchase/">Acquista licenza</a>
+      </div>
+    </div>
+    <div data-lang="zh_CN">
+      <h1>File Bulk Downloader</h1>
+      <p>批量下载、合并和管理PDF/DOC/XLS等文件，具有智能过滤、自动重试和重复检测功能。</p>
+      <div class="links">
+        <a href="privacy-policy.html">隐私政策</a>
+        <a href="terms.html">服务条款</a>
+        <a href="legal.html">法律声明</a>
+        <a href="purchase/">购买许可证</a>
+      </div>
+    </div>
+    <div data-lang="zh_TW">
+      <h1>File Bulk Downloader</h1>
+      <p>批量下載、合併和管��PDF/DOC/XLS等檔案，具有智慧過濾、自動重試和重複偵測功能。</p>
+      <div class="links">
+        <a href="privacy-policy.html">隱私權政策</a>
+        <a href="terms.html">服務條款</a>
+        <a href="legal.html">法律聲明</a>
+        <a href="purchase/">購買授權</a>
+      </div>
+    </div>
+    <div data-lang="pt_BR">
+      <h1>File Bulk Downloader</h1>
+      <p>Download em massa, mesclagem e gerenciamento de arquivos PDF/DOC/XLS com filtragem inteligente, repetição automática e detecção de duplicatas.</p>
+      <div class="links">
+        <a href="privacy-policy.html">Política de Privacidade</a>
+        <a href="terms.html">Termos de Serviço</a>
+        <a href="legal.html">Aviso Legal</a>
+        <a href="purchase/">Comprar Licença</a>
+      </div>
+    </div>
+    <div data-lang="de">
+      <h1>File Bulk Downloader</h1>
+      <p>Massendownload, Zusammenführung und Verwaltung von PDF/DOC/XLS-Dateien mit intelligenter Filterung, automatischer Wiederholung und Duplikaterkennung.</p>
+      <div class="links">
+        <a href="privacy-policy.html">Datenschutzrichtlinie</a>
+        <a href="terms.html">Nutzungsbedingungen</a>
+        <a href="legal.html">Impressum</a>
+        <a href="purchase/">Lizenz kaufen</a>
       </div>
     </div>
   </div>
   <script>
     function getLang() {
-      var saved = localStorage.getItem('fbd-lang');
-      if (saved) return saved;
-      return (navigator.language || '').startsWith('ja') ? 'ja' : 'en';
+      var s = localStorage.getItem('fbd-lang');
+      if (s) return s;
+      var n = (navigator.language || '').toLowerCase();
+      if (n.startsWith('ja')) return 'ja';
+      if (n.startsWith('ko')) return 'ko';
+      if (n.startsWith('it')) return 'it';
+      if (n.startsWith('de')) return 'de';
+      if (n.startsWith('es')) return 'es';
+      if (n.startsWith('fr')) return 'fr';
+      if (n.startsWith('pt')) return 'pt_BR';
+      if (n === 'zh-tw' || n === 'zh-hant' || n.startsWith('zh-hant')) return 'zh_TW';
+      if (n.startsWith('zh')) return 'zh_CN';
+      return 'en';
     }
-    function setLang(lang) {
-      localStorage.setItem('fbd-lang', lang);
-      document.querySelectorAll('[data-lang]').forEach(function(el) {
-        el.classList.toggle('active', el.getAttribute('data-lang') === lang);
+    function setLang(l) {
+      localStorage.setItem('fbd-lang', l);
+      document.querySelectorAll('[data-lang]').forEach(function(e) {
+        e.classList.toggle('active', e.getAttribute('data-lang') === l);
       });
-      document.documentElement.lang = lang;
+      document.documentElement.lang = l.replace('_','-');
+      var sel = document.getElementById('lang-sel');
+      if (sel) sel.value = l;
     }
-    function toggleLang() {
-      setLang(getLang() === 'ja' ? 'en' : 'ja');
-    }
+    function onLangChange(e) { setLang(e.target.value); }
     setLang(getLang());
   </script>
 </body>

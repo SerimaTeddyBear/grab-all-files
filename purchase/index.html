@@ -16,7 +16,7 @@
     .btn:disabled { background: #94a3b8; cursor: not-allowed; }
     .note { font-size: 0.8rem; color: #888; margin-top: 1rem; }
     .consent-box { text-align: left; background: #f1f5f9; border-radius: 8px; padding: 1rem 1.2rem; margin-bottom: 1.5rem; }
-    .consent-box summary { font-size: 0.85rem; color: #2563eb; cursor: pointer; margin-bottom: 0.5rem; }
+    .consent-box summary { font-size: 0.85rem; color: #2563eb; cursor: pointer; }
     .consent-box .detail-text { font-size: 0.8rem; color: #666; line-height: 1.6; margin-top: 0.5rem; }
     .consent-box .detail-text ul { padding-left: 1.2rem; margin-top: 0.3rem; }
     .consent-box .detail-text li { margin-bottom: 0.3rem; }
@@ -24,85 +24,193 @@
     .consent-label input { margin-top: 0.2rem; flex-shrink: 0; }
     .links { font-size: 0.8rem; color: #888; margin-top: 1.2rem; }
     .links a { color: #2563eb; text-decoration: none; }
-    .links a:hover { text-decoration: underline; }
-    .lang-toggle { position: fixed; top: 1rem; right: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.8rem; cursor: pointer; color: #2563eb; }
-    .lang-toggle:hover { background: #f1f5f9; }
+    .lang-sel { position: fixed; top: 1rem; right: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.3rem 0.5rem; font-size: 0.8rem; color: #2563eb; cursor: pointer; }
     [data-lang] { display: none; }
     [data-lang].active { display: block; }
-    [data-lang].active { display: flex; }
   </style>
+    [data-lang].active { display: flex; }
 </head>
 <body>
-  <button class="lang-toggle" onclick="toggleLang()">EN / JA</button>
-
+  <select id="lang-sel" class="lang-sel" onchange="onLangChange(event)"><option value="en">English</option><option value="ja">日本語</option><option value="es">Español</option><option value="fr">Français</option><option value="ko">한국어</option><option value="it">Italiano</option><option value="zh_CN">简体中文</option><option value="zh_TW">繁體中文</option><option value="pt_BR">Português</option><option value="de">Deutsch</option></select>
   <div class="container" data-lang="en">
     <h1>File Bulk Downloader</h1>
     <p>One-time purchase &mdash; <strong>$9.99</strong></p>
     <div class="consent-box">
-      <details>
-        <summary>About the right of withdrawal (EU/EEA)</summary>
-        <div class="detail-text">
-          <p>Under the EU Consumer Rights Directive (2011/83/EU), consumers in the EU/EEA have a 14-day right of withdrawal for online purchases. However, this right does not apply to digital content that is delivered immediately when the consumer gives prior express consent and acknowledges the loss of the withdrawal right (Article 16(m)).</p>
-          <ul>
-            <li>This extension offers a <strong>14-day free trial</strong> so you can fully evaluate it before purchasing.</li>
-            <li>Upon purchase, your license key is delivered immediately via email.</li>
-            <li>By checking the box below, you consent to immediate delivery and waive your right of withdrawal.</li>
-          </ul>
-        </div>
+      <details><summary>About the right of withdrawal (EU/EEA)</summary>
+        <div class="detail-text"><p>Under the EU Consumer Rights Directive (2011/83/EU), consumers in the EU/EEA have a 14-day right of withdrawal for online purchases. However, this right does not apply to digital content that is delivered immediately when the consumer gives prior express consent and acknowledges the loss of the withdrawal right (Article 16(m)).</p>
+        <ul><li>This extension offers a <strong>14-day free trial</strong> so you can fully evaluate it before purchasing.</li><li>Upon purchase, your license key is delivered immediately via email.</li><li>By checking the box below, you consent to immediate delivery and waive your right of withdrawal.</li></ul></div>
       </details>
-      <label class="consent-label">
-        <input type="checkbox" id="consent-check-en">
-        <span>I agree that the license key will be delivered immediately upon purchase, and I acknowledge that I thereby <strong>waive my 14-day right of withdrawal</strong>. I understand that this extension offers a 14-day free trial to evaluate before purchasing.</span>
-      </label>
+      <label class="consent-label"><input type="checkbox" id="cc-0"><span>I agree that the license key will be delivered immediately upon purchase, and I acknowledge that I thereby <strong>waive my 14-day right of withdrawal</strong>. I understand that this extension offers a 14-day free trial to evaluate before purchasing.</span></label>
     </div>
-    <a class="btn" id="purchase-btn-en" href="https://buy.stripe.com/dRm6oH4SR8ck1Bgaea2Ry00" disabled>Proceed to Payment</a>
+    <a class="btn" id="pb-0" href="https://buy.stripe.com/dRm6oH4SR8ck1Bgaea2Ry00" disabled>Proceed to Payment</a>
     <p class="note">After purchase, your license key will be sent to your email.</p>
     <p class="links"><a href="../terms.html">Terms of Service</a> &middot; <a href="../privacy-policy.html">Privacy Policy</a></p>
   </div>
-
   <div class="container" data-lang="ja">
     <h1>File Bulk Downloader</h1>
-    <p>買い切り &mdash; <strong>$9.99</strong></p>
+    <p>買い切�� &mdash; <strong>$9.99</strong></p>
     <div class="consent-box">
-      <details>
-        <summary>撤回権について（EU/EEA）</summary>
-        <div class="detail-text">
-          <p>EU消費者権利指令（2011/83/EU）に基づき、EU/EEA内の消費者はオンライン購入に対して14日間の撤回権を有します。ただし、消費者が事前に明示的な同意を与え、撤回権の喪失を確認した上で即時提供されるデジタルコンテンツには適用されません（第16条(m)）。</p>
-          <ul>
-            <li>本拡張機能は購入前に<strong>14日間の無料トライアル</strong>を提供しています。</li>
-            <li>購入後、ライセンスキーはメールで即時送付されます。</li>
-            <li>以下のチェックボックスにチェックすることで、即時提供に同意し撤回権を放棄します。</li>
-          </ul>
-        </div>
+      <details><summary>撤回権について（EU/EEA）</summary>
+        <div class="detail-text"><p>EU消費者権利指令（2011/83/EU）に基づき、EU/EEA内の消費者はオンライン購入に対して14日間の撤回権を有します。ただし、消費者が事前に明示的な同意を与え、撤回権の喪失を確認した上で即時提供されるデジタルコンテンツには適用されません（第16条(m)）。</p>
+        <ul><li>本拡張機能は購入前に<strong>14日間の無料トライアル</strong>を提供しています。</li><li>購���後、ライセンスキーはメールで即時送付されます。</li><li>以下のチェックボックスにチェックすることで、即時提供に同意し撤回権を放棄します。</li></ul></div>
       </details>
-      <label class="consent-label">
-        <input type="checkbox" id="consent-check-ja">
-        <span>ライセンスキーが購入後即時提供されることに同意し、これにより<strong>14日間の撤回権を放棄する</strong>ことを確認します。本拡張機能が購入前に14日間の無料トライアルを提供していることを理解しています。</span>
-      </label>
+      <label class="consent-label"><input type="checkbox" id="cc-1"><span>ライセンスキーが購入後即時提供されることに同意し、これにより<strong>14日間の撤回権を放棄する</strong>ことを確認します。本拡張機能が購入前に14日間の無料トライアルを提供していることを理解しています。</span></label>
     </div>
-    <a class="btn" id="purchase-btn-ja" href="https://buy.stripe.com/dRm6oH4SR8ck1Bgaea2Ry00" disabled>お支払いへ進む</a>
+    <a class="btn" id="pb-1" href="https://buy.stripe.com/dRm6oH4SR8ck1Bgaea2Ry00" disabled>お支払いへ進む</a>
     <p class="note">購入後、ライセンスキーがメールで送信されます。</p>
     <p class="links"><a href="../terms.html">利用規約</a> &middot; <a href="../privacy-policy.html">プライバシーポリシー</a></p>
   </div>
-
+  <div class="container" data-lang="es">
+    <h1>File Bulk Downloader</h1>
+    <p>Compra única &mdash; <strong>$9.99</strong></p>
+    <div class="consent-box">
+      <details><summary>Sobre el derecho de desistimiento (UE/EEE)</summary>
+        <div class="detail-text"><p>Según la Directiva de Derechos del Consumidor de la UE (2011/83/UE), los consumidores de la UE/EEE tienen un derecho de desistimiento de 14 días para compras en línea. Sin embargo, este derecho no se aplica al contenido digital entregado inmediatamente cuando el consumidor da su consentimiento expreso previo y reconoce la pérdida del derecho de desistimiento (Artículo 16(m)).</p>
+        <ul><li>Esta extensión ofrece una <strong>prueba gratuita de 14 días</strong> para que pueda evaluarla completamente antes de comprar.</li><li>Al comprar, su clave de licencia se entrega inmediatamente por correo electrónico.</li><li>Al marcar la casilla a continuación, usted consiente la entrega inmediata y renuncia a su derecho de desistimiento.</li></ul></div>
+      </details>
+      <label class="consent-label"><input type="checkbox" id="cc-2"><span>Acepto que la clave de licencia se entregará inmediatamente después de la compra, y reconozco que con ello <strong>renuncio a mi derecho de desistimiento de 14 días</strong>. Entiendo que esta extensión ofrece una prueba gratuita de 14 días para evaluar antes de comprar.</span></label>
+    </div>
+    <a class="btn" id="pb-2" href="https://buy.stripe.com/dRm6oH4SR8ck1Bgaea2Ry00" disabled>Proceder al pago</a>
+    <p class="note">Después de la compra, su clave de licencia se enviará a su correo electrónico.</p>
+    <p class="links"><a href="../terms.html">Términos de servicio</a> &middot; <a href="../privacy-policy.html">Política de privacidad</a></p>
+  </div>
+  <div class="container" data-lang="fr">
+    <h1>File Bulk Downloader</h1>
+    <p>Achat unique &mdash; <strong>$9.99</strong></p>
+    <div class="consent-box">
+      <details><summary>À propos du droit de rétractation (UE/EEE)</summary>
+        <div class="detail-text"><p>Conformément à la Directive sur les droits des consommateurs (2011/83/UE), les consommateurs de l'UE/EEE disposent d'un droit de rétractation de 14 jours pour les achats en ligne. Toutefois, ce droit ne s'applique pas au contenu numérique livré immédiatement lorsque le consommateur donne son consentement exprès préalable et reconnaît la perte du droit de rétractation (Article 16(m)).</p>
+        <ul><li>Cette extension offre un <strong>essai gratuit de 14 jours</strong> pour une évaluation complète avant achat.</li><li>Après achat, votre clé de licence est livrée immédiatement par e-mail.</li><li>En cochant la case ci-dessous, vous consentez à la livraison immédiate et renoncez à votre droit de rétractation.</li></ul></div>
+      </details>
+      <label class="consent-label"><input type="checkbox" id="cc-3"><span>J'accepte que la clé de licence soit livrée immédiatement après l'achat et je reconnais que je <strong>renonce à mon droit de rétractation de 14 jours</strong>. Je comprends que cette extension offre un essai gratuit de 14 jours.</span></label>
+    </div>
+    <a class="btn" id="pb-3" href="https://buy.stripe.com/dRm6oH4SR8ck1Bgaea2Ry00" disabled>Procéder au paiement</a>
+    <p class="note">Après achat, votre clé de licence sera envoyée par e-mail.</p>
+    <p class="links"><a href="../terms.html">Conditions d'utilisation</a> &middot; <a href="../privacy-policy.html">Politique de confidentialité</a></p>
+  </div>
+  <div class="container" data-lang="ko">
+    <h1>File Bulk Downloader</h1>
+    <p>일회성 구매 &mdash; <strong>$9.99</strong></p>
+    <div class="consent-box">
+      <details><summary>철회권에 대하여 (EU/EEA)</summary>
+        <div class="detail-text"><p>EU 소비자 권리 지침(2011/83/EU)에 따라 EU/EEA 소비자는 온라인 구매에 대해 14일간의 철회권을 갖습니다. 다만, 소비자가 사전에 명시적 동의를 하고 철회권 상실을 인정한 후 즉시 제공되는 디지털 콘텐츠에는 적용되지 않습니다(제16조(m)).</p>
+        <ul><li>이 확장 프로그램은 구매 전에 <strong>14일 무료 체험</strong>을 제공합니다.</li><li>구매 후 라이선스 키가 이메일로 즉시 전송됩니다.</li><li>아래 확인란을 선택하면 즉시 배송에 동의하고 철회권을 포기합니다.</li></ul></div>
+      </details>
+      <label class="consent-label"><input type="checkbox" id="cc-4"><span>라이선스 키가 구매 즉시 제공되는 것에 동의하며, 이에 따라 <strong>14일간의 철회권을 포기</strong>함을 확인합니다. 이 확장 프로그램이 구매 전 14일 무료 체험을 제공함을 이해합니다.</span></label>
+    </div>
+    <a class="btn" id="pb-4" href="https://buy.stripe.com/dRm6oH4SR8ck1Bgaea2Ry00" disabled>결제 진행</a>
+    <p class="note">구매 후 라이선스 키가 이메일로 전송됩니다.</p>
+    <p class="links"><a href="../terms.html">이용약관</a> &middot; <a href="../privacy-policy.html">개인정보 처리방침</a></p>
+  </div>
+  <div class="container" data-lang="it">
+    <h1>File Bulk Downloader</h1>
+    <p>Acquisto unico &mdash; <strong>$9.99</strong></p>
+    <div class="consent-box">
+      <details><summary>Sul diritto di recesso (UE/SEE)</summary>
+        <div class="detail-text"><p>Ai sensi della Direttiva sui diritti dei consumatori (2011/83/UE), i consumatori dell'UE/SEE hanno un diritto di recesso di 14 giorni per gli acquisti online. Tuttavia, questo diritto non si applica ai contenuti digitali consegnati immediatamente quando il consumatore dà il proprio consenso espresso preventivo e riconosce la perdita del diritto di recesso (Articolo 16(m)).</p>
+        <ul><li>Questa estensione offre una <strong>prova gratuita di 14 giorni</strong> per una valutazione completa prima dell'acquisto.</li><li>Dopo l'acquisto, la chiave di licenza viene consegnata immediatamente via email.</li><li>Selezionando la casella sottostante, acconsenti alla consegna immediata e rinunci al diritto di recesso.</li></ul></div>
+      </details>
+      <label class="consent-label"><input type="checkbox" id="cc-5"><span>Accetto che la chiave di licenza verrà consegnata immediatamente dopo l'acquisto e riconosco di <strong>rinunciare al mio diritto di recesso di 14 giorni</strong>. Comprendo che questa estensione offre una prova gratuita di 14 giorni.</span></label>
+    </div>
+    <a class="btn" id="pb-5" href="https://buy.stripe.com/dRm6oH4SR8ck1Bgaea2Ry00" disabled>Procedi al pagamento</a>
+    <p class="note">Dopo l'acquisto, la chiave di licenza verrà inviata alla tua email.</p>
+    <p class="links"><a href="../terms.html">Termini di servizio</a> &middot; <a href="../privacy-policy.html">Informativa sulla privacy</a></p>
+  </div>
+  <div class="container" data-lang="zh_CN">
+    <h1>File Bulk Downloader</h1>
+    <p>一次性购买 &mdash; <strong>$9.99</strong></p>
+    <div class="consent-box">
+      <details><summary>关于撤回权（EU/EEA）</summary>
+        <div class="detail-text"><p>根据欧盟消费者权利指令（2011/83/EU），EU/EEA消费者对在线购买享有14天撤回权。但是，当消费者事先明确同意并确认失去撤回权后立即交付的数字内容不适用此权利（第16条(m)）。</p>
+        <ul><li>本扩展程序在购买前提供<strong>14天免费试用</strong>。</li><li>购买后，许可证密钥将通过电子邮件立即发送。</li><li>勾选以下复选框即表示您同意立即交付并放弃撤回权。</li></ul></div>
+      </details>
+      <label class="consent-label"><input type="checkbox" id="cc-6"><span>我同意许可证密钥在购买后立即提供，并确认我因此<strong>放弃14天撤回权</strong>。我了解本扩展程序在购买前提供14天免费试用。</span></label>
+    </div>
+    <a class="btn" id="pb-6" href="https://buy.stripe.com/dRm6oH4SR8ck1Bgaea2Ry00" disabled>继续付款</a>
+    <p class="note">购买后，许可证密钥将发送至您的电子邮箱。</p>
+    <p class="links"><a href="../terms.html">服务条款</a> &middot; <a href="../privacy-policy.html">隐私政策</a></p>
+  </div>
+  <div class="container" data-lang="zh_TW">
+    <h1>File Bulk Downloader</h1>
+    <p>一次性購買 &mdash; <strong>$9.99</strong></p>
+    <div class="consent-box">
+      <details><summary>關於撤回權（EU/EEA）</summary>
+        <div class="detail-text"><p>根據歐盟消費者權利指令（2011/83/EU），EU/EEA消費者對線上購買享有14天撤回權。但是，當消費者事先明確同意並確認失去撤回權後立即交付的數位內容不適用此權利（第16條(m)）。</p>
+        <ul><li>本擴充功能在購買前提供<strong>14天免費試���</strong>。</li><li>購買後，授權金鑰將透過電子郵件立即傳送。</li><li>勾選以下核取方塊即表示您同意立即交付並放棄撤回權。</li></ul></div>
+      </details>
+      <label class="consent-label"><input type="checkbox" id="cc-7"><span>我同意授權金鑰在購買後立即提供，並確認我因此<strong>放棄14天撤回權</strong>。我了解本擴充功能在購買前提供14天免費試用。</span></label>
+    </div>
+    <a class="btn" id="pb-7" href="https://buy.stripe.com/dRm6oH4SR8ck1Bgaea2Ry00" disabled>繼續付款</a>
+    <p class="note">購買後，授權金鑰將傳送至您的電子郵件地址。</p>
+    <p class="links"><a href="../terms.html">服務條款</a> &middot; <a href="../privacy-policy.html">隱私權政策</a></p>
+  </div>
+  <div class="container" data-lang="pt_BR">
+    <h1>File Bulk Downloader</h1>
+    <p>Compra única &mdash; <strong>$9.99</strong></p>
+    <div class="consent-box">
+      <details><summary>Sobre o direito de desistência (UE/EEE)</summary>
+        <div class="detail-text"><p>De acordo com a Diretiva de Direitos do Consumidor da UE (2011/83/UE), consumidores na UE/EEE têm direito de desistência de 14 dias para compras online. No entanto, este direito não se aplica a conteúdo digital entregue imediatamente quando o consumidor dá consentimento expresso prévio e reconhece a perda do direito de desistência (Artigo 16(m)).</p>
+        <ul><li>Esta extensão oferece um <strong>teste gratuito de 14 dias</strong> para avaliação completa antes da compra.</li><li>Após a compra, sua chave de licença é entregue imediatamente por e-mail.</li><li>Ao marcar a caixa abaixo, você consente com a entrega imediata e renuncia ao seu direito de desistência.</li></ul></div>
+      </details>
+      <label class="consent-label"><input type="checkbox" id="cc-8"><span>Concordo que a chave de licença será entregue imediatamente após a compra e reconheço que, com isso, <strong>renuncio ao meu direito de desistência de 14 dias</strong>. Entendo que esta extensão oferece um teste gratuito de 14 dias.</span></label>
+    </div>
+    <a class="btn" id="pb-8" href="https://buy.stripe.com/dRm6oH4SR8ck1Bgaea2Ry00" disabled>Prosseguir para pagamento</a>
+    <p class="note">Após a compra, sua chave de licença será enviada para seu e-mail.</p>
+    <p class="links"><a href="../terms.html">Termos de Serviço</a> &middot; <a href="../privacy-policy.html">Política de Privacidade</a></p>
+  </div>
+  <div class="container" data-lang="de">
+    <h1>File Bulk Downloader</h1>
+    <p>Einmaliger Kauf &mdash; <strong>$9.99</strong></p>
+    <div class="consent-box">
+      <details><summary>Über das Widerrufsrecht (EU/EWR)</summary>
+        <div class="detail-text"><p>Gemäß der EU-Verbraucherrechterichtlinie (2011/83/EU) haben Verbraucher in der EU/im EWR ein 14-tägiges Widerrufsrecht für Online-Käufe. Dieses Recht gilt jedoch nicht für digitale Inhalte, die sofort geliefert werden, wenn der Verbraucher seine ausdrückliche vorherige Zustimmung gibt und den Verlust des Widerrufsrechts anerkennt (Artikel 16(m)).</p>
+        <ul><li>Diese Erweiterung bietet eine <strong>14-tägige kostenlose Testphase</strong> zur vollständigen Bewertung vor dem Kauf.</li><li>Nach dem Kauf wird Ihr Lizenzschlüssel sofort per E-Mail geliefert.</li><li>Durch Ankreuzen des Kästchens stimmen Sie der sofortigen Lieferung zu und verzichten auf Ihr Widerrufsrecht.</li></ul></div>
+      </details>
+      <label class="consent-label"><input type="checkbox" id="cc-9"><span>Ich stimme zu, dass der Lizenzschlüssel sofort nach dem Kauf geliefert wird, und erkenne an, dass ich damit <strong>auf mein 14-tägiges Widerrufsrecht verzichte</strong>. Ich verstehe, dass diese Erweiterung eine 14-tägige kostenlose Testphase bietet.</span></label>
+    </div>
+    <a class="btn" id="pb-9" href="https://buy.stripe.com/dRm6oH4SR8ck1Bgaea2Ry00" disabled>Zur Zahlung</a>
+    <p class="note">Nach dem Kauf wird Ihr Lizenzschlüssel an Ihre E-Mail gesendet.</p>
+    <p class="links"><a href="../terms.html">Nutzungsbedingungen</a> &middot; <a href="../privacy-policy.html">Datenschutzrichtlinie</a></p>
+  </div>
   <script>
-    function getLang() { var s = localStorage.getItem('fbd-lang'); if (s) return s; return (navigator.language || '').startsWith('ja') ? 'ja' : 'en'; }
-    function setLang(l) { localStorage.setItem('fbd-lang', l); document.querySelectorAll('[data-lang]').forEach(function(e) { e.classList.toggle('active', e.getAttribute('data-lang') === l); }); document.documentElement.lang = l; }
-    function toggleLang() { setLang(getLang() === 'ja' ? 'en' : 'ja'); }
+    function getLang() {
+      var s = localStorage.getItem('fbd-lang');
+      if (s) return s;
+      var n = (navigator.language || '').toLowerCase();
+      if (n.startsWith('ja')) return 'ja';
+      if (n.startsWith('ko')) return 'ko';
+      if (n.startsWith('it')) return 'it';
+      if (n.startsWith('de')) return 'de';
+      if (n.startsWith('es')) return 'es';
+      if (n.startsWith('fr')) return 'fr';
+      if (n.startsWith('pt')) return 'pt_BR';
+      if (n === 'zh-tw' || n === 'zh-hant' || n.startsWith('zh-hant')) return 'zh_TW';
+      if (n.startsWith('zh')) return 'zh_CN';
+      return 'en';
+    }
+    function setLang(l) {
+      localStorage.setItem('fbd-lang', l);
+      document.querySelectorAll('[data-lang]').forEach(function(e) {
+        e.classList.toggle('active', e.getAttribute('data-lang') === l);
+      });
+      document.documentElement.lang = l.replace('_','-');
+      var sel = document.getElementById('lang-sel');
+      if (sel) sel.value = l;
+    }
+    function onLangChange(e) { setLang(e.target.value); }
     setLang(getLang());
 
-    function setupConsent(checkId, btnId) {
-      var cb = document.getElementById(checkId);
-      var btn = document.getElementById(btnId);
-      function update() {
-        if (cb.checked) { btn.removeAttribute('disabled'); btn.style.pointerEvents = ''; }
-        else { btn.setAttribute('disabled', ''); btn.style.pointerEvents = 'none'; }
-      }
-      cb.addEventListener('change', update);
-      update();
-    }
-    setupConsent('consent-check-en', 'purchase-btn-en');
-    setupConsent('consent-check-ja', 'purchase-btn-ja');
+    function sc(cid,bid){var c=document.getElementById(cid),b=document.getElementById(bid);function u(){if(c.checked){b.removeAttribute('disabled');b.style.pointerEvents='';}else{b.setAttribute('disabled','');b.style.pointerEvents='none';}}c.addEventListener('change',u);u();}
+    sc('cc-0','pb-0');
+    sc('cc-1','pb-1');
+    sc('cc-2','pb-2');
+    sc('cc-3','pb-3');
+    sc('cc-4','pb-4');
+    sc('cc-5','pb-5');
+    sc('cc-6','pb-6');
+    sc('cc-7','pb-7');
+    sc('cc-8','pb-8');
+    sc('cc-9','pb-9');
   </script>
 </body>
 </html>
