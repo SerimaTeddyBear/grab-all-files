@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta name="robots" content="noindex, nofollow">
   <meta charset="UTF-8">
@@ -7,7 +7,7 @@
   <title>Terms of Service - File Bulk Downloader</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.7; color: #1a1a1a; background: #f8f9fa; padding: 2rem 1rem; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", Roboto, sans-serif; line-height: 1.7; color: #1a1a1a; background: #f8f9fa; padding: 2rem 1rem; }
     .container { max-width: 720px; margin: 0 auto; background: #fff; border-radius: 12px; padding: 2.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
     h1 { font-size: 1.6rem; margin-bottom: 0.3rem; }
     .updated { color: #666; font-size: 0.85rem; margin-bottom: 2rem; }
@@ -16,67 +16,142 @@
     ul, ol { padding-left: 1.5rem; margin-bottom: 0.8rem; }
     .contact { background: #f1f5f9; border-radius: 8px; padding: 1rem 1.2rem; margin-top: 1.5rem; }
     .contact a { color: #2563eb; }
+    .lang-toggle { position: fixed; top: 1rem; right: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.8rem; cursor: pointer; color: #2563eb; }
+    .lang-toggle:hover { background: #f1f5f9; }
+    [data-lang] { display: none; }
+    [data-lang].active { display: block; }
   </style>
 </head>
 <body>
+  <button class="lang-toggle" onclick="toggleLang()">EN / JA</button>
   <div class="container">
-    <h1>Terms of Service</h1>
-    <p class="updated">Last updated: April 4, 2026</p>
-    <p>These Terms of Service ("Terms") govern your use of the <strong>File Bulk Downloader</strong> browser extension ("the Extension") provided by Tetsunobu Kawai ("we", "us", "our"). By installing or using the Extension, you agree to these Terms.</p>
 
-    <h2>1. License Grant</h2>
-    <p>Upon purchase, we grant you a personal, non-exclusive, non-transferable license to use the Extension on up to <strong>3 devices</strong>. This license is for your personal or internal business use only.</p>
-    <p>You may not:</p>
-    <ul>
-      <li>Redistribute, resell, sublicense, or share your license key with others</li>
-      <li>Reverse-engineer, decompile, or modify the Extension</li>
-      <li>Use the Extension in any way that violates applicable laws or third-party rights</li>
-    </ul>
+    <div data-lang="en">
+      <h1>Terms of Service</h1>
+      <p class="updated">Last updated: April 4, 2026</p>
+      <p>These Terms of Service ("Terms") govern your use of the <strong>File Bulk Downloader</strong> browser extension ("the Extension") provided by Tetsunobu Kawai ("we", "us", "our"). By installing or using the Extension, you agree to these Terms.</p>
 
-    <h2>2. Free Trial</h2>
-    <p>The Extension offers a <strong>14-day free trial</strong> from the date of installation. During this period, all features are available at no cost. After the trial period, a valid license key is required to continue using the Extension.</p>
+      <h2>1. License Grant</h2>
+      <p>Upon purchase, we grant you a personal, non-exclusive, non-transferable license to use the Extension on up to <strong>3 devices</strong>. This license is for your personal or internal business use only.</p>
+      <p>You may not:</p>
+      <ul>
+        <li>Redistribute, resell, sublicense, or share your license key with others</li>
+        <li>Reverse-engineer, decompile, or modify the Extension</li>
+        <li>Use the Extension in any way that violates applicable laws or third-party rights</li>
+      </ul>
 
-    <h2>3. Payment</h2>
-    <p>Payments are processed securely through <strong>Stripe</strong>. The license is a one-time purchase. We do not store your payment card information.</p>
+      <h2>2. Free Trial</h2>
+      <p>The Extension offers a <strong>14-day free trial</strong> from the date of installation. During this period, all features are available at no cost. After the trial period, a valid license key is required to continue using the Extension.</p>
 
-    <h2>4. Refund Policy</h2>
-    <p>Because the Extension provides a <strong>14-day free trial</strong> to fully evaluate all features before purchasing, <strong>all sales are final and no refunds will be issued</strong> after purchase.</p>
-    <p>At the time of purchase, you expressly consent to immediate delivery of the digital content (license key) and acknowledge that you waive your right of withdrawal under the EU Consumer Rights Directive (Article 16(m)).</p>
-    <p>If you experience a technical issue that prevents the Extension from functioning as described, please contact us. We will make reasonable efforts to resolve the issue within <strong>30 days</strong> of your report via an update. If we are unable to resolve the issue within this period, you may request a full refund.</p>
-    <p><strong>Contact:</strong> <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      <h2>3. Payment</h2>
+      <p>Payments are processed securely through <strong>Stripe</strong>. The license is a one-time purchase. We do not store your payment card information.</p>
 
-    <h2>5. Device Limits</h2>
-    <p>Each license key may be activated on up to 3 devices. If you need to transfer your license to a new device, contact us to deactivate an existing device.</p>
+      <h2>4. Refund Policy</h2>
+      <p>Because the Extension provides a <strong>14-day free trial</strong> to fully evaluate all features before purchasing, <strong>all sales are final and no refunds will be issued</strong> after purchase.</p>
+      <p>At the time of purchase, you expressly consent to immediate delivery of the digital content (license key) and acknowledge that you waive your right of withdrawal under the EU Consumer Rights Directive (Article 16(m)).</p>
+      <p>If you experience a technical issue that prevents the Extension from functioning as described, please contact us. We will make reasonable efforts to resolve the issue within <strong>30 days</strong> of your report via an update. If we are unable to resolve the issue within this period, you may request a full refund.</p>
+      <p><strong>Contact:</strong> <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
 
-    <h2>6. Conformity and Limitations</h2>
-    <p>The Extension is designed to function as described in its store listing and documentation. Under the EU Digital Content Directive (2019/770), we warrant that the Extension will conform to this description for a period of <strong>2 years</strong> from the date of purchase.</p>
-    <p>However, due to the nature of web technologies, we cannot guarantee that:</p>
-    <ul>
-      <li>The Extension will work with every website or file type (websites may block automated access)</li>
-      <li>The Extension will be uninterrupted or error-free at all times</li>
-      <li>Downloaded files will be free of corruption or viruses (files are fetched directly from their source websites and are beyond our control)</li>
-    </ul>
+      <h2>5. Device Limits</h2>
+      <p>Each license key may be activated on up to 3 devices. If you need to transfer your license to a new device, contact us to deactivate an existing device.</p>
 
-    <h2>7. Limitation of Liability</h2>
-    <p>To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, special, or consequential damages arising from the use of the Extension. Our total liability shall not exceed the amount you paid for the license.</p>
+      <h2>6. Conformity and Limitations</h2>
+      <p>The Extension is designed to function as described in its store listing and documentation. Under the EU Digital Content Directive (2019/770), we warrant that the Extension will conform to this description for a period of <strong>2 years</strong> from the date of purchase.</p>
+      <p>However, due to the nature of web technologies, we cannot guarantee that:</p>
+      <ul>
+        <li>The Extension will work with every website or file type (websites may block automated access)</li>
+        <li>The Extension will be uninterrupted or error-free at all times</li>
+        <li>Downloaded files will be free of corruption or viruses (files are fetched directly from their source websites and are beyond our control)</li>
+      </ul>
 
-    <h2>8. User Responsibility</h2>
-    <p>You are solely responsible for ensuring that your use of the Extension complies with applicable laws and the terms of service of any websites you download files from. We are not responsible for any copyright infringement or unauthorized downloading conducted by users.</p>
+      <h2>7. Limitation of Liability</h2>
+      <p>To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, special, or consequential damages arising from the use of the Extension. Our total liability shall not exceed the amount you paid for the license.</p>
 
-    <h2>9. Updates and Changes</h2>
-    <p>We may update the Extension or these Terms from time to time. Continued use of the Extension after changes constitutes acceptance of the updated Terms.</p>
+      <h2>8. User Responsibility</h2>
+      <p>You are solely responsible for ensuring that your use of the Extension complies with applicable laws and the terms of service of any websites you download files from. We are not responsible for any copyright infringement or unauthorized downloading conducted by users.</p>
 
-    <h2>10. Termination</h2>
-    <p>We reserve the right to revoke a license if these Terms are violated, including but not limited to license key sharing or use for unlawful purposes.</p>
+      <h2>9. Updates and Changes</h2>
+      <p>We may update the Extension or these Terms from time to time. Continued use of the Extension after changes constitutes acceptance of the updated Terms.</p>
 
-    <h2>11. Governing Law</h2>
-    <p>These Terms are governed by the laws of Japan. Any disputes shall be subject to the exclusive jurisdiction of the Tokyo District Court.</p>
+      <h2>10. Termination</h2>
+      <p>We reserve the right to revoke a license if these Terms are violated, including but not limited to license key sharing or use for unlawful purposes.</p>
 
-    <div class="contact">
-      <h2 style="margin-top:0;">12. Contact</h2>
-      <p>If you have questions about these Terms, please contact us at:</p>
-      <p><strong>Email:</strong> <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      <h2>11. Governing Law</h2>
+      <p>These Terms are governed by the laws of Japan. Any disputes shall be subject to the exclusive jurisdiction of the Tokyo District Court.</p>
+
+      <div class="contact">
+        <h2 style="margin-top:0;">12. Contact</h2>
+        <p>If you have questions about these Terms, please contact us at:</p>
+        <p><strong>Email:</strong> <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      </div>
     </div>
+
+    <div data-lang="ja">
+      <h1>利用規約</h1>
+      <p class="updated">最終更新日: 2026年4月4日</p>
+      <p>本利用規約（以下「本規約」）は、河合 哲伸（以下「当社」）が提供するブラウザ拡張機能 <strong>File Bulk Downloader</strong>（以下「本拡張機能」）のご利用に適用されます。本拡張機能をインストールまたは使用することにより、本規約に同意したものとみなされます。</p>
+
+      <h2>1. ライセンスの付与</h2>
+      <p>購入後、最大<strong>3台のデバイス</strong>で本拡張機能を使用するための、個人的、非独占的、譲渡不可のライセンスを付与します。本ライセンスは、個人使用または社内業務使用に限ります。</p>
+      <p>以下の行為は禁止されています：</p>
+      <ul>
+        <li>ライセンスキーの再配布、転売、サブライセンス、第三者への共有</li>
+        <li>本拡張機能のリバースエンジニアリング、逆コンパイル、改変</li>
+        <li>適用法令または第三者の権利に違反する方法での本拡張機能の使用</li>
+      </ul>
+
+      <h2>2. 無料トライアル</h2>
+      <p>本拡張機能は、インストール日から<strong>14日間の無料トライアル</strong>を提供します。この期間中、すべての機能を無料でご利用いただけます。トライアル期間終了後は、有効なライセンスキーが必要です。</p>
+
+      <h2>3. お支払い</h2>
+      <p>お支払いは<strong>Stripe</strong>を通じて安全に処理されます。ライセンスは買い切り型です。お支払いカード情報を保存することはありません。</p>
+
+      <h2>4. 返金ポリシー</h2>
+      <p>本拡張機能は購入前にすべての機能を評価できる<strong>14日間の無料トライアル</strong>を提供しているため、<strong>購入後の返金は原則として行いません</strong>。</p>
+      <p>購入時に、デジタルコンテンツ（ライセンスキー）の即時提供に明示的に同意し、EU消費者権利指令第16条(m)に基づく撤回権を放棄することを確認するものとします。</p>
+      <p>本拡張機能が説明通りに動作しない技術的問題が発生した場合は、ご連絡ください。ご報告から<strong>30日以内</strong>にアップデートによる解決に合理的な努力を行います。この期間内に解決できない場合、全額返金を請求できます。</p>
+      <p><strong>連絡先:</strong> <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+
+      <h2>5. デバイス制限</h2>
+      <p>各ライセンスキーは最大3台のデバイスでアクティベーションできます。新しいデバイスにライセンスを移行する場合は、既存デバイスの無効化についてお問い合わせください。</p>
+
+      <h2>6. 適合性と制限事項</h2>
+      <p>本拡張機能は、ストアの掲載情報およびドキュメントに記載された通りに動作するよう設計されています。EUデジタルコンテンツ指令（2019/770）に基づき、購入日から<strong>2年間</strong>、この説明に適合することを保証します。</p>
+      <p>ただし、Web技術の性質上、以下を保証することはできません：</p>
+      <ul>
+        <li>すべてのWebサイトまたはファイル形式で動作すること（Webサイトが自動アクセスをブロックする場合があります）</li>
+        <li>常に中断やエラーなく動作すること</li>
+        <li>ダウンロードしたファイルに破損やウイルスがないこと（ファイルはソースWebサイトから直接取得され、当社の管理外です）</li>
+      </ul>
+
+      <h2>7. 責任の制限</h2>
+      <p>法律で許容される最大限の範囲において、本拡張機能の使用から生じる間接的、偶発的、特別、または結果的な損害について責任を負いません。当社の総責任額は、ライセンスに対してお支払いいただいた金額を超えないものとします。</p>
+
+      <h2>8. ユーザーの責任</h2>
+      <p>本拡張機能の使用が適用法令およびダウンロード元Webサイトの利用規約に準拠していることを確認する責任は、ユーザーにあります。ユーザーによる著作権侵害または無許可のダウンロードについて、当社は責任を負いません。</p>
+
+      <h2>9. アップデートと変更</h2>
+      <p>本拡張機能または本規約を随時更新する場合があります。変更後も本拡張機能を継続使用した場合、更新された規約に同意したものとみなされます。</p>
+
+      <h2>10. 解除</h2>
+      <p>ライセンスキーの共有や違法目的での使用を含む、本規約への違反があった場合、ライセンスを取り消す権利を留保します。</p>
+
+      <h2>11. 準拠法</h2>
+      <p>本規約は日本法に準拠します。紛争が生じた場合は、東京地方裁判所を第一審の専属的合意管轄裁判所とします。</p>
+
+      <div class="contact">
+        <h2 style="margin-top:0;">12. お問い合わせ</h2>
+        <p>本規約に関するご質問は、以下までご連絡ください：</p>
+        <p><strong>メール:</strong> <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      </div>
+    </div>
+
   </div>
+  <script>
+    function getLang() { var s = localStorage.getItem('fbd-lang'); if (s) return s; return (navigator.language || '').startsWith('ja') ? 'ja' : 'en'; }
+    function setLang(l) { localStorage.setItem('fbd-lang', l); document.querySelectorAll('[data-lang]').forEach(function(e) { e.classList.toggle('active', e.getAttribute('data-lang') === l); }); document.documentElement.lang = l; }
+    function toggleLang() { setLang(getLang() === 'ja' ? 'en' : 'ja'); }
+    setLang(getLang());
+  </script>
 </body>
 </html>
