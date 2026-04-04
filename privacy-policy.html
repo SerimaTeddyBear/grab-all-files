@@ -23,14 +23,14 @@
 <body>
   <div class="container">
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: April 4, 2026</p>
+    <p class="updated">Last updated: April 5, 2026</p>
     <p><strong>File Bulk Downloader</strong> ("the Extension") is a browser extension that helps users find and download files from web pages. This policy explains what data the Extension accesses, how it is used, and how it is stored.</p>
 
     <h2>1. Data We Collect</h2>
     <p>The Extension does <strong>not</strong> collect, transmit, or sell any personal data, browsing history, or analytics. There are no tracking scripts, cookies, or third-party analytics services.</p>
     <p>The only network requests the Extension makes are:</p>
     <ul>
-      <li><strong>License verification</strong> &mdash; When a license key is entered, it is sent to our server solely to verify its validity. No other data is included in this request.</li>
+      <li><strong>License verification</strong> &mdash; When a license key is entered, it is sent to our server along with a randomly generated device identifier (UUID) to verify its validity and enforce device limits. No personal information, browsing data, or hardware fingerprints are included.</li>
       <li><strong>File scanning &amp; downloading</strong> &mdash; When you use the "Enter URL" feature, the Extension fetches web pages you specify to find downloadable files. These requests go directly to the target website; no data passes through our servers.</li>
     </ul>
 
@@ -39,6 +39,7 @@
     <table>
       <tr><th>Data</th><th>Purpose</th></tr>
       <tr><td>License key</td><td>To keep you signed in after activation</td></tr>
+      <tr><td>Device ID (random UUID)</td><td>To enforce the per-license device limit (max 3 devices)</td></tr>
       <tr><td>Install date</td><td>To manage the free trial period</td></tr>
       <tr><td>Download history (URLs)</td><td>To mark previously downloaded files as "DL'd"</td></tr>
       <tr><td>Scan history</td><td>To show recently scanned pages for quick access</td></tr>
@@ -58,7 +59,7 @@
     </table>
 
     <h2>4. Third-Party Services</h2>
-    <p>The Extension communicates with a license verification server hosted on <strong>Supabase</strong>. Only the license key string is sent; no personal information, browsing data, or device identifiers are transmitted. See <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabase's Privacy Policy</a> for their data handling practices.</p>
+    <p>The Extension communicates with a license verification server hosted on <strong>Supabase</strong>. The data sent consists of the license key and a randomly generated device identifier (UUID). No personal information, browsing data, or hardware fingerprints are transmitted. The device identifier is used solely to enforce the per-license device limit and cannot be used to identify you personally. See <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabase's Privacy Policy</a> for their data handling practices.</p>
 
     <h2>5. Children's Privacy</h2>
     <p>The Extension is not directed at children under 13. We do not knowingly collect any personal information from children.</p>
