@@ -31,7 +31,7 @@
 
     <div data-lang="en">
       <h1>Privacy Policy</h1>
-      <p class="updated">Last updated: April 4, 2026</p>
+      <p class="updated">Last updated: April 5, 2026</p>
       <p><strong>File Bulk Downloader</strong> ("the Extension") is a browser extension that helps users find and download files from web pages. This policy explains what data the Extension accesses, how it is used, and how it is stored.</p>
 
       <h2>1. Data We Collect</h2>
@@ -39,6 +39,8 @@
       <p>The only network requests the Extension makes are:</p>
       <ul>
         <li><strong>License verification</strong> &mdash; When a license key is entered, it is sent to our server along with a randomly generated device identifier (UUID) to verify its validity and enforce device limits. No personal information, browsing data, or hardware fingerprints are included.</li>
+        <li><strong>Trial verification</strong> &mdash; During the free trial period, the Extension sends your device identifier (UUID) to our server to verify trial eligibility. No license key or personal data is included.</li>
+        <li><strong>Device management</strong> &mdash; When you view or manage your activated devices on the license screen, the Extension sends your license key and device identifier to our server to retrieve and update the device list.</li>
         <li><strong>File scanning &amp; downloading</strong> &mdash; When you use the "Enter URL" feature, the Extension fetches web pages you specify to find downloadable files. These requests go directly to the target website; no data passes through our servers.</li>
       </ul>
 
@@ -51,6 +53,7 @@
         <tr><td>Install date</td><td>To manage the free trial period</td></tr>
         <tr><td>Download history (URLs)</td><td>To mark previously downloaded files as "DL'd"</td></tr>
         <tr><td>Scan history</td><td>To show recently scanned pages for quick access</td></tr>
+        <tr><td>Last verified timestamp</td><td>To allow offline usage for a limited grace period</td></tr>
         <tr><td>Window size</td><td>To remember your preferred window dimensions</td></tr>
       </table>
       <p>You can clear all stored data at any time by uninstalling the Extension or by using your browser's extension data management.</p>
@@ -110,7 +113,7 @@
 
     <div data-lang="ja">
       <h1>プライバシーポリシー</h1>
-      <p class="updated">最終更新日: 2026年4月4日</p>
+      <p class="updated">最終更新日: 2026年4月5日</p>
       <p><strong>File Bulk Downloader</strong>（以下「本拡張機能」）は、Webページ上のファイルを検索・ダウンロードするブラウザ拡張機能です。本ポリシーでは、本拡張機能がアクセスするデータ、その利用方法、および保存方法について説明します。</p>
 
       <h2>1. 収集するデータ</h2>
@@ -118,6 +121,8 @@
       <p>本拡張機能が行うネットワークリクエストは以下のみです：</p>
       <ul>
         <li><strong>ライセンス認証</strong> &mdash; ライセンスキー入力時に、キーとランダム生成されたデバイス識別子（UUID）をサーバーに送信し、有効性の確認とデバイス数制限を行います。個人情報、閲覧データ、ハードウェアフィンガープリントは含まれません。</li>
+        <li><strong>トライアル認証</strong> &mdash; 無料トライアル期間中、デバイス識別子（UUID）をサーバーに送信しトライアル資格を確認します。ライセンスキーや個人データは含まれません。</li>
+        <li><strong>デバイス管理</strong> &mdash; ライセンス画面でアクティブなデバイスを表示・管理する際、ライセンスキーとデバイス識別子をサーバーに送信しデバイス一覧の取得・更新を行います。</li>
         <li><strong>ファイルスキャン・ダウンロード</strong> &mdash;「URL入力」機能使用時、指定されたWebページを取得しダウンロード可能なファイルを検索します。これらのリクエストは対象Webサイトに直接送信され、当社サーバーを経由しません。</li>
       </ul>
 
@@ -130,6 +135,7 @@
         <tr><td>インストール日</td><td>無料トライアル期間の管理</td></tr>
         <tr><td>ダウンロード履歴（URL）</td><td>ダウンロード済みファイルの「DL済」表示</td></tr>
         <tr><td>スキャン履歴</td><td>最近スキャンしたページのクイックアクセス</td></tr>
+        <tr><td>最終認証タイムスタンプ</td><td>限定的なオフライン使用のための猶予期間管理</td></tr>
         <tr><td>ウィンドウサイズ</td><td>ウィンドウサイズの記憶</td></tr>
       </table>
       <p>保存されたデータは、拡張機能のアンインストールまたはブラウザの拡張機能データ管理からいつでも削除できます。</p>
