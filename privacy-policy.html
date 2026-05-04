@@ -19,14 +19,13 @@
     th { background: #f1f5f9; font-weight: 600; }
     .contact { background: #f1f5f9; border-radius: 8px; padding: 1rem 1.2rem; margin-top: 1.5rem; }
     .contact a { color: #2563eb; }
-    .lang-toggle { position: fixed; top: 1rem; right: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.8rem; cursor: pointer; color: #2563eb; }
-    .lang-toggle:hover { background: #f1f5f9; }
+    .lang-sel { position: fixed; top: 1rem; right: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.3rem 0.5rem; font-size: 0.8rem; cursor: pointer; color: #2563eb; }
     [data-lang] { display: none; }
     [data-lang].active { display: block; }
   </style>
 </head>
   <body>
-  <button class="lang-toggle" id="btn-lang-toggle">EN / JA</button>
+  <select id="lang-sel" class="lang-sel" onchange="onLangChange(event)"><option value="en">English</option><option value="ja">日本語</option><option value="es">Español</option><option value="fr">Français</option><option value="ko">한국어</option><option value="it">Italiano</option><option value="zh_CN">简体中文</option><option value="zh_TW">繁體中文</option><option value="pt_BR">Português</option><option value="de">Deutsch</option></select>
   <div class="container">
 
     <div data-lang="en">
@@ -43,6 +42,8 @@
         <li><strong>network file records</strong> (URLs and metadata of files detected via network monitoring) stored temporarily in session storage during your browsing session.</li>
       </ul>
       <p>We do not send your scan history, page HTML, file contents, or browsing activity to our servers.</p>
+      <p><strong>Trial and paid license:</strong> The Extension includes a 14-day free trial. After the trial expires, continued use requires a paid license key. Trial eligibility, license activation, license refresh, device-limit enforcement, and revocation checks are handled by the license backend using a random device UUID and, when applicable, the license key.</p>
+      <p><strong>Access to websites:</strong> The Extension requests access to <code>https://*/*</code> because users can choose to scan any website and the target domain is not known in advance. This access is used to detect downloadable links and file responses on pages or URLs you choose to scan, and to download files you select. It is not used to send page HTML, browsing activity, or file contents to our servers.</p>
 
       <h2>2. Network Requests</h2>
       <p>The Extension makes network requests only for the following purposes:</p>
@@ -78,7 +79,6 @@
       <h2>4. Permissions</h2>
       <table>
         <tr><th>Permission</th><th>Why it is needed</th></tr>
-        <tr><td><code>activeTab</code></td><td>Scan the currently active page when you click the Extension icon.</td></tr>
         <tr><td><code>tabs</code></td><td>Track the URL of the currently active tab so the popup shows which page it will scan.</td></tr>
         <tr><td><code>scripting</code></td><td>Inject a content script into the current page to find downloadable file links.</td></tr>
         <tr><td><code>downloads</code></td><td>Save selected files and merged PDFs to your computer.</td></tr>
@@ -86,8 +86,7 @@
         <tr><td><code>alarms</code></td><td>Refresh license and revocation status on a periodic schedule.</td></tr>
         <tr><td><code>notifications</code></td><td>Show download completion and license status notifications.</td></tr>
         <tr><td><code>contextMenus</code></td><td>Add right-click actions for scanning and downloading files from pages, links, images, and selections.</td></tr>
-        <tr><td>Required host permission:<br><code>https://umczaaooqinddgnhxbvp.supabase.co/*</code></td><td>Connect to the license and trial verification backend.</td></tr>
-        <tr><td>Required host permissions:<br><code>https://*/*</code></td><td>Detect downloadable links and in-page fetch/XHR file responses on websites you scan. Detected file URLs remain local unless you choose to download or export them.</td></tr>
+        <tr><td>Required host permission:<br><code>https://*/*</code></td><td>Let you scan any website you choose and connect to the license / trial verification backend at <code>https://umczaaooqinddgnhxbvp.supabase.co/*</code>. The target scan domain is not known before you choose a page or enter a URL, so broad HTTPS host access is required. The permission is used to detect downloadable links, in-page fetch/XHR file responses, file metadata, selected file downloads on the chosen site, and license/trial checks. Scan history, page HTML, browsing activity, and file contents are not sent to our servers.</td></tr>
       </table>
 
       <h2>5. Use of Browsing-Related Data</h2>
@@ -150,6 +149,15 @@
         <p><strong>Email:</strong> <a href="mailto:oldemail@example.invalid">oldemail@example.invalid</a></p>
         <p><strong>GitHub:</strong> <a href="https://github.com/SerimaTeddyBear" target="_blank" rel="noopener">github.com/SerimaTeddyBear</a></p>
       </div>
+
+      <h2>13. Related Documents</h2>
+      <ul>
+        <li><a href="terms.html">Terms of Service</a> &mdash; license, prohibited uses, governing law.</li>
+        <li><a href="tokushoho.html">Specified Commercial Transactions Act Notice (Japan)</a> &mdash; mandatory disclosure for sales to Japanese consumers.</li>
+      </ul>
+
+      <h2>14. Trademarks</h2>
+      <p>"Google Chrome" and "Chrome Web Store" are trademarks of Google LLC. "Microsoft Edge" and "Microsoft Edge Add-ons" are trademarks of Microsoft Corporation. Use of these names in this Privacy Policy is descriptive only and does not imply affiliation with or endorsement by Google or Microsoft. The Extension is an independent product of Tetsunobu Kawai.</p>
     </div>
 
     <div data-lang="ja">
@@ -166,6 +174,8 @@
         <li><strong>ネットワークファイル記録</strong>（ネットワーク監視で検出されたファイルのURLとメタデータ）のセッション中の一時保存</li>
       </ul>
       <p>スキャン履歴、ページHTML、ファイル内容、閲覧行動を当社サーバーへ送信することはありません。</p>
+      <p><strong>トライアルと有料ライセンス：</strong>本拡張機能には14日間の無料トライアルがあります。トライアル終了後も継続利用するには、有料ライセンスキーが必要です。トライアル資格確認、ライセンス有効化、ライセンス更新、デバイス台数制限、失効確認は、ランダムなデバイスUUIDと、該当する場合はライセンスキーを使用して、ライセンスバックエンドで処理されます。</p>
+      <p><strong>Webサイトへのアクセス：</strong>本拡張機能は、ユーザーが任意のWebサイトをスキャン対象として選択でき、対象ドメインを事前に特定できないため、<code>https://*/*</code> へのアクセス権限を要求します。この権限は、ユーザーが選択したページまたはURL上のダウンロード可能リンクやファイルレスポンスを検出し、ユーザーが選択したファイルをダウンロードするために使用されます。ページHTML、閲覧行動、ファイル内容を当社サーバーへ送信するためには使用しません。</p>
 
       <h2>2. ネットワークリクエスト</h2>
       <p>本拡張機能が行うネットワークリクエストは、次の目的に限られます：</p>
@@ -201,7 +211,6 @@
       <h2>4. 権限（パーミッション）</h2>
       <table>
         <tr><th>権限</th><th>必要な理由</th></tr>
-        <tr><td><code>activeTab</code></td><td>拡張アイコンをクリックしたときに現在のページをスキャンするため。</td></tr>
         <tr><td><code>tabs</code></td><td>現在アクティブなタブのURLを取得し、ポップアップにスキャン対象ページを表示するため。</td></tr>
         <tr><td><code>scripting</code></td><td>現在のページにコンテンツスクリプトを注入してダウンロード可能なリンクを見つけるため。</td></tr>
         <tr><td><code>downloads</code></td><td>選択したファイルや結合済みPDFをコンピュータへ保存するため。</td></tr>
@@ -209,8 +218,7 @@
         <tr><td><code>alarms</code></td><td>ライセンスおよび失効リストを定期的に更新するため。</td></tr>
         <tr><td><code>notifications</code></td><td>ダウンロード完了およびライセンス状態の通知を表示するため。</td></tr>
         <tr><td><code>contextMenus</code></td><td>ページ・リンク・画像・選択範囲からスキャンやダウンロードを行うための右クリックメニューを追加するため。</td></tr>
-        <tr><td>必須ホスト権限:<br><code>https://umczaaooqinddgnhxbvp.supabase.co/*</code></td><td>ライセンス認証・トライアル認証バックエンドへ接続するため。</td></tr>
-        <tr><td>必須ホスト権限:<br><code>https://*/*</code></td><td>ユーザーがスキャンしたWebサイト上のダウンロード可能リンクおよびページ内 fetch/XHR レスポンスを検出するため。検出されたファイルURLは、ユーザーがダウンロードまたはエクスポートを選択しない限り端末内に留まります。</td></tr>
+        <tr><td>必須ホスト権限:<br><code>https://*/*</code></td><td>ユーザーが選択した任意のWebサイトをスキャンし、<code>https://umczaaooqinddgnhxbvp.supabase.co/*</code> のライセンス認証・トライアル認証バックエンドへ接続するため。対象ドメインは、ユーザーがページを選択またはURLを入力するまで事前に特定できないため、広いHTTPSホスト権限が必要です。この権限は、選択されたサイト上のダウンロード可能リンク、ページ内 fetch/XHR ファイルレスポンス、ファイルメタデータ、選択ファイルのダウンロード、ライセンス/トライアル確認に使用されます。スキャン履歴、ページHTML、閲覧行動、ファイル内容を当社サーバーへ送信することはありません。</td></tr>
       </table>
 
       <h2>5. 閲覧関連データの利用方法</h2>
@@ -273,18 +281,1075 @@
         <p><strong>メール:</strong> <a href="mailto:oldemail@example.invalid">oldemail@example.invalid</a></p>
         <p><strong>GitHub:</strong> <a href="https://github.com/SerimaTeddyBear" target="_blank" rel="noopener">github.com/SerimaTeddyBear</a></p>
       </div>
+
+      <h2>13. 関連書面</h2>
+      <ul>
+        <li><a href="terms.html">利用規約</a> &mdash; ライセンス、禁止事項、準拠法。</li>
+        <li><a href="tokushoho.html">特定商取引法に基づく表記</a> &mdash; 日本国内の消費者向け販売における法定表示。</li>
+      </ul>
+
+      <h2>14. 商標</h2>
+      <p>「Google Chrome」および「Chrome Web Store」は Google LLC の商標です。「Microsoft Edge」および「Microsoft Edge Add-ons」は Microsoft Corporation の商標です。本プライバシーポリシーにおけるこれらの名称の使用は説明目的に限られ、Google または Microsoft との提携または推奨を意味するものではありません。本拡張機能は Tetsunobu Kawai が独立して開発・配布する製品です。</p>
     </div>
 
-    <hr style="margin: 1.6rem 0 1rem; border: 0; border-top: 1px solid #e2e8f0;">
-    <p style="font-size: 0.78rem; color: #777; margin-bottom: 0.4rem;">"Google Chrome" and "Chrome Web Store" are trademarks of Google LLC. "Microsoft Edge" and "Microsoft Edge Add-ons" are trademarks of Microsoft Corporation. Use of these names in this Privacy Policy is descriptive only and does not imply affiliation with or endorsement by Google or Microsoft. The Extension is an independent product of Tetsunobu Kawai.</p>
-    <p style="font-size: 0.78rem; color: #777;">「Google Chrome」および「Chrome Web Store」は Google LLC の商標です。「Microsoft Edge」および「Microsoft Edge Add-ons」は Microsoft Corporation の商標です。本プライバシーポリシーにおける使用は説明目的に限られ、Google または Microsoft との提携または推奨を意味しません。本拡張機能は Tetsunobu Kawai が独立して開発・配布する製品です。</p>
+    <!--AUTO_TRANSLATIONS_BEGIN-->
+    <div data-lang="de">
+      <h1>Datenschutzerklärung</h1>
+      <p class="updated">Stand: 4. Mai 2026</p>
+      <p><strong>Grab All Files</strong> (nachfolgend „die Erweiterung") ist eine Browser-Erweiterung, die Nutzern hilft, Dateien auf von ihnen ausgewählten Webseiten zu finden, zu prüfen, herunterzuladen und optional zusammenzuführen. Diese Erklärung beschreibt, welche Daten die Erweiterung verarbeitet, wie sie verwendet werden, wo sie gespeichert sind und wann sie übermittelt werden.</p>
+
+      <h2>1. Zusammenfassung der Datenverarbeitung</h2>
+      <p>Die Erweiterung verkauft <strong>keine</strong> personenbezogenen Daten, führt keine Drittanbieter-Analysen durch, blendet keine Werbung ein, verwendet keine Tracking-Skripte und sendet im veröffentlichten Build keine Fehler-/Absturzberichte an einen Telemetrie-Anbieter. Sie verarbeitet lediglich eine begrenzte Menge browserbezogener Daten lokal in Ihrem Browser, um ihre nutzerseitigen Funktionen bereitzustellen.</p>
+      <p>Dies umfasst beispielsweise:</p>
+      <ul>
+        <li>den aktuellen Tab oder die URL, deren Scan Sie veranlassen,</li>
+        <li>den lokal gespeicherten Verlauf der letzten Scans für schnellen Zugriff und</li>
+        <li><strong>Netzwerkdateieinträge</strong> (URLs und Metadaten der über Netzwerküberwachung erkannten Dateien), die während Ihrer Browsersitzung temporär im Sitzungsspeicher abgelegt werden.</li>
+      </ul>
+      <p>Wir senden weder Ihren Scan-Verlauf, noch Seiten-HTML, Dateiinhalte oder Surfaktivitäten an unsere Server.</p>
+      <p><strong>Testversion und kostenpflichtige Lizenz:</strong> Die Erweiterung enthält eine 14-tägige kostenlose Testversion. Nach Ablauf der Testversion erfordert die weitere Nutzung einen kostenpflichtigen Lizenzschlüssel. Berechtigung zur Testversion, Lizenzaktivierung, Lizenzaktualisierung, Durchsetzung der Gerätelimitierung und Widerrufsprüfungen werden vom Lizenz-Backend unter Verwendung einer zufälligen Geräte-UUID und, sofern zutreffend, des Lizenzschlüssels abgewickelt.</p>
+      <p><strong>Zugriff auf Websites:</strong> Die Erweiterung benötigt Zugriff auf <code>https://*/*</code>, da Nutzer beliebige Websites zum Scannen auswählen können und die Zieldomain im Voraus nicht bekannt ist. Dieser Zugriff wird verwendet, um herunterladbare Links und Dateiantworten auf den von Ihnen zum Scannen ausgewählten Seiten oder URLs zu erkennen und um die von Ihnen ausgewählten Dateien herunterzuladen. Er wird nicht verwendet, um Seiten-HTML, Surfaktivitäten oder Dateiinhalte an unsere Server zu senden.</p>
+
+      <h2>2. Netzwerkanfragen</h2>
+      <p>Die Erweiterung führt Netzwerkanfragen ausschließlich zu folgenden Zwecken aus:</p>
+      <ul>
+        <li><strong>Lizenzverifizierung</strong> &mdash; Bei der Eingabe oder erneuten Validierung eines Lizenzschlüssels sendet die Erweiterung den Lizenzschlüssel und einen zufällig generierten Geräte-Identifikator (UUID) an unseren Server, um die Lizenz zu verifizieren und Gerätelimits durchzusetzen.</li>
+        <li><strong>Ausstellung und Erneuerung des Lizenz-Tokens (JWT)</strong> &mdash; Nach erfolgreicher Verifizierung gibt unser Server einen kurzlebigen signierten Zugriffstoken zurück (ES256 JWT, Gültigkeit 7 Tage), der den Lizenzschlüssel, den Geräte-Identifikator, die gewährten Funktionen und das Ablaufdatum enthält. Die Erweiterung speichert diesen Token lokal zwischen, sodass die meisten nachfolgenden Lizenzprüfungen offline erfolgen. Der Token wird üblicherweise einmal pro Tag erneuert, indem derselbe Lizenzschlüssel und Geräte-Identifikator an unseren Server gesendet wird.</li>
+        <li><strong>Aktualisierung der Widerrufsliste</strong> &mdash; Einmal pro Tag lädt die Erweiterung eine kleine, signierte Liste widerrufener Token-Identifikatoren herunter (keine Lizenzschlüssel), damit Widerrufe auch offline innerhalb von 24 Stunden wirksam werden. Diese Anfrage übermittelt keine den Nutzer identifizierenden Daten.</li>
+        <li><strong>Verifizierung der Testversion</strong> &mdash; Während der kostenlosen Testphase sendet die Erweiterung den Geräte-Identifikator (UUID) an unseren Server, um die Berechtigung zur Testversion zu verifizieren.</li>
+        <li><strong>Geräteverwaltung</strong> &mdash; Wenn Sie auf dem Lizenzbildschirm aktivierte Geräte einsehen oder entfernen, sendet die Erweiterung den Lizenzschlüssel, Ihren aktuellen Geräte-Identifikator und, falls Sie ein Gerät entfernen, den Geräte-Identifikator des Zielgeräts an unseren Server.</li>
+        <li><strong>Vom Nutzer angeforderter Seiten- und Dateizugriff</strong> &mdash; Wenn Sie eine Seite scannen, eine URL eingeben, Dateimetadaten abrufen, Dateien herunterladen oder PDFs zusammenführen, verbindet sich die Erweiterung direkt mit der von Ihnen ausgewählten Zielwebsite. Diese Anfragen laufen nicht über unsere Server.</li>
+      </ul>
+      <p>Anfragen an Zielwebsites können Cookies oder andere Sitzungsdaten enthalten, die in Ihrer Browsersitzung bereits mit dieser Website verknüpft sind, sofern sie für die von Ihnen über die Erweiterung angeforderten Inhalte erforderlich sind. Die Erweiterung erhebt, kopiert oder verkauft diese Informationen nicht gesondert.</p>
+
+      <h2>3. Auf Ihrem Gerät gespeicherte Daten</h2>
+      <p>Die Erweiterung speichert die folgenden Daten lokal mittels <code>chrome.storage.local</code> und <code>chrome.storage.session</code>. Mit Ausnahme der oben beschriebenen lizenzbezogenen Anfragen verbleiben diese Daten auf Ihrem Gerät.</p>
+      <table>
+        <tr><th>Daten</th><th>Speicher</th><th>Zweck</th></tr>
+        <tr><td>Lizenzschlüssel</td><td>Local</td><td>Erweiterung nach der Lizenzverifizierung aktiviert halten.</td></tr>
+        <tr><td>Geräte-ID (zufällige UUID)</td><td>Local</td><td>Diese Installation für Lizenzlimits und Testprüfungen identifizieren.</td></tr>
+        <tr><td>Installationsdatum</td><td>Local</td><td>Verwaltung der 14-tägigen kostenlosen Testphase.</td></tr>
+        <tr><td>Zeitstempel der letzten Verifizierung / letzten Testprüfung</td><td>Local</td><td>Eine begrenzte Offline-Karenzzeit nach erfolgreicher Lizenzprüfung ermöglichen und überflüssige Serveraufrufe vermeiden.</td></tr>
+        <tr><td>Lizenz-JWT und Widerrufs-Cache (signierter Zugriffstoken, Ablaufdatum, Token-ID, gewährte Funktionen, Liste widerrufener Token-IDs)</td><td>Local</td><td>Lizenz offline mittels eines vom Server ausgestellten signierten Tokens prüfen und widerrufene Token blockieren.</td></tr>
+        <tr><td>Flag für abgelaufene Testversion und vom Server zurückgegebener Lizenzfehler/-status</td><td>Local</td><td>Das Ergebnis des Testablaufs und fehlgeschlagener serverseitiger Lizenzprüfungen über Browser-Neustarts hinweg erhalten.</td></tr>
+        <tr><td>Letzte Scan-Historie (URLs, Titel/Hostnamen, Zeitstempel)</td><td>Local</td><td>Kürzlich gescannte Seiten und eingegebene URLs für schnellen Zugriff anzeigen.</td></tr>
+        <tr><td>ID des letzten Quell-Tabs</td><td>Local</td><td>Das Popup mit dem zuletzt gescannten Tab erneut verbinden.</td></tr>
+        <tr><td>Fenstergröße</td><td>Local</td><td>Die Abmessungen des Popup-Fensters merken.</td></tr>
+        <tr><td>UI-Einstellungen (ausgewählte Dateitypen, benutzerdefinierte Erweiterungsliste, Optionen für Organisation/Parallelität, Theme, Abschluss-Flags für Onboarding/Kategorieauswahl)</td><td>Local</td><td>Die in der Benutzeroberfläche der Erweiterung getroffenen Einstellungen sitzungsübergreifend merken.</td></tr>
+        <tr><td>Netzwerkdateieinträge (über Netzwerküberwachung erkannte Datei-URLs, -typen, -größen)</td><td>Session</td><td>Herunterladbare Dateien erkennen, die per JavaScript, XHR oder Fetch geladen werden und nicht im Seiten-HTML sichtbar sind. Werden beim Schließen des Tabs oder am Ende der Browsersitzung automatisch gelöscht.</td></tr>
+        <tr><td>Temporärer Download-Status (URLs ausgewählter Dateien, Titel, Dateinamen, Status, Wiederholungen, Download-IDs)</td><td>Session</td><td>Laufende Downloads wiederherstellen, falls der Service Worker angehalten wird.</td></tr>
+      </table>
+      <p>Sie können die Scan-Historie aus der Benutzeroberfläche der Erweiterung heraus löschen. Netzwerkdateieinträge können durch Klicken auf die Schaltfläche „Reset" im Ergebnisbereich oder durch Schließen des Tabs gelöscht werden. Bei der Deinstallation der Erweiterung wird ihr lokaler Speicher entfernt. Sitzungsdaten werden am Ende der Browsersitzung automatisch gelöscht.</p>
+
+      <h2>4. Berechtigungen</h2>
+      <table>
+        <tr><th>Berechtigung</th><th>Begründung</th></tr>
+        <tr><td><code>tabs</code></td><td>Die URL des aktuell aktiven Tabs erfassen, damit das Popup anzeigt, welche Seite gescannt wird.</td></tr>
+        <tr><td><code>scripting</code></td><td>Ein Content-Script in die aktuelle Seite einfügen, um herunterladbare Dateilinks zu finden.</td></tr>
+        <tr><td><code>downloads</code></td><td>Ausgewählte Dateien und zusammengeführte PDFs auf Ihrem Computer speichern.</td></tr>
+        <tr><td><code>storage</code></td><td>Lizenzstatus, Einstellungen und letzte Scan-Historie speichern.</td></tr>
+        <tr><td><code>alarms</code></td><td>Lizenz- und Widerrufsstatus regelmäßig aktualisieren.</td></tr>
+        <tr><td><code>notifications</code></td><td>Benachrichtigungen über abgeschlossene Downloads und Lizenzstatus anzeigen.</td></tr>
+        <tr><td><code>contextMenus</code></td><td>Rechtsklick-Aktionen zum Scannen und Herunterladen von Dateien aus Seiten, Links, Bildern und Auswahlen hinzufügen.</td></tr>
+        <tr><td>Erforderliche Host-Berechtigung:<br><code>https://*/*</code></td><td>Ihnen das Scannen jeder beliebigen Website Ihrer Wahl ermöglichen und die Verbindung zum Backend für Lizenz-/Testverifizierung unter <code>https://umczaaooqinddgnhxbvp.supabase.co/*</code> herstellen. Die Zieldomain für den Scan ist nicht bekannt, bevor Sie eine Seite auswählen oder eine URL eingeben, daher ist ein breiter HTTPS-Hostzugriff erforderlich. Die Berechtigung wird genutzt, um herunterladbare Links, Fetch/XHR-Dateiantworten innerhalb der Seite, Dateimetadaten, Downloads ausgewählter Dateien auf der gewählten Website sowie Lizenz-/Testprüfungen durchzuführen. Scan-Verlauf, Seiten-HTML, Surfaktivitäten und Dateiinhalte werden nicht an unsere Server gesendet.</td></tr>
+      </table>
+
+      <h2>5. Verwendung browserbezogener Daten</h2>
+      <p>Die Erweiterung nutzt browserbezogene Daten und Website-Inhalte ausschließlich zur Bereitstellung ihrer nutzerseitigen Funktionen: Scannen der aktuellen Seite, Scannen einer von Ihnen eingegebenen URL, Anzeige der letzten Scans, Prüfung von Dateimetadaten, Herunterladen ausgewählter Dateien und lokales Zusammenführen von PDFs.</p>
+      <ul>
+        <li>Wir <strong>verkaufen</strong> diese Daten <strong>nicht</strong>.</li>
+        <li>Wir <strong>verwenden</strong> diese Daten <strong>nicht</strong> für Werbung, Profiling oder Analysezwecke.</li>
+        <li>Wir <strong>übermitteln</strong> diese Daten <strong>nicht</strong> an Datenhändler, Informationsweiterverkäufer oder Werbeplattformen.</li>
+        <li>Wir <strong>senden</strong> weder Scan-Verlauf, Seiten-HTML noch Dateiinhalte an unsere Server.</li>
+      </ul>
+      <p>Unsere Verwendung dieser Daten beschränkt sich auf den einzigen Zweck der Erweiterung und die nutzerseitigen Funktionen, die im Eintrag des Chrome Web Store&trade; und in der Benutzeroberfläche der Erweiterung beschrieben sind.</p>
+
+      <h2>5a. Telemetrie, Analyse und Fehlerberichte</h2>
+      <p>Der veröffentlichte Store-Build sendet <strong>keine</strong> Fehlerberichte, Absturzberichte, Leistungsmetriken oder sonstigen Telemetriedaten an unsere Server oder an einen Drittanbieter-Telemetriedienst. Die Erweiterung enthält keine SDK von Google Analytics, Mixpanel, Amplitude, Segment oder Vergleichbarem.</p>
+      <p>Im Quellcode-Baum existiert ein optionaler Hook für Fehlerberichte (Sentry) für interne Debug-Builds, der jedoch durch ein Build-Geheimnis abgesichert ist und im über den Chrome Web Store&trade; und Microsoft Edge&trade; Add-ons verteilten Build niemals aktiviert ist. Sollte er in einem zukünftigen Release jemals aktiviert werden, wird diese Datenschutzerklärung vor der Auslieferung aktualisiert, und alle übermittelten Daten werden so gefiltert, dass Lizenzschlüssel, E-Mail-Adressen, JWTs, Bearer-Tokens, UUIDs, Query-String-Werte, Dateisystempfade und URL-Pfade entfernt (redacted) werden.</p>
+
+      <h2>6. Rechtsgrundlage der Verarbeitung (Art. 6 DSGVO / GDPR Article 6)</h2>
+      <p>Für Nutzer in der EU/im EWR stützen wir uns gegebenenfalls auf folgende Rechtsgrundlagen:</p>
+      <ul>
+        <li><strong>Vertragserfüllung</strong> (Art. 6 Abs. 1 lit. b / Article 6(1)(b)) &mdash; Lizenzverifizierung, Prüfung der Berechtigung zur Testversion und Durchsetzung des Gerätelimits bei kostenpflichtigen Lizenzen.</li>
+        <li><strong>Berechtigtes Interesse</strong> (Art. 6 Abs. 1 lit. f / Article 6(1)(f)) &mdash; Lokales Speichern von Einstellungen und der jüngsten Scan-Historie, das zur Bereitstellung der Kernfunktionen der Erweiterung auf Ihrem Gerät erforderlich ist.</li>
+      </ul>
+
+      <h2>7. Drittanbieterdienste und internationale Datenübermittlungen</h2>
+      <p>Die Erweiterung kommuniziert mit einem Lizenz-Backend, das auf <strong>Supabase</strong> gehostet wird. Supabase fungiert als unser Infrastrukturanbieter für Lizenzverifizierung, Testverifizierung und Geräteverwaltung. Wir verkaufen oder geben Nutzerdaten der Erweiterung nicht an unverbundene Dritte weiter.</p>
+      <p>Die Supabase-Infrastruktur wird auf Amazon Web Services (AWS) betrieben. An unser Backend gesendete Daten können außerhalb der EU/des EWR verarbeitet werden. Supabase erklärt, sich für internationale Übermittlungen auf <strong>Standardvertragsklauseln (SCCs)</strong> zu stützen. Weitere Einzelheiten finden Sie in der <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Datenschutzerklärung von Supabase</a>.</p>
+
+      <h2>8. Aufbewahrung und Löschung von Daten</h2>
+      <ul>
+        <li>Lizenz-, Geräte- und testbezogene Datensätze in unserem Backend werden so lange aufbewahrt, wie es für den Betrieb des Lizenz-/Testsystems erforderlich ist, in der Regel für die Dauer Ihrer Lizenz, sofern Sie keine Löschung verlangen.</li>
+        <li>Löschungsanträge für Backend-Datensätze bearbeiten wir innerhalb von <strong>30 Tagen</strong>.</li>
+        <li>Die jüngste Scan-Historie ist auf die letzten 20 lokal gespeicherten Einträge begrenzt.</li>
+        <li>Der Sitzungsspeicher wird am Ende der Browsersitzung gelöscht.</li>
+        <li>Bei der Deinstallation der Erweiterung wird der vom Browser verwaltete lokale Speicher entfernt.</li>
+      </ul>
+
+      <h2>9. Ihre Rechte (Nutzer in der EU/im EWR)</h2>
+      <p>Nach der DSGVO haben Sie gegebenenfalls folgende Rechte in Bezug auf von uns kontrollierte Daten:</p>
+      <ul>
+        <li><strong>Auskunftsrecht</strong> &mdash; Eine Kopie der über Sie gespeicherten Daten anfordern.</li>
+        <li><strong>Recht auf Berichtigung</strong> &mdash; Berichtigung unzutreffender Daten verlangen.</li>
+        <li><strong>Recht auf Löschung</strong> &mdash; Löschung der über Sie gespeicherten Daten verlangen.</li>
+        <li><strong>Recht auf Einschränkung der Verarbeitung</strong> &mdash; Verlangen, dass wir die Verwendung Ihrer Daten einschränken.</li>
+        <li><strong>Recht auf Datenübertragbarkeit</strong> &mdash; Ihre Daten in einem maschinenlesbaren Format anfordern.</li>
+        <li><strong>Widerspruchsrecht</strong> &mdash; Der Verarbeitung auf Grundlage berechtigter Interessen widersprechen.</li>
+        <li><strong>Recht auf Beschwerde</strong> &mdash; Eine Beschwerde bei Ihrer örtlichen Datenschutzaufsichtsbehörde einreichen.</li>
+      </ul>
+      <p>Zur Ausübung dieser Rechte wenden Sie sich an <a href="mailto:oldemail@example.invalid">oldemail@example.invalid</a>. Wir antworten innerhalb von <strong>30 Tagen</strong>.</p>
+
+      <h2>10. Datenschutz von Kindern</h2>
+      <p>Die Erweiterung richtet sich nicht an Kinder unter 16 Jahren (oder dem in Ihrer Rechtsordnung geltenden Alter), und wir erheben wissentlich keine personenbezogenen Daten von Kindern.</p>
+
+      <h2>11. Änderungen dieser Erklärung</h2>
+      <p>Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren. Änderungen werden auf dieser Seite mit einem aktualisierten Datum veröffentlicht.</p>
+
+      <div class="contact">
+        <h2 style="margin-top:0;">12. Kontakt / Verantwortlicher</h2>
+        <p><strong>Verantwortlicher:</strong> Tetsunobu Kawai</p>
+        <p>Wenn Sie Fragen zu dieser Datenschutzerklärung haben oder Ihre Datenschutzrechte ausüben möchten, wenden Sie sich bitte an:</p>
+        <p><strong>E-Mail:</strong> <a href="mailto:oldemail@example.invalid">oldemail@example.invalid</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/SerimaTeddyBear" target="_blank" rel="noopener">github.com/SerimaTeddyBear</a></p>
+      </div>
+
+      <h2>13. Verwandte Dokumente</h2>
+      <ul>
+        <li><a href="terms.html">Allgemeine Geschäftsbedingungen</a> &mdash; Lizenz, untersagte Nutzungen, anwendbares Recht.</li>
+        <li><a href="tokushoho.html">Hinweis nach dem japanischen Gesetz über bestimmte Handelsgeschäfte (Specified Commercial Transactions Act Notice / Japan)</a> &mdash; gesetzlich vorgeschriebene Angaben für Verkäufe an japanische Verbraucher.</li>
+      </ul>
+
+      <h2>14. Marken</h2>
+      <p>„Google Chrome" und „Chrome Web Store" sind Marken der Google LLC. „Microsoft Edge" und „Microsoft Edge Add-ons" sind Marken der Microsoft Corporation. Die Verwendung dieser Namen in dieser Datenschutzerklärung dient ausschließlich beschreibenden Zwecken und impliziert keine Verbindung mit oder Empfehlung durch Google oder Microsoft. Die Erweiterung ist ein unabhängiges Produkt von Tetsunobu Kawai.</p>
+    </div>
+
+    <div data-lang="es">
+      <h1>Política de Privacidad</h1>
+      <p class="updated">Última actualización: 4 de mayo de 2026</p>
+      <p><strong>Grab All Files</strong> (la «Extensión») es una extensión de navegador que ayuda a los usuarios a buscar, inspeccionar, descargar y, opcionalmente, combinar archivos de las páginas web que ellos elijan. La presente política explica qué datos trata la Extensión, cómo se utilizan, dónde se almacenan y cuándo se transmiten.</p>
+
+      <h2>1. Resumen del Tratamiento de Datos</h2>
+      <p>La Extensión <strong>no</strong> vende datos personales, no ejecuta análisis de terceros, no inserta anuncios, no utiliza scripts de seguimiento ni envía informes de errores o de fallos a ningún proveedor de telemetría en la versión publicada. Sí trata, en cambio, una cantidad limitada de datos relacionados con la navegación de forma local en su navegador, con el fin de prestar las funcionalidades dirigidas al usuario.</p>
+      <p>Esto incluye, por ejemplo:</p>
+      <ul>
+        <li>la pestaña actual o la URL que usted solicite escanear con la Extensión,</li>
+        <li>el historial reciente de escaneos almacenado localmente para acceso rápido, y</li>
+        <li><strong>registros de archivos de red</strong> (URL y metadatos de archivos detectados mediante la monitorización de red) almacenados temporalmente en el almacenamiento de sesión durante su sesión de navegación.</li>
+      </ul>
+      <p>No enviamos su historial de escaneos, el HTML de las páginas, el contenido de los archivos ni su actividad de navegación a nuestros servidores.</p>
+      <p><strong>Período de prueba y licencia de pago:</strong> La Extensión incluye un período de prueba gratuito de 14 días. Una vez expirada la prueba, para continuar usándola se requiere una clave de licencia de pago. La elegibilidad para la prueba, la activación de la licencia, su renovación, la aplicación de los límites de dispositivos y las comprobaciones de revocación se gestionan en el backend de licencias mediante un UUID aleatorio del dispositivo y, cuando proceda, la clave de licencia.</p>
+      <p><strong>Acceso a sitios web:</strong> La Extensión solicita acceso a <code>https://*/*</code> porque los usuarios pueden optar por escanear cualquier sitio web y el dominio objetivo no se conoce con antelación. Este acceso se utiliza para detectar enlaces descargables y respuestas de archivos en las páginas o URL que usted decida escanear, así como para descargar los archivos que seleccione. No se utiliza para enviar a nuestros servidores el HTML de las páginas, su actividad de navegación ni el contenido de los archivos.</p>
+
+      <h2>2. Solicitudes de Red</h2>
+      <p>La Extensión realiza solicitudes de red únicamente para los siguientes fines:</p>
+      <ul>
+        <li><strong>Verificación de la licencia</strong> &mdash; Cuando se introduce o se vuelve a validar una clave de licencia, la Extensión envía la clave y un identificador de dispositivo (UUID) generado aleatoriamente a nuestro servidor para verificar la licencia y aplicar los límites de dispositivos.</li>
+        <li><strong>Emisión y renovación del token de licencia (JWT)</strong> &mdash; Tras una verificación correcta, nuestro servidor devuelve un token de acceso firmado y de corta duración (ES256 JWT, TTL de 7 días) que contiene la clave de licencia, el identificador del dispositivo, las funcionalidades concedidas y la fecha de expiración. La Extensión guarda este token en caché localmente, de modo que la mayoría de las comprobaciones posteriores se realicen sin conexión. El token se renueva enviando la misma clave de licencia y el mismo identificador de dispositivo a nuestro servidor, normalmente una vez al día.</li>
+        <li><strong>Actualización de la lista de revocaciones</strong> &mdash; Una vez al día, la Extensión descarga una pequeña lista firmada de identificadores de tokens revocados (sin claves de licencia) para que las revocaciones surtan efecto en un plazo de 24 horas, incluso sin conexión. Esta solicitud no envía datos identificativos del usuario.</li>
+        <li><strong>Verificación del período de prueba</strong> &mdash; Durante el período de prueba gratuito, la Extensión envía el identificador del dispositivo (UUID) a nuestro servidor para verificar la elegibilidad para la prueba.</li>
+        <li><strong>Gestión de dispositivos</strong> &mdash; Cuando consulta o elimina dispositivos activados desde la pantalla de licencia, la Extensión envía a nuestro servidor la clave de licencia, el identificador de su dispositivo actual y, si elimina un dispositivo, el identificador del dispositivo de destino.</li>
+        <li><strong>Acceso a páginas y archivos solicitado por el usuario</strong> &mdash; Cuando usted escanea una página, introduce una URL, obtiene metadatos de archivos, descarga archivos o combina PDF, la Extensión se conecta directamente al sitio web de destino que usted haya seleccionado. Estas solicitudes no pasan por nuestros servidores.</li>
+      </ul>
+      <p>Las solicitudes a los sitios web de destino pueden incluir cookies u otras credenciales de sesión ya asociadas a dicho sitio en su sesión de navegación, si resultan necesarias para acceder al contenido que solicitó a la Extensión. La Extensión no recopila, copia ni vende dicha información por separado.</p>
+
+      <h2>3. Datos Almacenados en su Dispositivo</h2>
+      <p>La Extensión almacena los siguientes datos localmente mediante <code>chrome.storage.local</code> y <code>chrome.storage.session</code>. Salvo en lo relativo a las solicitudes de licencia descritas anteriormente, estos datos permanecen en su dispositivo.</p>
+      <table>
+        <tr><th>Datos</th><th>Almacenamiento</th><th>Finalidad</th></tr>
+        <tr><td>Clave de licencia</td><td>Local</td><td>Mantener la Extensión activada después de la verificación de la licencia.</td></tr>
+        <tr><td>ID del dispositivo (UUID aleatorio)</td><td>Local</td><td>Identificar esta instalación a efectos de los límites de licencia y de las comprobaciones de la prueba.</td></tr>
+        <tr><td>Fecha de instalación</td><td>Local</td><td>Gestionar el período de prueba gratuito de 14 días.</td></tr>
+        <tr><td>Marcas de tiempo de la última verificación / última comprobación de prueba</td><td>Local</td><td>Permitir un período de gracia limitado sin conexión tras una verificación de licencia satisfactoria y evitar llamadas redundantes al servidor.</td></tr>
+        <tr><td>JWT de licencia y caché de revocaciones (token de acceso firmado, expiración, ID del token, funcionalidades concedidas, lista de IDs de tokens revocados)</td><td>Local</td><td>Verificar la licencia sin conexión utilizando un token firmado emitido por el servidor y bloquear los tokens que hayan sido revocados.</td></tr>
+        <tr><td>Indicador de prueba expirada y error/estado de licencia devuelto por el servidor</td><td>Local</td><td>Conservar el resultado de la expiración de la prueba y de las verificaciones fallidas en el servidor entre reinicios del navegador.</td></tr>
+        <tr><td>Historial reciente de escaneos (URL, títulos/nombres de host, marcas de tiempo)</td><td>Local</td><td>Mostrar las páginas escaneadas recientemente y las URL introducidas para acceso rápido.</td></tr>
+        <tr><td>ID de la última pestaña de origen</td><td>Local</td><td>Reconectar la ventana emergente con la pestaña que estaba escaneando.</td></tr>
+        <tr><td>Tamaño de la ventana</td><td>Local</td><td>Recordar las dimensiones de la ventana emergente.</td></tr>
+        <tr><td>Preferencias de la interfaz (tipos de archivo seleccionados, lista de extensiones personalizadas, opciones de organización/concurrencia, tema, indicadores de finalización del onboarding/selector de categorías)</td><td>Local</td><td>Recordar entre sesiones las elecciones que usted ha realizado en la interfaz de la Extensión.</td></tr>
+        <tr><td>Registros de archivos de red (URL, tipos y tamaños de archivos detectados mediante monitorización de red)</td><td>Session</td><td>Detectar archivos descargables cargados mediante JavaScript, XHR o solicitudes fetch que no son visibles en el HTML de la página. Se borran automáticamente al cerrar la pestaña o al finalizar la sesión del navegador.</td></tr>
+        <tr><td>Estado temporal de descargas (URL de archivos seleccionados, títulos, nombres de archivo, estado, reintentos, IDs de descarga)</td><td>Session</td><td>Recuperar las descargas en curso si el service worker se suspende.</td></tr>
+      </table>
+      <p>Puede borrar el historial reciente de escaneos desde la interfaz de la Extensión. Los registros de archivos de red pueden borrarse pulsando el botón «Reset» en el panel de resultados o cerrando la pestaña. Al desinstalar la Extensión se elimina su almacenamiento local. Los datos de sesión se borran automáticamente al finalizar la sesión del navegador.</p>
+
+      <h2>4. Permisos</h2>
+      <table>
+        <tr><th>Permiso</th><th>Por qué se necesita</th></tr>
+        <tr><td><code>tabs</code></td><td>Conocer la URL de la pestaña activa para que la ventana emergente muestre qué página va a escanear.</td></tr>
+        <tr><td><code>scripting</code></td><td>Inyectar un content script en la página actual para encontrar enlaces de archivos descargables.</td></tr>
+        <tr><td><code>downloads</code></td><td>Guardar en su equipo los archivos seleccionados y los PDF combinados.</td></tr>
+        <tr><td><code>storage</code></td><td>Almacenar el estado de la licencia, las preferencias y el historial reciente de escaneos.</td></tr>
+        <tr><td><code>alarms</code></td><td>Actualizar de forma periódica el estado de la licencia y de las revocaciones.</td></tr>
+        <tr><td><code>notifications</code></td><td>Mostrar notificaciones de finalización de descargas y de estado de la licencia.</td></tr>
+        <tr><td><code>contextMenus</code></td><td>Añadir acciones del menú contextual (clic derecho) para escanear y descargar archivos desde páginas, enlaces, imágenes y selecciones.</td></tr>
+        <tr><td>Permiso de host obligatorio:<br><code>https://*/*</code></td><td>Permitirle escanear cualquier sitio web que elija y conectarse al backend de verificación de licencia/prueba en <code>https://umczaaooqinddgnhxbvp.supabase.co/*</code>. El dominio de destino del escaneo no se conoce hasta que usted elige una página o introduce una URL, por lo que se requiere un acceso amplio por host HTTPS. El permiso se utiliza para detectar enlaces descargables, respuestas de archivos por fetch/XHR en la página, metadatos de archivos, descargas de los archivos seleccionados en el sitio elegido y comprobaciones de licencia/prueba. No se envía a nuestros servidores el historial de escaneos, el HTML de las páginas, la actividad de navegación ni el contenido de los archivos.</td></tr>
+      </table>
+
+      <h2>5. Uso de los Datos Relacionados con la Navegación</h2>
+      <p>La Extensión utiliza los datos relacionados con la navegación y el contenido de los sitios web únicamente para prestar sus funcionalidades dirigidas al usuario: escanear la página actual, escanear una URL que usted introduzca, mostrar los escaneos recientes, comprobar metadatos de archivos, descargar los archivos seleccionados y combinar PDF localmente.</p>
+      <ul>
+        <li><strong>No</strong> vendemos estos datos.</li>
+        <li><strong>No</strong> utilizamos estos datos con fines publicitarios, de elaboración de perfiles ni analíticos.</li>
+        <li><strong>No</strong> transferimos estos datos a corredores de datos, revendedores de información ni plataformas publicitarias.</li>
+        <li><strong>No</strong> enviamos a nuestros servidores el historial de escaneos, el HTML de las páginas ni el contenido de los archivos.</li>
+      </ul>
+      <p>Nuestro uso de estos datos se limita a la finalidad única de la Extensión y a las funcionalidades dirigidas al usuario que se describen en la ficha de Chrome Web Store&trade; y en la propia interfaz de la Extensión.</p>
+
+      <h2>5a. Telemetría, Análisis e Informes de Errores</h2>
+      <p>La versión publicada en las tiendas <strong>no</strong> envía informes de errores, informes de fallos, métricas de rendimiento ni ningún otro dato de telemetría a nuestros servidores ni a ningún proveedor externo de telemetría. La Extensión no contiene SDK de Google Analytics, Mixpanel, Amplitude, Segment ni similares.</p>
+      <p>En el árbol de código fuente existe un gancho opcional de notificación de errores (Sentry) destinado a las compilaciones internas de depuración, pero está controlado por un secreto en tiempo de compilación y nunca se activa en la versión distribuida a través de Chrome Web Store&trade; y Microsoft Edge&trade; Add-ons. Si en una futura versión se llegara a activar, esta Política de Privacidad se actualizaría antes del lanzamiento de dicha versión, y los datos enviados serían filtrados para suprimir las claves de licencia, las direcciones de correo electrónico, los JWT, los tokens portadores (bearer), los UUID, los valores de las cadenas de consulta, las rutas del sistema de archivos y el cuerpo de las rutas de URL.</p>
+
+      <h2>6. Base Jurídica del Tratamiento (artículo 6 del RGPD)</h2>
+      <p>Para los usuarios de la UE/EEE, nos basamos en las siguientes bases jurídicas según corresponda:</p>
+      <ul>
+        <li><strong>Ejecución de un contrato</strong> (artículo 6, apartado 1, letra b)) &mdash; Verificación de la licencia, comprobación de la elegibilidad para la prueba y aplicación del límite de dispositivos en las licencias de pago.</li>
+        <li><strong>Interés legítimo</strong> (artículo 6, apartado 1, letra f)) &mdash; Almacenamiento de las preferencias locales y del historial reciente de escaneos necesarios para prestar la funcionalidad básica de la Extensión en su dispositivo.</li>
+      </ul>
+
+      <h2>7. Servicios de Terceros y Transferencias Internacionales</h2>
+      <p>La Extensión se comunica con un backend de licencias alojado en <strong>Supabase</strong>. Supabase actúa como nuestro proveedor de infraestructura para la verificación de licencias, la verificación del período de prueba y la gestión de dispositivos. No vendemos ni divulgamos los datos de los usuarios de la Extensión a terceros no relacionados.</p>
+      <p>La infraestructura de Supabase está alojada en Amazon Web Services (AWS). Los datos enviados a nuestro backend pueden ser tratados fuera de la UE/EEE. Supabase declara que se basa en <strong>Cláusulas Contractuales Tipo (SCC)</strong> para las transferencias internacionales. Para más detalles, consulte la <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Política de Privacidad de Supabase</a>.</p>
+
+      <h2>8. Conservación y Eliminación de Datos</h2>
+      <ul>
+        <li>Los registros de licencia, dispositivo y prueba en nuestro backend se conservan durante el tiempo necesario para operar el sistema de licencias/pruebas, generalmente durante el período de vigencia de su licencia, salvo que solicite su eliminación.</li>
+        <li>Tramitaremos las solicitudes de eliminación de los registros del backend en un plazo de <strong>30 días</strong>.</li>
+        <li>El historial reciente de escaneos se limita a las 20 entradas más recientes almacenadas localmente.</li>
+        <li>El almacenamiento de sesión se borra al finalizar la sesión del navegador.</li>
+        <li>Al desinstalar la Extensión se elimina el almacenamiento local gestionado por el navegador.</li>
+      </ul>
+
+      <h2>9. Sus Derechos (Usuarios de la UE/EEE)</h2>
+      <p>Conforme al RGPD, usted puede tener los siguientes derechos respecto de los datos que controlamos:</p>
+      <ul>
+        <li><strong>Derecho de acceso</strong> &mdash; Solicitar una copia de los datos que conservamos sobre usted.</li>
+        <li><strong>Derecho de rectificación</strong> &mdash; Solicitar la corrección de los datos inexactos.</li>
+        <li><strong>Derecho de supresión</strong> &mdash; Solicitar la eliminación de los datos que conservamos sobre usted.</li>
+        <li><strong>Derecho a la limitación del tratamiento</strong> &mdash; Solicitar que limitemos el uso que hacemos de sus datos.</li>
+        <li><strong>Derecho a la portabilidad de los datos</strong> &mdash; Solicitar sus datos en un formato legible por máquina.</li>
+        <li><strong>Derecho de oposición</strong> &mdash; Oponerse al tratamiento basado en el interés legítimo.</li>
+        <li><strong>Derecho a presentar una reclamación</strong> &mdash; Presentar una reclamación ante su autoridad local de protección de datos.</li>
+      </ul>
+      <p>Para ejercer estos derechos, contáctenos en <a href="mailto:oldemail@example.invalid">oldemail@example.invalid</a>. Responderemos en un plazo de <strong>30 días</strong>.</p>
+
+      <h2>10. Privacidad de los Menores</h2>
+      <p>La Extensión no está dirigida a menores de 16 años (o de la edad aplicable en su jurisdicción) y no recopilamos a sabiendas información personal de menores.</p>
+
+      <h2>11. Cambios en Esta Política</h2>
+      <p>Podemos actualizar esta Política de Privacidad de manera periódica. Los cambios se publicarán en esta página con la fecha actualizada.</p>
+
+      <div class="contact">
+        <h2 style="margin-top:0;">12. Contacto / Responsable del Tratamiento</h2>
+        <p><strong>Responsable del tratamiento:</strong> Tetsunobu Kawai</p>
+        <p>Si tiene preguntas sobre esta Política de Privacidad o desea ejercer sus derechos en materia de datos, contáctenos en:</p>
+        <p><strong>Correo electrónico:</strong> <a href="mailto:oldemail@example.invalid">oldemail@example.invalid</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/SerimaTeddyBear" target="_blank" rel="noopener">github.com/SerimaTeddyBear</a></p>
+      </div>
+
+      <h2>13. Documentos Relacionados</h2>
+      <ul>
+        <li><a href="terms.html">Condiciones del Servicio</a> &mdash; licencia, usos prohibidos, legislación aplicable.</li>
+        <li><a href="tokushoho.html">Aviso conforme a la Ley de Transacciones Comerciales Específicas (Japón)</a> &mdash; información obligatoria para las ventas a consumidores japoneses.</li>
+      </ul>
+
+      <h2>14. Marcas Comerciales</h2>
+      <p>«Google Chrome» y «Chrome Web Store» son marcas comerciales de Google LLC. «Microsoft Edge» y «Microsoft Edge Add-ons» son marcas comerciales de Microsoft Corporation. El uso de estos nombres en la presente Política de Privacidad es meramente descriptivo y no implica afiliación o respaldo por parte de Google o Microsoft. La Extensión es un producto independiente de Tetsunobu Kawai.</p>
+    </div>
+
+    <div data-lang="fr">
+      <h1>Politique de confidentialité</h1>
+      <p class="updated">Dernière mise à jour : 4 mai 2026</p>
+      <p><strong>Grab All Files</strong> (ci-après « l'Extension ») est une extension de navigateur qui aide les utilisateurs à trouver, examiner, télécharger et, en option, fusionner des fichiers à partir des pages Web qu'ils choisissent. La présente politique explique quelles données l'Extension traite, comment elles sont utilisées, où elles sont stockées et quand elles sont transmises.</p>
+
+      <h2>1. Synthèse du traitement des données</h2>
+      <p>L'Extension <strong>ne</strong> vend <strong>pas</strong> de données personnelles, n'exécute aucune analyse tierce, n'injecte pas de publicités, n'utilise pas de scripts de suivi et n'envoie aucun rapport d'erreur ou de plantage à un fournisseur de télémétrie dans la version publiée. Elle traite cependant une quantité limitée de données liées à la navigation, localement dans votre navigateur, afin de fournir ses fonctionnalités destinées à l'utilisateur.</p>
+      <p>Cela inclut, par exemple :</p>
+      <ul>
+        <li>l'onglet ou l'URL actuel(le) que vous demandez à l'Extension d'analyser,</li>
+        <li>l'historique récent des analyses stocké localement pour un accès rapide, et</li>
+        <li><strong>les enregistrements de fichiers réseau</strong> (URL et métadonnées des fichiers détectés via la surveillance du réseau) stockés temporairement dans le stockage de session pendant votre session de navigation.</li>
+      </ul>
+      <p>Nous n'envoyons pas votre historique d'analyses, le HTML des pages, le contenu des fichiers ou votre activité de navigation à nos serveurs.</p>
+      <p><strong>Période d'essai et licence payante :</strong> L'Extension comprend une période d'essai gratuite de 14 jours. Après l'expiration de la période d'essai, l'utilisation continue nécessite une clé de licence payante. L'éligibilité à la période d'essai, l'activation de la licence, le rafraîchissement de la licence, l'application de la limite d'appareils et les vérifications de révocation sont gérés par le serveur de licences à l'aide d'un UUID d'appareil aléatoire et, le cas échéant, de la clé de licence.</p>
+      <p><strong>Accès aux sites Web :</strong> L'Extension demande un accès à <code>https://*/*</code> car les utilisateurs peuvent choisir d'analyser n'importe quel site Web et le domaine cible n'est pas connu à l'avance. Cet accès sert à détecter les liens téléchargeables et les réponses de fichiers sur les pages ou URL que vous choisissez d'analyser, et à télécharger les fichiers que vous sélectionnez. Il n'est pas utilisé pour envoyer le HTML des pages, l'activité de navigation ou le contenu des fichiers à nos serveurs.</p>
+
+      <h2>2. Requêtes réseau</h2>
+      <p>L'Extension n'effectue de requêtes réseau qu'aux fins suivantes :</p>
+      <ul>
+        <li><strong>Vérification de licence</strong> &mdash; Lorsqu'une clé de licence est saisie ou revalidée, l'Extension envoie la clé de licence et un identifiant d'appareil généré aléatoirement (UUID) à notre serveur afin de vérifier la licence et d'appliquer les limites d'appareils.</li>
+        <li><strong>Émission et renouvellement du jeton de licence (JWT)</strong> &mdash; Après une vérification réussie, notre serveur renvoie un jeton d'accès signé à courte durée de vie (JWT ES256, durée de vie de 7 jours) contenant la clé de licence, l'identifiant de l'appareil, les fonctionnalités accordées et la date d'expiration. L'Extension met ce jeton en cache localement afin que la plupart des vérifications de licence ultérieures se fassent hors ligne. Le jeton est renouvelé en envoyant la même clé de licence et le même identifiant d'appareil à notre serveur, généralement une fois par jour.</li>
+        <li><strong>Mise à jour de la liste de révocation</strong> &mdash; Une fois par jour, l'Extension télécharge une petite liste signée d'identifiants de jetons révoqués (sans clés de licence) afin que les révocations prennent effet sous 24 heures, même hors ligne. Cette requête n'envoie aucune donnée identifiant l'utilisateur.</li>
+        <li><strong>Vérification de la période d'essai</strong> &mdash; Pendant la période d'essai gratuite, l'Extension envoie l'identifiant d'appareil (UUID) à notre serveur pour vérifier l'éligibilité à la période d'essai.</li>
+        <li><strong>Gestion des appareils</strong> &mdash; Lorsque vous consultez ou supprimez des appareils activés sur l'écran de licence, l'Extension envoie à notre serveur la clé de licence, votre identifiant d'appareil actuel et, si vous supprimez un appareil, l'identifiant de l'appareil ciblé.</li>
+        <li><strong>Accès aux pages et fichiers à la demande de l'utilisateur</strong> &mdash; Lorsque vous analysez une page, saisissez une URL, récupérez les métadonnées de fichiers, téléchargez des fichiers ou fusionnez des PDF, l'Extension se connecte directement au site Web cible que vous avez sélectionné. Ces requêtes ne transitent pas par nos serveurs.</li>
+      </ul>
+      <p>Les requêtes vers les sites Web cibles peuvent inclure des cookies ou d'autres identifiants de session déjà associés à ce site Web dans votre session de navigateur, s'ils sont nécessaires au contenu que vous avez demandé à l'Extension d'atteindre. L'Extension ne collecte, ne copie ni ne vend séparément ces informations.</p>
+
+      <h2>3. Données stockées sur votre appareil</h2>
+      <p>L'Extension stocke localement les données suivantes au moyen de <code>chrome.storage.local</code> et <code>chrome.storage.session</code>. À l'exception des requêtes liées à la licence décrites ci-dessus, ces données restent sur votre appareil.</p>
+      <table>
+        <tr><th>Données</th><th>Stockage</th><th>Finalité</th></tr>
+        <tr><td>Clé de licence</td><td>Local</td><td>Maintenir l'Extension activée après vérification de la licence.</td></tr>
+        <tr><td>ID d'appareil (UUID aléatoire)</td><td>Local</td><td>Identifier cette installation pour les limites de licence et les vérifications de période d'essai.</td></tr>
+        <tr><td>Date d'installation</td><td>Local</td><td>Gérer la période d'essai gratuite de 14 jours.</td></tr>
+        <tr><td>Horodatages de la dernière vérification / dernière vérification de période d'essai</td><td>Local</td><td>Permettre une période de grâce hors ligne limitée après une vérification de licence réussie et éviter des appels redondants au serveur.</td></tr>
+        <tr><td>JWT de licence et cache de révocation (jeton d'accès signé, expiration, identifiant de jeton, fonctionnalités accordées, liste des identifiants de jetons révoqués)</td><td>Local</td><td>Vérifier la licence hors ligne à l'aide d'un jeton signé émis par le serveur, et bloquer les jetons ayant été révoqués.</td></tr>
+        <tr><td>Indicateur d'expiration de la période d'essai et erreur/état de licence renvoyés par le serveur</td><td>Local</td><td>Conserver le résultat de l'expiration de la période d'essai et des vérifications côté serveur ayant échoué entre les redémarrages du navigateur.</td></tr>
+        <tr><td>Historique récent des analyses (URL, titres/noms d'hôtes, horodatages)</td><td>Local</td><td>Afficher les pages récemment analysées et les URL saisies pour un accès rapide.</td></tr>
+        <tr><td>ID du dernier onglet source</td><td>Local</td><td>Reconnecter la fenêtre contextuelle à l'onglet que vous étiez en train d'analyser.</td></tr>
+        <tr><td>Taille de la fenêtre</td><td>Local</td><td>Mémoriser les dimensions de la fenêtre contextuelle.</td></tr>
+        <tr><td>Préférences d'interface (types de fichiers sélectionnés, liste d'extensions personnalisées, choix d'organisation/de concurrence, thème, indicateurs d'achèvement de l'intégration/du sélecteur de catégories)</td><td>Local</td><td>Mémoriser les choix que vous avez effectués dans l'interface de l'Extension d'une session à l'autre.</td></tr>
+        <tr><td>Enregistrements de fichiers réseau (URL, types et tailles de fichiers détectés via la surveillance du réseau)</td><td>Session</td><td>Détecter les fichiers téléchargeables chargés via JavaScript, XHR ou des requêtes fetch qui ne sont pas visibles dans le HTML de la page. Effacés automatiquement à la fermeture de l'onglet ou à la fin de la session du navigateur.</td></tr>
+        <tr><td>État temporaire des téléchargements (URL des fichiers sélectionnés, titres, noms de fichiers, état, tentatives, ID de téléchargement)</td><td>Session</td><td>Restaurer les téléchargements en cours si le service worker est suspendu.</td></tr>
+      </table>
+      <p>Vous pouvez effacer l'historique récent des analyses depuis l'interface de l'Extension. Les enregistrements de fichiers réseau peuvent être effacés en cliquant sur le bouton « Reset » dans le panneau des résultats ou en fermant l'onglet. La désinstallation de l'Extension supprime son stockage local. Les données de session sont effacées automatiquement à la fin de la session du navigateur.</p>
+
+      <h2>4. Permissions</h2>
+      <table>
+        <tr><th>Permission</th><th>Pourquoi elle est nécessaire</th></tr>
+        <tr><td><code>tabs</code></td><td>Suivre l'URL de l'onglet actuellement actif afin que la fenêtre contextuelle indique la page qu'elle analysera.</td></tr>
+        <tr><td><code>scripting</code></td><td>Injecter un script de contenu dans la page courante pour trouver les liens vers des fichiers téléchargeables.</td></tr>
+        <tr><td><code>downloads</code></td><td>Enregistrer les fichiers sélectionnés et les PDF fusionnés sur votre ordinateur.</td></tr>
+        <tr><td><code>storage</code></td><td>Stocker l'état de licence, les préférences et l'historique récent des analyses.</td></tr>
+        <tr><td><code>alarms</code></td><td>Rafraîchir périodiquement l'état de la licence et de la révocation.</td></tr>
+        <tr><td><code>notifications</code></td><td>Afficher les notifications de fin de téléchargement et d'état de licence.</td></tr>
+        <tr><td><code>contextMenus</code></td><td>Ajouter des actions de clic droit pour analyser et télécharger des fichiers depuis des pages, liens, images et sélections.</td></tr>
+        <tr><td>Permission d'hôte requise :<br><code>https://*/*</code></td><td>Vous permettre d'analyser tout site Web de votre choix et de vous connecter au serveur de vérification de licence / période d'essai à l'adresse <code>https://umczaaooqinddgnhxbvp.supabase.co/*</code>. Le domaine cible de l'analyse n'est pas connu avant que vous choisissiez une page ou saisissiez une URL ; un accès large aux hôtes HTTPS est donc nécessaire. La permission est utilisée pour détecter les liens téléchargeables, les réponses de fichiers fetch/XHR dans la page, les métadonnées de fichiers, les téléchargements de fichiers sélectionnés sur le site choisi et les vérifications de licence/période d'essai. L'historique des analyses, le HTML des pages, l'activité de navigation et le contenu des fichiers ne sont pas envoyés à nos serveurs.</td></tr>
+      </table>
+
+      <h2>5. Utilisation des données liées à la navigation</h2>
+      <p>L'Extension utilise les données liées à la navigation et le contenu des sites Web uniquement pour fournir ses fonctionnalités destinées à l'utilisateur : analyse de la page courante, analyse d'une URL que vous saisissez, affichage des analyses récentes, vérification des métadonnées de fichiers, téléchargement des fichiers sélectionnés et fusion locale de PDF.</p>
+      <ul>
+        <li>Nous <strong>ne vendons pas</strong> ces données.</li>
+        <li>Nous <strong>n'utilisons pas</strong> ces données à des fins publicitaires, de profilage ou d'analyse.</li>
+        <li>Nous <strong>ne transférons pas</strong> ces données à des courtiers en données, à des revendeurs d'informations ou à des plateformes publicitaires.</li>
+        <li>Nous <strong>n'envoyons pas</strong> l'historique des analyses, le HTML des pages ou le contenu des fichiers à nos serveurs.</li>
+      </ul>
+      <p>Notre utilisation de ces données est limitée à l'unique finalité de l'Extension et aux fonctionnalités utilisateur décrites dans la fiche du Chrome Web Store&trade; et dans l'interface de l'Extension.</p>
+
+      <h2>5a. Télémétrie, analyses et rapports d'erreurs</h2>
+      <p>La version publiée sur les magasins <strong>n'envoie aucun</strong> rapport d'erreur, rapport de plantage, métrique de performance ou autre télémétrie à nos serveurs ou à un fournisseur de télémétrie tiers. L'Extension ne contient aucun SDK Google Analytics, Mixpanel, Amplitude, Segment ou similaire.</p>
+      <p>Un point d'ancrage optionnel pour les rapports d'erreurs (Sentry) est présent dans l'arborescence des sources pour les versions de débogage internes, mais il est conditionné par un secret de compilation et n'est jamais activé dans la version distribuée via le Chrome Web Store&trade; et Microsoft Edge&trade; Add-ons. Si une future version venait à l'activer, la présente Politique de confidentialité serait mise à jour avant la publication, et les données envoyées seraient filtrées pour expurger les clés de licence, les adresses e-mail, les JWT, les jetons « bearer », les UUID, les valeurs de chaînes de requête, les chemins de système de fichiers et les corps des chemins d'URL.</p>
+
+      <h2>6. Base juridique du traitement (Article 6 du RGPD / GDPR Article 6)</h2>
+      <p>Pour les utilisateurs dans l'UE/EEE, nous nous appuyons, le cas échéant, sur les bases juridiques suivantes :</p>
+      <ul>
+        <li><strong>Exécution d'un contrat</strong> (Article 6, paragraphe 1, point b) / Article 6(1)(b)) &mdash; Vérification de licence, contrôle de l'éligibilité à la période d'essai et application de la limite d'appareils pour les licences payantes.</li>
+        <li><strong>Intérêt légitime</strong> (Article 6, paragraphe 1, point f) / Article 6(1)(f)) &mdash; Stockage local des préférences et de l'historique récent des analyses nécessaires au fonctionnement essentiel de l'Extension sur votre appareil.</li>
+      </ul>
+
+      <h2>7. Services tiers et transferts internationaux</h2>
+      <p>L'Extension communique avec un serveur de licences hébergé sur <strong>Supabase</strong>. Supabase agit en tant que prestataire d'infrastructure pour la vérification de licence, la vérification de la période d'essai et la gestion des appareils. Nous ne vendons ni ne divulguons les données des utilisateurs de l'Extension à des tiers non liés.</p>
+      <p>L'infrastructure de Supabase est hébergée sur Amazon Web Services (AWS). Les données envoyées à notre serveur peuvent être traitées en dehors de l'UE/EEE. Supabase indique qu'il s'appuie sur les <strong>Clauses Contractuelles Types (CCT)</strong> pour les transferts internationaux. Voir la <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Politique de confidentialité de Supabase</a> pour plus de détails.</p>
+
+      <h2>8. Conservation et suppression des données</h2>
+      <ul>
+        <li>Les enregistrements relatifs à la licence, à l'appareil et à la période d'essai conservés sur notre serveur sont conservés aussi longtemps que nécessaire au fonctionnement du système de licence/période d'essai, généralement pendant la durée de votre licence, sauf demande de suppression de votre part.</li>
+        <li>Nous traiterons les demandes de suppression d'enregistrements côté serveur dans un délai de <strong>30 jours</strong>.</li>
+        <li>L'historique récent des analyses est limité aux 20 entrées les plus récentes stockées localement.</li>
+        <li>Le stockage de session est effacé à la fin de la session du navigateur.</li>
+        <li>La désinstallation de l'Extension supprime le stockage local géré par le navigateur.</li>
+      </ul>
+
+      <h2>9. Vos droits (Utilisateurs UE/EEE)</h2>
+      <p>En vertu du RGPD, vous pouvez disposer des droits suivants concernant les données que nous contrôlons :</p>
+      <ul>
+        <li><strong>Droit d'accès</strong> &mdash; Demander une copie des données que nous détenons sur vous.</li>
+        <li><strong>Droit de rectification</strong> &mdash; Demander la correction de données inexactes.</li>
+        <li><strong>Droit à l'effacement</strong> &mdash; Demander la suppression des données que nous détenons sur vous.</li>
+        <li><strong>Droit à la limitation du traitement</strong> &mdash; Demander que nous limitions l'utilisation de vos données.</li>
+        <li><strong>Droit à la portabilité des données</strong> &mdash; Demander vos données dans un format lisible par machine.</li>
+        <li><strong>Droit d'opposition</strong> &mdash; Vous opposer à un traitement fondé sur l'intérêt légitime.</li>
+        <li><strong>Droit d'introduire une réclamation</strong> &mdash; Déposer une plainte auprès de votre autorité locale de protection des données.</li>
+      </ul>
+      <p>Pour exercer ces droits, contactez-nous à <a href="mailto:oldemail@example.invalid">oldemail@example.invalid</a>. Nous répondrons dans un délai de <strong>30 jours</strong>.</p>
+
+      <h2>10. Confidentialité des enfants</h2>
+      <p>L'Extension n'est pas destinée aux enfants de moins de 16 ans (ou à l'âge applicable dans votre juridiction), et nous ne collectons pas sciemment d'informations personnelles auprès d'enfants.</p>
+
+      <h2>11. Modifications de la présente politique</h2>
+      <p>Nous pouvons mettre à jour cette Politique de confidentialité de temps à autre. Les modifications seront publiées sur cette page avec une date mise à jour.</p>
+
+      <div class="contact">
+        <h2 style="margin-top:0;">12. Contact / Responsable du traitement</h2>
+        <p><strong>Responsable du traitement :</strong> Tetsunobu Kawai</p>
+        <p>Si vous avez des questions concernant cette Politique de confidentialité ou souhaitez exercer vos droits sur les données, veuillez nous contacter à :</p>
+        <p><strong>E-mail :</strong> <a href="mailto:oldemail@example.invalid">oldemail@example.invalid</a></p>
+        <p><strong>GitHub :</strong> <a href="https://github.com/SerimaTeddyBear" target="_blank" rel="noopener">github.com/SerimaTeddyBear</a></p>
+      </div>
+
+      <h2>13. Documents connexes</h2>
+      <ul>
+        <li><a href="terms.html">Conditions Générales d'Utilisation</a> &mdash; licence, utilisations interdites, droit applicable.</li>
+        <li><a href="tokushoho.html">Avis au titre de la loi japonaise sur les transactions commerciales spécifiées (Specified Commercial Transactions Act Notice / Japan)</a> &mdash; mentions légales obligatoires pour les ventes aux consommateurs japonais.</li>
+      </ul>
+
+      <h2>14. Marques</h2>
+      <p>« Google Chrome » et « Chrome Web Store » sont des marques de Google LLC. « Microsoft Edge » et « Microsoft Edge Add-ons » sont des marques de Microsoft Corporation. L'utilisation de ces noms dans la présente Politique de confidentialité est purement descriptive et n'implique aucune affiliation avec Google ou Microsoft, ni aucun parrainage de leur part. L'Extension est un produit indépendant de Tetsunobu Kawai.</p>
+    </div>
+
+    <div data-lang="it">
+      <h1>Informativa sulla Privacy</h1>
+      <p class="updated">Ultimo aggiornamento: 4 maggio 2026</p>
+      <p><strong>Grab All Files</strong> (l'«Estensione») è un'estensione per browser che aiuta gli utenti a trovare, ispezionare, scaricare e, facoltativamente, unire file dalle pagine web da loro scelte. La presente informativa illustra quali dati l'Estensione tratta, come vengono utilizzati, dove sono archiviati e quando vengono trasmessi.</p>
+
+      <h2>1. Sintesi del Trattamento dei Dati</h2>
+      <p>L'Estensione <strong>non</strong> vende dati personali, non utilizza strumenti di analisi di terze parti, non inserisce annunci pubblicitari, non utilizza script di tracciamento e non invia segnalazioni di errore o di crash ad alcun fornitore di telemetria nella build pubblicata. Tratta tuttavia, in modo limitato, alcuni dati relativi alla navigazione localmente nel browser dell'utente, al fine di fornire le funzionalità rivolte all'utente.</p>
+      <p>Ciò comprende, ad esempio:</p>
+      <ul>
+        <li>la scheda corrente o l'URL di cui Lei chiede la scansione all'Estensione,</li>
+        <li>la cronologia recente delle scansioni archiviata localmente per un accesso rapido, e</li>
+        <li><strong>i record dei file di rete</strong> (URL e metadati dei file rilevati tramite il monitoraggio della rete) archiviati temporaneamente nello storage di sessione durante la sessione di navigazione.</li>
+      </ul>
+      <p>Non inviamo ai nostri server la cronologia delle scansioni, l'HTML delle pagine, il contenuto dei file o l'attività di navigazione.</p>
+      <p><strong>Periodo di prova e licenza a pagamento:</strong> L'Estensione include un periodo di prova gratuito di 14 giorni. Allo scadere della prova, per continuare a utilizzarla è necessaria una chiave di licenza a pagamento. L'idoneità alla prova, l'attivazione della licenza, il rinnovo della licenza, l'applicazione del limite di dispositivi e i controlli di revoca sono gestiti dal backend di licenza utilizzando un UUID casuale del dispositivo e, ove applicabile, la chiave di licenza.</p>
+      <p><strong>Accesso ai siti web:</strong> L'Estensione richiede l'accesso a <code>https://*/*</code> in quanto gli utenti possono scegliere di sottoporre a scansione qualsiasi sito web e il dominio di destinazione non è noto in anticipo. Tale accesso è utilizzato per rilevare i collegamenti scaricabili e le risposte di file presenti sulle pagine o sugli URL che Lei sceglie di scansionare, nonché per scaricare i file da Lei selezionati. Non viene utilizzato per inviare ai nostri server l'HTML delle pagine, l'attività di navigazione o il contenuto dei file.</p>
+
+      <h2>2. Richieste di Rete</h2>
+      <p>L'Estensione effettua richieste di rete unicamente per le seguenti finalità:</p>
+      <ul>
+        <li><strong>Verifica della licenza</strong> &mdash; Quando viene inserita o riconvalidata una chiave di licenza, l'Estensione invia al nostro server la chiave di licenza e un identificativo del dispositivo (UUID) generato casualmente, al fine di verificare la licenza e applicare i limiti di dispositivo.</li>
+        <li><strong>Emissione e rinnovo del token di licenza (JWT)</strong> &mdash; A seguito di una verifica andata a buon fine, il nostro server restituisce un token di accesso firmato e di breve durata (ES256 JWT, TTL di 7 giorni) contenente la chiave di licenza, l'identificativo del dispositivo, le funzionalità concesse e la scadenza. L'Estensione memorizza tale token localmente nella cache, in modo che la maggior parte dei successivi controlli di licenza avvenga offline. Il token viene rinnovato inviando al nostro server la stessa chiave di licenza e lo stesso identificativo del dispositivo, di norma una volta al giorno.</li>
+        <li><strong>Aggiornamento dell'elenco delle revoche</strong> &mdash; Una volta al giorno l'Estensione scarica un piccolo elenco firmato di identificativi di token revocati (senza chiavi di licenza) affinché le revoche abbiano effetto entro 24 ore, anche offline. Tale richiesta non invia alcun dato identificativo dell'utente.</li>
+        <li><strong>Verifica del periodo di prova</strong> &mdash; Durante il periodo di prova gratuito, l'Estensione invia al nostro server l'identificativo del dispositivo (UUID) per verificare l'idoneità alla prova.</li>
+        <li><strong>Gestione dei dispositivi</strong> &mdash; Quando Lei visualizza o rimuove i dispositivi attivati dalla schermata della licenza, l'Estensione invia al nostro server la chiave di licenza, l'identificativo del Suo dispositivo attuale e, in caso di rimozione di un dispositivo, l'identificativo del dispositivo di destinazione.</li>
+        <li><strong>Accesso a pagine e file richiesto dall'utente</strong> &mdash; Quando Lei effettua la scansione di una pagina, inserisce un URL, recupera metadati di file, scarica file o unisce PDF, l'Estensione si collega direttamente al sito web di destinazione da Lei selezionato. Tali richieste non transitano dai nostri server.</li>
+      </ul>
+      <p>Le richieste verso i siti web di destinazione possono includere cookie o altre credenziali di sessione già associati a quel sito web all'interno della Sua sessione del browser, qualora siano necessarie per il contenuto di cui Lei ha richiesto l'accesso tramite l'Estensione. L'Estensione non raccoglie, copia o vende separatamente tali informazioni.</p>
+
+      <h2>3. Dati Archiviati sul Suo Dispositivo</h2>
+      <p>L'Estensione archivia i seguenti dati localmente tramite <code>chrome.storage.local</code> e <code>chrome.storage.session</code>. Salvo per le richieste relative alla licenza descritte sopra, tali dati restano sul Suo dispositivo.</p>
+      <table>
+        <tr><th>Dati</th><th>Archiviazione</th><th>Finalità</th></tr>
+        <tr><td>Chiave di licenza</td><td>Local</td><td>Mantenere attiva l'Estensione dopo la verifica della licenza.</td></tr>
+        <tr><td>ID dispositivo (UUID casuale)</td><td>Local</td><td>Identificare questa installazione ai fini dei limiti di licenza e dei controlli sulla prova.</td></tr>
+        <tr><td>Data di installazione</td><td>Local</td><td>Gestire il periodo di prova gratuito di 14 giorni.</td></tr>
+        <tr><td>Marca temporale dell'ultima verifica / dell'ultimo controllo della prova</td><td>Local</td><td>Consentire un periodo di tolleranza offline limitato dopo una verifica della licenza riuscita ed evitare chiamate ridondanti al server.</td></tr>
+        <tr><td>JWT della licenza e cache delle revoche (token di accesso firmato, scadenza, ID del token, funzionalità concesse, elenco di ID di token revocati)</td><td>Local</td><td>Verificare la licenza offline tramite un token firmato emesso dal server e bloccare i token che sono stati revocati.</td></tr>
+        <tr><td>Indicatore di prova scaduta ed errore/stato della licenza restituiti dal server</td><td>Local</td><td>Conservare l'esito della scadenza della prova e dei controlli di licenza falliti lato server tra un riavvio e l'altro del browser.</td></tr>
+        <tr><td>Cronologia recente delle scansioni (URL, titoli/nomi host, marche temporali)</td><td>Local</td><td>Mostrare le pagine scansionate di recente e gli URL inseriti per un accesso rapido.</td></tr>
+        <tr><td>ID dell'ultima scheda di origine</td><td>Local</td><td>Ricollegare il popup alla scheda che si stava scansionando.</td></tr>
+        <tr><td>Dimensioni della finestra</td><td>Local</td><td>Memorizzare le dimensioni della finestra del popup.</td></tr>
+        <tr><td>Preferenze dell'interfaccia (tipi di file selezionati, elenco personalizzato di estensioni, scelte di organizzazione/concorrenza, tema, indicatori di completamento dell'onboarding/del selettore di categorie)</td><td>Local</td><td>Memorizzare tra una sessione e l'altra le scelte effettuate nell'interfaccia dell'Estensione.</td></tr>
+        <tr><td>Record dei file di rete (URL, tipi e dimensioni dei file rilevati tramite il monitoraggio della rete)</td><td>Session</td><td>Rilevare file scaricabili caricati tramite JavaScript, XHR o richieste fetch e non visibili nell'HTML della pagina. Cancellati automaticamente alla chiusura della scheda o al termine della sessione del browser.</td></tr>
+        <tr><td>Stato temporaneo dei download (URL dei file selezionati, titoli, nomi dei file, stato, tentativi, ID di download)</td><td>Session</td><td>Recuperare i download in corso qualora il service worker venga sospeso.</td></tr>
+      </table>
+      <p>È possibile cancellare la cronologia recente delle scansioni dall'interfaccia dell'Estensione. I record dei file di rete possono essere cancellati premendo il pulsante «Reset» nel pannello dei risultati o chiudendo la scheda. La disinstallazione dell'Estensione rimuove il relativo storage locale. I dati di sessione vengono cancellati automaticamente al termine della sessione del browser.</p>
+
+      <h2>4. Permessi</h2>
+      <table>
+        <tr><th>Permesso</th><th>Motivo per cui è necessario</th></tr>
+        <tr><td><code>tabs</code></td><td>Conoscere l'URL della scheda attualmente attiva, in modo che il popup mostri quale pagina sarà sottoposta a scansione.</td></tr>
+        <tr><td><code>scripting</code></td><td>Iniettare un content script nella pagina corrente per individuare i collegamenti a file scaricabili.</td></tr>
+        <tr><td><code>downloads</code></td><td>Salvare i file selezionati e i PDF uniti sul Suo computer.</td></tr>
+        <tr><td><code>storage</code></td><td>Memorizzare lo stato della licenza, le preferenze e la cronologia recente delle scansioni.</td></tr>
+        <tr><td><code>alarms</code></td><td>Aggiornare periodicamente lo stato della licenza e delle revoche.</td></tr>
+        <tr><td><code>notifications</code></td><td>Mostrare notifiche di completamento dei download e di stato della licenza.</td></tr>
+        <tr><td><code>contextMenus</code></td><td>Aggiungere azioni del menu contestuale (clic destro) per scansionare e scaricare file da pagine, collegamenti, immagini e selezioni.</td></tr>
+        <tr><td>Permesso host obbligatorio:<br><code>https://*/*</code></td><td>PermetterLe di sottoporre a scansione qualsiasi sito web da Lei scelto e di connettersi al backend di verifica della licenza/prova all'indirizzo <code>https://umczaaooqinddgnhxbvp.supabase.co/*</code>. Il dominio di destinazione della scansione non è noto prima che Lei scelga una pagina o inserisca un URL, pertanto è necessario un ampio permesso di host HTTPS. Il permesso è utilizzato per rilevare i collegamenti scaricabili, le risposte di file via fetch/XHR all'interno della pagina, i metadati dei file, il download dei file selezionati sul sito scelto e i controlli di licenza/prova. La cronologia delle scansioni, l'HTML delle pagine, l'attività di navigazione e il contenuto dei file non vengono inviati ai nostri server.</td></tr>
+      </table>
+
+      <h2>5. Utilizzo dei Dati Relativi alla Navigazione</h2>
+      <p>L'Estensione utilizza i dati relativi alla navigazione e i contenuti dei siti web esclusivamente per fornire le proprie funzionalità rivolte all'utente: scansione della pagina corrente, scansione di un URL inserito dall'utente, visualizzazione delle scansioni recenti, controllo dei metadati dei file, download dei file selezionati e unione locale di PDF.</p>
+      <ul>
+        <li><strong>Non</strong> vendiamo questi dati.</li>
+        <li><strong>Non</strong> utilizziamo questi dati per finalità pubblicitarie, di profilazione o di analisi.</li>
+        <li><strong>Non</strong> trasferiamo questi dati a data broker, rivenditori di informazioni o piattaforme pubblicitarie.</li>
+        <li><strong>Non</strong> inviamo ai nostri server la cronologia delle scansioni, l'HTML delle pagine o il contenuto dei file.</li>
+      </ul>
+      <p>Il nostro utilizzo di tali dati è limitato alla finalità unica dell'Estensione e alle funzionalità rivolte all'utente descritte nella scheda del Chrome Web Store&trade; e nell'interfaccia dell'Estensione.</p>
+
+      <h2>5a. Telemetria, Analisi e Segnalazione di Errori</h2>
+      <p>La build pubblicata sugli store <strong>non</strong> invia segnalazioni di errore, segnalazioni di crash, metriche di prestazione né altri dati di telemetria ai nostri server o ad alcun fornitore terzo di telemetria. L'Estensione non contiene alcun SDK di Google Analytics, Mixpanel, Amplitude, Segment o simili.</p>
+      <p>All'interno del codice sorgente è presente un hook opzionale di segnalazione errori (Sentry) destinato alle build interne di debug, ma è subordinato a un segreto definito al momento della compilazione e non viene mai abilitato nella build distribuita tramite Chrome Web Store&trade; e Microsoft Edge&trade; Add-ons. Qualora una futura release dovesse abilitarlo, la presente Informativa sulla privacy verrà aggiornata prima del rilascio di tale versione e i dati eventualmente inviati saranno filtrati per oscurare chiavi di licenza, indirizzi e-mail, JWT, bearer token, UUID, valori delle stringhe di query, percorsi del file system e corpo dei percorsi degli URL.</p>
+
+      <h2>6. Base Giuridica del Trattamento (articolo 6 del GDPR)</h2>
+      <p>Per gli utenti residenti nell'UE/SEE, ci basiamo sulle seguenti basi giuridiche, ove applicabili:</p>
+      <ul>
+        <li><strong>Esecuzione di un contratto</strong> (articolo 6, paragrafo 1, lettera b)) &mdash; Verifica della licenza, controlli di idoneità alla prova e applicazione del limite di dispositivi per le licenze a pagamento.</li>
+        <li><strong>Legittimo interesse</strong> (articolo 6, paragrafo 1, lettera f)) &mdash; Memorizzazione delle preferenze locali e della cronologia recente delle scansioni necessarie per fornire le funzionalità di base dell'Estensione sul Suo dispositivo.</li>
+      </ul>
+
+      <h2>7. Servizi di Terzi e Trasferimenti Internazionali</h2>
+      <p>L'Estensione comunica con un backend di licenza ospitato su <strong>Supabase</strong>. Supabase agisce come nostro fornitore di infrastruttura per la verifica della licenza, la verifica della prova e la gestione dei dispositivi. Non vendiamo né divulghiamo i dati degli utenti dell'Estensione a terzi non collegati.</p>
+      <p>L'infrastruttura di Supabase è ospitata su Amazon Web Services (AWS). I dati inviati al nostro backend possono essere trattati al di fuori dell'UE/SEE. Supabase dichiara di basarsi sulle <strong>Clausole Contrattuali Standard (SCC)</strong> per i trasferimenti internazionali. Per maggiori dettagli, si rimanda all'<a href="https://supabase.com/privacy" target="_blank" rel="noopener">Informativa sulla privacy di Supabase</a>.</p>
+
+      <h2>8. Conservazione e Cancellazione dei Dati</h2>
+      <ul>
+        <li>I record relativi a licenza, dispositivo e prova presenti sul nostro backend vengono conservati per il tempo necessario al funzionamento del sistema di licenze/prove, generalmente per la durata della Sua licenza, salvo che Lei richieda la cancellazione.</li>
+        <li>Tratteremo le richieste di cancellazione dei record di backend entro <strong>30 giorni</strong>.</li>
+        <li>La cronologia recente delle scansioni è limitata alle 20 voci più recenti archiviate localmente.</li>
+        <li>Lo storage di sessione viene cancellato al termine della sessione del browser.</li>
+        <li>La disinstallazione dell'Estensione rimuove lo storage locale gestito dal browser.</li>
+      </ul>
+
+      <h2>9. I Suoi Diritti (Utenti UE/SEE)</h2>
+      <p>Ai sensi del GDPR, Lei può vantare i seguenti diritti in relazione ai dati che controlliamo:</p>
+      <ul>
+        <li><strong>Diritto di accesso</strong> &mdash; Richiedere una copia dei dati che deteniamo sul Suo conto.</li>
+        <li><strong>Diritto di rettifica</strong> &mdash; Richiedere la correzione di dati inesatti.</li>
+        <li><strong>Diritto alla cancellazione</strong> &mdash; Richiedere la cancellazione dei dati che deteniamo sul Suo conto.</li>
+        <li><strong>Diritto alla limitazione del trattamento</strong> &mdash; Richiedere che limitiamo l'uso che facciamo dei Suoi dati.</li>
+        <li><strong>Diritto alla portabilità dei dati</strong> &mdash; Richiedere i Suoi dati in un formato leggibile da dispositivi automatici.</li>
+        <li><strong>Diritto di opposizione</strong> &mdash; Opporsi a un trattamento basato sul legittimo interesse.</li>
+        <li><strong>Diritto di proporre reclamo</strong> &mdash; Presentare reclamo all'autorità locale per la protezione dei dati.</li>
+      </ul>
+      <p>Per esercitare tali diritti, può contattarci all'indirizzo <a href="mailto:oldemail@example.invalid">oldemail@example.invalid</a>. Risponderemo entro <strong>30 giorni</strong>.</p>
+
+      <h2>10. Privacy dei Minori</h2>
+      <p>L'Estensione non è rivolta a minori di 16 anni (o dell'età applicabile nella Sua giurisdizione) e non raccogliamo consapevolmente informazioni personali da minori.</p>
+
+      <h2>11. Modifiche alla Presente Informativa</h2>
+      <p>Possiamo aggiornare di tanto in tanto la presente Informativa sulla privacy. Le modifiche saranno pubblicate su questa pagina con una data di aggiornamento.</p>
+
+      <div class="contact">
+        <h2 style="margin-top:0;">12. Contatti / Titolare del Trattamento</h2>
+        <p><strong>Titolare del trattamento:</strong> Tetsunobu Kawai</p>
+        <p>Per domande sulla presente Informativa sulla privacy o per esercitare i diritti relativi ai dati, può contattarci all'indirizzo:</p>
+        <p><strong>E-mail:</strong> <a href="mailto:oldemail@example.invalid">oldemail@example.invalid</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/SerimaTeddyBear" target="_blank" rel="noopener">github.com/SerimaTeddyBear</a></p>
+      </div>
+
+      <h2>13. Documenti Correlati</h2>
+      <ul>
+        <li><a href="terms.html">Condizioni di Servizio</a> &mdash; licenza, utilizzi vietati, legge applicabile.</li>
+        <li><a href="tokushoho.html">Informativa ai sensi della Specified Commercial Transactions Act (Giappone)</a> &mdash; informazioni obbligatorie per le vendite a consumatori giapponesi.</li>
+      </ul>
+
+      <h2>14. Marchi</h2>
+      <p>«Google Chrome» e «Chrome Web Store» sono marchi di Google LLC. «Microsoft Edge» e «Microsoft Edge Add-ons» sono marchi di Microsoft Corporation. L'utilizzo di tali denominazioni nella presente Informativa sulla privacy ha finalità meramente descrittiva e non implica alcuna affiliazione o approvazione da parte di Google o Microsoft. L'Estensione è un prodotto indipendente di Tetsunobu Kawai.</p>
+    </div>
+
+    <div data-lang="ko">
+      <h1>개인정보처리방침</h1>
+      <p class="updated">최종 업데이트: 2026년 5월 4일</p>
+      <p><strong>Grab All Files</strong>(이하 "본 확장 프로그램")는 이용자가 선택한 웹 페이지에서 파일을 검색, 확인, 다운로드하고 필요에 따라 결합할 수 있도록 도와주는 브라우저 확장 프로그램입니다. 본 방침은 본 확장 프로그램이 처리하는 데이터, 그 이용 방법, 저장 위치 및 송신 시점에 대하여 설명합니다.</p>
+
+      <h2>1. 데이터 처리 개요</h2>
+      <p>본 확장 프로그램은 공개 배포본에서 개인 데이터를 판매하지 <strong>않으며</strong>, 제3자 분석 도구를 실행하지 않고, 광고를 삽입하지 않으며, 추적 스크립트를 사용하지 않고, 어떠한 텔레메트리 제공자에게도 오류/충돌 보고를 송신하지 않습니다. 다만, 이용자 대상 기능을 제공하기 위하여 브라우저 내에서 제한된 양의 브라우징 관련 데이터를 로컬로 처리합니다.</p>
+      <p>예를 들면 다음과 같습니다.</p>
+      <ul>
+        <li>이용자가 본 확장 프로그램에 스캔을 요청한 현재 탭 또는 URL,</li>
+        <li>빠른 접근을 위해 로컬에 저장되는 최근 스캔 이력, 그리고</li>
+        <li>브라우징 세션 중 세션 스토리지에 일시적으로 저장되는 <strong>네트워크 파일 기록</strong>(네트워크 모니터링을 통해 검출된 파일의 URL 및 메타데이터).</li>
+      </ul>
+      <p>당사는 귀하의 스캔 이력, 페이지 HTML, 파일 내용 또는 브라우징 활동을 당사 서버로 전송하지 않습니다.</p>
+      <p><strong>무료 체험 및 유료 라이선스:</strong> 본 확장 프로그램에는 14일 무료 체험 기간이 포함되어 있습니다. 무료 체험 기간이 만료된 후에도 계속 사용하시려면 유료 라이선스 키가 필요합니다. 체험 자격, 라이선스 활성화, 라이선스 갱신, 디바이스 수 제한 적용 및 실효 확인은 임의 디바이스 UUID와 해당하는 경우 라이선스 키를 사용하여 라이선스 백엔드에서 처리됩니다.</p>
+      <p><strong>웹사이트에 대한 접근:</strong> 본 확장 프로그램은 이용자가 임의의 웹사이트를 스캔할 수 있고 대상 도메인을 사전에 알 수 없으므로 <code>https://*/*</code>에 대한 접근 권한을 요청합니다. 이 권한은 이용자가 스캔하기로 선택한 페이지 또는 URL에서 다운로드 가능한 링크와 파일 응답을 검출하고, 이용자가 선택한 파일을 다운로드하기 위하여 사용됩니다. 페이지 HTML, 브라우징 활동 또는 파일 내용을 당사 서버로 전송하기 위하여 사용되지 않습니다.</p>
+
+      <h2>2. 네트워크 요청</h2>
+      <p>본 확장 프로그램이 수행하는 네트워크 요청은 다음 목적에 한정됩니다.</p>
+      <ul>
+        <li><strong>라이선스 검증</strong> &mdash; 라이선스 키가 입력되거나 재검증될 때, 본 확장 프로그램은 라이선스 키와 임의로 생성된 디바이스 식별자(UUID)를 당사 서버로 전송하여 라이선스를 검증하고 디바이스 수 제한을 적용합니다.</li>
+        <li><strong>라이선스 토큰(JWT) 발급 및 갱신</strong> &mdash; 검증 성공 후 당사 서버는 라이선스 키, 디바이스 식별자, 부여된 기능 및 만료일을 포함한 단기 유효 서명 액세스 토큰(ES256 JWT, 7일 TTL)을 반환합니다. 본 확장 프로그램은 이 토큰을 로컬에 캐시하므로 이후 대부분의 라이선스 확인은 오프라인으로 처리됩니다. 토큰은 동일한 라이선스 키와 디바이스 식별자를 당사 서버로 송신하여, 통상 1일 1회 갱신됩니다.</li>
+        <li><strong>실효 목록 갱신</strong> &mdash; 1일 1회, 본 확장 프로그램은 실효된 토큰 식별자(라이선스 키 미포함)의 작은 서명된 목록을 다운로드하여, 오프라인에서도 24시간 이내에 실효가 반영되도록 합니다. 이 요청에는 이용자 식별 정보가 일체 송신되지 않습니다.</li>
+        <li><strong>체험 검증</strong> &mdash; 무료 체험 기간 중에 본 확장 프로그램은 디바이스 식별자(UUID)를 당사 서버로 전송하여 체험 자격을 확인합니다.</li>
+        <li><strong>디바이스 관리</strong> &mdash; 라이선스 화면에서 활성화된 디바이스를 보거나 제거할 때, 본 확장 프로그램은 라이선스 키, 현재 디바이스 식별자, 그리고 디바이스를 제거하는 경우 대상 디바이스 식별자를 당사 서버로 전송합니다.</li>
+        <li><strong>이용자가 요청한 페이지 및 파일 접근</strong> &mdash; 페이지를 스캔하거나, URL을 입력하거나, 파일 메타데이터를 가져오거나, 파일을 다운로드하거나, PDF를 결합할 때, 본 확장 프로그램은 이용자가 선택한 대상 웹사이트에 직접 연결합니다. 이러한 요청은 당사 서버를 경유하지 않습니다.</li>
+      </ul>
+      <p>대상 웹사이트로의 요청에는, 본 확장 프로그램이 접근하도록 요청한 콘텐츠에 필요한 경우, 해당 사이트에 이미 연관되어 있는 쿠키 또는 기타 세션 자격 정보가 포함될 수 있습니다. 본 확장 프로그램은 그러한 정보를 별도로 수집, 복제 또는 판매하지 않습니다.</p>
+
+      <h2>3. 디바이스에 저장되는 데이터</h2>
+      <p>본 확장 프로그램은 <code>chrome.storage.local</code> 및 <code>chrome.storage.session</code>을 사용하여 다음 데이터를 로컬에 저장합니다. 위에서 설명된 라이선스 관련 요청을 제외하고, 이 데이터는 귀하의 디바이스에 머무릅니다.</p>
+      <table>
+        <tr><th>데이터</th><th>저장 위치</th><th>목적</th></tr>
+        <tr><td>라이선스 키</td><td>Local</td><td>라이선스 검증 후 본 확장 프로그램의 활성화 상태를 유지하기 위함.</td></tr>
+        <tr><td>디바이스 ID(임의 UUID)</td><td>Local</td><td>라이선스 제한 및 체험 확인을 위해 본 설치를 식별하기 위함.</td></tr>
+        <tr><td>설치일</td><td>Local</td><td>14일 무료 체험 기간을 관리하기 위함.</td></tr>
+        <tr><td>최종 검증 / 최종 체험 확인 타임스탬프</td><td>Local</td><td>라이선스 검증 성공 후 제한된 오프라인 유예 기간을 허용하고 불필요한 서버 호출을 회피하기 위함.</td></tr>
+        <tr><td>라이선스 JWT 및 실효 캐시(서명 액세스 토큰, 만료일, 토큰 ID, 부여된 기능, 실효된 토큰 ID 목록)</td><td>Local</td><td>서버가 발급한 서명 토큰을 사용하여 오프라인에서 라이선스를 검증하고, 실효된 토큰을 차단하기 위함.</td></tr>
+        <tr><td>체험 만료 플래그 및 서버에서 반환된 라이선스 오류/상태</td><td>Local</td><td>브라우저 재시작 후에도 체험 만료 결과 및 서버 측 라이선스 검증 실패 결과를 유지하기 위함.</td></tr>
+        <tr><td>최근 스캔 이력(URL, 제목/호스트명, 타임스탬프)</td><td>Local</td><td>최근에 스캔한 페이지 및 입력한 URL을 빠른 접근을 위해 표시하기 위함.</td></tr>
+        <tr><td>최종 소스 탭 ID</td><td>Local</td><td>팝업을 스캔 중이던 탭에 다시 연결하기 위함.</td></tr>
+        <tr><td>창 크기</td><td>Local</td><td>팝업 창의 크기를 기억하기 위함.</td></tr>
+        <tr><td>UI 환경설정(선택된 파일 형식, 사용자 정의 확장자 목록, 정리/동시성 선택 사항, 테마, 온보딩/카테고리 선택기 완료 플래그)</td><td>Local</td><td>본 확장 프로그램 UI에서 한 선택 사항을 세션 간에 기억하기 위함.</td></tr>
+        <tr><td>네트워크 파일 기록(네트워크 모니터링을 통해 검출된 파일 URL, 형식, 크기)</td><td>Session</td><td>페이지 HTML에 표시되지 않는 JavaScript, XHR 또는 fetch 요청을 통해 로드되는 다운로드 가능 파일을 검출하기 위함. 탭이 닫히거나 브라우저 세션이 종료되면 자동 삭제됨.</td></tr>
+        <tr><td>임시 다운로드 상태(선택한 파일 URL, 제목, 파일명, 상태, 재시도 횟수, 다운로드 ID)</td><td>Session</td><td>서비스 워커가 일시 중단된 경우 진행 중인 다운로드를 복구하기 위함.</td></tr>
+      </table>
+      <p>최근 스캔 이력은 본 확장 프로그램 UI 내에서 삭제할 수 있습니다. 네트워크 파일 기록은 결과 패널에서 "Reset" 버튼을 클릭하거나 탭을 닫음으로써 삭제할 수 있습니다. 본 확장 프로그램을 제거하면 그 로컬 스토리지가 삭제됩니다. 세션 데이터는 브라우저 세션이 종료되면 자동으로 삭제됩니다.</p>
+
+      <h2>4. 권한</h2>
+      <table>
+        <tr><th>권한</th><th>필요한 이유</th></tr>
+        <tr><td><code>tabs</code></td><td>현재 활성화된 탭의 URL을 추적하여 팝업이 스캔할 페이지를 표시하기 위함.</td></tr>
+        <tr><td><code>scripting</code></td><td>현재 페이지에 콘텐츠 스크립트를 주입하여 다운로드 가능한 파일 링크를 찾기 위함.</td></tr>
+        <tr><td><code>downloads</code></td><td>선택된 파일과 결합된 PDF를 귀하의 컴퓨터에 저장하기 위함.</td></tr>
+        <tr><td><code>storage</code></td><td>라이선스 상태, 환경설정 및 최근 스캔 이력을 저장하기 위함.</td></tr>
+        <tr><td><code>alarms</code></td><td>라이선스 및 실효 상태를 정기 일정으로 갱신하기 위함.</td></tr>
+        <tr><td><code>notifications</code></td><td>다운로드 완료 및 라이선스 상태 알림을 표시하기 위함.</td></tr>
+        <tr><td><code>contextMenus</code></td><td>페이지, 링크, 이미지 및 선택 영역에서 파일을 스캔하고 다운로드할 수 있도록 마우스 오른쪽 버튼 메뉴를 추가하기 위함.</td></tr>
+        <tr><td>필수 호스트 권한:<br><code>https://*/*</code></td><td>이용자가 선택한 임의의 웹사이트를 스캔할 수 있도록 하고, <code>https://umczaaooqinddgnhxbvp.supabase.co/*</code>의 라이선스/체험 검증 백엔드에 연결하기 위함. 대상 스캔 도메인은 이용자가 페이지를 선택하거나 URL을 입력하기 전에는 알 수 없으므로 광범위한 HTTPS 호스트 접근 권한이 필요합니다. 이 권한은 다운로드 가능한 링크, 페이지 내 fetch/XHR 파일 응답, 파일 메타데이터, 선택한 사이트에서의 선택 파일 다운로드, 라이선스/체험 확인을 검출하기 위해 사용됩니다. 스캔 이력, 페이지 HTML, 브라우징 활동 및 파일 내용은 당사 서버로 송신되지 않습니다.</td></tr>
+      </table>
+
+      <h2>5. 브라우징 관련 데이터의 이용</h2>
+      <p>본 확장 프로그램은 브라우징 관련 데이터 및 웹사이트 콘텐츠를 그 이용자 대상 기능, 즉 현재 페이지 스캔, 입력 URL 스캔, 최근 스캔 표시, 파일 메타데이터 확인, 선택 파일 다운로드 및 PDF의 로컬 결합을 제공하기 위해서만 이용합니다.</p>
+      <ul>
+        <li>당사는 이 데이터를 <strong>판매하지 않습니다</strong>.</li>
+        <li>당사는 이 데이터를 광고, 프로파일링 또는 분석에 <strong>이용하지 않습니다</strong>.</li>
+        <li>당사는 이 데이터를 데이터 브로커, 정보 재판매 업자 또는 광고 플랫폼에 <strong>이전하지 않습니다</strong>.</li>
+        <li>당사는 스캔 이력, 페이지 HTML 또는 파일 내용을 당사 서버로 <strong>송신하지 않습니다</strong>.</li>
+      </ul>
+      <p>이 데이터의 이용은 본 확장 프로그램의 단일 목적과, Chrome Web Store&trade; 등록 정보 및 본 확장 프로그램 UI에 기재된 이용자 대상 기능에 한정됩니다.</p>
+
+      <h2>5a. 텔레메트리, 분석 및 오류 보고</h2>
+      <p>공개된 스토어 배포본은 오류 보고, 충돌 보고, 성능 지표 또는 기타 텔레메트리를 당사 서버 또는 제3자 텔레메트리 제공자에게 <strong>일체 송신하지 않습니다</strong>. 본 확장 프로그램에는 Google Analytics, Mixpanel, Amplitude, Segment 또는 유사한 SDK가 포함되어 있지 않습니다.</p>
+      <p>소스 트리에는 내부 디버깅 빌드용 임의의 오류 보고 후크(Sentry)가 존재하지만, 이는 빌드 타임 시크릿으로 게이트되어 있으며 Chrome Web Store&trade; 및 Microsoft Edge&trade; Add-ons를 통해 배포되는 빌드에서는 결코 활성화되지 않습니다. 향후 릴리스에서 이를 활성화하는 경우, 해당 릴리스가 출시되기 전에 본 개인정보처리방침이 갱신되며, 송신되는 데이터에서는 라이선스 키, 이메일 주소, JWT, 베어러 토큰, UUID, 쿼리 문자열 값, 파일 시스템 경로 및 URL 경로 본문이 사전에 마스킹됩니다.</p>
+
+      <h2>6. 처리의 법적 근거(GDPR 제6조)</h2>
+      <p>EU/EEA 소재 이용자에 대해, 해당하는 경우 다음 법적 근거에 의거합니다.</p>
+      <ul>
+        <li><strong>계약의 이행</strong>(GDPR Article 6(1)(b)) &mdash; 라이선스 검증, 체험 자격 확인 및 유료 라이선스에 대한 디바이스 수 제한 적용.</li>
+        <li><strong>정당한 이익</strong>(GDPR Article 6(1)(f)) &mdash; 귀하의 디바이스에서 본 확장 프로그램의 핵심 기능을 제공하기 위해 필요한 로컬 환경설정 및 최근 스캔 이력의 저장.</li>
+      </ul>
+
+      <h2>7. 제3자 서비스 및 국제 데이터 이전</h2>
+      <p>본 확장 프로그램은 <strong>Supabase</strong>에서 호스팅되는 라이선스 백엔드와 통신합니다. Supabase는 라이선스 검증, 체험 검증 및 디바이스 관리에 대한 당사의 인프라 제공자입니다. 당사는 본 확장 프로그램 이용자 데이터를 무관한 제3자에게 판매하거나 공개하지 않습니다.</p>
+      <p>Supabase 인프라는 Amazon Web Services(AWS) 위에서 호스팅됩니다. 당사 백엔드로 송신되는 데이터는 EU/EEA 외부에서 처리될 수 있습니다. Supabase는 국제 이전에 대해 <strong>표준 계약 조항(SCC)</strong>에 의거한다고 명시하고 있습니다. 자세한 내용은 <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabase의 개인정보처리방침</a>을 참조하시기 바랍니다.</p>
+
+      <h2>8. 데이터 보유 및 삭제</h2>
+      <ul>
+        <li>당사 백엔드의 라이선스, 디바이스 및 체험 관련 기록은 라이선스/체험 시스템의 운영에 필요한 기간 동안, 일반적으로 귀하가 삭제를 요청하지 않는 한 라이선스 유효 기간 동안 보유됩니다.</li>
+        <li>당사는 백엔드 기록에 대한 삭제 요청을 <strong>30일 이내</strong>에 처리합니다.</li>
+        <li>최근 스캔 이력은 로컬에 저장되는 가장 최근 20개 항목으로 제한됩니다.</li>
+        <li>세션 스토리지는 브라우저 세션이 종료되면 삭제됩니다.</li>
+        <li>본 확장 프로그램을 제거하면 브라우저가 관리하는 로컬 스토리지가 삭제됩니다.</li>
+      </ul>
+
+      <h2>9. 귀하의 권리(EU/EEA 이용자)</h2>
+      <p>GDPR에 따라, 당사가 관리하는 데이터에 대하여 귀하는 다음 권리를 가질 수 있습니다.</p>
+      <ul>
+        <li><strong>접근권</strong> &mdash; 당사가 보유한 귀하에 관한 데이터의 사본을 요청할 수 있습니다.</li>
+        <li><strong>정정권</strong> &mdash; 부정확한 데이터의 정정을 요청할 수 있습니다.</li>
+        <li><strong>삭제권</strong> &mdash; 당사가 보유한 귀하에 관한 데이터의 삭제를 요청할 수 있습니다.</li>
+        <li><strong>처리 제한권</strong> &mdash; 당사의 귀하 데이터 이용 방식의 제한을 요청할 수 있습니다.</li>
+        <li><strong>데이터 이동권</strong> &mdash; 기계 판독 가능 형식으로 귀하의 데이터를 요청할 수 있습니다.</li>
+        <li><strong>이의 제기권</strong> &mdash; 정당한 이익에 근거한 처리에 대해 이의를 제기할 수 있습니다.</li>
+        <li><strong>불만 신고권</strong> &mdash; 거주지 데이터 보호 감독 기관에 불만을 신고할 수 있습니다.</li>
+      </ul>
+      <p>이러한 권리를 행사하려면 <a href="mailto:oldemail@example.invalid">oldemail@example.invalid</a>으로 연락해 주십시오. 당사는 <strong>30일 이내</strong>에 답변드립니다.</p>
+
+      <h2>10. 아동의 개인정보보호</h2>
+      <p>본 확장 프로그램은 만 16세 미만(또는 귀하의 관할 지역에서 적용되는 연령 미만)의 아동을 대상으로 하지 않으며, 당사는 아동으로부터 고의로 개인정보를 수집하지 않습니다.</p>
+
+      <h2>11. 본 방침의 변경</h2>
+      <p>당사는 본 개인정보처리방침을 수시로 갱신할 수 있습니다. 변경 사항은 갱신된 날짜와 함께 본 페이지에 게시됩니다.</p>
+
+      <div class="contact">
+        <h2 style="margin-top:0;">12. 문의 / 데이터 관리자</h2>
+        <p><strong>데이터 관리자:</strong> Tetsunobu Kawai</p>
+        <p>본 개인정보처리방침에 관한 문의 또는 데이터 권리 행사에 관해서는 다음으로 연락해 주십시오.</p>
+        <p><strong>이메일:</strong> <a href="mailto:oldemail@example.invalid">oldemail@example.invalid</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/SerimaTeddyBear" target="_blank" rel="noopener">github.com/SerimaTeddyBear</a></p>
+      </div>
+
+      <h2>13. 관련 문서</h2>
+      <ul>
+        <li><a href="terms.html">이용약관</a> &mdash; 라이선스, 금지 사항, 준거법.</li>
+        <li><a href="tokushoho.html">특정상거래법에 의거한 표시(일본)</a> &mdash; 일본 국내 소비자 대상 판매에 대한 법정 표시.</li>
+      </ul>
+
+      <h2>14. 상표</h2>
+      <p>"Google Chrome" 및 "Chrome Web Store"는 Google LLC의 상표입니다. "Microsoft Edge" 및 "Microsoft Edge Add-ons"는 Microsoft Corporation의 상표입니다. 본 개인정보처리방침에서의 이러한 명칭의 사용은 설명적 목적에 한정되며, Google 또는 Microsoft와의 제휴 또는 추천을 의미하지 않습니다. 본 확장 프로그램은 Tetsunobu Kawai의 독립 제품입니다.</p>
+    </div>
+
+    <div data-lang="pt_BR">
+      <h1>Política de Privacidade</h1>
+      <p class="updated">Última atualização: 4 de maio de 2026</p>
+      <p><strong>Grab All Files</strong> ("a Extensão") é uma extensão de navegador que ajuda os usuários a localizar, inspecionar, baixar e, opcionalmente, mesclar arquivos a partir de páginas da web por eles escolhidas. Esta política explica quais dados a Extensão manipula, como eles são usados, onde são armazenados e quando são transmitidos.</p>
+
+      <h2>1. Resumo do Tratamento de Dados</h2>
+      <p>A Extensão <strong>não</strong> vende dados pessoais, não executa análises de terceiros, não insere anúncios, não usa scripts de rastreamento e não envia relatórios de erro/falha a qualquer provedor de telemetria na versão publicada. Ela trata, sim, uma quantidade limitada de dados relacionados à navegação localmente em seu navegador para oferecer suas funcionalidades voltadas ao usuário.</p>
+      <p>Isso inclui, por exemplo:</p>
+      <ul>
+        <li>a aba ou URL atual que você solicita que a Extensão escaneie,</li>
+        <li>o histórico recente de varreduras armazenado localmente para acesso rápido, e</li>
+        <li><strong>registros de arquivos de rede</strong> (URLs e metadados de arquivos detectados via monitoramento de rede) armazenados temporariamente no armazenamento de sessão durante sua sessão de navegação.</li>
+      </ul>
+      <p>Não enviamos seu histórico de varreduras, o HTML das páginas, o conteúdo dos arquivos ou sua atividade de navegação aos nossos servidores.</p>
+      <p><strong>Período de avaliação e licença paga:</strong> A Extensão inclui um período de avaliação gratuita de 14 dias. Após o término do período de avaliação, o uso continuado exige uma chave de licença paga. A elegibilidade do período de avaliação, a ativação de licença, a renovação de licença, a aplicação de limite de dispositivos e as verificações de revogação são tratadas pelo backend de licenças usando um UUID aleatório do dispositivo e, quando aplicável, a chave de licença.</p>
+      <p><strong>Acesso a sites:</strong> A Extensão solicita acesso a <code>https://*/*</code> porque os usuários podem optar por escanear qualquer site e o domínio de destino não é conhecido com antecedência. Esse acesso é usado para detectar links baixáveis e respostas de arquivos em páginas ou URLs que você opta por escanear, e para baixar os arquivos que você seleciona. Não é usado para enviar HTML de páginas, atividade de navegação ou conteúdo de arquivos aos nossos servidores.</p>
+
+      <h2>2. Solicitações de Rede</h2>
+      <p>A Extensão realiza solicitações de rede apenas para os seguintes fins:</p>
+      <ul>
+        <li><strong>Verificação de licença</strong> &mdash; Quando uma chave de licença é inserida ou revalidada, a Extensão envia a chave de licença e um identificador de dispositivo gerado aleatoriamente (UUID) ao nosso servidor para verificar a licença e aplicar os limites de dispositivos.</li>
+        <li><strong>Emissão e renovação de token de licença (JWT)</strong> &mdash; Após uma verificação bem-sucedida, nosso servidor retorna um token de acesso assinado e de curta duração (ES256 JWT, TTL de 7 dias) que contém a chave de licença, o identificador do dispositivo, os recursos concedidos e a data de expiração. A Extensão armazena esse token localmente em cache, de forma que a maioria das verificações de licença subsequentes ocorra offline. O token é renovado pelo envio da mesma chave de licença e do identificador de dispositivo ao nosso servidor, geralmente uma vez por dia.</li>
+        <li><strong>Atualização da lista de revogações</strong> &mdash; Uma vez por dia, a Extensão baixa uma pequena lista assinada de identificadores de tokens revogados (sem chaves de licença) para que as revogações entrem em vigor em até 24 horas, mesmo offline. Essa solicitação não envia nenhum dado de identificação do usuário.</li>
+        <li><strong>Verificação do período de avaliação</strong> &mdash; Durante o período de avaliação gratuito, a Extensão envia o identificador do dispositivo (UUID) ao nosso servidor para verificar a elegibilidade do período de avaliação.</li>
+        <li><strong>Gerenciamento de dispositivos</strong> &mdash; Ao visualizar ou remover dispositivos ativados na tela de licença, a Extensão envia ao nosso servidor a chave de licença, o identificador do seu dispositivo atual e, se você remover um dispositivo, o identificador do dispositivo de destino.</li>
+        <li><strong>Acesso a páginas e arquivos solicitado pelo usuário</strong> &mdash; Ao escanear uma página, inserir uma URL, obter metadados de arquivo, baixar arquivos ou mesclar PDFs, a Extensão se conecta diretamente ao site de destino selecionado por você. Essas solicitações não passam pelos nossos servidores.</li>
+      </ul>
+      <p>As solicitações aos sites de destino podem incluir cookies ou outras credenciais de sessão já associadas a esse site na sua sessão de navegador, caso sejam necessárias para o conteúdo que você pediu para a Extensão acessar. A Extensão não coleta, copia ou vende essas informações separadamente.</p>
+
+      <h2>3. Dados Armazenados em seu Dispositivo</h2>
+      <p>A Extensão armazena os dados a seguir localmente usando <code>chrome.storage.local</code> e <code>chrome.storage.session</code>. Exceto pelas solicitações relativas à licença descritas acima, esses dados permanecem em seu dispositivo.</p>
+      <table>
+        <tr><th>Dado</th><th>Armazenamento</th><th>Finalidade</th></tr>
+        <tr><td>Chave de licença</td><td>Local</td><td>Manter a Extensão ativada após a verificação da licença.</td></tr>
+        <tr><td>ID do dispositivo (UUID aleatório)</td><td>Local</td><td>Identificar esta instalação para os limites de licença e as verificações do período de avaliação.</td></tr>
+        <tr><td>Data de instalação</td><td>Local</td><td>Gerenciar o período de avaliação gratuito de 14 dias.</td></tr>
+        <tr><td>Carimbos de hora da última verificação / da última checagem do período de avaliação</td><td>Local</td><td>Permitir um período de tolerância offline limitado após uma verificação de licença bem-sucedida e evitar chamadas redundantes ao servidor.</td></tr>
+        <tr><td>JWT de licença e cache de revogações (token de acesso assinado, expiração, ID do token, recursos concedidos, lista de IDs de tokens revogados)</td><td>Local</td><td>Verificar a licença offline usando um token assinado emitido pelo servidor e bloquear tokens que tenham sido revogados.</td></tr>
+        <tr><td>Sinalizador de período de avaliação expirado e erro/status de licença retornados pelo servidor</td><td>Local</td><td>Preservar o resultado da expiração do período de avaliação e de verificações de licença que falharam no servidor entre reinicializações do navegador.</td></tr>
+        <tr><td>Histórico recente de varreduras (URLs, títulos/nomes de host, carimbos de hora)</td><td>Local</td><td>Mostrar páginas recentemente escaneadas e URLs inseridas para acesso rápido.</td></tr>
+        <tr><td>ID da última aba de origem</td><td>Local</td><td>Reconectar o popup à aba que você estava escaneando.</td></tr>
+        <tr><td>Tamanho da janela</td><td>Local</td><td>Lembrar as dimensões da janela do popup.</td></tr>
+        <tr><td>Preferências de UI (tipos de arquivo selecionados, lista de extensões personalizadas, escolhas de organização/concorrência, tema, sinalizadores de conclusão de onboarding/seletor de categorias)</td><td>Local</td><td>Lembrar as escolhas que você fez na interface da Extensão entre sessões.</td></tr>
+        <tr><td>Registros de arquivos de rede (URLs, tipos e tamanhos de arquivos detectados via monitoramento de rede)</td><td>Session</td><td>Detectar arquivos baixáveis carregados via JavaScript, XHR ou fetch que não estão visíveis no HTML da página. Apagados automaticamente quando a aba é fechada ou quando a sessão do navegador é encerrada.</td></tr>
+        <tr><td>Estado temporário de download (URLs de arquivos selecionados, títulos, nomes de arquivo, status, tentativas, IDs de download)</td><td>Session</td><td>Recuperar downloads em andamento se o service worker for suspenso.</td></tr>
+      </table>
+      <p>Você pode limpar o histórico recente de varreduras pela interface da Extensão. Os registros de arquivos de rede podem ser limpos clicando no botão "Reset" no painel de resultados ou fechando a aba. Desinstalar a Extensão remove seu armazenamento local. Os dados de sessão são apagados automaticamente quando a sessão do navegador é encerrada.</p>
+
+      <h2>4. Permissões</h2>
+      <table>
+        <tr><th>Permissão</th><th>Por que é necessária</th></tr>
+        <tr><td><code>tabs</code></td><td>Acompanhar a URL da aba atualmente ativa para que o popup mostre qual página será escaneada.</td></tr>
+        <tr><td><code>scripting</code></td><td>Injetar um content script na página atual para encontrar links de arquivos baixáveis.</td></tr>
+        <tr><td><code>downloads</code></td><td>Salvar arquivos selecionados e PDFs mesclados em seu computador.</td></tr>
+        <tr><td><code>storage</code></td><td>Armazenar status de licença, preferências e o histórico recente de varreduras.</td></tr>
+        <tr><td><code>alarms</code></td><td>Atualizar o status de licença e de revogações em uma programação periódica.</td></tr>
+        <tr><td><code>notifications</code></td><td>Exibir notificações de conclusão de download e de status de licença.</td></tr>
+        <tr><td><code>contextMenus</code></td><td>Adicionar ações de clique direito para escanear e baixar arquivos a partir de páginas, links, imagens e seleções.</td></tr>
+        <tr><td>Permissão de host obrigatória:<br><code>https://*/*</code></td><td>Permitir que você escaneie qualquer site de sua escolha e conecte-se ao backend de verificação de licença/período de avaliação em <code>https://umczaaooqinddgnhxbvp.supabase.co/*</code>. O domínio-alvo da varredura não é conhecido antes que você escolha uma página ou insira uma URL, por isso é necessário um amplo acesso a hosts HTTPS. A permissão é usada para detectar links baixáveis, respostas de arquivo via fetch/XHR na página, metadados de arquivo, downloads de arquivos selecionados no site escolhido e verificações de licença/período de avaliação. Histórico de varreduras, HTML das páginas, atividade de navegação e conteúdo de arquivos não são enviados aos nossos servidores.</td></tr>
+      </table>
+
+      <h2>5. Uso de Dados Relacionados à Navegação</h2>
+      <p>A Extensão usa dados relacionados à navegação e o conteúdo dos sites apenas para oferecer suas funcionalidades voltadas ao usuário: escanear a página atual, escanear uma URL inserida por você, mostrar varreduras recentes, verificar metadados de arquivo, baixar arquivos selecionados e mesclar PDFs localmente.</p>
+      <ul>
+        <li><strong>Não</strong> vendemos esses dados.</li>
+        <li><strong>Não</strong> usamos esses dados para publicidade, profiling ou análises.</li>
+        <li><strong>Não</strong> transferimos esses dados a corretores de dados, revendedores de informação ou plataformas publicitárias.</li>
+        <li><strong>Não</strong> enviamos histórico de varreduras, HTML de páginas ou conteúdo de arquivos aos nossos servidores.</li>
+      </ul>
+      <p>Nosso uso desses dados se limita ao propósito único da Extensão e às funcionalidades voltadas ao usuário descritas na listagem da Chrome Web Store&trade; e na interface da Extensão.</p>
+
+      <h2>5a. Telemetria, Análises e Relatórios de Erros</h2>
+      <p>A versão publicada na loja <strong>não</strong> envia relatórios de erro, relatórios de falha, métricas de desempenho ou qualquer outra telemetria aos nossos servidores nem a qualquer provedor de telemetria de terceiros. A Extensão não contém Google Analytics, Mixpanel, Amplitude, Segment nem SDK semelhante.</p>
+      <p>Um gancho opcional de relatório de erros (Sentry) está presente na árvore de código-fonte para builds internos de depuração, mas é controlado por um segredo definido em tempo de build e nunca é habilitado no build distribuído pela Chrome Web Store&trade; e pela Microsoft Edge&trade; Add-ons. Se uma versão futura vier a habilitá-lo, esta Política de Privacidade será atualizada antes do lançamento dessa versão, e quaisquer dados enviados serão filtrados para remover (redact) chaves de licença, endereços de e-mail, JWTs, bearer tokens, UUIDs, valores de query string, caminhos do sistema de arquivos e corpos de caminhos de URL.</p>
+
+      <h2>6. Base Legal para Tratamento (GDPR Artigo 6)</h2>
+      <p>Para usuários na UE/EEE, baseamo-nos nas seguintes bases legais quando aplicáveis:</p>
+      <ul>
+        <li><strong>Execução de contrato</strong> (GDPR Article 6(1)(b)) &mdash; Verificação de licença, checagens de elegibilidade do período de avaliação e aplicação dos limites de dispositivos para licenças pagas.</li>
+        <li><strong>Interesse legítimo</strong> (GDPR Article 6(1)(f)) &mdash; Armazenamento de preferências locais e do histórico recente de varreduras necessários para fornecer a funcionalidade central da Extensão em seu dispositivo.</li>
+      </ul>
+
+      <h2>7. Serviços de Terceiros e Transferências Internacionais</h2>
+      <p>A Extensão se comunica com um backend de licenças hospedado no <strong>Supabase</strong>. O Supabase atua como nosso provedor de infraestrutura para verificação de licença, verificação do período de avaliação e gerenciamento de dispositivos. Não vendemos nem divulgamos os dados dos usuários da Extensão a terceiros não relacionados.</p>
+      <p>A infraestrutura do Supabase é hospedada na Amazon Web Services (AWS). Os dados enviados ao nosso backend podem ser tratados fora da UE/EEE. O Supabase declara que se baseia em <strong>Cláusulas Contratuais Padrão (SCCs)</strong> para transferências internacionais. Consulte a <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Política de Privacidade do Supabase</a> para mais detalhes.</p>
+
+      <h2>8. Retenção e Exclusão de Dados</h2>
+      <ul>
+        <li>Os registros relativos a licença, dispositivo e período de avaliação em nosso backend são retidos pelo tempo necessário para operar o sistema de licença/período de avaliação, geralmente pela duração da sua licença, salvo se você solicitar exclusão.</li>
+        <li>Atenderemos solicitações de exclusão de registros do backend em até <strong>30 dias</strong>.</li>
+        <li>O histórico recente de varreduras é limitado às 20 entradas mais recentes armazenadas localmente.</li>
+        <li>O armazenamento de sessão é apagado quando a sessão do navegador é encerrada.</li>
+        <li>Desinstalar a Extensão remove o armazenamento local gerenciado pelo navegador.</li>
+      </ul>
+
+      <h2>9. Seus Direitos (Usuários da UE/EEE)</h2>
+      <p>Nos termos do GDPR, você pode ter os seguintes direitos em relação aos dados que controlamos:</p>
+      <ul>
+        <li><strong>Direito de acesso</strong> &mdash; Solicitar uma cópia dos dados que mantemos sobre você.</li>
+        <li><strong>Direito de retificação</strong> &mdash; Solicitar a correção de dados inexatos.</li>
+        <li><strong>Direito ao apagamento</strong> &mdash; Solicitar a exclusão dos dados que mantemos sobre você.</li>
+        <li><strong>Direito à limitação do tratamento</strong> &mdash; Solicitar que limitemos a forma como usamos seus dados.</li>
+        <li><strong>Direito à portabilidade dos dados</strong> &mdash; Solicitar seus dados em formato legível por máquina.</li>
+        <li><strong>Direito de oposição</strong> &mdash; Opor-se ao tratamento baseado em interesses legítimos.</li>
+        <li><strong>Direito de apresentar reclamação</strong> &mdash; Apresentar reclamação à autoridade local de proteção de dados.</li>
+      </ul>
+      <p>Para exercer esses direitos, entre em contato conosco em <a href="mailto:oldemail@example.invalid">oldemail@example.invalid</a>. Responderemos em até <strong>30 dias</strong>.</p>
+
+      <h2>10. Privacidade de Crianças</h2>
+      <p>A Extensão não é direcionada a crianças menores de 16 anos (ou da idade aplicável na sua jurisdição), e não coletamos conscientemente informações pessoais de crianças.</p>
+
+      <h2>11. Alterações desta Política</h2>
+      <p>Poderemos atualizar esta Política de Privacidade periodicamente. As alterações serão publicadas nesta página com uma data atualizada.</p>
+
+      <div class="contact">
+        <h2 style="margin-top:0;">12. Contato / Controlador de Dados</h2>
+        <p><strong>Controlador de Dados:</strong> Tetsunobu Kawai</p>
+        <p>Se você tiver dúvidas sobre esta Política de Privacidade ou desejar exercer seus direitos sobre dados, entre em contato conosco em:</p>
+        <p><strong>E-mail:</strong> <a href="mailto:oldemail@example.invalid">oldemail@example.invalid</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/SerimaTeddyBear" target="_blank" rel="noopener">github.com/SerimaTeddyBear</a></p>
+      </div>
+
+      <h2>13. Documentos Relacionados</h2>
+      <ul>
+        <li><a href="terms.html">Termos de Serviço</a> &mdash; licença, usos proibidos, lei aplicável.</li>
+        <li><a href="tokushoho.html">Aviso da Lei de Transações Comerciais Especificadas (Japão)</a> &mdash; divulgação obrigatória para vendas a consumidores japoneses.</li>
+      </ul>
+
+      <h2>14. Marcas Registradas</h2>
+      <p>"Google Chrome" e "Chrome Web Store" são marcas registradas da Google LLC. "Microsoft Edge" e "Microsoft Edge Add-ons" são marcas registradas da Microsoft Corporation. O uso desses nomes nesta Política de Privacidade é meramente descritivo e não implica afiliação ou endosso por parte da Google ou da Microsoft. A Extensão é um produto independente de Tetsunobu Kawai.</p>
+    </div>
+
+    <div data-lang="zh_CN">
+      <h1>隐私政策</h1>
+<p class="updated">最后更新：2026年5月4日</p>
+<p><strong>Grab All Files</strong>（以下简称"本扩展程序"）是一款帮助用户从其所选网页中查找、检视、下载并选择性合并文件的浏览器扩展程序。本政策说明本扩展程序所处理的数据、其使用方式、存储位置以及发生传输的情形。</p>
+
+<h2>1. 数据处理概要</h2>
+<p>本扩展程序在已发布的版本中 <strong>不</strong> 出售个人数据、不运行第三方分析、不注入广告、不使用跟踪脚本，亦不向任何遥测服务提供商发送错误或崩溃报告。为提供面向用户的功能，本扩展程序会在您的浏览器内本地处理有限数量的浏览相关数据。</p>
+<p>例如包括：</p>
+<ul>
+  <li>您要求本扩展程序扫描的当前标签页或 URL；</li>
+  <li>为便于快速访问而存储于本地的近期扫描历史；以及</li>
+  <li><strong>网络文件记录</strong>（通过网络监控所检测到的文件 URL 与元数据），在您浏览会话期间临时存储于会话存储中。</li>
+</ul>
+<p>我们不会将您的扫描历史、页面 HTML、文件内容或浏览活动发送至我方服务器。</p>
+<p><strong>试用与付费许可证：</strong>本扩展程序提供 14 天免费试用。试用期届满后，继续使用须使用付费许可证密钥。试用资格、许可证激活、许可证刷新、设备数量限制及撤销检查均由许可证后端使用随机设备 UUID 处理，并在适用情形下使用许可证密钥。</p>
+<p><strong>对网站的访问：</strong>由于用户可选择扫描任何网站且无法事先得知目标域名，本扩展程序请求 <code>https://*/*</code> 的访问权限。该权限用于在您选择扫描的页面或 URL 上检测可下载的链接和文件响应，以及下载您所选择的文件。该权限不用于将页面 HTML、浏览活动或文件内容发送至我方服务器。</p>
+
+<h2>2. 网络请求</h2>
+<p>本扩展程序仅出于下列目的发起网络请求：</p>
+<ul>
+  <li><strong>许可证验证</strong> &mdash; 输入或重新验证许可证密钥时，本扩展程序将向我方服务器发送许可证密钥及随机生成的设备标识符（UUID），以验证许可证并执行设备数量限制。</li>
+  <li><strong>许可证令牌（JWT）签发与刷新</strong> &mdash; 验证成功后，我方服务器返回一份短期签名访问令牌（ES256 JWT，TTL 为 7 天），其中包含许可证密钥、设备标识符、所授功能及到期时间。本扩展程序将该令牌缓存于本地，使大多数后续许可证检查可在离线状态下完成。本扩展程序通常每日一次将相同的许可证密钥与设备标识符发送至我方服务器以刷新令牌。</li>
+  <li><strong>撤销列表刷新</strong> &mdash; 本扩展程序每日下载一份小型的、已签名的已撤销令牌标识符列表（不含许可证密钥），以使撤销在 24 小时内即使在离线状态下也能生效。该请求不发送任何识别用户的数据。</li>
+  <li><strong>试用验证</strong> &mdash; 在免费试用期间，本扩展程序将向我方服务器发送设备标识符（UUID）以验证试用资格。</li>
+  <li><strong>设备管理</strong> &mdash; 当您在许可证界面查看或移除已激活设备时，本扩展程序将向我方服务器发送许可证密钥、当前设备标识符，以及在您移除某台设备时所选目标设备的标识符。</li>
+  <li><strong>用户发起的页面与文件访问</strong> &mdash; 当您扫描页面、输入 URL、获取文件元数据、下载文件或合并 PDF 时，本扩展程序将直接连接至您所选定的目标网站。该等请求不经由我方服务器中转。</li>
+</ul>
+<p>对目标网站的请求可能包含您浏览器会话中已与该网站关联的 Cookie 或其他会话凭证（如访问您要求本扩展程序获取的内容确实需要这些凭证）。本扩展程序不会另行收集、复制或出售上述信息。</p>
+
+<h2>3. 存储于您设备上的数据</h2>
+<p>本扩展程序使用 <code>chrome.storage.local</code> 与 <code>chrome.storage.session</code> 在本地存储下列数据。除上文所述与许可证相关的请求外，该等数据均保留在您的设备上。</p>
+<table>
+  <tr><th>数据</th><th>存储位置</th><th>用途</th></tr>
+  <tr><td>许可证密钥</td><td>Local</td><td>在许可证验证后保持本扩展程序的激活状态。</td></tr>
+  <tr><td>设备 ID（随机 UUID）</td><td>Local</td><td>识别本次安装，用于许可证数量限制及试用检查。</td></tr>
+  <tr><td>安装日期</td><td>Local</td><td>管理 14 天免费试用期。</td></tr>
+  <tr><td>上次验证 / 上次试用检查时间戳</td><td>Local</td><td>在许可证检查成功后给予有限的离线宽限期，并避免重复的服务器调用。</td></tr>
+  <tr><td>许可证 JWT 与撤销缓存（已签名访问令牌、到期时间、令牌 ID、所授功能、已撤销令牌 ID 列表）</td><td>Local</td><td>使用服务器签发的已签名令牌进行离线验证，并阻止已被撤销的令牌。</td></tr>
+  <tr><td>试用过期标志及服务器返回的许可证错误／状态</td><td>Local</td><td>在浏览器重启后保留试用过期及服务器端许可证检查失败的结果。</td></tr>
+  <tr><td>近期扫描历史（URL、标题／主机名、时间戳）</td><td>Local</td><td>展示近期扫描过的页面及输入过的 URL，便于快速访问。</td></tr>
+  <tr><td>上次源标签页 ID</td><td>Local</td><td>将弹出窗口重新连接至您先前正在扫描的标签页。</td></tr>
+  <tr><td>窗口大小</td><td>Local</td><td>记忆弹出窗口的尺寸。</td></tr>
+  <tr><td>界面偏好设置（所选文件类型、自定义扩展名列表、整理／并发选择、主题、引导／类别选择器完成标志）</td><td>Local</td><td>跨会话记忆您在本扩展程序界面中所做的选择。</td></tr>
+  <tr><td>网络文件记录（通过网络监控所检测到的文件 URL、类型、大小）</td><td>Session</td><td>检测通过 JavaScript、XHR 或 fetch 请求加载的、不在页面 HTML 中可见的可下载文件。在标签页关闭或浏览器会话结束时自动清除。</td></tr>
+  <tr><td>临时下载状态（所选文件 URL、标题、文件名、状态、重试次数、下载 ID）</td><td>Session</td><td>在 service worker 被挂起时恢复正在进行的下载。</td></tr>
+</table>
+<p>您可在本扩展程序界面中清除近期扫描历史。网络文件记录可通过点击结果面板中的"Reset"按钮或关闭标签页来清除。卸载本扩展程序将移除其本地存储。会话数据将在浏览器会话结束时自动清除。</p>
+
+<h2>4. 权限</h2>
+<table>
+  <tr><th>权限</th><th>所需理由</th></tr>
+  <tr><td><code>tabs</code></td><td>跟踪当前活动标签页的 URL，以便弹出窗口显示将要扫描的页面。</td></tr>
+  <tr><td><code>scripting</code></td><td>向当前页面注入内容脚本以查找可下载的文件链接。</td></tr>
+  <tr><td><code>downloads</code></td><td>将所选文件及合并后的 PDF 保存到您的计算机。</td></tr>
+  <tr><td><code>storage</code></td><td>存储许可证状态、偏好设置及近期扫描历史。</td></tr>
+  <tr><td><code>alarms</code></td><td>按周期性计划刷新许可证及撤销状态。</td></tr>
+  <tr><td><code>notifications</code></td><td>显示下载完成及许可证状态通知。</td></tr>
+  <tr><td><code>contextMenus</code></td><td>添加用于从页面、链接、图片及选中内容扫描和下载文件的右键菜单操作。</td></tr>
+  <tr><td>必需的主机权限：<br><code>https://*/*</code></td><td>允许您扫描任意所选网站，并连接至 <code>https://umczaaooqinddgnhxbvp.supabase.co/*</code> 处的许可证／试用验证后端。在您选择页面或输入 URL 之前，目标扫描域名无法事先得知，因此需要广泛的 HTTPS 主机访问权限。该权限用于检测所选网站上的可下载链接、页面内 fetch/XHR 文件响应、文件元数据、所选文件下载，以及许可证／试用检查。扫描历史、页面 HTML、浏览活动及文件内容均不会发送至我方服务器。</td></tr>
+</table>
+
+<h2>5. 浏览相关数据的使用</h2>
+<p>本扩展程序仅将浏览相关数据及网站内容用于其面向用户的功能：扫描当前页面、扫描您输入的 URL、显示近期扫描记录、检查文件元数据、下载所选文件，以及在本地合并 PDF。</p>
+<ul>
+  <li>我们 <strong>不</strong> 出售此类数据。</li>
+  <li>我们 <strong>不</strong> 将此类数据用于广告、用户画像或分析。</li>
+  <li>我们 <strong>不</strong> 将此类数据传输给数据经纪商、信息再销售商或广告平台。</li>
+  <li>我们 <strong>不</strong> 将扫描历史、页面 HTML 或文件内容发送至我方服务器。</li>
+</ul>
+<p>我们对此类数据的使用仅限于本扩展程序的单一用途，以及 Chrome Web Store&trade; 列表与本扩展程序界面中所述的面向用户的功能。</p>
+
+<h2>5a. 遥测、分析与错误报告</h2>
+<p>已发布的商店版本 <strong>不</strong> 向我方服务器或任何第三方遥测服务提供商发送错误报告、崩溃报告、性能指标或任何其他遥测数据。本扩展程序不包含 Google Analytics、Mixpanel、Amplitude、Segment 或类似 SDK。</p>
+<p>源代码树中存在一项可选的错误报告挂钩（Sentry）以供内部调试构建使用，但其受构建期密钥控制，且在通过 Chrome Web Store&trade; 与 Microsoft Edge&trade; Add-ons 分发的版本中绝不会启用。如未来某次发布拟启用该功能，本隐私政策将于该版本发布前先行更新，且所发送的任何数据将经过过滤以隐去许可证密钥、邮箱地址、JWT、Bearer 令牌、UUID、查询字符串值、文件系统路径以及 URL 路径主体。</p>
+
+<h2>6. 处理的法律依据（GDPR 第 6 条）</h2>
+<p>对于位于欧盟／欧洲经济区的用户，我们在适用情形下依据下列法律依据处理数据：</p>
+<ul>
+  <li><strong>合同履行</strong>（第 6(1)(b) 条） &mdash; 用于付费许可证的许可证验证、试用资格检查及设备数量限制执行。</li>
+  <li><strong>正当利益</strong>（第 6(1)(f) 条） &mdash; 用于在您设备上存储为提供本扩展程序核心功能所必需的本地偏好设置和近期扫描历史。</li>
+</ul>
+
+<h2>7. 第三方服务与国际数据传输</h2>
+<p>本扩展程序与托管于 <strong>Supabase</strong> 的许可证后端通信。Supabase 在许可证验证、试用验证和设备管理方面充当我方的基础设施提供商。我们不会将本扩展程序的用户数据出售或披露给无关的第三方。</p>
+<p>Supabase 的基础设施托管于 Amazon Web Services（AWS）。发送至我方后端的数据可能在欧盟／欧洲经济区以外被处理。Supabase 表示其国际传输依赖 <strong>标准合同条款（SCC）</strong>。详情请参阅 <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabase 的隐私政策</a>。</p>
+
+<h2>8. 数据保留与删除</h2>
+<ul>
+  <li>我方后端上的许可证、设备及试用相关记录将保留至运行许可证／试用系统所必需的期间，通常为您的许可证有效期，除非您请求删除。</li>
+  <li>我们将在 <strong>30 天内</strong> 处理对后端记录的删除请求。</li>
+  <li>近期扫描历史在本地最多保存最近 20 条记录。</li>
+  <li>会话存储在浏览器会话结束时清除。</li>
+  <li>卸载本扩展程序将移除其由浏览器管理的本地存储。</li>
+</ul>
+
+<h2>9. 您的权利（欧盟／欧洲经济区用户）</h2>
+<p>根据 GDPR，您就我方控制的数据可能享有下列权利：</p>
+<ul>
+  <li><strong>访问权</strong> &mdash; 请求我方所持有的关于您的数据副本。</li>
+  <li><strong>更正权</strong> &mdash; 请求更正不准确的数据。</li>
+  <li><strong>删除权</strong> &mdash; 请求删除我方所持有的关于您的数据。</li>
+  <li><strong>限制处理权</strong> &mdash; 请求我方限制对您数据的使用。</li>
+  <li><strong>数据可携权</strong> &mdash; 请求以机器可读格式获取您的数据。</li>
+  <li><strong>反对权</strong> &mdash; 反对基于正当利益的处理。</li>
+  <li><strong>投诉权</strong> &mdash; 向您当地的数据保护机关提出投诉。</li>
+</ul>
+<p>如需行使上述权利，请通过 <a href="mailto:oldemail@example.invalid">oldemail@example.invalid</a> 联系我们。我们将在 <strong>30 天内</strong> 予以回复。</p>
+
+<h2>10. 儿童隐私</h2>
+<p>本扩展程序并非面向 16 周岁以下（或您所在司法辖区适用年龄以下）的儿童，我们也不会有意收集儿童的个人信息。</p>
+
+<h2>11. 本政策的变更</h2>
+<p>我们可能不时更新本隐私政策。变更将以更新日期发布于本页面。</p>
+
+<div class="contact">
+  <h2 style="margin-top:0;">12. 联系方式 / 数据控制者</h2>
+  <p><strong>数据控制者：</strong> Tetsunobu Kawai</p>
+  <p>如您对本隐私政策有任何疑问，或希望行使您的数据权利，请通过下列方式联系我们：</p>
+  <p><strong>邮箱：</strong> <a href="mailto:oldemail@example.invalid">oldemail@example.invalid</a></p>
+  <p><strong>GitHub：</strong> <a href="https://github.com/SerimaTeddyBear" target="_blank" rel="noopener">github.com/SerimaTeddyBear</a></p>
+</div>
+
+<h2>13. 相关文件</h2>
+<ul>
+  <li><a href="terms.html">服务条款</a> &mdash; 许可证、禁止使用、准据法。</li>
+  <li><a href="tokushoho.html">特定商业交易法标示（日本）</a> &mdash; 面向日本消费者销售的法定披露事项。</li>
+</ul>
+
+<h2>14. 商标</h2>
+<p>"Google Chrome"和"Chrome Web Store"为 Google LLC 的商标。"Microsoft Edge"和"Microsoft Edge Add-ons"为 Microsoft Corporation 的商标。本隐私政策对上述名称的使用仅为说明目的，并不意味着与 Google 或 Microsoft 存在关联或获其背书。本扩展程序系 Tetsunobu Kawai 的独立产品。</p>
+    </div>
+
+    <div data-lang="zh_TW">
+      <h1>隱私權政策</h1>
+<p class="updated">最後更新：2026年5月4日</p>
+<p><strong>Grab All Files</strong>（以下簡稱「本擴充功能」）係一款協助使用者於其所選定之網頁中搜尋、檢視、下載檔案，並可選擇性合併檔案之瀏覽器擴充功能。本政策說明本擴充功能所處理之資料、其使用方式、儲存位置以及傳輸發生之情形。</p>
+
+<h2>1. 資料處理概要</h2>
+<p>本擴充功能於已發行版本中 <strong>不</strong> 販售個人資料、不執行第三方分析、不置入廣告、不使用追蹤指令碼，亦不向任何遙測服務提供者傳送錯誤或當機報告。為提供使用者導向之功能，本擴充功能會於您之瀏覽器內就有限之瀏覽相關資料進行本地處理。</p>
+<p>例如包括：</p>
+<ul>
+  <li>您要求本擴充功能掃描之目前分頁或 URL；</li>
+  <li>為便於快速存取而儲存於本地之近期掃描紀錄；以及</li>
+  <li><strong>網路檔案紀錄</strong>（透過網路監控所偵測到之檔案 URL 與中繼資料），於您之瀏覽工作階段期間暫存於工作階段儲存空間中。</li>
+</ul>
+<p>我方不會將您之掃描紀錄、頁面 HTML、檔案內容或瀏覽活動傳送至我方伺服器。</p>
+<p><strong>試用與付費授權：</strong>本擴充功能提供 14 天之免費試用。試用期屆滿後，繼續使用須使用付費授權金鑰。試用資格、授權啟用、授權更新、裝置數量限制及撤銷檢查均由授權後端使用隨機裝置 UUID 處理；於適用情形下，並使用授權金鑰。</p>
+<p><strong>對網站之存取：</strong>由於使用者得選擇掃描任何網站，且目標網域無法事先得知，本擴充功能因此申請 <code>https://*/*</code> 之存取權限。此權限用於偵測您所選掃描之頁面或 URL 上之可下載連結與檔案回應，並下載您所選擇之檔案。此權限不用於將頁面 HTML、瀏覽活動或檔案內容傳送至我方伺服器。</p>
+
+<h2>2. 網路請求</h2>
+<p>本擴充功能僅基於下列目的發起網路請求：</p>
+<ul>
+  <li><strong>授權驗證</strong> &mdash; 於輸入或重新驗證授權金鑰時，本擴充功能將向我方伺服器傳送授權金鑰及隨機產生之裝置識別碼（UUID），以驗證授權並執行裝置數量限制。</li>
+  <li><strong>授權權杖（JWT）核發與更新</strong> &mdash; 驗證成功後，我方伺服器將回傳一份短期之簽署存取權杖（ES256 JWT，TTL 為 7 天），其中含有授權金鑰、裝置識別碼、所授功能及到期時間。本擴充功能將該權杖快取於本地，使後續多數授權檢查得於離線狀態下進行。本擴充功能通常每日一次將相同之授權金鑰與裝置識別碼傳送至我方伺服器，以更新權杖。</li>
+  <li><strong>撤銷清單更新</strong> &mdash; 本擴充功能每日下載一份小型之、已簽署之已撤銷權杖識別碼清單（不含授權金鑰），俾撤銷得於 24 小時內生效，縱於離線狀態亦然。此請求不傳送任何使用者識別資料。</li>
+  <li><strong>試用驗證</strong> &mdash; 於免費試用期間，本擴充功能將向我方伺服器傳送裝置識別碼（UUID）以驗證試用資格。</li>
+  <li><strong>裝置管理</strong> &mdash; 當您於授權畫面檢視或移除已啟用之裝置時，本擴充功能將向我方伺服器傳送授權金鑰、目前之裝置識別碼，並於您移除某台裝置時，傳送目標裝置之識別碼。</li>
+  <li><strong>使用者要求之頁面與檔案存取</strong> &mdash; 當您掃描頁面、輸入 URL、取得檔案中繼資料、下載檔案或合併 PDF 時，本擴充功能將直接連線至您所選定之目標網站。該等請求不會經由我方伺服器中轉。</li>
+</ul>
+<p>對目標網站之請求可能包含您之瀏覽器工作階段中已與該網站建立關聯之 Cookie 或其他工作階段認證資料（若您要求本擴充功能存取之內容確需該等資訊時）。本擴充功能不會另行蒐集、複製或販售上述資訊。</p>
+
+<h2>3. 儲存於您裝置之資料</h2>
+<p>本擴充功能使用 <code>chrome.storage.local</code> 與 <code>chrome.storage.session</code> 於本地儲存下列資料。除上述與授權相關之請求外，該等資料均保留於您之裝置內。</p>
+<table>
+  <tr><th>資料</th><th>儲存位置</th><th>用途</th></tr>
+  <tr><td>授權金鑰</td><td>Local</td><td>於授權驗證後維持本擴充功能之啟用狀態。</td></tr>
+  <tr><td>裝置 ID（隨機 UUID）</td><td>Local</td><td>識別本次安裝，用於授權數量限制及試用檢查。</td></tr>
+  <tr><td>安裝日期</td><td>Local</td><td>管理 14 天免費試用期。</td></tr>
+  <tr><td>上次驗證／上次試用檢查時間戳記</td><td>Local</td><td>於授權檢查成功後給予有限之離線寬限期，並避免重複向伺服器發出請求。</td></tr>
+  <tr><td>授權 JWT 與撤銷快取（已簽署存取權杖、到期時間、權杖 ID、所授功能、已撤銷權杖 ID 清單）</td><td>Local</td><td>使用伺服器核發之已簽署權杖進行離線授權驗證，並阻擋已遭撤銷之權杖。</td></tr>
+  <tr><td>試用過期旗標及伺服器回傳之授權錯誤／狀態</td><td>Local</td><td>於瀏覽器重新啟動後保留試用過期及伺服器端授權檢查失敗之結果。</td></tr>
+  <tr><td>近期掃描紀錄（URL、標題／主機名稱、時間戳記）</td><td>Local</td><td>顯示近期掃描過之頁面及輸入過之 URL 以便快速存取。</td></tr>
+  <tr><td>上次來源分頁 ID</td><td>Local</td><td>將彈出視窗重新連接至您先前掃描之分頁。</td></tr>
+  <tr><td>視窗大小</td><td>Local</td><td>記憶彈出視窗之尺寸。</td></tr>
+  <tr><td>介面偏好設定（已選之檔案類型、自訂副檔名清單、整理／並行下載選項、佈景主題、引導／類別選擇器之完成旗標）</td><td>Local</td><td>跨工作階段記憶您於本擴充功能介面中所做之選擇。</td></tr>
+  <tr><td>網路檔案紀錄（透過網路監控所偵測到之檔案 URL、類型、大小）</td><td>Session</td><td>偵測透過 JavaScript、XHR 或 fetch 請求載入之、不存在於頁面 HTML 中之可下載檔案。於關閉分頁或瀏覽器工作階段結束時自動清除。</td></tr>
+  <tr><td>暫時下載狀態（所選檔案 URL、標題、檔案名稱、狀態、重試次數、下載 ID）</td><td>Session</td><td>於 service worker 暫停時，恢復進行中之下載。</td></tr>
+</table>
+<p>您可於本擴充功能介面內清除近期掃描紀錄。網路檔案紀錄可透過點擊結果面板中之「Reset」按鈕或關閉分頁加以清除。解除安裝本擴充功能將移除其本地儲存之資料。工作階段資料於瀏覽器工作階段結束時自動清除。</p>
+
+<h2>4. 權限</h2>
+<table>
+  <tr><th>權限</th><th>所需理由</th></tr>
+  <tr><td><code>tabs</code></td><td>追蹤目前作用中分頁之 URL，以便彈出視窗顯示將要掃描之頁面。</td></tr>
+  <tr><td><code>scripting</code></td><td>於目前頁面注入內容指令碼，以尋找可下載之檔案連結。</td></tr>
+  <tr><td><code>downloads</code></td><td>將所選檔案及合併後之 PDF 儲存至您之電腦。</td></tr>
+  <tr><td><code>storage</code></td><td>儲存授權狀態、偏好設定及近期掃描紀錄。</td></tr>
+  <tr><td><code>alarms</code></td><td>依週期性排程更新授權及撤銷狀態。</td></tr>
+  <tr><td><code>notifications</code></td><td>顯示下載完成及授權狀態之通知。</td></tr>
+  <tr><td><code>contextMenus</code></td><td>新增可從頁面、連結、圖片與選取範圍掃描及下載檔案之滑鼠右鍵動作。</td></tr>
+  <tr><td>必要之主機權限：<br><code>https://*/*</code></td><td>使您得掃描任何所選網站，並連線至 <code>https://umczaaooqinddgnhxbvp.supabase.co/*</code> 之授權／試用驗證後端。在您選擇頁面或輸入 URL 之前，目標掃描網域無法事先得知，故需要廣泛之 HTTPS 主機存取權。此權限用於偵測所選網站上之可下載連結、頁面內 fetch/XHR 檔案回應、檔案中繼資料、所選檔案之下載，以及授權／試用檢查。掃描紀錄、頁面 HTML、瀏覽活動及檔案內容均不會傳送至我方伺服器。</td></tr>
+</table>
+
+<h2>5. 瀏覽相關資料之使用</h2>
+<p>本擴充功能僅將瀏覽相關資料及網站內容用於其使用者導向之功能：掃描目前頁面、掃描您所輸入之 URL、顯示近期掃描、檢查檔案中繼資料、下載所選檔案，以及在本地合併 PDF。</p>
+<ul>
+  <li>我方 <strong>不</strong> 販售此等資料。</li>
+  <li>我方 <strong>不</strong> 將此等資料用於廣告、剖析或分析。</li>
+  <li>我方 <strong>不</strong> 將此等資料移轉予資料仲介、資訊轉售商或廣告平台。</li>
+  <li>我方 <strong>不</strong> 將掃描紀錄、頁面 HTML 或檔案內容傳送至我方伺服器。</li>
+</ul>
+<p>我方對此等資料之使用，僅限於本擴充功能之單一用途，以及 Chrome Web Store&trade; 上架說明與本擴充功能介面中所述之使用者導向功能。</p>
+
+<h2>5a. 遙測、分析與錯誤報告</h2>
+<p>已發行之商店版本 <strong>不</strong> 向我方伺服器或任何第三方遙測服務提供者傳送錯誤報告、當機報告、效能指標或任何其他遙測資料。本擴充功能不含 Google Analytics、Mixpanel、Amplitude、Segment 或類似 SDK。</p>
+<p>原始碼樹中存在一項供內部除錯版本使用之選用錯誤報告掛勾（Sentry），惟其受建置期密碼控管，並於透過 Chrome Web Store&trade; 與 Microsoft Edge&trade; Add-ons 散布之版本中絕不啟用。如未來某次版本擬予啟用，本隱私權政策將於該版本發行前先行更新，且所傳送之任何資料將經過濾以遮蔽授權金鑰、電子郵件地址、JWT、Bearer 權杖、UUID、查詢字串值、檔案系統路徑及 URL 路徑主體。</p>
+
+<h2>6. 處理之法律依據（GDPR 第 6 條）</h2>
+<p>就位於歐盟／歐洲經濟區之使用者，我方於適用情形下依據下列法律依據進行處理：</p>
+<ul>
+  <li><strong>契約之履行</strong>（第 6(1)(b) 條） &mdash; 用於付費授權之授權驗證、試用資格檢查及裝置數量限制之執行。</li>
+  <li><strong>正當利益</strong>（第 6(1)(f) 條） &mdash; 用於儲存於您裝置上之本地偏好設定及近期掃描紀錄，以提供本擴充功能之核心功能。</li>
+</ul>
+
+<h2>7. 第三方服務與國際資料移轉</h2>
+<p>本擴充功能與託管於 <strong>Supabase</strong> 之授權後端進行通訊。Supabase 於授權驗證、試用驗證及裝置管理方面擔任我方之基礎設施提供者。我方不會將本擴充功能使用者之資料販售或揭露予無關之第三人。</p>
+<p>Supabase 之基礎設施託管於 Amazon Web Services（AWS）。傳送至我方後端之資料可能於歐盟／歐洲經濟區以外處理。Supabase 表示其國際移轉係依賴 <strong>標準契約條款（SCC）</strong>。詳情請參閱 <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabase 之隱私權政策</a>。</p>
+
+<h2>8. 資料保存與刪除</h2>
+<ul>
+  <li>我方後端上之授權、裝置及試用相關紀錄，將保存至運作授權／試用系統所必要之期間，通常為您授權之有效期間，除非您要求刪除。</li>
+  <li>我方將於 <strong>30 日內</strong> 處理對後端紀錄之刪除請求。</li>
+  <li>近期掃描紀錄於本地最多保留最近 20 筆。</li>
+  <li>工作階段儲存於瀏覽器工作階段結束時清除。</li>
+  <li>解除安裝本擴充功能將移除其由瀏覽器管理之本地儲存資料。</li>
+</ul>
+
+<h2>9. 您之權利（歐盟／歐洲經濟區使用者）</h2>
+<p>依 GDPR，您就我方所控制之資料可能享有下列權利：</p>
+<ul>
+  <li><strong>查閱權</strong> &mdash; 請求取得我方所持有關於您之資料副本。</li>
+  <li><strong>更正權</strong> &mdash; 請求更正不正確之資料。</li>
+  <li><strong>刪除權</strong> &mdash; 請求刪除我方所持有關於您之資料。</li>
+  <li><strong>處理限制權</strong> &mdash; 請求我方限制對您資料之利用。</li>
+  <li><strong>資料可攜權</strong> &mdash; 請求以機器可讀格式取得您之資料。</li>
+  <li><strong>反對權</strong> &mdash; 對基於正當利益之處理提出反對。</li>
+  <li><strong>提出申訴權</strong> &mdash; 向您當地之資料保護主管機關提出申訴。</li>
+</ul>
+<p>如欲行使上開權利，請以 <a href="mailto:oldemail@example.invalid">oldemail@example.invalid</a> 與我方聯繫。我方將於 <strong>30 日內</strong> 回覆。</p>
+
+<h2>10. 兒童隱私</h2>
+<p>本擴充功能並非以 16 歲以下（或您所屬司法管轄區所適用年齡以下）之兒童為對象，我方亦不會在知情之情況下蒐集兒童之個人資訊。</p>
+
+<h2>11. 本政策之變更</h2>
+<p>我方得隨時更新本隱私權政策。變更將連同更新日期公告於本頁。</p>
+
+<div class="contact">
+  <h2 style="margin-top:0;">12. 聯絡方式 / 資料控管者</h2>
+  <p><strong>資料控管者：</strong> Tetsunobu Kawai</p>
+  <p>如您對本隱私權政策有任何疑問，或欲行使您就資料所享有之權利，請以下列方式與我方聯繫：</p>
+  <p><strong>電子郵件：</strong> <a href="mailto:oldemail@example.invalid">oldemail@example.invalid</a></p>
+  <p><strong>GitHub：</strong> <a href="https://github.com/SerimaTeddyBear" target="_blank" rel="noopener">github.com/SerimaTeddyBear</a></p>
+</div>
+
+<h2>13. 相關文件</h2>
+<ul>
+  <li><a href="terms.html">服務條款</a> &mdash; 授權、禁止使用、準據法。</li>
+  <li><a href="tokushoho.html">特定商業交易法標示（日本）</a> &mdash; 對日本消費者銷售所應為之法定揭露事項。</li>
+</ul>
+
+<h2>14. 商標</h2>
+<p>「Google Chrome」與「Chrome Web Store」為 Google LLC 之商標。「Microsoft Edge」與「Microsoft Edge Add-ons」為 Microsoft Corporation 之商標。本隱私權政策中對上述名稱之使用僅為描述性質，並不表示與 Google 或 Microsoft 有任何關聯或獲其背書。本擴充功能係 Tetsunobu Kawai 之獨立產品。</p>
+    </div>
+    <!--AUTO_TRANSLATIONS_END-->
   </div>
-  <script>
-    function getLang() { var s = localStorage.getItem('fbd-lang'); if (s) return s; return (navigator.language || '').startsWith('ja') ? 'ja' : 'en'; }
-    function setLang(l) { localStorage.setItem('fbd-lang', l); document.querySelectorAll('[data-lang]').forEach(function(e) { e.classList.toggle('active', e.getAttribute('data-lang') === l); }); document.documentElement.lang = l; }
-    function toggleLang() { setLang(getLang() === 'ja' ? 'en' : 'ja'); }
-    setLang(getLang());
-    document.getElementById('btn-lang-toggle')?.addEventListener('click', toggleLang);
-  </script>
+  <script src="legal.js"></script>
 </body>
 </html>
