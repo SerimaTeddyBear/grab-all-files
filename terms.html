@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  
   <meta name="robots" content="noindex, nofollow">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terms of Service - Grab All Files</title>
+  <title>Terms of Service / 利用規約 - Grab All Files</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", Roboto, sans-serif; line-height: 1.7; color: #1a1a1a; background: #f8f9fa; padding: 2rem 1rem; }
@@ -17,181 +16,895 @@
     ul, ol { padding-left: 1.5rem; margin-bottom: 0.8rem; }
     .contact { background: #f1f5f9; border-radius: 8px; padding: 1rem 1.2rem; margin-top: 1.5rem; }
     .contact a { color: #2563eb; }
-    .lang-sel { position: fixed; top: 1rem; right: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.3rem 0.5rem; font-size: 0.8rem; color: #2563eb; cursor: pointer; }
+    .lang-sel { position: fixed; top: 1rem; right: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.3rem 0.5rem; font-size: 0.8rem; cursor: pointer; color: #2563eb; }
     [data-lang] { display: none; }
     [data-lang].active { display: block; }
+    .legal-note { font-size: 0.85rem; color: #555; background: #fffbe6; border-left: 3px solid #f59e0b; padding: 0.6rem 0.9rem; margin: 1rem 0; }
   </style>
 </head>
 <body>
   <select id="lang-sel" class="lang-sel" onchange="onLangChange(event)"><option value="en">English</option><option value="ja">日本語</option><option value="es">Español</option><option value="fr">Français</option><option value="ko">한국어</option><option value="it">Italiano</option><option value="zh_CN">简体中文</option><option value="zh_TW">繁體中文</option><option value="pt_BR">Português</option><option value="de">Deutsch</option></select>
   <div class="container">
+
     <div data-lang="en">
       <h1>Terms of Service</h1>
       <p class="updated">Last updated: May 4, 2026</p>
-      <p>These Terms govern your use of <strong>Grab All Files</strong> by Tetsunobu Kawai. By installing or using the Extension, you agree to these Terms.</p>
-      <h2>1. License Grant</h2><p>Personal, non-exclusive, non-transferable license for up to <strong>3 devices</strong>. You may not redistribute, reverse-engineer, or violate laws.</p>
-      <h2>2. Free Trial</h2><p><strong>14-day free trial</strong> from installation. After trial, a license key is required.</p>
-      <h2>3. Payment</h2><p>Processed via <strong>Stripe</strong>. One-time purchase. We do not store card info.</p>
-      <h2>4. Refund Policy</h2><p>All sales final after the 14-day trial. If a technical issue cannot be resolved within 30 days, a full refund is available. Contact: <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
-      <h2>5. Device Limits</h2><p>Up to 3 devices. Contact us to transfer.</p>
-      <h2>6. Conformity</h2><p>2-year conformity under EU Digital Content Directive. No guarantee for all websites/file types.</p>
-      <h2>7. Limitation of Liability</h2><p>Liability limited to amount paid.</p>
-      <h2>8. User Responsibility</h2><p>Users are responsible for compliance with applicable laws.</p>
-      <h2>9. Updates</h2><p>We may update. Continued use = acceptance.</p>
-      <h2>10. Termination</h2><p>We may revoke licenses for violations.</p>
-      <h2>11. Governing Law and Jurisdiction</h2><p>These Terms are governed by the laws of Japan. The <strong>Tokyo District Court</strong> shall have exclusive jurisdiction as the court of first instance for disputes arising from this Service. However, nothing in these Terms limits any consumer rights granted by the Consumer Contract Act of Japan or other applicable mandatory consumer-protection laws, including the right of a consumer to bring a claim before the courts of their place of residence.</p>
-      <div class="contact"><h2 style="margin-top:0;">12. Contact</h2><p><a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p></div>
+      <p>These Terms of Service ("Terms") govern your use of the <strong>Grab All Files</strong> browser extension ("the Extension") and its associated license keys, trial period, and license-management services (collectively, "the Service") provided by <strong>Tetsunobu Kawai</strong> ("we", "us", "our"). By installing the Extension or activating a license key, you ("you", "user") agree to these Terms.</p>
+
+      <p class="legal-note">For Japanese consumers, nothing in these Terms operates to limit any right granted to you by Japan's Consumer Contract Act (消費者契約法) or other mandatory consumer-protection laws. To the extent any clause in these Terms conflicts with such mandatory protection, that clause is superseded by the statutory protection.</p>
+
+      <h2>1. Definitions</h2>
+      <ul>
+        <li><strong>Extension</strong> — the Google Chrome&trade; / Microsoft Edge&trade; browser extension named "Grab All Files".</li>
+        <li><strong>License Key</strong> — a string in the format <code>GAF-XXXX-XXXX-XXXX</code> issued upon purchase that activates paid features of the Extension.</li>
+        <li><strong>Device</strong> — one browser profile on one computer, identified by a randomly generated UUID stored locally by the Extension.</li>
+        <li><strong>Trial</strong> — the 14-day free trial that begins on first activation.</li>
+      </ul>
+
+      <h2>2. Trial</h2>
+      <p>You may use the Extension free of charge for 14 days from first activation. The Service verifies trial eligibility by sending the random device UUID to our license backend. After the trial expires, paid features require a valid License Key.</p>
+
+      <h2>3. Grant of License</h2>
+      <p>Subject to your full and ongoing compliance with these Terms and timely payment of the applicable purchase price, we grant you a non-exclusive, non-transferable, non-sublicensable, revocable license to install and use the Extension for your personal or internal business purposes on up to <strong>three (3) Devices</strong> per License Key. You may release a Device slot by removing the Device from the license-management screen inside the Extension.</p>
+
+      <h2>4. License Key Delivery</h2>
+      <p>After payment is confirmed by Stripe, the License Key is sent to the e-mail address you provided on the Stripe Checkout page. You are responsible for keeping this address valid and for keeping the License Key secret.</p>
+
+      <h2>5. Permitted Use</h2>
+      <p>You may use the Extension to scan, list, and download files from web pages and URLs that you have the right to access and the right to download from. You are solely responsible for ensuring that your use complies with the terms of service, copyright notices, robots policies, and access restrictions of each target website, and with the laws applicable to you.</p>
+
+      <h2>6. Prohibited Use</h2>
+      <p>You agree not to:</p>
+      <ol>
+        <li>resell, sublicense, share, lease, or otherwise transfer your License Key to any third party;</li>
+        <li>use a single License Key on more Devices than the plan permits, including by sharing the License Key across employees, customers, or community members;</li>
+        <li>circumvent, disable, or attempt to defeat the license-verification, trial-verification, device-limit, or revocation mechanisms of the Service;</li>
+        <li>use the Extension to bypass digital rights management ("DRM"), paywalls, content-protection systems, or access controls of any third-party website or service;</li>
+        <li>use the Extension to crawl, mine, or bulk-download data from a target website in violation of that website's terms of service, robots.txt directives, or applicable law;</li>
+        <li>use the Extension to infringe the intellectual property, privacy, or other rights of any third party;</li>
+        <li>use the Extension to send, store, or distribute malware, spam, or other unlawful content;</li>
+        <li>reverse-engineer, decompile, or disassemble the Extension except to the extent expressly permitted by mandatory law (including, where applicable, Japan Copyright Act Article 30-4 for compatibility analysis);</li>
+        <li>remove, alter, or obscure copyright, trademark, or other proprietary notices in the Extension or its source files; or</li>
+        <li>use the Extension in any way that we reasonably determine is abusive, fraudulent, or harmful to other users or to the Service.</li>
+      </ol>
+
+      <h2>7. Updates and Changes to the Extension</h2>
+      <p>The Chrome Web Store&trade; and Microsoft Edge&trade; Add-ons stores deliver Extension updates automatically. We may modify, add, or remove features over time. We will not, however, materially expand the categories of data the Extension transmits without first updating the Privacy Policy.</p>
+
+      <h2>7a. Support and Customer Service</h2>
+      <p>For all support inquiries, please write to <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a>. We will acknowledge ordinary support inquiries within <strong>three (3) business days</strong>, and urgent issues that prevent the Extension from functioning within <strong>twenty-four (24) hours</strong>. Acknowledgement does not by itself guarantee a fix; resolution timelines depend on the nature of the issue and any third-party platform involved.</p>
+
+      <h2>8. Revocation of License</h2>
+      <p>We may revoke a License Key, with or without notice, if (a) the corresponding payment is reversed, charged back, or refunded; (b) you breach these Terms in a way that we reasonably determine to be material; (c) we are required to do so by law, court order, or platform policy; or (d) the License Key has been disclosed publicly or used in a manner clearly indicating leakage. Upon revocation, paid features will stop working at the next online verification or upon expiry of the offline grace period (currently 14 days).</p>
+
+      <h2>9. Disclaimer of Warranties</h2>
+      <p>To the maximum extent permitted by mandatory law, the Service is provided "as is" and "as available", without warranty of any kind, including warranties of merchantability, fitness for a particular purpose, non-infringement, accuracy, or that the Service will be uninterrupted or error-free. We do not warrant that the Extension will detect every downloadable file on every website, or that downloads will succeed against every server configuration.</p>
+      <p class="legal-note">For Japanese consumers, this disclaimer does <strong>not</strong> apply to liability arising from our intentional act or gross negligence, and does <strong>not</strong> exclude any warranty implied by Japan's Consumer Contract Act (消費者契約法) Articles 8 and 8-2.</p>
+
+      <h2>10. Limitation of Liability</h2>
+      <p>To the maximum extent permitted by mandatory law, our total cumulative liability arising out of or relating to these Terms or your use of the Service is limited to the amount you actually paid us for the License Key giving rise to the claim. We are not liable for indirect, incidental, special, consequential, or punitive damages, or for lost profits, lost data, or business interruption.</p>
+      <p class="legal-note">For Japanese consumers, this limitation does <strong>not</strong> apply to damages arising from our intentional act or gross negligence, and does <strong>not</strong> apply to the extent that the Consumer Contract Act (消費者契約法) Articles 8 and 8-2 invalidate it.</p>
+
+      <h2>11. User Responsibility for Target Websites</h2>
+      <p>The Extension acts only on web pages and URLs that you choose. We have no relationship with the operators of those websites, do not vouch for their content, and have no responsibility for what you download or for any consequence of downloading content you were not authorized to access. You agree to indemnify us against third-party claims arising from your unauthorized use of the Extension against a target website.</p>
+
+      <h2>12. Privacy</h2>
+      <p>Your use of the Service is also governed by our Privacy Policy, which is incorporated into these Terms by reference. The Privacy Policy describes what data the Extension handles, what data is sent to our license backend, and your rights regarding that data.</p>
+
+      <h2>13. Changes to These Terms</h2>
+      <p>We may revise these Terms from time to time. The revised Terms will be posted with a new "Last updated" date. For material changes, we will additionally provide notice through the Extension UI or by e-mail to license-key holders. Your continued use of the Service after the revised Terms take effect constitutes acceptance of those Terms.</p>
+
+      <h2>14. Governing Law and Jurisdiction</h2>
+      <p>These Terms are governed by the laws of Japan. The <strong>Tokyo District Court</strong> shall have exclusive jurisdiction as the court of first instance for disputes arising from these Terms or your use of the Service. However, nothing in these Terms limits any consumer right granted to a Japanese consumer by the Consumer Contract Act (消費者契約法) or other applicable mandatory consumer-protection laws, including the right of a consumer to bring a claim before the courts of their place of residence.</p>
+
+      <h2>14a. Export Control</h2>
+      <p>You agree to comply with all applicable export-control and sanctions laws and regulations, including the U.S. Export Administration Regulations (EAR), the Japanese Foreign Exchange and Foreign Trade Act (外国為替及び外国貿易法), and any equivalent laws in your jurisdiction. You represent that you are not located in, and are not a national or resident of, any country to which the United States or Japan has embargoed goods, and that you are not on any U.S. government or Japanese government denied-party list.</p>
+
+      <h2>15. Severability and Survival</h2>
+      <p>If any clause of these Terms is held invalid or unenforceable by a court of competent jurisdiction, the remaining clauses remain in effect. Sections 6, 7a, 8, 9, 10, 11, 12, 14, 14a, and 15a survive any termination of your license.</p>
+
+      <h2>15a. Trademarks</h2>
+      <p>"Google Chrome" and "Chrome Web Store" are trademarks of Google LLC. "Microsoft Edge" and "Microsoft Edge Add-ons" are trademarks of Microsoft Corporation. Use of these names in this document is purely descriptive and does not imply affiliation with, sponsorship by, or endorsement from Google or Microsoft. The Extension is an independent product developed and distributed by Tetsunobu Kawai.</p>
+
+      <div class="contact">
+        <h2 style="margin-top:0;">16. Contact</h2>
+        <p>Questions about these Terms can be sent to:</p>
+        <p><strong>E-mail:</strong> <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      </div>
     </div>
+
     <div data-lang="ja">
       <h1>利用規約</h1>
       <p class="updated">最終更新日: 2026年5月4日</p>
-      <p>本規約は、Tetsunobu Kawaiが提供する<strong>ファイル一括ダウンロード（英文表記: Grab All Files）</strong>のご利用に適用されます。</p>
-      <h2>1. ライセンス</h2><p>最大<strong>3台</strong>の個人的、非独占的、譲渡不可ライセンス。再配布、リバースエンジニアリング、法令違反禁止。</p>
-      <h2>2. 無料トライアル</h2><p>インストールから<strong>14日間</strong>。終了後はライセンスキーが必要。</p>
-      <h2>3. お支払い</h2><p><strong>Stripe</strong>経由。買い切り。カード情報非保存。</p>
-      <h2>4. 返金</h2><p>14日間トライアル後は原則返金不可。30日以内に技術問題が解決できない場合は全額返金。<a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
-      <h2>5. デバイス制限</h2><p>最大3台。移行はお問い合わせ。</p>
-      <h2>6. 適合性</h2><p>EUデジタルコンテンツ指令に基づく2年間の適合保証。全サイト/ファイル形式の動作保証なし。</p>
-      <h2>7. 責任制限</h2><p>支払額を上限とします。</p>
-      <h2>8. ユーザー責任</h2><p>適用法令の遵守はユーザーの責任です。</p>
-      <h2>9. 更新</h2><p>随時更新。継続使用は同意。</p>
-      <h2>10. 解除</h2><p>違反時はライセンス取消の権利を留保。</p>
-      <h2>11. 準拠法・管轄</h2><p>本規約は日本法に準拠します。本サービスに関する紛争については、<strong>東京地方裁判所</strong>を第一審の合意管轄裁判所とします。ただし、本規約のいかなる条項も、消費者契約法その他の強行法規に基づき消費者に認められる権利（消費者の住所地を管轄する裁判所に提訴する権利を含みます）を制限するものではありません。</p>
-      <div class="contact"><h2 style="margin-top:0;">12. お問い合わせ</h2><p><a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p></div>
+      <p>本利用規約（以下「本規約」）は、<strong>Tetsunobu Kawai</strong>（以下「当方」）が提供するブラウザ拡張機能「<strong>ファイル一括ダウンロード</strong>」（英文表記: Grab All Files、以下「本拡張機能」）、付随するライセンスキー、無料トライアル期間、およびライセンス管理サービス（以下これらを総称して「本サービス」）の利用条件を定めるものです。本拡張機能のインストールまたはライセンスキーの有効化をもって、利用者（以下「お客様」）は本規約に同意したものとみなします。</p>
+
+      <p class="legal-note">日本国内の消費者であるお客様について、本規約のいかなる条項も、消費者契約法その他の強行法規により認められる消費者の権利を制限するものではありません。本規約の条項が当該強行法規に抵触する範囲においては、当該強行法規の保護が優先します。</p>
+
+      <h2>1. 用語の定義</h2>
+      <ul>
+        <li><strong>本拡張機能</strong> — Google Chrome&trade; / Microsoft Edge&trade; 向けブラウザ拡張機能「ファイル一括ダウンロード（英文表記: Grab All Files）」をいう。</li>
+        <li><strong>ライセンスキー</strong> — 購入時に発行される <code>GAF-XXXX-XXXX-XXXX</code> 形式の文字列で、本拡張機能の有料機能を有効化するもの。</li>
+        <li><strong>デバイス</strong> — 1台のコンピュータ上の1つのブラウザプロファイルをいい、本拡張機能がローカルに保存するランダムな UUID により識別される。</li>
+        <li><strong>トライアル</strong> — 初回有効化から14日間の無料トライアル。</li>
+      </ul>
+
+      <h2>2. 無料トライアル</h2>
+      <p>お客様は、初回有効化から14日間、本拡張機能を無料でご利用いただけます。本サービスは、ランダムなデバイス UUID を当方のライセンスバックエンドに送信し、トライアル利用資格を確認します。トライアル期間終了後、有料機能のご利用には有効なライセンスキーが必要です。</p>
+
+      <h2>3. ライセンスの付与</h2>
+      <p>本規約への完全かつ継続的な遵守、および所定のご購入代金のお支払いを条件に、当方はお客様に対し、1ライセンスにつき最大<strong>3デバイス</strong>の範囲内において、お客様の個人的利用または社内業務目的で本拡張機能をインストール・利用する非独占的、譲渡不可、サブライセンス不可、撤回可能なライセンスを付与します。本拡張機能内のライセンス管理画面から登録済みデバイスを削除することで、デバイス枠を解放できます。</p>
+
+      <h2>4. ライセンスキーの引渡し</h2>
+      <p>Stripe による決済確認後、Stripe Checkout 画面でご登録いただいたメールアドレス宛に、ライセンスキーをお送りします。お客様は、当該メールアドレスを有効な状態に保ち、ライセンスキーを第三者に開示しない責任を負います。</p>
+
+      <h2>5. 許諾された利用</h2>
+      <p>お客様は、本拡張機能を、お客様自身がアクセスする権利およびダウンロードする権利を有する Web ページおよび URL に対して使用することができます。各対象 Web サイトの利用規約、著作権表示、robots ポリシー、アクセス制限、ならびにお客様に適用される法令の遵守は、すべてお客様の自己責任となります。</p>
+
+      <h2>6. 禁止事項</h2>
+      <p>お客様は、以下の行為を行わないことに同意します。</p>
+      <ol>
+        <li>ライセンスキーを第三者に転売・サブライセンス・共有・貸与・譲渡する行為。</li>
+        <li>1つのライセンスキーをご購入プランで認められた数を超えるデバイス（従業員、顧客、コミュニティメンバー間での共有を含む）で使用する行為。</li>
+        <li>本サービスのライセンス検証、トライアル検証、デバイス数制限、失効処理を回避、無効化、または無力化しようとする行為。</li>
+        <li>本拡張機能を、第三者の Web サイトまたはサービスの DRM、ペイウォール、コンテンツ保護機構、アクセス制限を迂回する目的で使用する行為。</li>
+        <li>対象 Web サイトの利用規約、robots.txt 指示、または適用法令に違反するクローリング、データマイニング、一括取得を本拡張機能で行う行為。</li>
+        <li>本拡張機能を、第三者の知的財産権、プライバシー、その他の権利を侵害する目的で使用する行為。</li>
+        <li>本拡張機能を、マルウェア、スパム、その他の違法コンテンツの送信、保管、配布のために使用する行為。</li>
+        <li>本拡張機能のリバースエンジニアリング、逆コンパイル、逆アセンブルを行う行為（強行法規により明示的に認められる範囲、たとえば著作権法第30条の4に基づく互換性解析を除く）。</li>
+        <li>本拡張機能またはそのソースファイルに含まれる著作権表示、商標表示、その他の権利表示を削除、改変、または不可視にする行為。</li>
+        <li>その他、当方が合理的に濫用的・不正・他のユーザーまたは本サービスに有害と判断する方法での利用。</li>
+      </ol>
+
+      <h2>7. アップデートおよび本拡張機能の変更</h2>
+      <p>本拡張機能のアップデートは、Chrome Web Store&trade; および Microsoft Edge&trade; Add-ons により自動配信されます。当方は、機能の追加、変更、削除を行うことがあります。ただし、本拡張機能が送信するデータの種類を実質的に拡大する場合は、必ず事前にプライバシーポリシーを更新します。</p>
+
+      <h2>7a. サポート対応</h2>
+      <p>サポートに関するお問い合わせは、すべて <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a> までお願いいたします。通常のお問い合わせには <strong>3営業日以内</strong>、本拡張機能の利用を妨げる緊急のお問い合わせには <strong>24時間以内</strong> に受領のご連絡をいたします。受領の連絡は問題の解決を保証するものではなく、実際の解決時期は問題の性質および関連するプラットフォーム事業者の対応状況により異なります。</p>
+
+      <h2>8. ライセンスの失効</h2>
+      <p>当方は、以下のいずれかに該当する場合、事前通知の有無を問わずライセンスキーを失効させることができます。</p>
+      <ol>
+        <li>対応するお支払いの取消し、チャージバック、または返金が行われた場合。</li>
+        <li>お客様が本規約に違反し、当方が当該違反を重大と合理的に判断した場合。</li>
+        <li>法令、裁判所の命令、またはプラットフォームポリシーにより必要となった場合。</li>
+        <li>ライセンスキーが公に開示された、または明らかに漏洩したと認められる態様で使用された場合。</li>
+      </ol>
+      <p>失効後は、次回オンライン検証時、またはオフライン猶予期間（現状14日間）満了時に、有料機能が停止します。</p>
+
+      <h2>9. 保証の否認</h2>
+      <p>強行法規により認められる最大限の範囲において、本サービスは「現状有姿（as is）」かつ「提供可能な範囲で（as available）」提供されるものとし、商品性、特定目的適合性、非侵害性、正確性、無中断性、無瑕疵性のいかなる保証も行いません。本拡張機能が、すべての Web サイトであらゆるダウンロード可能ファイルを検出することや、あらゆるサーバー構成に対してダウンロードが成功することを保証するものではありません。</p>
+      <p class="legal-note">日本国内の消費者であるお客様について、本条は、当方の故意または重過失に起因する責任には適用されません。また、消費者契約法第8条および第8条の2により無効とされる範囲では、本条は適用されません。</p>
+
+      <h2>10. 責任の制限</h2>
+      <p>強行法規により認められる最大限の範囲において、本規約または本サービスのご利用に起因または関連する当方の累積的責任の総額は、お客様が当該請求の原因となったライセンスキーについて当方に対して実際にお支払いいただいた金額を上限とします。当方は、間接損害、付随的損害、特別損害、結果的損害、懲罰的損害、逸失利益、データ喪失、事業中断について責任を負いません。</p>
+      <p class="legal-note">日本国内の消費者であるお客様について、本条は、当方の故意または重過失に起因する損害には適用されず、消費者契約法第8条および第8条の2により無効とされる範囲では適用されません。</p>
+
+      <h2>11. 対象 Web サイトについてのお客様の責任</h2>
+      <p>本拡張機能は、お客様がご自身で選択した Web ページおよび URL に対してのみ動作します。当方は、これらの Web サイトの運営者と何ら関係を有さず、その内容について何ら保証しません。お客様がアクセス権限を持たないコンテンツのダウンロードや、その結果生じる一切の事象について、当方は責任を負いません。お客様は、本拡張機能を対象 Web サイトに対して権限なく利用したことに起因する第三者からの請求から、当方を補償することに同意します。</p>
+
+      <h2>12. プライバシー</h2>
+      <p>本サービスのご利用には、当方のプライバシーポリシーが適用され、本規約の一部として組み込まれます。プライバシーポリシーには、本拡張機能が取り扱うデータ、当方ライセンスバックエンドに送信されるデータ、および当該データに関するお客様の権利が記載されています。</p>
+
+      <h2>13. 本規約の変更</h2>
+      <p>当方は、本規約を随時改定することがあります。改定後の規約は、新たな「最終更新日」を付して掲載します。重要な変更については、本拡張機能の UI、またはライセンスキー保有者へのメールで追加的にお知らせします。改定の効力発生後にお客様が本サービスのご利用を継続された場合、改定後の規約に同意したものとみなします。</p>
+
+      <h2>14. 準拠法・管轄</h2>
+      <p>本規約は、日本法に準拠します。本規約または本サービスのご利用に関する紛争については、<strong>東京地方裁判所</strong>を第一審の専属合意管轄裁判所とします。ただし、本規約のいかなる条項も、消費者契約法その他の強行法規により日本国内の消費者に認められる権利（消費者の住所地を管轄する裁判所に提訴する権利を含みます）を制限するものではありません。</p>
+
+      <h2>14a. 輸出管理</h2>
+      <p>お客様は、米国輸出管理規則（EAR）、外国為替及び外国貿易法その他お客様に適用される一切の輸出管理および経済制裁に関する法令を遵守することに同意します。お客様は、米国または日本が禁輸措置を講じている国・地域に所在せず、当該国・地域の国民または居住者でもなく、米国政府または日本政府の禁止対象当事者リストに記載されていないことを表明します。</p>
+
+      <h2>15. 可分性および存続</h2>
+      <p>本規約のいずれかの条項が管轄裁判所により無効または執行不能と判断された場合でも、その他の条項は引き続き効力を有します。第6条、第7a条、第8条、第9条、第10条、第11条、第12条、第14条、第14a条、第15a条は、お客様のライセンスが終了した後も存続します。</p>
+
+      <h2>15a. 商標</h2>
+      <p>「Google Chrome」および「Chrome Web Store」は Google LLC の商標です。「Microsoft Edge」および「Microsoft Edge Add-ons」は Microsoft Corporation の商標です。本書面におけるこれらの名称の使用は説明目的に限られ、Google または Microsoft との提携、後援、推奨を意味するものではありません。本拡張機能は Tetsunobu Kawai が独立して開発・配布する製品です。</p>
+
+      <div class="contact">
+        <h2 style="margin-top:0;">16. お問い合わせ</h2>
+        <p>本規約に関するお問い合わせは、以下までお願いいたします。</p>
+        <p><strong>メール：</strong><a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      </div>
     </div>
+
+    <!--AUTO_TRANSLATIONS_BEGIN-->
+    <div data-lang="de">
+      <h1>Allgemeine Geschäftsbedingungen</h1>
+      <p class="updated">Stand: 4. Mai 2026</p>
+      <p>Diese Allgemeinen Geschäftsbedingungen (nachfolgend „AGB") regeln Ihre Nutzung der Browser-Erweiterung <strong>Grab All Files</strong> (nachfolgend „die Erweiterung") sowie der zugehörigen Lizenzschlüssel, des Testzeitraums und der Lizenzverwaltungsdienste (gemeinsam „der Dienst"), die von <strong>Tetsunobu Kawai</strong> („wir", „uns", „unser") bereitgestellt werden. Mit der Installation der Erweiterung oder der Aktivierung eines Lizenzschlüssels erklären Sie („Sie", „Nutzer") Ihr Einverständnis mit diesen AGB.</p>
+
+      <p class="legal-note">Für Verbraucher in Japan schränkt keine Bestimmung dieser AGB die Rechte ein, die Ihnen durch das japanische Verbrauchervertragsgesetz (消費者契約法) oder andere zwingende Verbraucherschutzgesetze zustehen. Soweit eine Klausel dieser AGB einem solchen zwingenden Schutz widerspricht, geht der gesetzliche Schutz vor.</p>
+
+      <h2>1. Begriffsbestimmungen</h2>
+      <ul>
+        <li><strong>Erweiterung</strong> &mdash; die Browser-Erweiterung „Grab All Files" für Google Chrome&trade; / Microsoft Edge&trade;.</li>
+        <li><strong>Lizenzschlüssel</strong> &mdash; eine beim Kauf ausgestellte Zeichenfolge im Format <code>GAF-XXXX-XXXX-XXXX</code>, mit der die kostenpflichtigen Funktionen der Erweiterung freigeschaltet werden.</li>
+        <li><strong>Gerät</strong> &mdash; ein Browserprofil auf einem Computer, identifiziert durch eine zufällig generierte UUID, die lokal von der Erweiterung gespeichert wird.</li>
+        <li><strong>Testversion</strong> &mdash; die 14-tägige kostenlose Testversion, die mit der ersten Aktivierung beginnt.</li>
+      </ul>
+
+      <h2>2. Testversion</h2>
+      <p>Sie dürfen die Erweiterung ab der ersten Aktivierung 14 Tage lang kostenlos nutzen. Der Dienst überprüft die Berechtigung zur Nutzung der Testversion durch Übermittlung der zufälligen Geräte-UUID an unser Lizenz-Backend. Nach Ablauf der Testversion erfordern die kostenpflichtigen Funktionen einen gültigen Lizenzschlüssel.</p>
+
+      <h2>3. Lizenzgewährung</h2>
+      <p>Vorbehaltlich Ihrer vollständigen und fortlaufenden Einhaltung dieser AGB sowie der fristgerechten Zahlung des jeweiligen Kaufpreises gewähren wir Ihnen eine nicht ausschließliche, nicht übertragbare, nicht unterlizenzierbare und widerrufliche Lizenz zur Installation und Nutzung der Erweiterung für persönliche oder interne geschäftliche Zwecke auf bis zu <strong>drei (3) Geräten</strong> pro Lizenzschlüssel. Sie können einen Geräteplatz freigeben, indem Sie das Gerät über den Lizenzverwaltungsbildschirm innerhalb der Erweiterung entfernen.</p>
+
+      <h2>4. Bereitstellung des Lizenzschlüssels</h2>
+      <p>Nach der Bestätigung der Zahlung durch Stripe wird der Lizenzschlüssel an die E-Mail-Adresse gesendet, die Sie auf der Stripe-Checkout-Seite angegeben haben. Sie sind dafür verantwortlich, dass diese Adresse gültig bleibt und der Lizenzschlüssel geheim gehalten wird.</p>
+
+      <h2>5. Zulässige Nutzung</h2>
+      <p>Sie dürfen die Erweiterung verwenden, um Dateien von Webseiten und URLs zu scannen, aufzulisten und herunterzuladen, auf die Sie zugriffsberechtigt und zum Herunterladen befugt sind. Sie sind allein dafür verantwortlich, dass Ihre Nutzung den Nutzungsbedingungen, Urheberrechtshinweisen, Robots-Richtlinien und Zugriffsbeschränkungen jeder Zielwebsite sowie den auf Sie anwendbaren Gesetzen entspricht.</p>
+
+      <h2>6. Untersagte Nutzung</h2>
+      <p>Sie verpflichten sich, Folgendes zu unterlassen:</p>
+      <ol>
+        <li>den Weiterverkauf, die Unterlizenzierung, die gemeinsame Nutzung, die Vermietung oder sonstige Übertragung Ihres Lizenzschlüssels an Dritte;</li>
+        <li>die Nutzung eines einzelnen Lizenzschlüssels auf mehr Geräten, als der Tarif erlaubt, einschließlich der gemeinsamen Nutzung des Lizenzschlüssels durch Mitarbeiter, Kunden oder Mitglieder einer Community;</li>
+        <li>das Umgehen, Deaktivieren oder den Versuch, die Lizenzprüfungs-, Testversionsprüfungs-, Gerätelimitierungs- oder Widerrufsmechanismen des Dienstes zu unterlaufen;</li>
+        <li>die Nutzung der Erweiterung zur Umgehung von Digital Rights Management („DRM"), Bezahlschranken, Inhaltsschutzsystemen oder Zugriffskontrollen einer Drittwebsite oder eines Drittdienstes;</li>
+        <li>die Nutzung der Erweiterung zum Crawlen, Mining oder Massendownload von Daten einer Zielwebsite unter Verstoß gegen deren Nutzungsbedingungen, robots.txt-Anweisungen oder geltendes Recht;</li>
+        <li>die Nutzung der Erweiterung zur Verletzung des geistigen Eigentums, der Privatsphäre oder anderer Rechte Dritter;</li>
+        <li>die Nutzung der Erweiterung zum Versenden, Speichern oder Verbreiten von Schadsoftware, Spam oder anderen rechtswidrigen Inhalten;</li>
+        <li>das Reverse-Engineering, Dekompilieren oder Disassemblieren der Erweiterung, soweit dies nicht durch zwingendes Recht ausdrücklich gestattet ist (einschließlich, soweit anwendbar, des japanischen Urheberrechtsgesetzes Artikel 30-4 zur Kompatibilitätsanalyse / Japan Copyright Act Article 30-4);</li>
+        <li>das Entfernen, Verändern oder Verdecken von Urheberrechts-, Marken- oder sonstigen Schutzrechtshinweisen in der Erweiterung oder ihren Quelldateien; oder</li>
+        <li>die Nutzung der Erweiterung in einer Weise, die wir nach billigem Ermessen als missbräuchlich, betrügerisch oder schädlich für andere Nutzer oder den Dienst einstufen.</li>
+      </ol>
+
+      <h2>7. Aktualisierungen und Änderungen der Erweiterung</h2>
+      <p>Der Chrome Web Store&trade; und die Microsoft Edge&trade; Add-ons-Stores stellen Aktualisierungen der Erweiterung automatisch bereit. Wir können Funktionen im Laufe der Zeit ändern, hinzufügen oder entfernen. Wir werden jedoch die Kategorien der von der Erweiterung übermittelten Daten nicht wesentlich erweitern, ohne zuvor die Datenschutzerklärung zu aktualisieren.</p>
+
+      <h2>7a. Support und Kundendienst</h2>
+      <p>Für sämtliche Supportanfragen wenden Sie sich bitte an <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a>. Wir bestätigen den Eingang gewöhnlicher Supportanfragen innerhalb von <strong>drei (3) Werktagen</strong> und dringende Anliegen, die den Betrieb der Erweiterung verhindern, innerhalb von <strong>vierundzwanzig (24) Stunden</strong>. Eine Eingangsbestätigung garantiert für sich genommen keine Lösung; die Bearbeitungszeiten hängen von der Art des Problems und etwaigen beteiligten Drittplattformen ab.</p>
+
+      <h2>8. Widerruf der Lizenz</h2>
+      <p>Wir können einen Lizenzschlüssel mit oder ohne Vorankündigung widerrufen, wenn (a) die entsprechende Zahlung rückgängig gemacht, zurückgebucht oder erstattet wird; (b) Sie diese AGB in einer Weise verletzen, die wir nach billigem Ermessen als wesentlich einstufen; (c) wir gesetzlich, durch Gerichtsbeschluss oder durch eine Plattformrichtlinie dazu verpflichtet sind; oder (d) der Lizenzschlüssel öffentlich bekannt geworden ist oder auf eine Weise verwendet wird, die eindeutig auf eine Weitergabe hindeutet. Mit dem Widerruf werden die kostenpflichtigen Funktionen bei der nächsten Online-Verifizierung oder nach Ablauf der Offline-Karenzzeit (derzeit 14 Tage) deaktiviert.</p>
+
+      <h2>9. Gewährleistungsausschluss</h2>
+      <p>Soweit nach zwingendem Recht zulässig, wird der Dienst „wie besehen" und „wie verfügbar" bereitgestellt, ohne jegliche Gewährleistung, einschließlich Gewährleistungen der Marktgängigkeit, der Eignung für einen bestimmten Zweck, der Nichtverletzung von Rechten, der Genauigkeit oder dafür, dass der Dienst unterbrechungsfrei oder fehlerfrei ist. Wir gewährleisten nicht, dass die Erweiterung jede herunterladbare Datei auf jeder Website erkennt oder dass Downloads bei jeder Serverkonfiguration erfolgreich sind.</p>
+      <p class="legal-note">Für Verbraucher in Japan gilt dieser Ausschluss <strong>nicht</strong> für Haftung aus Vorsatz oder grober Fahrlässigkeit unsererseits und schließt <strong>keine</strong> Gewährleistung aus, die durch Artikel 8 und 8-2 des japanischen Verbrauchervertragsgesetzes (消費者契約法) impliziert ist.</p>
+
+      <h2>10. Haftungsbeschränkung</h2>
+      <p>Soweit nach zwingendem Recht zulässig, ist unsere kumulative Gesamthaftung aus oder im Zusammenhang mit diesen AGB oder Ihrer Nutzung des Dienstes auf den Betrag begrenzt, den Sie tatsächlich für den Lizenzschlüssel gezahlt haben, der den Anlass für den Anspruch gibt. Wir haften nicht für indirekte, beiläufige, besondere, Folge- oder Strafschäden oder für entgangenen Gewinn, Datenverlust oder Betriebsunterbrechung.</p>
+      <p class="legal-note">Für Verbraucher in Japan gilt diese Beschränkung <strong>nicht</strong> für Schäden aus Vorsatz oder grober Fahrlässigkeit unsererseits und gilt <strong>nicht</strong>, soweit Artikel 8 und 8-2 des Verbrauchervertragsgesetzes (消費者契約法) sie unwirksam machen.</p>
+
+      <h2>11. Verantwortung des Nutzers für Zielwebsites</h2>
+      <p>Die Erweiterung wirkt nur auf Webseiten und URLs, die Sie auswählen. Wir stehen in keiner Beziehung zu den Betreibern dieser Websites, geben keine Zusicherungen zu deren Inhalten ab und übernehmen keine Verantwortung für das, was Sie herunterladen, oder für etwaige Folgen des Herunterladens von Inhalten, zu deren Zugriff Sie nicht berechtigt waren. Sie verpflichten sich, uns von Ansprüchen Dritter freizustellen, die sich aus Ihrer unbefugten Nutzung der Erweiterung gegenüber einer Zielwebsite ergeben.</p>
+
+      <h2>12. Datenschutz</h2>
+      <p>Ihre Nutzung des Dienstes unterliegt zudem unserer Datenschutzerklärung, die durch Bezugnahme Bestandteil dieser AGB wird. Die Datenschutzerklärung beschreibt, welche Daten die Erweiterung verarbeitet, welche Daten an unser Lizenz-Backend übermittelt werden und welche Rechte Ihnen in Bezug auf diese Daten zustehen.</p>
+
+      <h2>13. Änderungen dieser AGB</h2>
+      <p>Wir können diese AGB von Zeit zu Zeit überarbeiten. Die überarbeiteten AGB werden mit einem neuen Datum „Stand" veröffentlicht. Bei wesentlichen Änderungen werden wir zusätzlich über die Benutzeroberfläche der Erweiterung oder per E-Mail an Lizenzschlüsselinhaber informieren. Ihre fortgesetzte Nutzung des Dienstes nach Inkrafttreten der überarbeiteten AGB gilt als Zustimmung zu diesen AGB.</p>
+
+      <h2>14. Anwendbares Recht und Gerichtsstand</h2>
+      <p>Diese AGB unterliegen dem Recht Japans. Das <strong>Bezirksgericht Tokio (Tokyo District Court)</strong> ist als Gericht erster Instanz ausschließlich zuständig für Streitigkeiten aus diesen AGB oder aus Ihrer Nutzung des Dienstes. Keine Bestimmung dieser AGB schränkt jedoch die einem japanischen Verbraucher durch das Verbrauchervertragsgesetz (消費者契約法) oder andere geltende zwingende Verbraucherschutzgesetze gewährten Rechte ein, einschließlich des Rechts eines Verbrauchers, eine Klage vor den Gerichten seines Wohnsitzes zu erheben.</p>
+
+      <h2>14a. Exportkontrolle</h2>
+      <p>Sie verpflichten sich, alle anwendbaren Exportkontroll- und Sanktionsgesetze und -vorschriften einzuhalten, einschließlich der US-amerikanischen Export Administration Regulations (EAR), des japanischen Devisen- und Außenhandelsgesetzes (外国為替及び外国貿易法) und aller gleichwertigen Gesetze in Ihrer Rechtsordnung. Sie versichern, dass Sie sich nicht in einem Land befinden, gegen das die Vereinigten Staaten oder Japan Embargos verhängt haben, dass Sie weder Staatsangehöriger noch Einwohner eines solchen Landes sind und dass Sie auf keiner Liste sanktionierter Personen der US-Regierung oder der japanischen Regierung stehen.</p>
+
+      <h2>15. Salvatorische Klausel und Fortgeltung</h2>
+      <p>Sollte eine Bestimmung dieser AGB von einem zuständigen Gericht für ungültig oder nicht durchsetzbar erklärt werden, bleiben die übrigen Bestimmungen wirksam. Die Abschnitte 6, 7a, 8, 9, 10, 11, 12, 14, 14a und 15a gelten auch nach Beendigung Ihrer Lizenz fort.</p>
+
+      <h2>15a. Marken</h2>
+      <p>„Google Chrome" und „Chrome Web Store" sind Marken der Google LLC. „Microsoft Edge" und „Microsoft Edge Add-ons" sind Marken der Microsoft Corporation. Die Verwendung dieser Namen in diesem Dokument dient ausschließlich beschreibenden Zwecken und impliziert keine Verbindung mit, Förderung durch oder Empfehlung von Google oder Microsoft. Die Erweiterung ist ein unabhängiges Produkt, das von Tetsunobu Kawai entwickelt und vertrieben wird.</p>
+
+      <div class="contact">
+        <h2 style="margin-top:0;">16. Kontakt</h2>
+        <p>Fragen zu diesen AGB können gerichtet werden an:</p>
+        <p><strong>E-Mail:</strong> <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      </div>
+    </div>
+
     <div data-lang="es">
-      <h1>Términos de Servicio</h1>
+      <h1>Condiciones del Servicio</h1>
       <p class="updated">Última actualización: 4 de mayo de 2026</p>
-      <p>Estos Términos rigen el uso de <strong>Descargar todos los archivos (Grab All Files)</strong> de Tetsunobu Kawai.</p>
-      <h2>1. Licencia</h2><p>Personal, no exclusiva, intransferible para hasta <strong>3 dispositivos</strong>.</p>
-      <h2>2. Prueba Gratuita</h2><p><strong>14 días</strong> desde la instalación.</p>
-      <h2>3. Pago</h2><p>Vía <strong>Stripe</strong>. Compra única.</p>
-      <h2>4. Reembolsos</h2><p>Ventas finales tras la prueba. Reembolso si el problema técnico no se resuelve en 30 días. <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
-      <h2>5-8. Dispositivos, Conformidad, Responsabilidad, Usuario</h2><p>Máx. 3 dispositivos. 2 años de conformidad UE. Responsabilidad limitada al pago. El usuario es responsable del cumplimiento legal.</p>
-      <h2>9-11. Actualizaciones, Terminación, Ley aplicable</h2><p>Actualizaciones posibles. Revocación por violación. Se aplica la <strong>ley japonesa</strong>; los <strong>Tribunales de Tokio</strong> son la jurisdicción acordada de primera instancia. No obstante, ninguna disposición de estos Términos limita los derechos del consumidor reconocidos por las leyes imperativas de protección al consumidor (incluido el derecho del consumidor a demandar ante los tribunales de su lugar de residencia).</p>
-      <div class="contact"><h2 style="margin-top:0;">12. Contacto</h2><p><a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p></div>
+      <p>Las presentes Condiciones del Servicio (las «Condiciones») rigen el uso de la extensión de navegador <strong>Grab All Files</strong> (la «Extensión»), así como las claves de licencia, el período de prueba y los servicios de gestión de licencias asociados (en conjunto, el «Servicio») prestados por <strong>Tetsunobu Kawai</strong> («nosotros», «nos», «nuestro»). Al instalar la Extensión o activar una clave de licencia, usted («usted», «el usuario») acepta las presentes Condiciones.</p>
+
+      <p class="legal-note">Para los consumidores residentes en Japón, ninguna disposición de las presentes Condiciones operará en menoscabo de los derechos que les reconozca la Ley de Contratos de Consumidores de Japón (消費者契約法) u otras normas imperativas de protección al consumidor. En la medida en que cualquier cláusula de las presentes Condiciones entre en conflicto con dicha protección imperativa, dicha cláusula quedará desplazada por la protección legal correspondiente.</p>
+
+      <h2>1. Definiciones</h2>
+      <ul>
+        <li><strong>Extensión</strong> &mdash; la extensión de navegador para Google Chrome&trade; / Microsoft Edge&trade; denominada «Grab All Files».</li>
+        <li><strong>Clave de Licencia</strong> &mdash; una cadena de caracteres con el formato <code>GAF-XXXX-XXXX-XXXX</code> que se emite tras la compra y que activa las funciones de pago de la Extensión.</li>
+        <li><strong>Dispositivo</strong> &mdash; un perfil de navegador en un equipo, identificado mediante un UUID generado aleatoriamente y almacenado localmente por la Extensión.</li>
+        <li><strong>Prueba</strong> &mdash; el período de prueba gratuito de 14 días que comienza con la primera activación.</li>
+      </ul>
+
+      <h2>2. Período de Prueba</h2>
+      <p>Usted podrá utilizar la Extensión de forma gratuita durante 14 días desde la primera activación. El Servicio verifica la elegibilidad para la prueba enviando el UUID aleatorio del dispositivo a nuestro backend de licencias. Una vez expirado el período de prueba, las funciones de pago requerirán una Clave de Licencia válida.</p>
+
+      <h2>3. Concesión de Licencia</h2>
+      <p>Sujeto al cumplimiento íntegro y continuado de las presentes Condiciones por su parte y al pago puntual del precio de compra aplicable, le otorgamos una licencia no exclusiva, intransferible, no susceptible de sublicencia y revocable para instalar y utilizar la Extensión con fines personales o de negocio interno en un máximo de <strong>tres (3) Dispositivos</strong> por Clave de Licencia. Puede liberar una plaza de Dispositivo eliminando dicho Dispositivo desde la pantalla de gestión de licencias dentro de la Extensión.</p>
+
+      <h2>4. Entrega de la Clave de Licencia</h2>
+      <p>Una vez confirmado el pago por Stripe, la Clave de Licencia se enviará a la dirección de correo electrónico que usted haya indicado en la página de Stripe Checkout. Es su responsabilidad mantener válida dicha dirección y mantener la Clave de Licencia en secreto.</p>
+
+      <h2>5. Uso Permitido</h2>
+      <p>Usted podrá utilizar la Extensión para escanear, listar y descargar archivos de páginas web y URL a los que tenga derecho de acceso y de descarga. Es su exclusiva responsabilidad asegurarse de que su uso cumple con las condiciones del servicio, los avisos de derechos de autor, las directivas robots y las restricciones de acceso de cada sitio web objetivo, así como con la legislación que le sea aplicable.</p>
+
+      <h2>6. Uso Prohibido</h2>
+      <p>Usted se compromete a no:</p>
+      <ol>
+        <li>revender, sublicenciar, compartir, arrendar o transferir de cualquier otro modo su Clave de Licencia a terceros;</li>
+        <li>utilizar una misma Clave de Licencia en más Dispositivos de los que permita el plan, incluyendo el uso compartido de la Clave de Licencia entre empleados, clientes o miembros de una comunidad;</li>
+        <li>eludir, desactivar o intentar burlar los mecanismos de verificación de licencia, verificación del período de prueba, límite de dispositivos o revocación del Servicio;</li>
+        <li>utilizar la Extensión para sortear sistemas de gestión de derechos digitales («DRM»), muros de pago, sistemas de protección de contenido o controles de acceso de cualquier sitio web o servicio de terceros;</li>
+        <li>utilizar la Extensión para rastrear, minar o descargar de forma masiva datos de un sitio web objetivo infringiendo las condiciones del servicio de dicho sitio web, sus directivas robots.txt o la legislación aplicable;</li>
+        <li>utilizar la Extensión para vulnerar derechos de propiedad intelectual, de privacidad u otros derechos de terceros;</li>
+        <li>utilizar la Extensión para enviar, almacenar o distribuir software malicioso, correo no deseado u otros contenidos ilícitos;</li>
+        <li>aplicar ingeniería inversa, descompilar o desensamblar la Extensión, salvo en la medida en que la legislación imperativa lo autorice expresamente (incluyendo, cuando proceda, el artículo 30-4 de la Ley de Derechos de Autor de Japón (Japan Copyright Act Article 30-4) para análisis de compatibilidad);</li>
+        <li>retirar, alterar u ocultar avisos de derechos de autor, marcas comerciales u otros avisos de propiedad presentes en la Extensión o en sus archivos fuente; o</li>
+        <li>utilizar la Extensión de cualquier forma que, a nuestro juicio razonable, resulte abusiva, fraudulenta o perjudicial para otros usuarios o para el Servicio.</li>
+      </ol>
+
+      <h2>7. Actualizaciones y Cambios en la Extensión</h2>
+      <p>Las tiendas Chrome Web Store&trade; y Microsoft Edge&trade; Add-ons distribuyen las actualizaciones de la Extensión de forma automática. Podemos modificar, añadir o suprimir funcionalidades a lo largo del tiempo. No obstante, no ampliaremos materialmente las categorías de datos que la Extensión transmite sin actualizar previamente la Política de Privacidad.</p>
+
+      <h2>7a. Soporte y Atención al Cliente</h2>
+      <p>Para cualquier consulta de soporte, escríbanos a <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a>. Acusaremos recibo de las consultas ordinarias de soporte en un plazo de <strong>tres (3) días hábiles</strong>, y de las incidencias urgentes que impidan el funcionamiento de la Extensión en un plazo de <strong>veinticuatro (24) horas</strong>. El acuse de recibo no garantiza por sí solo la resolución; los plazos de resolución dependerán de la naturaleza de la incidencia y de cualquier plataforma de terceros que esté implicada.</p>
+
+      <h2>8. Revocación de la Licencia</h2>
+      <p>Podemos revocar una Clave de Licencia, con o sin previo aviso, cuando: (a) el pago correspondiente se anule, sea objeto de contracargo o sea reembolsado; (b) usted incumpla las presentes Condiciones de un modo que, a nuestro juicio razonable, sea sustancial; (c) estemos obligados a hacerlo en virtud de la ley, una resolución judicial o una política de plataforma; o (d) la Clave de Licencia haya sido divulgada públicamente o utilizada de forma que indique claramente su filtración. Tras la revocación, las funciones de pago dejarán de funcionar en la siguiente verificación en línea o al expirar el período de gracia sin conexión (actualmente, 14 días).</p>
+
+      <h2>9. Exclusión de Garantías</h2>
+      <p>En la máxima medida permitida por la legislación imperativa, el Servicio se presta «tal cual» y «según disponibilidad», sin garantía de ningún tipo, incluidas garantías de comerciabilidad, idoneidad para un propósito particular, no infracción, exactitud o de que el Servicio será ininterrumpido o estará libre de errores. No garantizamos que la Extensión vaya a detectar todos los archivos descargables en todos los sitios web, ni que las descargas vayan a tener éxito frente a cualquier configuración de servidor.</p>
+      <p class="legal-note">Para los consumidores residentes en Japón, esta exclusión <strong>no</strong> se aplica a la responsabilidad derivada de actos dolosos o negligencia grave por nuestra parte, y <strong>no</strong> excluye ninguna garantía implícita reconocida por los artículos 8 y 8-2 de la Ley de Contratos de Consumidores de Japón (消費者契約法).</p>
+
+      <h2>10. Limitación de Responsabilidad</h2>
+      <p>En la máxima medida permitida por la legislación imperativa, nuestra responsabilidad total y acumulada derivada de las presentes Condiciones o del uso del Servicio se limita al importe que usted haya pagado efectivamente por la Clave de Licencia que haya dado origen a la reclamación. No seremos responsables de daños indirectos, incidentales, especiales, consecuenciales o punitivos, ni de lucro cesante, pérdida de datos o interrupción de la actividad.</p>
+      <p class="legal-note">Para los consumidores residentes en Japón, esta limitación <strong>no</strong> se aplica a los daños derivados de actos dolosos o negligencia grave por nuestra parte, ni en la medida en que los artículos 8 y 8-2 de la Ley de Contratos de Consumidores de Japón (消費者契約法) la invaliden.</p>
+
+      <h2>11. Responsabilidad del Usuario sobre los Sitios Web Objetivo</h2>
+      <p>La Extensión actúa únicamente sobre las páginas web y URL que usted elija. No mantenemos relación con los operadores de dichos sitios web, no respondemos por sus contenidos y no asumimos responsabilidad alguna por lo que usted descargue ni por las consecuencias de descargar contenidos a los que no estaba autorizado a acceder. Usted se compromete a indemnizarnos frente a las reclamaciones de terceros derivadas del uso no autorizado de la Extensión contra un sitio web objetivo.</p>
+
+      <h2>12. Privacidad</h2>
+      <p>El uso del Servicio se rige también por nuestra Política de Privacidad, que se incorpora a las presentes Condiciones por referencia. La Política de Privacidad describe qué datos trata la Extensión, qué datos se envían a nuestro backend de licencias y los derechos que le asisten respecto de dichos datos.</p>
+
+      <h2>13. Modificaciones de las Condiciones</h2>
+      <p>Podemos revisar las presentes Condiciones periódicamente. Las Condiciones revisadas se publicarán con una nueva fecha de «Última actualización». En caso de cambios sustanciales, le notificaremos adicionalmente a través de la interfaz de la Extensión o por correo electrónico a los titulares de claves de licencia. La continuación del uso del Servicio una vez que las Condiciones revisadas hayan entrado en vigor implicará la aceptación de dichas Condiciones.</p>
+
+      <h2>14. Legislación Aplicable y Jurisdicción</h2>
+      <p>Las presentes Condiciones se rigen por la legislación de Japón. El <strong>Tribunal de Distrito de Tokio</strong> tendrá jurisdicción exclusiva como tribunal de primera instancia para los litigios derivados de las presentes Condiciones o del uso del Servicio. No obstante, ninguna disposición de las presentes Condiciones limita los derechos del consumidor reconocidos a un consumidor japonés por la Ley de Contratos de Consumidores de Japón (消費者契約法) u otras normas imperativas de protección al consumidor que resulten aplicables, incluido el derecho de un consumidor a presentar una demanda ante los tribunales de su lugar de residencia.</p>
+
+      <h2>14a. Control de Exportaciones</h2>
+      <p>Usted se compromete a cumplir todas las leyes y reglamentos aplicables en materia de control de exportaciones y sanciones, incluidas las Export Administration Regulations (EAR) de los Estados Unidos, la Ley japonesa de Cambio de Divisas y Comercio Exterior (外国為替及び外国貿易法) y cualquier norma equivalente en su jurisdicción. Usted declara que no se encuentra en, ni es nacional o residente de, ningún país sobre el que los Estados Unidos o Japón hayan impuesto un embargo de mercancías, y que no figura en ninguna lista gubernamental estadounidense o japonesa de partes denegadas.</p>
+
+      <h2>15. Salvaguarda y Supervivencia</h2>
+      <p>Si alguna cláusula de las presentes Condiciones fuera declarada nula o inejecutable por un tribunal competente, las restantes cláusulas seguirán plenamente vigentes. Las secciones 6, 7a, 8, 9, 10, 11, 12, 14, 14a y 15a sobrevivirán a la terminación de su licencia.</p>
+
+      <h2>15a. Marcas Comerciales</h2>
+      <p>«Google Chrome» y «Chrome Web Store» son marcas comerciales de Google LLC. «Microsoft Edge» y «Microsoft Edge Add-ons» son marcas comerciales de Microsoft Corporation. El uso de estos nombres en este documento es meramente descriptivo y no implica afiliación, patrocinio ni respaldo por parte de Google o Microsoft. La Extensión es un producto independiente desarrollado y distribuido por Tetsunobu Kawai.</p>
+
+      <div class="contact">
+        <h2 style="margin-top:0;">16. Contacto</h2>
+        <p>Las consultas relativas a las presentes Condiciones pueden dirigirse a:</p>
+        <p><strong>Correo electrónico:</strong> <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      </div>
     </div>
+
     <div data-lang="fr">
-      <h1>Conditions d'Utilisation</h1>
+      <h1>Conditions Générales d'Utilisation</h1>
       <p class="updated">Dernière mise à jour : 4 mai 2026</p>
-      <p>Ces Conditions régissent l'utilisation de <strong>Télécharger tous les fichiers (Grab All Files)</strong> de Tetsunobu Kawai.</p>
-      <h2>1. Licence</h2><p>Personnelle, non exclusive, non transférable pour <strong>3 appareils</strong> maximum.</p>
-      <h2>2. Essai Gratuit</h2><p><strong>14 jours</strong> dès l'installation.</p>
-      <h2>3. Paiement</h2><p>Via <strong>Stripe</strong>. Achat unique.</p>
-      <h2>4. Remboursement</h2><p>Ventes finales après l'essai. Remboursement si problème non résolu sous 30 jours. <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
-      <h2>5-8. Appareils, Conformité, Responsabilité, Utilisateur</h2><p>Max 3 appareils. 2 ans de conformité UE. Responsabilité limitée au montant payé. L'utilisateur est responsable du respect des lois.</p>
-      <h2>9-11. Mises à jour, Résiliation, Droit applicable</h2><p>Mises à jour possibles. Révocation pour violation. Les présentes Conditions sont régies par le <strong>droit japonais</strong> ; le <strong>Tribunal de Tokyo</strong> est la juridiction de première instance convenue. Toutefois, aucune disposition des présentes Conditions ne limite les droits du consommateur reconnus par les lois impératives de protection des consommateurs (y compris le droit du consommateur de saisir les tribunaux de son lieu de résidence).</p>
-      <div class="contact"><h2 style="margin-top:0;">12. Contact</h2><p><a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p></div>
+      <p>Les présentes Conditions Générales d'Utilisation (ci-après « CGU ») régissent votre utilisation de l'extension de navigateur <strong>Grab All Files</strong> (ci-après « l'Extension ») ainsi que des clés de licence, de la période d'essai et des services de gestion de licences associés (collectivement, « le Service ») fournis par <strong>Tetsunobu Kawai</strong> (« nous », « notre »). En installant l'Extension ou en activant une clé de licence, vous (« vous », « l'utilisateur ») acceptez les présentes CGU.</p>
+
+      <p class="legal-note">Pour les consommateurs au Japon, aucune disposition des présentes CGU ne saurait limiter les droits qui vous sont conférés par la loi japonaise sur les contrats de consommation (消費者契約法) ou par toute autre loi impérative de protection des consommateurs. Dans la mesure où une clause des présentes CGU entre en conflit avec une telle protection impérative, ladite clause est remplacée par la protection légale.</p>
+
+      <h2>1. Définitions</h2>
+      <ul>
+        <li><strong>Extension</strong> &mdash; l'extension de navigateur Google Chrome&trade; / Microsoft Edge&trade; nommée « Grab All Files ».</li>
+        <li><strong>Clé de licence</strong> &mdash; une chaîne au format <code>GAF-XXXX-XXXX-XXXX</code> émise lors de l'achat, qui active les fonctionnalités payantes de l'Extension.</li>
+        <li><strong>Appareil</strong> &mdash; un profil de navigateur sur un ordinateur, identifié par un UUID généré aléatoirement et stocké localement par l'Extension.</li>
+        <li><strong>Période d'essai</strong> &mdash; la période d'essai gratuite de 14 jours qui débute lors de la première activation.</li>
+      </ul>
+
+      <h2>2. Période d'essai</h2>
+      <p>Vous pouvez utiliser l'Extension gratuitement pendant 14 jours à compter de la première activation. Le Service vérifie l'éligibilité à la période d'essai en envoyant l'UUID aléatoire de l'appareil à notre serveur de licences. Après l'expiration de la période d'essai, les fonctionnalités payantes nécessitent une clé de licence valide.</p>
+
+      <h2>3. Octroi de licence</h2>
+      <p>Sous réserve de votre respect intégral et continu des présentes CGU et du paiement en temps utile du prix d'achat applicable, nous vous accordons une licence non exclusive, non cessible, non sous-licenciable et révocable pour installer et utiliser l'Extension à des fins personnelles ou professionnelles internes sur un maximum de <strong>trois (3) Appareils</strong> par clé de licence. Vous pouvez libérer un emplacement d'Appareil en supprimant l'Appareil depuis l'écran de gestion des licences à l'intérieur de l'Extension.</p>
+
+      <h2>4. Délivrance de la clé de licence</h2>
+      <p>Après confirmation du paiement par Stripe, la clé de licence est envoyée à l'adresse e-mail que vous avez fournie sur la page Stripe Checkout. Il vous incombe de maintenir cette adresse valide et de garder votre clé de licence secrète.</p>
+
+      <h2>5. Utilisation autorisée</h2>
+      <p>Vous pouvez utiliser l'Extension pour analyser, lister et télécharger des fichiers depuis des pages Web et des URL auxquelles vous avez le droit d'accéder et depuis lesquelles vous avez le droit de télécharger. Il vous appartient exclusivement de veiller à ce que votre utilisation respecte les conditions d'utilisation, les avis de droit d'auteur, les politiques robots et les restrictions d'accès de chaque site Web cible, ainsi que les lois qui vous sont applicables.</p>
+
+      <h2>6. Utilisations interdites</h2>
+      <p>Vous vous engagez à ne pas :</p>
+      <ol>
+        <li>revendre, sous-licencier, partager, louer ou transférer de toute autre manière votre clé de licence à un tiers ;</li>
+        <li>utiliser une seule clé de licence sur un nombre d'Appareils supérieur à celui autorisé par votre formule, notamment en partageant la clé de licence entre des employés, des clients ou des membres d'une communauté ;</li>
+        <li>contourner, désactiver ou tenter de neutraliser les mécanismes de vérification de licence, de vérification de la période d'essai, de limitation du nombre d'Appareils ou de révocation du Service ;</li>
+        <li>utiliser l'Extension pour contourner les systèmes de gestion des droits numériques (« DRM »), les barrières payantes, les systèmes de protection de contenu ou les contrôles d'accès de tout site Web ou service tiers ;</li>
+        <li>utiliser l'Extension pour explorer (crawl), extraire (mining) ou télécharger en masse des données depuis un site Web cible en violation des conditions d'utilisation de ce site, des directives robots.txt ou de la loi applicable ;</li>
+        <li>utiliser l'Extension pour porter atteinte à la propriété intellectuelle, à la vie privée ou à d'autres droits de tiers ;</li>
+        <li>utiliser l'Extension pour envoyer, stocker ou diffuser des logiciels malveillants, du spam ou tout autre contenu illicite ;</li>
+        <li>procéder à une ingénierie inverse, à une décompilation ou à un désassemblage de l'Extension, sauf dans la mesure expressément autorisée par une loi impérative (y compris, le cas échéant, l'article 30-4 de la loi japonaise sur le droit d'auteur / Japan Copyright Act Article 30-4 pour l'analyse de compatibilité) ;</li>
+        <li>supprimer, modifier ou masquer les mentions de droit d'auteur, de marques ou autres mentions de propriété figurant dans l'Extension ou ses fichiers source ; ou</li>
+        <li>utiliser l'Extension de toute manière que nous estimons raisonnablement abusive, frauduleuse ou préjudiciable aux autres utilisateurs ou au Service.</li>
+      </ol>
+
+      <h2>7. Mises à jour et modifications de l'Extension</h2>
+      <p>Le Chrome Web Store&trade; et le magasin Microsoft Edge&trade; Add-ons distribuent automatiquement les mises à jour de l'Extension. Nous pouvons modifier, ajouter ou supprimer des fonctionnalités au fil du temps. Toutefois, nous n'élargirons pas substantiellement les catégories de données transmises par l'Extension sans avoir préalablement mis à jour la Politique de confidentialité.</p>
+
+      <h2>7a. Support et service client</h2>
+      <p>Pour toute demande de support, veuillez écrire à <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a>. Nous accuserons réception des demandes de support ordinaires sous <strong>trois (3) jours ouvrables</strong> et des problèmes urgents empêchant le fonctionnement de l'Extension sous <strong>vingt-quatre (24) heures</strong>. L'accusé de réception ne garantit pas en lui-même une résolution ; les délais de résolution dépendent de la nature du problème et de toute plateforme tierce concernée.</p>
+
+      <h2>8. Révocation de la licence</h2>
+      <p>Nous pouvons révoquer une clé de licence, avec ou sans préavis, si (a) le paiement correspondant est annulé, fait l'objet d'une rétrofacturation ou est remboursé ; (b) vous violez les présentes CGU d'une manière que nous estimons raisonnablement substantielle ; (c) la loi, une décision de justice ou une politique de plateforme nous y obligent ; ou (d) la clé de licence a été divulguée publiquement ou utilisée d'une manière indiquant clairement une fuite. Après révocation, les fonctionnalités payantes cesseront de fonctionner lors de la prochaine vérification en ligne ou à l'expiration du délai de grâce hors ligne (actuellement 14 jours).</p>
+
+      <h2>9. Exclusion de garanties</h2>
+      <p>Dans toute la mesure permise par la loi impérative, le Service est fourni « en l'état » et « selon disponibilité », sans garantie d'aucune sorte, y compris les garanties de qualité marchande, d'adéquation à un usage particulier, de non-violation, d'exactitude ou de fonctionnement ininterrompu ou sans erreur. Nous ne garantissons pas que l'Extension détectera tous les fichiers téléchargeables sur tous les sites Web, ni que les téléchargements aboutiront avec toutes les configurations de serveur.</p>
+      <p class="legal-note">Pour les consommateurs au Japon, cette exclusion ne s'applique <strong>pas</strong> à la responsabilité résultant d'un acte intentionnel ou d'une négligence grave de notre part, et n'exclut <strong>aucune</strong> garantie implicite découlant des articles 8 et 8-2 de la loi japonaise sur les contrats de consommation (消費者契約法).</p>
+
+      <h2>10. Limitation de responsabilité</h2>
+      <p>Dans toute la mesure permise par la loi impérative, notre responsabilité cumulative totale découlant de ou liée aux présentes CGU ou à votre utilisation du Service est limitée au montant que vous nous avez effectivement payé pour la clé de licence à l'origine de la réclamation. Nous ne sommes pas responsables des dommages indirects, accessoires, spéciaux, consécutifs ou punitifs, ni des pertes de profits, des pertes de données ou des interruptions d'activité.</p>
+      <p class="legal-note">Pour les consommateurs au Japon, cette limitation ne s'applique <strong>pas</strong> aux dommages résultant d'un acte intentionnel ou d'une négligence grave de notre part, et ne s'applique <strong>pas</strong> dans la mesure où les articles 8 et 8-2 de la loi sur les contrats de consommation (消費者契約法) la rendent invalide.</p>
+
+      <h2>11. Responsabilité de l'utilisateur à l'égard des sites Web cibles</h2>
+      <p>L'Extension n'agit que sur les pages Web et les URL que vous choisissez. Nous n'avons aucune relation avec les exploitants de ces sites Web, ne nous portons pas garants de leur contenu et déclinons toute responsabilité concernant ce que vous téléchargez ou les conséquences du téléchargement de contenus auxquels vous n'étiez pas autorisé à accéder. Vous acceptez de nous indemniser contre toute réclamation de tiers résultant de votre utilisation non autorisée de l'Extension à l'égard d'un site Web cible.</p>
+
+      <h2>12. Confidentialité</h2>
+      <p>Votre utilisation du Service est également régie par notre Politique de confidentialité, qui est intégrée par référence aux présentes CGU. La Politique de confidentialité décrit les données traitées par l'Extension, les données envoyées à notre serveur de licences et vos droits relatifs à ces données.</p>
+
+      <h2>13. Modifications des présentes CGU</h2>
+      <p>Nous pouvons réviser les présentes CGU de temps à autre. Les CGU révisées seront publiées avec une nouvelle date de « Dernière mise à jour ». Pour les modifications substantielles, nous fournirons en outre un avis via l'interface utilisateur de l'Extension ou par e-mail aux titulaires de clés de licence. Votre utilisation continue du Service après l'entrée en vigueur des CGU révisées vaut acceptation desdites CGU.</p>
+
+      <h2>14. Droit applicable et juridiction compétente</h2>
+      <p>Les présentes CGU sont régies par les lois du Japon. Le <strong>Tribunal de District de Tokyo (Tokyo District Court)</strong> est exclusivement compétent en première instance pour les litiges découlant des présentes CGU ou de votre utilisation du Service. Toutefois, aucune disposition des présentes CGU ne limite les droits du consommateur conférés à un consommateur japonais par la loi sur les contrats de consommation (消費者契約法) ou par toute autre loi impérative de protection des consommateurs applicable, y compris le droit pour un consommateur d'introduire une action devant les tribunaux de son lieu de résidence.</p>
+
+      <h2>14a. Contrôle des exportations</h2>
+      <p>Vous vous engagez à respecter toutes les lois et réglementations applicables en matière de contrôle des exportations et de sanctions, y compris l'U.S. Export Administration Regulations (EAR), la loi japonaise sur les opérations de change et le commerce extérieur (外国為替及び外国貿易法) et toute loi équivalente dans votre juridiction. Vous déclarez ne pas être situé, ressortissant ou résident d'un pays soumis à un embargo des États-Unis ou du Japon, et ne figurer sur aucune liste de parties interdites du gouvernement américain ou du gouvernement japonais.</p>
+
+      <h2>15. Divisibilité et survie</h2>
+      <p>Si une clause des présentes CGU est jugée invalide ou inapplicable par un tribunal compétent, les autres clauses demeurent en vigueur. Les sections 6, 7a, 8, 9, 10, 11, 12, 14, 14a et 15a survivent à toute résiliation de votre licence.</p>
+
+      <h2>15a. Marques</h2>
+      <p>« Google Chrome » et « Chrome Web Store » sont des marques de Google LLC. « Microsoft Edge » et « Microsoft Edge Add-ons » sont des marques de Microsoft Corporation. L'utilisation de ces noms dans le présent document est purement descriptive et n'implique aucune affiliation, parrainage ou approbation de la part de Google ou Microsoft. L'Extension est un produit indépendant développé et distribué par Tetsunobu Kawai.</p>
+
+      <div class="contact">
+        <h2 style="margin-top:0;">16. Contact</h2>
+        <p>Les questions concernant les présentes CGU peuvent être adressées à :</p>
+        <p><strong>E-mail :</strong> <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      </div>
     </div>
+
+    <div data-lang="it">
+      <h1>Condizioni di Servizio</h1>
+      <p class="updated">Ultimo aggiornamento: 4 maggio 2026</p>
+      <p>Le presenti Condizioni di Servizio (le «Condizioni») disciplinano l'utilizzo dell'estensione per browser <strong>Grab All Files</strong> (l'«Estensione») nonché delle relative chiavi di licenza, del periodo di prova e dei servizi di gestione delle licenze (collettivamente, il «Servizio») forniti da <strong>Tetsunobu Kawai</strong> («noi», «ci», «nostro»). Installando l'Estensione o attivando una chiave di licenza, l'utente («Lei», «utente») accetta le presenti Condizioni.</p>
+
+      <p class="legal-note">Per i consumatori residenti in Giappone, nessuna disposizione delle presenti Condizioni vale a limitare i diritti riconosciuti dalla Legge giapponese sui contratti dei consumatori (消費者契約法) o da altre norme imperative a tutela del consumatore. Nella misura in cui una qualsiasi clausola delle presenti Condizioni si ponga in conflitto con tali tutele imperative, detta clausola sarà sostituita dalla tutela di legge.</p>
+
+      <h2>1. Definizioni</h2>
+      <ul>
+        <li><strong>Estensione</strong> &mdash; l'estensione per browser Google Chrome&trade; / Microsoft Edge&trade; denominata «Grab All Files».</li>
+        <li><strong>Chiave di Licenza</strong> &mdash; una stringa nel formato <code>GAF-XXXX-XXXX-XXXX</code> emessa al momento dell'acquisto e che attiva le funzionalità a pagamento dell'Estensione.</li>
+        <li><strong>Dispositivo</strong> &mdash; un profilo del browser su un singolo computer, identificato tramite un UUID generato casualmente e memorizzato localmente dall'Estensione.</li>
+        <li><strong>Prova</strong> &mdash; il periodo di prova gratuito di 14 giorni che decorre dalla prima attivazione.</li>
+      </ul>
+
+      <h2>2. Periodo di Prova</h2>
+      <p>L'utente può utilizzare l'Estensione gratuitamente per 14 giorni dalla prima attivazione. Il Servizio verifica l'idoneità alla prova inviando l'UUID casuale del dispositivo al nostro backend di licenza. Allo scadere del periodo di prova, le funzionalità a pagamento richiedono una Chiave di Licenza valida.</p>
+
+      <h2>3. Concessione della Licenza</h2>
+      <p>Subordinatamente al rispetto integrale e continuativo delle presenti Condizioni e al pagamento puntuale del prezzo di acquisto applicabile, Le concediamo una licenza non esclusiva, non trasferibile, non sublicenziabile e revocabile per installare e utilizzare l'Estensione per finalità personali o aziendali interne, su un massimo di <strong>tre (3) Dispositivi</strong> per ciascuna Chiave di Licenza. È possibile liberare una posizione di Dispositivo rimuovendolo dalla schermata di gestione delle licenze all'interno dell'Estensione.</p>
+
+      <h2>4. Consegna della Chiave di Licenza</h2>
+      <p>Dopo la conferma del pagamento da parte di Stripe, la Chiave di Licenza viene inviata all'indirizzo e-mail indicato nella pagina di Stripe Checkout. È responsabilità dell'utente mantenere valido tale indirizzo e custodire la Chiave di Licenza con riservatezza.</p>
+
+      <h2>5. Utilizzo Consentito</h2>
+      <p>L'utente può utilizzare l'Estensione per analizzare, elencare e scaricare file da pagine web e URL a cui ha diritto di accedere e da cui ha diritto di scaricare. È esclusiva responsabilità dell'utente assicurarsi che il proprio utilizzo sia conforme alle condizioni di servizio, alle indicazioni sui diritti d'autore, alle direttive del file robots e alle restrizioni di accesso di ciascun sito web di destinazione, nonché alla normativa a lui applicabile.</p>
+
+      <h2>6. Utilizzo Vietato</h2>
+      <p>L'utente si impegna a non:</p>
+      <ol>
+        <li>rivendere, concedere in sublicenza, condividere, dare in locazione o trasferire in altro modo a terzi la propria Chiave di Licenza;</li>
+        <li>utilizzare una singola Chiave di Licenza su un numero di Dispositivi superiore a quello consentito dal piano, anche tramite condivisione della Chiave di Licenza tra dipendenti, clienti o membri di una comunità;</li>
+        <li>aggirare, disabilitare o tentare di vanificare i meccanismi di verifica della licenza, di verifica della prova, di limite dei dispositivi o di revoca del Servizio;</li>
+        <li>utilizzare l'Estensione per eludere sistemi di gestione dei diritti digitali («DRM»), paywall, sistemi di protezione dei contenuti o controlli di accesso di siti web o servizi di terzi;</li>
+        <li>utilizzare l'Estensione per effettuare crawling, mining o scaricamento massivo di dati da un sito web di destinazione in violazione delle relative condizioni di servizio, delle direttive del file robots.txt o della normativa applicabile;</li>
+        <li>utilizzare l'Estensione per violare diritti di proprietà intellettuale, alla riservatezza o altri diritti di terzi;</li>
+        <li>utilizzare l'Estensione per inviare, archiviare o diffondere malware, spam o altri contenuti illeciti;</li>
+        <li>effettuare reverse engineering, decompilazione o disassemblaggio dell'Estensione, salvo nella misura espressamente consentita da norme imperative (compreso, ove applicabile, l'articolo 30-4 della Legge giapponese sul diritto d'autore (Japan Copyright Act Article 30-4) per finalità di analisi di compatibilità);</li>
+        <li>rimuovere, alterare od oscurare avvisi di copyright, marchi o altre indicazioni di proprietà presenti nell'Estensione o nei relativi file sorgente;</li>
+        <li>utilizzare l'Estensione in qualsiasi modo che, secondo nostra ragionevole valutazione, risulti abusivo, fraudolento o lesivo nei confronti di altri utenti o del Servizio.</li>
+      </ol>
+
+      <h2>7. Aggiornamenti e Modifiche dell'Estensione</h2>
+      <p>Il Chrome Web Store&trade; e il Microsoft Edge&trade; Add-ons store distribuiscono automaticamente gli aggiornamenti dell'Estensione. Potremo modificare, aggiungere o rimuovere funzionalità nel tempo. Tuttavia, non amplieremo in modo sostanziale le categorie di dati trasmessi dall'Estensione senza prima aggiornare l'Informativa sulla privacy.</p>
+
+      <h2>7a. Assistenza e Servizio Clienti</h2>
+      <p>Per qualsiasi richiesta di assistenza La preghiamo di scrivere all'indirizzo <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a>. Daremo riscontro alle richieste ordinarie di assistenza entro <strong>tre (3) giorni lavorativi</strong> e ai problemi urgenti che impediscono il funzionamento dell'Estensione entro <strong>ventiquattro (24) ore</strong>. La conferma di ricezione non garantisce di per sé la risoluzione; i tempi di risoluzione dipendono dalla natura del problema e dall'eventuale piattaforma di terzi coinvolta.</p>
+
+      <h2>8. Revoca della Licenza</h2>
+      <p>Possiamo revocare una Chiave di Licenza, con o senza preavviso, qualora: (a) il relativo pagamento sia stornato, oggetto di chargeback o rimborsato; (b) l'utente violi le presenti Condizioni in modo che, secondo nostra ragionevole valutazione, risulti sostanziale; (c) ciò ci sia richiesto dalla legge, da un provvedimento giudiziario o da una policy di piattaforma; o (d) la Chiave di Licenza sia stata divulgata pubblicamente o utilizzata in modo chiaramente indicativo di una compromissione. A seguito della revoca, le funzionalità a pagamento cesseranno di funzionare alla successiva verifica online o alla scadenza del periodo di tolleranza offline (attualmente 14 giorni).</p>
+
+      <h2>9. Esclusione di Garanzie</h2>
+      <p>Nella massima misura consentita dalla normativa imperativa, il Servizio è fornito «così com'è» e «secondo disponibilità», senza alcuna garanzia di alcun tipo, comprese le garanzie di commerciabilità, idoneità per uno scopo particolare, non violazione, accuratezza o di funzionamento ininterrotto o privo di errori. Non garantiamo che l'Estensione rilevi tutti i file scaricabili su qualsiasi sito web, né che le operazioni di download abbiano esito positivo con qualsiasi configurazione di server.</p>
+      <p class="legal-note">Per i consumatori residenti in Giappone, la presente esclusione <strong>non</strong> si applica alla responsabilità derivante da dolo o colpa grave da parte nostra e <strong>non</strong> esclude alcuna garanzia implicita prevista dagli articoli 8 e 8-2 della Legge giapponese sui contratti dei consumatori (消費者契約法).</p>
+
+      <h2>10. Limitazione di Responsabilità</h2>
+      <p>Nella massima misura consentita dalla normativa imperativa, la nostra responsabilità complessiva cumulativa derivante dalle presenti Condizioni o dall'utilizzo del Servizio o ad essi connessa è limitata all'importo effettivamente da Lei corrisposto per la Chiave di Licenza all'origine della pretesa. Non saremo responsabili per danni indiretti, incidentali, speciali, consequenziali o punitivi, né per perdita di profitti, perdita di dati o interruzione dell'attività.</p>
+      <p class="legal-note">Per i consumatori residenti in Giappone, la presente limitazione <strong>non</strong> si applica ai danni derivanti da dolo o colpa grave da parte nostra e <strong>non</strong> si applica nella misura in cui sia invalidata dagli articoli 8 e 8-2 della Legge giapponese sui contratti dei consumatori (消費者契約法).</p>
+
+      <h2>11. Responsabilità dell'Utente per i Siti Web di Destinazione</h2>
+      <p>L'Estensione opera esclusivamente sulle pagine web e sugli URL scelti dall'utente. Non abbiamo alcun rapporto con i gestori di tali siti web, non rispondiamo dei loro contenuti e non assumiamo alcuna responsabilità per ciò che l'utente scarica né per qualsiasi conseguenza derivante dal download di contenuti ai quali non era autorizzato ad accedere. L'utente si impegna a manlevarci da ogni pretesa di terzi derivante dall'uso non autorizzato dell'Estensione nei confronti di un sito web di destinazione.</p>
+
+      <h2>12. Privacy</h2>
+      <p>L'utilizzo del Servizio è altresì disciplinato dalla nostra Informativa sulla privacy, che è incorporata nelle presenti Condizioni mediante richiamo. L'Informativa sulla privacy descrive quali dati l'Estensione tratta, quali dati vengono inviati al nostro backend di licenza e i diritti dell'utente in relazione a tali dati.</p>
+
+      <h2>13. Modifiche alle Presenti Condizioni</h2>
+      <p>Possiamo aggiornare di tanto in tanto le presenti Condizioni. Le Condizioni aggiornate saranno pubblicate riportando una nuova data di «Ultimo aggiornamento». In caso di modifiche sostanziali, forniremo inoltre comunicazione tramite l'interfaccia dell'Estensione o via e-mail ai titolari di chiave di licenza. La prosecuzione dell'utilizzo del Servizio dopo l'entrata in vigore delle Condizioni aggiornate costituisce accettazione di tali Condizioni.</p>
+
+      <h2>14. Legge Applicabile e Foro Competente</h2>
+      <p>Le presenti Condizioni sono disciplinate dalla legge giapponese. Il <strong>Tribunale Distrettuale di Tokyo</strong> avrà giurisdizione esclusiva quale giudice di primo grado per le controversie derivanti dalle presenti Condizioni o dall'utilizzo del Servizio. Tuttavia, nessuna disposizione delle presenti Condizioni limita i diritti del consumatore riconosciuti a un consumatore giapponese dalla Legge sui contratti dei consumatori (消費者契約法) o da altre norme imperative applicabili a tutela del consumatore, ivi compreso il diritto del consumatore di adire il giudice del proprio luogo di residenza.</p>
+
+      <h2>14a. Controllo delle Esportazioni</h2>
+      <p>L'utente si impegna a rispettare tutte le leggi e i regolamenti applicabili in materia di controllo delle esportazioni e sanzioni, comprese le Export Administration Regulations (EAR) statunitensi, la Legge giapponese sui cambi e sul commercio estero (外国為替及び外国貿易法) e qualsiasi normativa equivalente nella propria giurisdizione. L'utente dichiara di non trovarsi e di non essere cittadino o residente di alcun Paese verso il quale gli Stati Uniti o il Giappone abbiano disposto un embargo sui beni, e di non figurare in alcun elenco governativo statunitense o giapponese di soggetti interdetti.</p>
+
+      <h2>15. Clausola Salvifica e Sopravvivenza</h2>
+      <p>Qualora una clausola delle presenti Condizioni sia ritenuta invalida o inefficace da un giudice competente, le restanti clausole resteranno in vigore. Le sezioni 6, 7a, 8, 9, 10, 11, 12, 14, 14a e 15a continueranno ad avere efficacia anche dopo la cessazione della Sua licenza.</p>
+
+      <h2>15a. Marchi</h2>
+      <p>«Google Chrome» e «Chrome Web Store» sono marchi di Google LLC. «Microsoft Edge» e «Microsoft Edge Add-ons» sono marchi di Microsoft Corporation. L'utilizzo di tali denominazioni nel presente documento ha finalità meramente descrittiva e non implica alcuna affiliazione, sponsorizzazione o approvazione da parte di Google o Microsoft. L'Estensione è un prodotto indipendente sviluppato e distribuito da Tetsunobu Kawai.</p>
+
+      <div class="contact">
+        <h2 style="margin-top:0;">16. Contatti</h2>
+        <p>Le domande relative alle presenti Condizioni possono essere inviate a:</p>
+        <p><strong>E-mail:</strong> <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      </div>
+    </div>
+
     <div data-lang="ko">
       <h1>이용약관</h1>
       <p class="updated">최종 업데이트: 2026년 5월 4일</p>
-      <p>본 약관은 Tetsunobu Kawai가 제공하는 <strong>파일 일괄 다운로드 (Grab All Files)</strong> 사용에 적용됩니다.</p>
-      <h2>1. 라이선스</h2><p>최대 <strong>3대 기기</strong>에 대한 개인적, 비독점적, 양도 불가 라이선스.</p>
-      <h2>2. 무료 체험</h2><p>설치일로부터 <strong>14일</strong>.</p>
-      <h2>3. 결제</h2><p><strong>Stripe</strong> 경유. 일회성 구매.</p>
-      <h2>4. 환불</h2><p>체험 후 판매 최종. 30일 내 기술 문제 미해결 시 전액 환불. <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
-      <h2>5-8. 기기, 적합성, 책임, 사용자</h2><p>최대 3대. EU 2년 적합성. 책임 한도는 결제 금액. 법률 준수는 사용자 책임.</p>
-      <h2>9-11. 업데이트, 해지, 준거법</h2><p>업데이트 가능. 위반 시 취소. 본 약관에는 <strong>일본법</strong>이 적용되며, <strong>도쿄지방법원</strong>이 제1심 합의관할 법원입니다. 단, 본 약관의 어떠한 조항도 소비자보호 관련 강행법규에 따라 소비자에게 인정되는 권리(소비자가 자신의 주소지 관할 법원에 제소할 권리를 포함합니다)를 제한하지 않습니다.</p>
-      <div class="contact"><h2 style="margin-top:0;">12. 연락처</h2><p><a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p></div>
+      <p>본 이용약관(이하 "본 약관")은 <strong>Tetsunobu Kawai</strong>("당사", "저희")가 제공하는 <strong>Grab All Files</strong> 브라우저 확장 프로그램(이하 "본 확장 프로그램") 및 이에 부수하는 라이선스 키, 무료 체험 기간, 라이선스 관리 서비스(이상을 총칭하여 "본 서비스")의 이용 조건을 규정합니다. 본 확장 프로그램을 설치하거나 라이선스 키를 활성화함으로써 이용자(이하 "귀하", "이용자")는 본 약관에 동의한 것으로 간주됩니다.</p>
+
+      <p class="legal-note">일본 국내 소비자인 귀하에 대하여, 본 약관의 어떠한 조항도 일본 소비자계약법(消費者契約法) 및 기타 강행법규에 의하여 인정되는 소비자의 권리를 제한하지 않습니다. 본 약관의 조항이 해당 강행법규에 저촉되는 범위에서는, 해당 강행법규의 보호가 우선합니다.</p>
+
+      <h2>1. 정의</h2>
+      <ul>
+        <li><strong>본 확장 프로그램</strong> &mdash; "Grab All Files"라는 명칭의 Google Chrome&trade; / Microsoft Edge&trade; 브라우저 확장 프로그램을 의미합니다.</li>
+        <li><strong>라이선스 키</strong> &mdash; 구매 시 발급되며 본 확장 프로그램의 유료 기능을 활성화하는 <code>GAF-XXXX-XXXX-XXXX</code> 형식의 문자열을 의미합니다.</li>
+        <li><strong>디바이스</strong> &mdash; 1대의 컴퓨터에 설치된 1개의 브라우저 프로파일을 의미하며, 본 확장 프로그램이 로컬에 저장하는 임의 생성 UUID로 식별됩니다.</li>
+        <li><strong>무료 체험</strong> &mdash; 최초 활성화 시점부터 14일간의 무료 체험 기간을 의미합니다.</li>
+      </ul>
+
+      <h2>2. 무료 체험</h2>
+      <p>귀하는 최초 활성화 시점부터 14일간 본 확장 프로그램을 무료로 이용하실 수 있습니다. 본 서비스는 임의 생성된 디바이스 UUID를 당사 라이선스 백엔드로 전송하여 체험 이용 자격을 확인합니다. 무료 체험 기간이 만료된 후 유료 기능을 이용하시려면 유효한 라이선스 키가 필요합니다.</p>
+
+      <h2>3. 라이선스 부여</h2>
+      <p>귀하의 본 약관에 대한 완전하고 지속적인 준수 및 소정의 구매 대금의 적시 지급을 조건으로, 당사는 귀하에게 라이선스 키 1개당 최대 <strong>3대(3대)의 디바이스</strong>까지 귀하의 개인적 용도 또는 사내 업무 용도로 본 확장 프로그램을 설치 및 이용할 수 있는 비독점적, 양도 불가능, 재라이선스 불가능, 철회 가능한 라이선스를 부여합니다. 본 확장 프로그램 내 라이선스 관리 화면에서 등록된 디바이스를 삭제함으로써 디바이스 슬롯을 해제할 수 있습니다.</p>
+
+      <h2>4. 라이선스 키의 전달</h2>
+      <p>Stripe에 의한 결제 확인 후, Stripe Checkout 화면에서 귀하가 입력하신 이메일 주소로 라이선스 키가 발송됩니다. 귀하는 해당 이메일 주소를 유효한 상태로 유지하고 라이선스 키를 비밀로 보관할 책임이 있습니다.</p>
+
+      <h2>5. 허용된 이용</h2>
+      <p>귀하는 귀하가 접근할 권리 및 다운로드할 권리를 보유한 웹 페이지 및 URL에 대하여 본 확장 프로그램을 사용하여 파일을 스캔, 목록화, 다운로드할 수 있습니다. 각 대상 웹사이트의 이용약관, 저작권 표시, robots 정책, 접근 제한 및 귀하에게 적용되는 법령의 준수에 대한 책임은 전적으로 귀하에게 있습니다.</p>
+
+      <h2>6. 금지 사항</h2>
+      <p>귀하는 다음 행위를 하지 않을 것에 동의합니다.</p>
+      <ol>
+        <li>라이선스 키를 제3자에게 재판매, 재라이선스, 공유, 임대 또는 양도하는 행위</li>
+        <li>1개의 라이선스 키를 구매한 플랜이 허용하는 디바이스 수를 초과하여(직원, 고객, 커뮤니티 구성원 간의 공유를 포함) 사용하는 행위</li>
+        <li>본 서비스의 라이선스 검증, 체험 검증, 디바이스 수 제한, 실효 처리를 우회, 무력화 또는 회피하려고 시도하는 행위</li>
+        <li>본 확장 프로그램을 사용하여 제3자 웹사이트 또는 서비스의 디지털 저작권 관리(DRM), 페이월(paywall), 콘텐츠 보호 시스템 또는 접근 통제를 우회하는 행위</li>
+        <li>대상 웹사이트의 이용약관, robots.txt 지시, 또는 적용 법령에 위반하여 본 확장 프로그램으로 크롤링, 데이터 마이닝 또는 일괄 다운로드를 수행하는 행위</li>
+        <li>본 확장 프로그램을 사용하여 제3자의 지식재산권, 프라이버시, 기타 권리를 침해하는 행위</li>
+        <li>본 확장 프로그램을 사용하여 악성 코드, 스팸 또는 기타 위법한 콘텐츠를 송신, 저장 또는 배포하는 행위</li>
+        <li>본 확장 프로그램에 대하여 리버스 엔지니어링, 디컴파일 또는 디스어셈블을 수행하는 행위(강행법규에 의해 명시적으로 허용되는 범위, 예를 들어 호환성 분석을 위한 일본 저작권법 제30조의4(Japan Copyright Act Article 30-4)에 따른 경우는 제외)</li>
+        <li>본 확장 프로그램 또는 그 소스 파일에 포함된 저작권 표시, 상표 표시 또는 기타 권리 표시를 제거, 변경 또는 은폐하는 행위</li>
+        <li>당사가 합리적으로 남용적, 사기적 또는 다른 이용자나 본 서비스에 유해하다고 판단하는 방법으로 본 확장 프로그램을 사용하는 행위</li>
+      </ol>
+
+      <h2>7. 본 확장 프로그램의 업데이트 및 변경</h2>
+      <p>본 확장 프로그램의 업데이트는 Chrome Web Store&trade; 및 Microsoft Edge&trade; Add-ons에 의하여 자동으로 배포됩니다. 당사는 시간이 지남에 따라 기능을 추가, 변경 또는 삭제할 수 있습니다. 다만, 본 확장 프로그램이 송신하는 데이터의 범주를 실질적으로 확대하는 경우에는 사전에 반드시 개인정보처리방침을 갱신합니다.</p>
+
+      <h2>7a. 지원 및 고객 서비스</h2>
+      <p>모든 지원 문의는 <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a>으로 보내주시기 바랍니다. 당사는 통상의 지원 문의에 대해서는 <strong>3영업일(3영업일) 이내</strong>에, 본 확장 프로그램의 작동을 방해하는 긴급한 문제에 대해서는 <strong>24시간(24시간) 이내</strong>에 접수 확인을 드립니다. 접수 확인은 그 자체로 해결을 보장하는 것이 아니며, 해결 시점은 문제의 성질 및 관련 제3자 플랫폼의 사정에 따라 달라집니다.</p>
+
+      <h2>8. 라이선스의 실효</h2>
+      <p>당사는 (a) 해당 결제가 취소, 차지백 또는 환불된 경우, (b) 귀하가 본 약관을 위반하고 당사가 그 위반을 합리적으로 중대하다고 판단한 경우, (c) 법령, 법원의 명령 또는 플랫폼 정책에 따라 그렇게 할 의무가 있는 경우, 또는 (d) 라이선스 키가 공개적으로 노출되었거나 명백히 유출된 것으로 판단되는 방식으로 사용된 경우에는, 사전 통지의 유무와 상관없이 라이선스 키를 실효시킬 수 있습니다. 실효 후에는 다음 온라인 검증 시점 또는 오프라인 유예 기간(현재 14일) 만료 시점에 유료 기능의 사용이 중단됩니다.</p>
+
+      <h2>9. 보증의 부인</h2>
+      <p>강행법규에 의해 허용되는 최대한의 범위에서, 본 서비스는 어떠한 종류의 보증도 없이 "있는 그대로(as is)" 및 "이용 가능한 범위에서(as available)" 제공되며, 이에는 상품성, 특정 목적에의 적합성, 비침해성, 정확성에 관한 보증, 또는 본 서비스가 중단되지 않거나 오류가 없다는 보증이 포함되지 않습니다. 당사는 본 확장 프로그램이 모든 웹사이트에서 다운로드 가능한 모든 파일을 검출한다거나 모든 서버 구성에 대하여 다운로드가 성공한다는 것을 보증하지 않습니다.</p>
+      <p class="legal-note">일본 국내 소비자인 귀하에 대하여 본 부인 조항은 당사의 고의 또는 중과실에 기인하는 책임에는 적용되지 <strong>않으며</strong>, 일본 소비자계약법(消費者契約法) 제8조 및 제8조의2에 의하여 묵시되는 보증을 배제하지 <strong>않습니다</strong>.</p>
+
+      <h2>10. 책임의 제한</h2>
+      <p>강행법규에 의해 허용되는 최대한의 범위에서, 본 약관 또는 귀하의 본 서비스 이용에 기인하거나 관련되는 당사의 누적 총책임은, 청구의 원인이 된 라이선스 키와 관련하여 귀하가 당사에 실제로 지급하신 금액으로 제한됩니다. 당사는 간접 손해, 부수적 손해, 특별 손해, 결과적 손해 또는 징벌적 손해, 또는 일실 이익, 데이터 손실, 사업 중단에 대하여 책임을 지지 않습니다.</p>
+      <p class="legal-note">일본 국내 소비자인 귀하에 대하여 본 제한 조항은 당사의 고의 또는 중과실에 기인하는 손해에는 적용되지 <strong>않으며</strong>, 소비자계약법(消費者契約法) 제8조 및 제8조의2에 의하여 무효로 되는 범위에서는 적용되지 <strong>않습니다</strong>.</p>
+
+      <h2>11. 대상 웹사이트에 대한 이용자의 책임</h2>
+      <p>본 확장 프로그램은 귀하가 직접 선택하신 웹 페이지 및 URL에 대해서만 작동합니다. 당사는 해당 웹사이트의 운영자와 어떠한 관계도 없으며, 그 콘텐츠를 보증하지 않고, 귀하가 다운로드하는 내용 또는 귀하가 접근 권한을 가지지 않은 콘텐츠를 다운로드한 결과 발생하는 어떠한 결과에 대해서도 책임을 지지 않습니다. 귀하는 대상 웹사이트에 대하여 본 확장 프로그램을 무권한으로 사용한 것에 기인하는 제3자의 청구로부터 당사를 면책할 것에 동의합니다.</p>
+
+      <h2>12. 개인정보보호</h2>
+      <p>귀하의 본 서비스 이용에는 당사의 개인정보처리방침이 함께 적용되며, 동 방침은 본 약관에 참조로써 통합됩니다. 개인정보처리방침은 본 확장 프로그램이 처리하는 데이터, 당사 라이선스 백엔드로 송신되는 데이터, 그리고 해당 데이터에 관한 귀하의 권리에 대하여 설명합니다.</p>
+
+      <h2>13. 본 약관의 변경</h2>
+      <p>당사는 본 약관을 수시로 개정할 수 있습니다. 개정된 약관은 새로운 "최종 업데이트" 날짜와 함께 게시됩니다. 중요한 변경에 대해서는 본 확장 프로그램 UI 또는 라이선스 키 보유자에게 이메일로 추가 통지를 합니다. 개정된 약관의 효력 발생 후 귀하가 본 서비스의 이용을 계속하는 것은 해당 약관에 대한 동의로 간주됩니다.</p>
+
+      <h2>14. 준거법 및 관할</h2>
+      <p>본 약관은 일본 법률에 의하여 규율됩니다. 본 약관 또는 귀하의 본 서비스 이용에 기인하는 분쟁에 대해서는 <strong>도쿄지방법원(Tokyo District Court)</strong>을 제1심 전속관할 법원으로 합니다. 다만, 본 약관의 어떠한 조항도 일본 소비자계약법(消費者契約法) 또는 기타 적용 가능한 강행적 소비자 보호법규에 의하여 일본 국내 소비자에게 인정되는 권리(거주지 관할 법원에 청구를 제기할 권리를 포함)를 제한하지 않습니다.</p>
+
+      <h2>14a. 수출 통제</h2>
+      <p>귀하는 미국 수출관리규정(EAR), 일본 외국환 및 외국무역법(外国為替及び外国貿易法) 및 귀하의 관할 지역에서의 동등한 법령을 포함하여 적용 가능한 모든 수출 통제 및 제재 법령을 준수할 것에 동의합니다. 귀하는 미국 또는 일본이 금수 조치를 취한 국가에 소재하지 않으며 그 국적자 또는 거주자가 아니고, 미국 정부 또는 일본 정부의 거래 금지자 명단(denied-party list)에 등재되어 있지 않음을 진술합니다.</p>
+
+      <h2>15. 가분성 및 존속</h2>
+      <p>본 약관의 어떠한 조항이 관할 법원에 의해 무효 또는 집행 불가능하다고 판단되는 경우에도, 나머지 조항은 그대로 효력을 유지합니다. 제6조, 제7a조, 제8조, 제9조, 제10조, 제11조, 제12조, 제14조, 제14a조 및 제15a조는 귀하의 라이선스 종료 후에도 존속합니다.</p>
+
+      <h2>15a. 상표</h2>
+      <p>"Google Chrome" 및 "Chrome Web Store"는 Google LLC의 상표입니다. "Microsoft Edge" 및 "Microsoft Edge Add-ons"는 Microsoft Corporation의 상표입니다. 본 문서에서의 이러한 명칭의 사용은 순전히 설명적 목적이며, Google 또는 Microsoft와의 제휴, 후원 또는 추천을 의미하지 않습니다. 본 확장 프로그램은 Tetsunobu Kawai가 독립적으로 개발 및 배포하는 제품입니다.</p>
+
+      <div class="contact">
+        <h2 style="margin-top:0;">16. 문의</h2>
+        <p>본 약관에 관한 문의 사항은 다음으로 보내주시기 바랍니다.</p>
+        <p><strong>이메일:</strong> <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      </div>
     </div>
-    <div data-lang="it">
-      <h1>Termini di Servizio</h1>
-      <p class="updated">Ultimo aggiornamento: 4 maggio 2026</p>
-      <p>Questi Termini regolano l'uso di <strong>Scarica tutti i file (Grab All Files)</strong> di Tetsunobu Kawai.</p>
-      <h2>1. Licenza</h2><p>Personale, non esclusiva, non trasferibile per <strong>3 dispositivi</strong>.</p>
-      <h2>2. Prova Gratuita</h2><p><strong>14 giorni</strong> dall'installazione.</p>
-      <h2>3. Pagamento</h2><p>Via <strong>Stripe</strong>. Acquisto unico.</p>
-      <h2>4. Rimborsi</h2><p>Vendite finali dopo la prova. Rimborso se il problema non è risolto entro 30 giorni. <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
-      <h2>5-8. Dispositivi, Conformità, Responsabilità, Utente</h2><p>Max 3 dispositivi. 2 anni conformità UE. Responsabilità limitata al pagamento. L'utente è responsabile del rispetto delle leggi.</p>
-      <h2>9-11. Aggiornamenti, Risoluzione, Legge applicabile</h2><p>Aggiornamenti possibili. Revoca per violazione. I presenti Termini sono disciplinati dalla <strong>legge giapponese</strong>; il <strong>Tribunale di Tokyo</strong> è la giurisdizione di primo grado concordata. Tuttavia, nessuna disposizione dei presenti Termini limita i diritti del consumatore riconosciuti dalle norme imperative di tutela del consumatore (incluso il diritto del consumatore di adire i tribunali del proprio luogo di residenza).</p>
-      <div class="contact"><h2 style="margin-top:0;">12. Contatto</h2><p><a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p></div>
-    </div>
-    <div data-lang="zh_CN">
-      <h1>服务条款</h1>
-      <p class="updated">最后更新：2026年5月4日</p>
-      <p>本条款适用于Tetsunobu Kawai提供的<strong>批量下载文件（Grab All Files）</strong>。</p>
-      <h2>1. 许可</h2><p>最多<strong>3台设备</strong>的个人、非独占、不可转让许可。</p>
-      <h2>2. 免费试用</h2><p>安装起<strong>14天</strong>。</p>
-      <h2>3. 付款</h2><p>通过<strong>Stripe</strong>。一次性购买。</p>
-      <h2>4. 退款</h2><p>试用后不予退款。30天内技术问题未解决可全额退款。<a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
-      <h2>5-8. 设备、合规、责任、用户</h2><p>最多3台。EU 2年合规。责任限于付款金额。用户负责遵守法律。</p>
-      <h2>9-11. 更新、终止、准据法</h2><p>可能更新。违规可撤销。本条款适用<strong>日本法律</strong>，第一审合意管辖法院为<strong>东京地方法院</strong>。但本条款的任何规定均不限制消费者保护强制性法律赋予消费者的权利（包括消费者在其住所地法院提起诉讼的权利）。</p>
-      <div class="contact"><h2 style="margin-top:0;">12. 联系方式</h2><p><a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p></div>
-    </div>
-    <div data-lang="zh_TW">
-      <h1>服務條款</h1>
-      <p class="updated">最後更新：2026年5月4日</p>
-      <p>本條款適用於Tetsunobu Kawai提供的<strong>批次下載檔案（Grab All Files）</strong>。</p>
-      <h2>1. 授權</h2><p>最多<strong>3台裝置</strong>的個人、非獨佔、不可轉讓授權。</p>
-      <h2>2. 免費試用</h2><p>安裝起<strong>14天</strong>。</p>
-      <h2>3. 付款</h2><p>透過<strong>Stripe</strong>。一次性購買。</p>
-      <h2>4. 退款</h2><p>試用後不予退款。30天內技術問題未解決可全額退款。<a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
-      <h2>5-8. 裝置、合規、責任、使用者</h2><p>最多3台。EU 2年合規。責任限於付款金額。使用者負責遵守法律。</p>
-      <h2>9-11. 更新、終止、準據法</h2><p>可能更新。違規可撤銷。本條款適用<strong>日本法律</strong>，第一審合意管轄法院為<strong>東京地方法院</strong>。但本條款的任何規定均不限制消費者保護強制性法律賦予消費者的權利（包括消費者在其住所地法院提起訴訟的權利）。</p>
-      <div class="contact"><h2 style="margin-top:0;">12. 聯絡方式</h2><p><a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p></div>
-    </div>
+
     <div data-lang="pt_BR">
       <h1>Termos de Serviço</h1>
       <p class="updated">Última atualização: 4 de maio de 2026</p>
-      <p>Estes Termos regem o uso do <strong>Baixar todos os arquivos (Grab All Files)</strong> de Tetsunobu Kawai.</p>
-      <h2>1. Licença</h2><p>Pessoal, não exclusiva, intransferível para até <strong>3 dispositivos</strong>.</p>
-      <h2>2. Teste Gratuito</h2><p><strong>14 dias</strong> a partir da instalação.</p>
-      <h2>3. Pagamento</h2><p>Via <strong>Stripe</strong>. Compra única.</p>
-      <h2>4. Reembolso</h2><p>Vendas finais após o teste. Reembolso se problema não resolvido em 30 dias. <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
-      <h2>5-8. Dispositivos, Conformidade, Responsabilidade, Usuário</h2><p>Máx. 3 dispositivos. 2 anos conformidade UE. Responsabilidade limitada ao pagamento. Usuário responsável pelo cumprimento das leis.</p>
-      <h2>9-11. Atualizações, Rescisão, Lei aplicável</h2><p>Atualizações possíveis. Revogação por violação. Estes Termos são regidos pela <strong>lei japonesa</strong>; o <strong>Tribunal Distrital de Tóquio</strong> é o foro de primeira instância acordado. No entanto, nenhuma disposição destes Termos limita os direitos do consumidor reconhecidos pelas normas imperativas de defesa do consumidor (incluindo o direito de o consumidor demandar nos tribunais de seu domicílio).</p>
-      <div class="contact"><h2 style="margin-top:0;">12. Contato</h2><p><a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p></div>
-    </div>
-    <div data-lang="de">
-      <h1>Nutzungsbedingungen</h1>
-      <p class="updated">Letzte Aktualisierung: 4. Mai 2026</p>
-      <p>Diese Bedingungen regeln die Nutzung von <strong>Alle Dateien herunterladen (Grab All Files)</strong> von Tetsunobu Kawai.</p>
-      <h2>1. Lizenz</h2><p>Persönlich, nicht exklusiv, nicht übertragbar für bis zu <strong>3 Geräte</strong>.</p>
-      <h2>2. Kostenlose Testphase</h2><p><strong>14 Tage</strong> ab Installation.</p>
-      <h2>3. Zahlung</h2><p>Über <strong>Stripe</strong>. Einmaliger Kauf.</p>
-      <h2>4. Erstattung</h2><p>Endgültige Verkäufe nach Testphase. Erstattung wenn Problem nicht innerhalb von 30 Tagen gelöst. <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
-      <h2>5-8. Geräte, Konformität, Haftung, Nutzer</h2><p>Max. 3 Geräte. 2 Jahre EU-Konformität. Haftung auf Zahlungsbetrag begrenzt. Nutzer für Rechtseinhaltung verantwortlich.</p>
-      <h2>9-11. Updates, Kündigung, Anwendbares Recht</h2><p>Updates möglich. Widerruf bei Verstoß. Diese Bedingungen unterliegen <strong>japanischem Recht</strong>; das <strong>Bezirksgericht Tokyo</strong> ist als erstinstanzliches Gericht vereinbart. Keine Bestimmung dieser Bedingungen schränkt jedoch die Rechte ein, die dem Verbraucher nach zwingenden Verbraucherschutzbestimmungen zustehen (einschließlich des Rechts, vor den Gerichten seines Wohnsitzes Klage zu erheben).</p>
-      <div class="contact"><h2 style="margin-top:0;">12. Kontakt</h2><p><a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p></div>
+      <p>Estes Termos de Serviço ("Termos") regem o uso da extensão de navegador <strong>Grab All Files</strong> ("a Extensão") e das chaves de licença, do período de avaliação gratuita e dos serviços de gerenciamento de licenças associados (em conjunto, "o Serviço") fornecidos por <strong>Tetsunobu Kawai</strong> ("nós", "nosso"). Ao instalar a Extensão ou ativar uma chave de licença, você ("você", "usuário") concorda com estes Termos.</p>
+
+      <p class="legal-note">Para consumidores brasileiros, nada nestes Termos opera para limitar qualquer direito conferido a você pelo Código de Defesa do Consumidor (Lei nº 8.078/1990) ou por outras leis cogentes de proteção ao consumidor. Na medida em que qualquer cláusula destes Termos conflite com tal proteção cogente, essa cláusula é substituída pela proteção legal.</p>
+
+      <h2>1. Definições</h2>
+      <ul>
+        <li><strong>Extensão</strong> &mdash; a extensão de navegador para Google Chrome&trade; / Microsoft Edge&trade; denominada "Grab All Files".</li>
+        <li><strong>Chave de Licença</strong> &mdash; uma cadeia de caracteres no formato <code>GAF-XXXX-XXXX-XXXX</code> emitida na compra que ativa os recursos pagos da Extensão.</li>
+        <li><strong>Dispositivo</strong> &mdash; um perfil de navegador em um único computador, identificado por um UUID gerado aleatoriamente e armazenado localmente pela Extensão.</li>
+        <li><strong>Período de Avaliação</strong> &mdash; o período de avaliação gratuita de 14 dias que começa na primeira ativação.</li>
+      </ul>
+
+      <h2>2. Período de Avaliação</h2>
+      <p>Você poderá usar a Extensão gratuitamente por 14 dias a partir da primeira ativação. O Serviço verifica a elegibilidade do período de avaliação enviando o UUID aleatório do dispositivo ao nosso backend de licenças. Após o término do período de avaliação, os recursos pagos exigem uma Chave de Licença válida.</p>
+
+      <h2>3. Concessão de Licença</h2>
+      <p>Sujeito ao seu cumprimento integral e contínuo destes Termos e ao pagamento tempestivo do preço de compra aplicável, concedemos a você uma licença não exclusiva, intransferível, não sublicenciável e revogável para instalar e usar a Extensão para suas finalidades pessoais ou de uso interno em sua empresa em até <strong>três (3) Dispositivos</strong> por Chave de Licença. Você pode liberar uma vaga de Dispositivo removendo o Dispositivo na tela de gerenciamento de licenças dentro da Extensão.</p>
+
+      <h2>4. Entrega da Chave de Licença</h2>
+      <p>Após a confirmação do pagamento pela Stripe, a Chave de Licença é enviada ao endereço de e-mail informado por você na página de checkout da Stripe. Você é responsável por manter esse endereço válido e por manter a Chave de Licença em sigilo.</p>
+
+      <h2>5. Uso Permitido</h2>
+      <p>Você pode usar a Extensão para localizar, listar e baixar arquivos de páginas da web e URLs aos quais você tenha o direito de acessar e o direito de baixar. Você é o único responsável por garantir que seu uso esteja em conformidade com os termos de serviço, avisos de direitos autorais, políticas de robots e restrições de acesso de cada site de destino, bem como com as leis aplicáveis a você.</p>
+
+      <h2>6. Uso Proibido</h2>
+      <p>Você concorda em não:</p>
+      <ol>
+        <li>revender, sublicenciar, compartilhar, alugar ou de outra forma transferir sua Chave de Licença a terceiros;</li>
+        <li>usar uma única Chave de Licença em mais Dispositivos do que o plano permite, inclusive compartilhando a Chave de Licença entre funcionários, clientes ou membros da comunidade;</li>
+        <li>contornar, desativar ou tentar burlar os mecanismos de verificação de licença, verificação do período de avaliação, limite de Dispositivos ou revogação do Serviço;</li>
+        <li>usar a Extensão para contornar gestão de direitos digitais ("DRM"), paywalls, sistemas de proteção de conteúdo ou controles de acesso de qualquer site ou serviço de terceiros;</li>
+        <li>usar a Extensão para rastrear, minerar ou baixar dados em massa de um site de destino em violação aos termos de serviço desse site, às diretivas do robots.txt ou à legislação aplicável;</li>
+        <li>usar a Extensão para infringir os direitos de propriedade intelectual, privacidade ou outros direitos de terceiros;</li>
+        <li>usar a Extensão para enviar, armazenar ou distribuir malware, spam ou outro conteúdo ilícito;</li>
+        <li>fazer engenharia reversa, descompilar ou desmontar a Extensão, exceto na medida expressamente permitida pela lei cogente (incluindo, quando aplicável, a Lei de Direitos Autorais do Japão (Japan Copyright Act Article 30-4) para análise de compatibilidade);</li>
+        <li>remover, alterar ou ocultar avisos de direitos autorais, marcas registradas ou outros avisos de propriedade na Extensão ou em seus arquivos-fonte; ou</li>
+        <li>usar a Extensão de qualquer forma que, a nosso critério razoável, seja abusiva, fraudulenta ou prejudicial a outros usuários ou ao Serviço.</li>
+      </ol>
+
+      <h2>7. Atualizações e Alterações da Extensão</h2>
+      <p>A Chrome Web Store&trade; e a Microsoft Edge&trade; Add-ons distribuem as atualizações da Extensão automaticamente. Poderemos modificar, adicionar ou remover funcionalidades ao longo do tempo. Contudo, não ampliaremos materialmente as categorias de dados que a Extensão transmite sem antes atualizar a Política de Privacidade.</p>
+
+      <h2>7a. Suporte e Atendimento ao Cliente</h2>
+      <p>Para todas as solicitações de suporte, escreva para <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a>. Confirmaremos o recebimento de solicitações de suporte ordinárias em até <strong>três (3) dias úteis</strong> e de questões urgentes que impeçam o funcionamento da Extensão em até <strong>vinte e quatro (24) horas</strong>. A confirmação de recebimento, por si só, não garante a solução; os prazos de resolução dependem da natureza do problema e de qualquer plataforma de terceiros envolvida.</p>
+
+      <h2>8. Revogação da Licença</h2>
+      <p>Poderemos revogar uma Chave de Licença, com ou sem aviso prévio, se (a) o pagamento correspondente for estornado, contestado (chargeback) ou reembolsado; (b) você descumprir estes Termos de forma que, a nosso critério razoável, seja material; (c) formos obrigados a fazê-lo por lei, ordem judicial ou política de plataforma; ou (d) a Chave de Licença tiver sido divulgada publicamente ou utilizada de forma que indique claramente vazamento. Após a revogação, os recursos pagos deixarão de funcionar na próxima verificação online ou no término do período de tolerância offline (atualmente 14 dias).</p>
+
+      <h2>9. Isenção de Garantias</h2>
+      <p>Na máxima extensão permitida pela lei cogente, o Serviço é fornecido "no estado em que se encontra" ("as is") e "conforme disponível" ("as available"), sem garantia de qualquer espécie, incluindo garantias de comercialização, adequação a um fim específico, não infração, exatidão, ou de que o Serviço será ininterrupto ou livre de erros. Não garantimos que a Extensão detectará todos os arquivos baixáveis em todos os sites, ou que os downloads serão bem-sucedidos em todas as configurações de servidor.</p>
+      <p class="legal-note">Para consumidores brasileiros, esta isenção <strong>não</strong> se aplica à responsabilidade decorrente de nossa conduta dolosa ou de culpa grave, e <strong>não</strong> exclui qualquer garantia legal prevista no Código de Defesa do Consumidor.</p>
+
+      <h2>10. Limitação de Responsabilidade</h2>
+      <p>Na máxima extensão permitida pela lei cogente, nossa responsabilidade total acumulada decorrente ou relacionada a estes Termos ou ao seu uso do Serviço fica limitada ao valor que você efetivamente nos pagou pela Chave de Licença que deu origem à reclamação. Não somos responsáveis por danos indiretos, incidentais, especiais, consequenciais ou punitivos, ou por lucros cessantes, perda de dados ou interrupção de negócios.</p>
+      <p class="legal-note">Para consumidores brasileiros, esta limitação <strong>não</strong> se aplica a danos decorrentes de nossa conduta dolosa ou de culpa grave, e <strong>não</strong> se aplica na medida em que o Código de Defesa do Consumidor a invalide.</p>
+
+      <h2>11. Responsabilidade do Usuário pelos Sites de Destino</h2>
+      <p>A Extensão atua somente em páginas da web e URLs escolhidas por você. Não temos qualquer relação com os operadores desses sites, não atestamos seu conteúdo e não temos responsabilidade pelo que você baixa, nem por qualquer consequência do download de conteúdo cujo acesso não fora autorizado a você. Você concorda em nos indenizar contra reivindicações de terceiros decorrentes do uso não autorizado da Extensão contra um site de destino.</p>
+
+      <h2>12. Privacidade</h2>
+      <p>Seu uso do Serviço também é regido por nossa Política de Privacidade, que é incorporada a estes Termos por referência. A Política de Privacidade descreve quais dados a Extensão manipula, quais dados são enviados ao nosso backend de licenças e quais são os seus direitos em relação a esses dados.</p>
+
+      <h2>13. Alterações destes Termos</h2>
+      <p>Poderemos revisar estes Termos periodicamente. Os Termos revisados serão publicados com uma nova data de "Última atualização". Para alterações materiais, forneceremos adicionalmente aviso pela interface da Extensão ou por e-mail aos titulares de chave de licença. A continuidade do uso do Serviço após a entrada em vigor dos Termos revisados constitui aceitação desses Termos.</p>
+
+      <h2>14. Lei Aplicável e Jurisdição</h2>
+      <p>Estes Termos são regidos pelas leis do Japão. O <strong>Tribunal Distrital de Tóquio (Tokyo District Court)</strong> terá jurisdição exclusiva como foro de primeira instância para disputas decorrentes destes Termos ou do seu uso do Serviço. Contudo, nada nestes Termos limita qualquer direito conferido a um consumidor brasileiro pelo Código de Defesa do Consumidor ou por outras leis cogentes aplicáveis de proteção ao consumidor, incluindo o direito de o consumidor ajuizar demanda perante os tribunais de seu domicílio.</p>
+
+      <h2>14a. Controle de Exportação</h2>
+      <p>Você concorda em cumprir todas as leis e regulamentos aplicáveis de controle de exportação e sanções, incluindo o U.S. Export Administration Regulations (EAR), a Lei de Câmbio e Comércio Exterior do Japão (外国為替及び外国貿易法) e quaisquer leis equivalentes em sua jurisdição. Você declara que não está localizado em, e não é nacional ou residente de, qualquer país sob embargo dos Estados Unidos ou do Japão, e que não consta em qualquer lista de partes proibidas (denied-party list) do governo dos EUA ou do governo japonês.</p>
+
+      <h2>15. Independência das Disposições e Sobrevivência</h2>
+      <p>Se qualquer cláusula destes Termos for considerada inválida ou inexequível por um tribunal competente, as demais cláusulas permanecerão em vigor. As Seções 6, 7a, 8, 9, 10, 11, 12, 14, 14a e 15a sobrevivem a qualquer término da sua licença.</p>
+
+      <h2>15a. Marcas Registradas</h2>
+      <p>"Google Chrome" e "Chrome Web Store" são marcas registradas da Google LLC. "Microsoft Edge" e "Microsoft Edge Add-ons" são marcas registradas da Microsoft Corporation. O uso desses nomes neste documento é meramente descritivo e não implica afiliação, patrocínio ou endosso por parte da Google ou da Microsoft. A Extensão é um produto independente desenvolvido e distribuído por Tetsunobu Kawai.</p>
+
+      <div class="contact">
+        <h2 style="margin-top:0;">16. Contato</h2>
+        <p>Dúvidas sobre estes Termos podem ser enviadas para:</p>
+        <p><strong>E-mail:</strong> <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+      </div>
     </div>
 
-    <hr style="margin: 2rem 0 1.2rem; border: 0; border-top: 1px solid #e2e8f0;">
-    <h2 style="font-size: 1.05rem; color: #1a1a1a;">Supplemental Provisions / 追加条項</h2>
-    <p style="font-size: 0.88rem; color: #555;"><strong>Support response.</strong> We acknowledge ordinary support inquiries sent to <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a> within <strong>three (3) business days</strong>, and urgent issues that prevent the Extension from functioning within <strong>twenty-four (24) hours</strong>.</p>
-    <p style="font-size: 0.88rem; color: #555;"><strong>サポート対応：</strong>サポートに関するお問い合わせ（<a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a>）には、通常 <strong>3営業日以内</strong>、本拡張機能の利用を妨げる緊急のお問い合わせには <strong>24時間以内</strong> に受領のご連絡をいたします。</p>
-    <p style="font-size: 0.88rem; color: #555;"><strong>Export control.</strong> You agree to comply with all applicable export-control and sanctions laws, including the U.S. Export Administration Regulations (EAR) and the Japanese Foreign Exchange and Foreign Trade Act (外国為替及び外国貿易法). You represent that you are not located in an embargoed country and are not on any U.S. or Japanese government denied-party list.</p>
-    <p style="font-size: 0.88rem; color: #555;"><strong>輸出管理：</strong>お客様は、米国輸出管理規則（EAR）、外国為替及び外国貿易法その他適用される輸出管理および経済制裁に関する法令を遵守することに同意し、禁輸対象国・地域に所在せず、米国政府または日本政府の禁止対象当事者リストに記載されていないことを表明します。</p>
-    <p style="font-size: 0.88rem; color: #555;"><strong>Trademarks.</strong> "Google Chrome" and "Chrome Web Store" are trademarks of Google LLC. "Microsoft Edge" and "Microsoft Edge Add-ons" are trademarks of Microsoft Corporation. Use of these names is descriptive only and does not imply affiliation with or endorsement by Google or Microsoft. The Extension is an independent product of Tetsunobu Kawai.</p>
-    <p style="font-size: 0.88rem; color: #555;"><strong>商標：</strong>「Google Chrome」および「Chrome Web Store」は Google LLC の商標です。「Microsoft Edge」および「Microsoft Edge Add-ons」は Microsoft Corporation の商標です。本書面における使用は説明目的に限られ、提携や推奨を意味するものではありません。本拡張機能は Tetsunobu Kawai が独立して開発・配布する製品です。</p>
+    <div data-lang="zh_CN">
+      <h1>服务条款</h1>
+<p class="updated">最后更新：2026年5月4日</p>
+<p>本服务条款（以下简称"本条款"）规范您对 <strong>Grab All Files</strong> 浏览器扩展程序（以下简称"本扩展程序"）及其相关许可证密钥、试用期及许可证管理服务（以下统称"本服务"）的使用。本服务由 <strong>Tetsunobu Kawai</strong>（以下简称"我们"）提供。您（以下简称"您"或"用户"）通过安装本扩展程序或激活许可证密钥，即表示同意接受本条款的约束。</p>
+
+<p class="legal-note">对于日本消费者，本条款中的任何内容均不得用以限制日本《消费者契约法》（消費者契約法）或其他强制性消费者保护法律所赋予您的任何权利。本条款中任何条款若与上述强制性保护相冲突，则该条款将被法定保护所取代。</p>
+
+<h2>1. 定义</h2>
+<ul>
+  <li><strong>本扩展程序</strong> — 指名为"Grab All Files"的 Google Chrome&trade; / Microsoft Edge&trade; 浏览器扩展程序。</li>
+  <li><strong>许可证密钥</strong> — 指购买后所发放的、格式为 <code>GAF-XXXX-XXXX-XXXX</code> 的字符串，用于激活本扩展程序的付费功能。</li>
+  <li><strong>设备</strong> — 指一台计算机上的一个浏览器配置文件，由本扩展程序在本地存储的随机生成 UUID 加以标识。</li>
+  <li><strong>试用</strong> — 指自首次激活之日起为期 14 天的免费试用。</li>
+</ul>
+
+<h2>2. 试用</h2>
+<p>您可自首次激活之日起免费使用本扩展程序 14 天。本服务通过将随机设备 UUID 发送至我方许可证后端来核实试用资格。试用期届满后，付费功能须凭有效的许可证密钥方可继续使用。</p>
+
+<h2>3. 许可证授予</h2>
+<p>以您完整且持续遵守本条款并按时支付相应购买价款为前提，我们授予您一项非独占、不可转让、不可再许可、可撤销的许可证，允许您在每个许可证密钥下最多 <strong>三（3）台设备</strong> 上为个人或内部业务用途安装并使用本扩展程序。您可在本扩展程序内的许可证管理界面中移除某台设备，以释放该设备占用的名额。</p>
+
+<h2>4. 许可证密钥交付</h2>
+<p>在 Stripe 确认付款后，许可证密钥将发送至您在 Stripe Checkout 页面所提供的邮箱地址。您有责任保持该邮箱地址有效，并对许可证密钥保密。</p>
+
+<h2>5. 允许使用</h2>
+<p>您可使用本扩展程序对您有权访问且有权下载的网页和 URL 进行扫描、列表显示及下载文件。您应自行负责确保您的使用行为符合各目标网站的服务条款、版权声明、robots 政策、访问限制以及适用于您的法律法规。</p>
+
+<h2>6. 禁止使用</h2>
+<p>您同意不会从事下列行为：</p>
+<ol>
+  <li>转售、再许可、共享、出租或以其他方式将您的许可证密钥转让给任何第三方；</li>
+  <li>在超过所购方案所允许的设备数量上使用单一许可证密钥，包括但不限于在员工、客户或社区成员之间共享许可证密钥；</li>
+  <li>规避、停用或试图破坏本服务的许可证验证、试用验证、设备数量限制或撤销机制；</li>
+  <li>使用本扩展程序绕过任何第三方网站或服务的数字版权管理（"DRM"）、付费墙、内容保护系统或访问控制；</li>
+  <li>使用本扩展程序对目标网站进行违反该网站服务条款、robots.txt 指令或适用法律的爬取、数据挖掘或批量下载；</li>
+  <li>使用本扩展程序侵犯任何第三方的知识产权、隐私或其他权利；</li>
+  <li>使用本扩展程序发送、存储或散布恶意软件、垃圾信息或其他违法内容；</li>
+  <li>对本扩展程序进行反向工程、反编译或反汇编，但强制性法律明示允许的范围（包括在适用情形下，依据日本《著作权法》第 30 条之 4 进行兼容性分析）除外；</li>
+  <li>移除、变更或遮蔽本扩展程序或其源文件中的版权、商标或其他权利声明；或</li>
+  <li>以我们合理判断为滥用、欺诈或对其他用户或本服务有害的任何方式使用本扩展程序。</li>
+</ol>
+
+<h2>7. 本扩展程序的更新与变更</h2>
+<p>Chrome Web Store&trade; 及 Microsoft Edge&trade; Add-ons 商店将自动推送本扩展程序的更新。我们可能随时新增、修改或删除功能。但若实质性扩大本扩展程序所传输的数据类别，我们将在执行前先行更新隐私政策。</p>
+
+<h2>7a. 支持与客户服务</h2>
+<p>所有支持咨询请发送至 <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a>。我们将在 <strong>三（3）个工作日内</strong> 受理常规支持咨询，并在 <strong>二十四（24）小时内</strong> 受理影响本扩展程序正常运行的紧急问题。受理本身不构成对解决问题的保证；具体的解决时间取决于问题性质及所涉第三方平台的情况。</p>
+
+<h2>8. 许可证撤销</h2>
+<p>在下列情形之一发生时，我们可在通知或不通知您的情况下撤销许可证密钥：（a）相应付款被撤回、产生退款争议或被退还；（b）您违反本条款，且我们合理判断该违反行为属重大违约；（c）法律、法院命令或平台政策要求我们撤销；或（d）许可证密钥已被公开披露，或其使用方式明显表明已发生泄露。撤销后，付费功能将于下次在线验证时停止工作，或在离线宽限期（目前为 14 天）届满时停止工作。</p>
+
+<h2>9. 免责声明</h2>
+<p>在强制性法律允许的最大范围内，本服务系按"现状"及"现有可用"的基础提供，不附带任何形式的保证，包括但不限于适销性、特定用途适用性、不侵权、准确性，或本服务不会中断或无错误等保证。我们不保证本扩展程序能够检测到每个网站上的所有可下载文件，亦不保证下载在所有服务器配置下均能成功。</p>
+<p class="legal-note">对于日本消费者，本免责声明 <strong>不</strong> 适用于因我方故意或重大过失所引起的责任，亦 <strong>不</strong> 排除日本《消费者契约法》（消費者契約法）第 8 条及第 8 条之 2 所默示的任何保证。</p>
+
+<h2>10. 责任限制</h2>
+<p>在强制性法律允许的最大范围内，因本条款或您使用本服务所产生或与之相关的我方累计责任总额，以您就引发该索赔的许可证密钥实际向我方支付的金额为限。我们不就任何间接、附带、特别、后果性或惩罚性损害，亦不就利润损失、数据丢失或业务中断承担责任。</p>
+<p class="legal-note">对于日本消费者，本责任限制 <strong>不</strong> 适用于因我方故意或重大过失所产生的损害，并且在《消费者契约法》（消費者契約法）第 8 条及第 8 条之 2 使其无效的范围内 <strong>不</strong> 适用。</p>
+
+<h2>11. 用户对目标网站的责任</h2>
+<p>本扩展程序仅对您所选择的网页和 URL 起作用。我们与上述网站的运营者并无任何关系，不对其内容作任何担保，亦不对您下载的内容或下载未经授权访问的内容所产生的任何后果承担任何责任。您同意就您未经授权使用本扩展程序对目标网站所产生的任何第三方索赔，对我方进行赔偿。</p>
+
+<h2>12. 隐私</h2>
+<p>您对本服务的使用同时受我方隐私政策约束，该隐私政策以引用方式纳入本条款。隐私政策载明本扩展程序所处理的数据、发送至我方许可证后端的数据，以及您就该等数据所享有的权利。</p>
+
+<h2>13. 本条款的变更</h2>
+<p>我们可不时修订本条款。修订后的条款将以新的"最后更新"日期发布。对于重大变更，我们将另行通过本扩展程序界面或向许可证密钥持有人发送邮件通知。修订后条款生效后您继续使用本服务，即视为您接受该等条款。</p>
+
+<h2>14. 准据法及管辖</h2>
+<p>本条款受日本法律管辖。因本条款或您使用本服务所产生的争议，<strong>东京地方法院</strong> 应为第一审专属管辖法院。但本条款中的任何内容均不得限制日本《消费者契约法》（消費者契約法）或其他适用强制性消费者保护法律赋予日本消费者的任何权利，包括消费者向其住所地法院提起诉讼的权利。</p>
+
+<h2>14a. 出口管制</h2>
+<p>您同意遵守所有适用的出口管制及制裁法律法规，包括美国《出口管理条例》（EAR）、日本《外汇及外国贸易法》（外国為替及び外国貿易法），以及您所在司法辖区内的同等法律。您声明您并非位于、亦非以下任何国家的国民或居民：美国或日本对其实施货物禁运的国家；并且您不在任何美国政府或日本政府的禁止交易方名单上。</p>
+
+<h2>15. 可分性及存续</h2>
+<p>若本条款的任何条款被有管辖权的法院认定为无效或无法执行，其余条款仍继续有效。第 6 条、第 7a 条、第 8 条、第 9 条、第 10 条、第 11 条、第 12 条、第 14 条、第 14a 条及第 15a 条在您的许可证终止后继续存续。</p>
+
+<h2>15a. 商标</h2>
+<p>"Google Chrome"及"Chrome Web Store"为 Google LLC 的商标。"Microsoft Edge"及"Microsoft Edge Add-ons"为 Microsoft Corporation 的商标。本文档对上述名称的使用纯属说明性质，并不意味着与 Google 或 Microsoft 存在关联、获其赞助或获其背书。本扩展程序系由 Tetsunobu Kawai 独立开发并发行的产品。</p>
+
+<div class="contact">
+  <h2 style="margin-top:0;">16. 联系方式</h2>
+  <p>有关本条款的疑问，可发送至以下地址：</p>
+  <p><strong>邮箱：</strong> <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+</div>
+    </div>
+
+    <div data-lang="zh_TW">
+      <h1>服務條款</h1>
+<p class="updated">最後更新：2026年5月4日</p>
+<p>本服務條款（以下簡稱「本條款」）規範您對 <strong>Grab All Files</strong> 瀏覽器擴充功能（以下簡稱「本擴充功能」）及其相關授權金鑰、試用期及授權管理服務（以下合稱「本服務」）之使用。本服務由 <strong>Tetsunobu Kawai</strong>（以下簡稱「我方」）提供。您（以下簡稱「您」或「使用者」）一經安裝本擴充功能或啟用授權金鑰，即視為同意本條款。</p>
+
+<p class="legal-note">就日本消費者而言，本條款之任何內容皆不得用以限制日本《消費者契約法》（消費者契約法）或其他強制性消費者保護法令所賦予您之任何權利。本條款中任何條款若與該等強制性保護相牴觸，則該條款於牴觸之範圍內由法定保護所取代。</p>
+
+<h2>1. 定義</h2>
+<ul>
+  <li><strong>本擴充功能</strong> — 指名為「Grab All Files」之 Google Chrome&trade; / Microsoft Edge&trade; 瀏覽器擴充功能。</li>
+  <li><strong>授權金鑰</strong> — 指購買時核發、格式為 <code>GAF-XXXX-XXXX-XXXX</code> 之字串，用以啟用本擴充功能之付費功能。</li>
+  <li><strong>裝置</strong> — 指一台電腦上之一個瀏覽器設定檔，由本擴充功能於本地端儲存之隨機產生 UUID 加以識別。</li>
+  <li><strong>試用</strong> — 指自首次啟用日起為期 14 天之免費試用。</li>
+</ul>
+
+<h2>2. 試用</h2>
+<p>您得自首次啟用日起免費使用本擴充功能 14 天。本服務透過將隨機裝置 UUID 傳送至我方授權後端以驗證試用資格。試用期屆滿後，付費功能須以有效之授權金鑰始得繼續使用。</p>
+
+<h2>3. 授權之授予</h2>
+<p>以您完整且持續遵守本條款並按時支付相應購買價金為條件，我方授予您非專屬、不可轉讓、不可再授權、可撤銷之授權，允許您於每組授權金鑰下最多 <strong>三（3）台裝置</strong> 為個人或內部業務用途安裝及使用本擴充功能。您得透過本擴充功能內之授權管理畫面移除某台裝置，以釋出該裝置所占用之名額。</p>
+
+<h2>4. 授權金鑰之交付</h2>
+<p>於 Stripe 確認付款後，授權金鑰將寄送至您於 Stripe Checkout 頁面所提供之電子郵件地址。您應負責維持該電子郵件地址之有效性，並對授權金鑰保密。</p>
+
+<h2>5. 允許之使用</h2>
+<p>您得使用本擴充功能對您有權存取且有權下載之網頁及 URL 進行掃描、列示及下載檔案。您應自行確保您之使用行為符合各目標網站之服務條款、著作權聲明、robots 政策、存取限制，以及適用於您之法律法規。</p>
+
+<h2>6. 禁止之使用</h2>
+<p>您同意不從事下列行為：</p>
+<ol>
+  <li>轉售、再授權、共用、出租或以其他方式將您之授權金鑰移轉予任何第三人；</li>
+  <li>於超過所購方案所允許之裝置數量上使用單一授權金鑰，包括於員工、客戶或社群成員間共用授權金鑰；</li>
+  <li>規避、停用或意圖破壞本服務之授權驗證、試用驗證、裝置數量限制或撤銷機制；</li>
+  <li>使用本擴充功能繞過任何第三方網站或服務之數位權利管理（「DRM」）、付費牆、內容保護系統或存取控制；</li>
+  <li>使用本擴充功能對目標網站進行違反該網站服務條款、robots.txt 指令或適用法律之爬取、資料探勘或大量下載；</li>
+  <li>使用本擴充功能侵害任何第三人之智慧財產權、隱私權或其他權利；</li>
+  <li>使用本擴充功能傳送、儲存或散布惡意程式、垃圾訊息或其他違法內容；</li>
+  <li>對本擴充功能進行還原工程、反編譯或解組譯，但強制性法律明示允許之範圍（包括於適用情形下，依日本《著作權法》第 30 條之 4 進行相容性分析）除外；</li>
+  <li>移除、變更或遮蔽本擴充功能或其原始檔案中之著作權、商標或其他權利聲明；或</li>
+  <li>以我方合理判斷為濫用、詐欺或對其他使用者或本服務有害之任何方式使用本擴充功能。</li>
+</ol>
+
+<h2>7. 本擴充功能之更新與變更</h2>
+<p>Chrome Web Store&trade; 及 Microsoft Edge&trade; Add-ons 商店將自動推送本擴充功能之更新。我方得隨時新增、修改或移除功能。惟若實質性擴大本擴充功能所傳輸資料之類別，我方將於實施前先行更新隱私權政策。</p>
+
+<h2>7a. 支援與客戶服務</h2>
+<p>所有支援諮詢請寄送至 <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a>。我方將於 <strong>三（3）個工作日內</strong> 回覆一般支援諮詢，並於 <strong>二十四（24）小時內</strong> 回覆影響本擴充功能正常運作之緊急問題。回覆本身並不構成對問題解決之擔保；實際解決時程取決於問題之性質及所涉第三方平台之配合情況。</p>
+
+<h2>8. 授權之撤銷</h2>
+<p>於下列情形之一發生時，我方得於通知或不通知之情況下撤銷授權金鑰：(a) 相應付款遭撤回、發生付款爭議或退款；(b) 您違反本條款，且我方合理認定該違反屬重大違約；(c) 法律、法院命令或平台政策要求我方撤銷；或 (d) 授權金鑰已遭公開揭露，或其使用方式明顯顯示已發生洩漏。撤銷後，付費功能將於下次連線驗證時停止運作，或於離線寬限期（目前為 14 天）屆滿時停止運作。</p>
+
+<h2>9. 擔保之免除</h2>
+<p>於強制性法律所允許之最大範圍內，本服務係依「現狀」及「現有」基礎提供，不附帶任何形式之擔保，包括但不限於可商品性、特定用途適用性、不侵害他人權利、正確性，或本服務不中斷或無錯誤等擔保。我方不擔保本擴充功能能於每個網站偵測到所有可下載檔案，亦不擔保下載於所有伺服器組態下均能成功。</p>
+<p class="legal-note">就日本消費者而言，本免責 <strong>不</strong> 適用於因我方故意或重大過失所生之責任，亦 <strong>不</strong> 排除日本《消費者契約法》（消費者契約法）第 8 條及第 8 條之 2 所默示之任何擔保。</p>
+
+<h2>10. 責任限制</h2>
+<p>於強制性法律所允許之最大範圍內，因本條款或您使用本服務所生或與之相關之我方累積責任總額，以您就引發該請求權之授權金鑰實際向我方支付之金額為上限。我方不就任何間接、附隨、特別、衍生或懲罰性損害，亦不就利益損失、資料遺失或業務中斷負責。</p>
+<p class="legal-note">就日本消費者而言，本責任限制 <strong>不</strong> 適用於因我方故意或重大過失所生之損害，並且於《消費者契約法》（消費者契約法）第 8 條及第 8 條之 2 使其無效之範圍內 <strong>不</strong> 適用。</p>
+
+<h2>11. 使用者對目標網站之責任</h2>
+<p>本擴充功能僅對您所選定之網頁及 URL 進行運作。我方與該等網站之經營者並無任何關係，亦不對其內容為任何擔保，並不就您所下載之內容、或您下載未經授權存取之內容所生之任何後果負責。您同意就您未經授權使用本擴充功能對目標網站所引致之第三人請求，對我方為補償。</p>
+
+<h2>12. 隱私權</h2>
+<p>您對本服務之使用同時受我方隱私權政策之拘束，該隱私權政策以引用方式併入本條款。隱私權政策載明本擴充功能所處理之資料、傳送至我方授權後端之資料，以及您就該等資料所享有之權利。</p>
+
+<h2>13. 本條款之變更</h2>
+<p>我方得隨時修訂本條款。修訂後之條款將以新之「最後更新」日期公告。對於重大變更，我方將另透過本擴充功能介面或向授權金鑰持有人寄送電子郵件通知。修訂後條款生效後您仍繼續使用本服務者，即視為您接受該等條款。</p>
+
+<h2>14. 準據法及管轄</h2>
+<p>本條款以日本法為準據法。因本條款或您使用本服務所生之爭議，<strong>東京地方法院</strong> 為第一審之專屬合意管轄法院。惟本條款中之任何內容均不得限制日本《消費者契約法》（消費者契約法）或其他適用強制性消費者保護法令所賦予日本消費者之任何權利，包括消費者向其住所地法院起訴之權利。</p>
+
+<h2>14a. 出口管制</h2>
+<p>您同意遵守所有適用之出口管制及制裁法令，包括美國《出口管理規則》（EAR）、日本《外匯及外國貿易法》（外国為替及び外国貿易法），以及您所屬司法管轄區之同等法令。您聲明您並非位於、亦非美國或日本實施貨物禁運之任何國家之國民或居民，且您並未列於任何美國政府或日本政府之禁止交易對象名單。</p>
+
+<h2>15. 可分性及存續</h2>
+<p>若本條款之任何條款經有管轄權之法院認定為無效或無法執行，其餘條款仍維持效力。第 6 條、第 7a 條、第 8 條、第 9 條、第 10 條、第 11 條、第 12 條、第 14 條、第 14a 條及第 15a 條於您之授權終止後仍繼續存續。</p>
+
+<h2>15a. 商標</h2>
+<p>「Google Chrome」及「Chrome Web Store」為 Google LLC 之商標。「Microsoft Edge」及「Microsoft Edge Add-ons」為 Microsoft Corporation 之商標。本文件中對上述名稱之使用純屬描述性質，並不表示與 Google 或 Microsoft 有任何關聯、贊助或背書關係。本擴充功能係由 Tetsunobu Kawai 獨立開發並發行之產品。</p>
+
+<div class="contact">
+  <h2 style="margin-top:0;">16. 聯絡方式</h2>
+  <p>有關本條款之疑問，請寄送至下列地址：</p>
+  <p><strong>電子郵件：</strong> <a href="mailto:filebulkdownloader@gmail.com">filebulkdownloader@gmail.com</a></p>
+</div>
+    </div>
+    <!--AUTO_TRANSLATIONS_END-->
   </div>
-  <script>
-    function getLang() {
-      var s = localStorage.getItem('gaf-lang');
-      if (s) return s;
-      var n = (navigator.language || '').toLowerCase();
-      if (n.startsWith('ja')) return 'ja';
-      if (n.startsWith('ko')) return 'ko';
-      if (n.startsWith('it')) return 'it';
-      if (n.startsWith('de')) return 'de';
-      if (n.startsWith('es')) return 'es';
-      if (n.startsWith('fr')) return 'fr';
-      if (n.startsWith('pt')) return 'pt_BR';
-      if (n === 'zh-tw' || n === 'zh-hant' || n.startsWith('zh-hant')) return 'zh_TW';
-      if (n.startsWith('zh')) return 'zh_CN';
-      return 'en';
-    }
-    function setLang(l) {
-      localStorage.setItem('gaf-lang', l);
-      document.querySelectorAll('[data-lang]').forEach(function(e) {
-        e.classList.toggle('active', e.getAttribute('data-lang') === l);
-      });
-      document.documentElement.lang = l.replace('_','-');
-      var sel = document.getElementById('lang-sel');
-      if (sel) sel.value = l;
-    }
-    function onLangChange(e) { setLang(e.target.value); }
-    setLang(getLang());
-  </script>
+  <script src="legal.js"></script>
 </body>
 </html>
