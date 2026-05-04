@@ -5,7 +5,7 @@
   <meta name="robots" content="noindex, nofollow">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Legal Notice - Grab All Files</title>
+  <title>Legal Notice / 特定商取引法に基づく表記 - Grab All Files</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", Roboto, sans-serif; line-height: 1.8; color: #1a1a1a; background: #f8f9fa; padding: 2rem 1rem; }
@@ -233,6 +233,18 @@
     <p style="font-size: 0.78rem; color: #777;">「Google Chrome」および「Chrome Web Store」は Google LLC の商標です。「Microsoft Edge」および「Microsoft Edge Add-ons」は Microsoft Corporation の商標です。本書面における使用は説明目的に限られ、提携または推奨を意味しません。本製品は <strong>Tetsunobu Kawai</strong> が独立して販売しています。</p>
   </div>
   <script>
+    var LANGUAGE_LABELS = {
+      en: 'Language',
+      ja: '言語',
+      es: 'Idioma',
+      fr: 'Langue',
+      ko: '언어',
+      it: 'Lingua',
+      zh_CN: '语言',
+      zh_TW: '語言',
+      pt_BR: 'Idioma',
+      de: 'Sprache'
+    };
     function getLang() {
       var s = localStorage.getItem('gaf-lang');
       if (s) return s;
@@ -255,7 +267,12 @@
       });
       document.documentElement.lang = l.replace('_','-');
       var sel = document.getElementById('lang-sel');
-      if (sel) sel.value = l;
+      if (sel) {
+        sel.value = l;
+        sel.setAttribute('aria-label', LANGUAGE_LABELS[l] || LANGUAGE_LABELS.en);
+      }
+      var active = document.querySelector('[data-lang="' + l + '"] h1');
+      if (active && active.textContent.trim()) document.title = active.textContent.trim() + ' - Grab All Files';
     }
     function onLangChange(e) { setLang(e.target.value); }
     setLang(getLang());

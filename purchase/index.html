@@ -4,7 +4,7 @@
   <meta name="robots" content="noindex, nofollow">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Purchase - Grab All Files</title>
+  <title>Purchase / 購入 - Grab All Files</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", Roboto, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #f8f9fa; color: #1a1a1a; }
@@ -174,6 +174,30 @@
     <p class="links"><a href="../terms.html">Nutzungsbedingungen</a> &middot; <a href="../privacy-policy.html">Datenschutzrichtlinie</a> &middot; <a href="../legal.html">Impressum</a></p>
   </div>
   <script>
+    var LANGUAGE_LABELS = {
+      en: 'Language',
+      ja: '言語',
+      es: 'Idioma',
+      fr: 'Langue',
+      ko: '언어',
+      it: 'Lingua',
+      zh_CN: '语言',
+      zh_TW: '語言',
+      pt_BR: 'Idioma',
+      de: 'Sprache'
+    };
+    var PAGE_TITLES = {
+      en: 'Purchase - Grab All Files',
+      ja: '購入 - ファイル一括ダウンロード',
+      es: 'Comprar - Descargar todos los archivos',
+      fr: 'Achat - Télécharger tous les fichiers',
+      ko: '구매 - 파일 일괄 다운로드',
+      it: 'Acquisto - Scarica tutti i file',
+      zh_CN: '购买 - 批量下载文件',
+      zh_TW: '購買 - 批次下載檔案',
+      pt_BR: 'Comprar - Baixar todos os arquivos',
+      de: 'Kauf - Alle Dateien herunterladen'
+    };
     function getLang() {
       var s = localStorage.getItem('gaf-lang');
       if (s) return s;
@@ -196,7 +220,11 @@
       });
       document.documentElement.lang = l.replace('_','-');
       var sel = document.getElementById('lang-sel');
-      if (sel) sel.value = l;
+      if (sel) {
+        sel.value = l;
+        sel.setAttribute('aria-label', LANGUAGE_LABELS[l] || LANGUAGE_LABELS.en);
+      }
+      document.title = PAGE_TITLES[l] || PAGE_TITLES.en;
     }
     function onLangChange(e) { setLang(e.target.value); }
     setLang(getLang());
