@@ -227,6 +227,16 @@
       de: 'Leider konnte die Zahlung nicht gestartet werden. Bitte versuchen Sie es erneut oder kontaktieren Sie den Support.'
     };
 
+    // One idempotency key per page-load. If the user double-clicks or the
+    // network retries within this page session, Stripe returns the same
+    // Checkout Session instead of creating a duplicate. Reset on next nav.
+    var IDEMPOTENCY_KEY = (function() {
+      try {
+        if (typeof crypto !== 'undefined' && crypto.randomUUID) return 'gaf-' + crypto.randomUUID();
+      } catch (_) {}
+      return 'gaf-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10);
+    })();
+
     function startCheckout(btn) {
       if (btn.disabled || btn.dataset.busy === '1') return;
       var container = btn.closest('[data-lang]');
@@ -240,7 +250,7 @@
       fetch(CHECKOUT_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ lang: lang }),
+        body: JSON.stringify({ lang: lang, idempotency_key: IDEMPOTENCY_KEY }),
         signal: ctrl ? ctrl.signal : undefined
       }).then(function(res) {
         if (!res.ok) throw new Error('http ' + res.status);
