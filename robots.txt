@@ -68,3 +68,5 @@ Disallow: /terms.html
 Disallow: /legal.html
 Disallow: /tokushoho.html
 Allow: /
+
+Sitemap: https://serimateddybear.github.io/grab-all-files/sitemap.xml
