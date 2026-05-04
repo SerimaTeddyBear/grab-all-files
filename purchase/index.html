@@ -11,7 +11,7 @@
     .container { text-align: center; max-width: 480px; background: #fff; border-radius: 12px; padding: 2.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
     h1 { font-size: 1.4rem; margin-bottom: 1rem; }
     p { font-size: 0.95rem; margin-bottom: 1.2rem; line-height: 1.6; color: #555; }
-    .btn { display: inline-block; background: #2563eb; color: #fff; padding: 0.75rem 2rem; border-radius: 8px; text-decoration: none; font-size: 1rem; font-weight: 600; cursor: pointer; border: none; }
+    .btn { display: inline-block; background: #2563eb; color: #fff; padding: 0.75rem 2rem; border-radius: 8px; text-decoration: none; font-family: inherit; font-size: 1rem; font-weight: 600; cursor: pointer; border: none; }
     .btn:hover { background: #1d4ed8; }
     .btn:disabled { background: #94a3b8; cursor: not-allowed; }
     .note { font-size: 0.8rem; color: #888; margin-top: 1rem; }
@@ -43,7 +43,7 @@
       </details>
       <label class="consent-label"><input type="checkbox" id="cc-0"><span>I agree to receive my license key <strong>immediately after purchase</strong>.<small class="sub">For EU/EEA residents: I acknowledge that this means the 14-day right of withdrawal will not apply.</small></span></label>
     </div>
-    <a class="btn" id="pb-0" href="https://buy.stripe.com/dRm6oH4SR8ck1Bgaea2Ry00" disabled>Proceed to Payment</a>
+    <button type="button" class="btn" id="pb-0" disabled>Proceed to Payment</button>
     <p class="note">After purchase, your license key will be sent to your email.</p>
     <p class="links"><a href="../terms.html">Terms of Service</a> &middot; <a href="../privacy-policy.html">Privacy Policy</a> &middot; <a href="../legal.html">Legal Notice</a></p>
   </div>
@@ -57,7 +57,7 @@
       </details>
       <label class="consent-label"><input type="checkbox" id="cc-1"><span>ライセンスキーを<strong>購入後すぐに受け取ること</strong>に同意します。<small class="sub">EU/EEA在住の方：これにより14日間の撤回権が適用されないことを了承します。</small></span></label>
     </div>
-    <a class="btn" id="pb-1" href="https://buy.stripe.com/dRm6oH4SR8ck1Bgaea2Ry00" disabled>お支払いへ進む</a>
+    <button type="button" class="btn" id="pb-1" disabled>お支払いへ進む</button>
     <p class="note">購入後、ライセンスキーがメールで送信されます。</p>
     <p class="links"><a href="../terms.html">利用規約</a> &middot; <a href="../privacy-policy.html">プライバシーポリシー</a> &middot; <a href="../legal.html">特定商取引法に基づく表記</a></p>
   </div>
@@ -71,7 +71,7 @@
       </details>
       <label class="consent-label"><input type="checkbox" id="cc-2"><span>Acepto recibir mi clave de licencia <strong>inmediatamente después de la compra</strong>.<small class="sub">Para residentes en UE/EEE: reconozco que esto significa que el derecho de desistimiento de 14 días no se aplicará.</small></span></label>
     </div>
-    <a class="btn" id="pb-2" href="https://buy.stripe.com/dRm6oH4SR8ck1Bgaea2Ry00" disabled>Proceder al pago</a>
+    <button type="button" class="btn" id="pb-2" disabled>Proceder al pago</button>
     <p class="note">Después de la compra, su clave de licencia se enviará a su correo electrónico.</p>
     <p class="links"><a href="../terms.html">Términos de servicio</a> &middot; <a href="../privacy-policy.html">Política de privacidad</a> &middot; <a href="../legal.html">Aviso Legal</a></p>
   </div>
@@ -85,7 +85,7 @@
       </details>
       <label class="consent-label"><input type="checkbox" id="cc-3"><span>J'accepte de recevoir ma clé de licence <strong>immédiatement après l'achat</strong>.<small class="sub">Pour les résidents UE/EEE : je reconnais que le droit de rétractation de 14 jours ne s'appliquera pas.</small></span></label>
     </div>
-    <a class="btn" id="pb-3" href="https://buy.stripe.com/dRm6oH4SR8ck1Bgaea2Ry00" disabled>Procéder au paiement</a>
+    <button type="button" class="btn" id="pb-3" disabled>Procéder au paiement</button>
     <p class="note">Après achat, votre clé de licence sera envoyée par e-mail.</p>
     <p class="links"><a href="../terms.html">Conditions d'utilisation</a> &middot; <a href="../privacy-policy.html">Politique de confidentialité</a> &middot; <a href="../legal.html">Mentions légales</a></p>
   </div>
@@ -99,7 +99,7 @@
       </details>
       <label class="consent-label"><input type="checkbox" id="cc-4"><span>라이선스 키를 <strong>구매 후 즉시 받는 것</strong>에 동의합니다.<small class="sub">EU/EEA 거주자: 이로 인해 14일간의 철회권이 적용되지 않음을 인정합니다.</small></span></label>
     </div>
-    <a class="btn" id="pb-4" href="https://buy.stripe.com/dRm6oH4SR8ck1Bgaea2Ry00" disabled>결제 진행</a>
+    <button type="button" class="btn" id="pb-4" disabled>결제 진행</button>
     <p class="note">구매 후 라이선스 키가 이메일로 전송됩니다.</p>
     <p class="links"><a href="../terms.html">이용약관</a> &middot; <a href="../privacy-policy.html">개인정보 처리방침</a> &middot; <a href="../legal.html">법적 고지</a></p>
   </div>
@@ -113,7 +113,7 @@
       </details>
       <label class="consent-label"><input type="checkbox" id="cc-5"><span>Acconsento a ricevere la mia chiave di licenza <strong>immediatamente dopo l'acquisto</strong>.<small class="sub">Per i residenti UE/SEE: riconosco che ciò significa che il diritto di recesso di 14 giorni non si applicherà.</small></span></label>
     </div>
-    <a class="btn" id="pb-5" href="https://buy.stripe.com/dRm6oH4SR8ck1Bgaea2Ry00" disabled>Procedi al pagamento</a>
+    <button type="button" class="btn" id="pb-5" disabled>Procedi al pagamento</button>
     <p class="note">Dopo l'acquisto, la chiave di licenza verrà inviata alla tua email.</p>
     <p class="links"><a href="../terms.html">Termini di servizio</a> &middot; <a href="../privacy-policy.html">Informativa sulla privacy</a> &middot; <a href="../legal.html">Note legali</a></p>
   </div>
@@ -127,7 +127,7 @@
       </details>
       <label class="consent-label"><input type="checkbox" id="cc-6"><span>我同意在<strong>购买后立即收到</strong>许可证密钥。<small class="sub">EU/EEA居民：我了解此举意味着14天撤回权将不适用。</small></span></label>
     </div>
-    <a class="btn" id="pb-6" href="https://buy.stripe.com/dRm6oH4SR8ck1Bgaea2Ry00" disabled>继续付款</a>
+    <button type="button" class="btn" id="pb-6" disabled>继续付款</button>
     <p class="note">购买后，许可证密钥将发送至您的电子邮箱。</p>
     <p class="links"><a href="../terms.html">服务条款</a> &middot; <a href="../privacy-policy.html">隐私政策</a> &middot; <a href="../legal.html">法律声明</a></p>
   </div>
@@ -141,7 +141,7 @@
       </details>
       <label class="consent-label"><input type="checkbox" id="cc-7"><span>我同意在<strong>購買後立即收到</strong>授權金鑰。<small class="sub">EU/EEA居民：我了解此舉意味著14天撤回權將不適用。</small></span></label>
     </div>
-    <a class="btn" id="pb-7" href="https://buy.stripe.com/dRm6oH4SR8ck1Bgaea2Ry00" disabled>繼續付款</a>
+    <button type="button" class="btn" id="pb-7" disabled>繼續付款</button>
     <p class="note">購買後，授權金鑰將傳送至您的電子郵件地址。</p>
     <p class="links"><a href="../terms.html">服務條款</a> &middot; <a href="../privacy-policy.html">隱私權政策</a> &middot; <a href="../legal.html">法律聲明</a></p>
   </div>
@@ -155,7 +155,7 @@
       </details>
       <label class="consent-label"><input type="checkbox" id="cc-8"><span>Concordo em receber minha chave de licença <strong>imediatamente após a compra</strong>.<small class="sub">Para residentes na UE/EEE: reconheço que isso significa que o direito de desistência de 14 dias não se aplicará.</small></span></label>
     </div>
-    <a class="btn" id="pb-8" href="https://buy.stripe.com/dRm6oH4SR8ck1Bgaea2Ry00" disabled>Prosseguir para pagamento</a>
+    <button type="button" class="btn" id="pb-8" disabled>Prosseguir para pagamento</button>
     <p class="note">Após a compra, sua chave de licença será enviada para seu e-mail.</p>
     <p class="links"><a href="../terms.html">Termos de Serviço</a> &middot; <a href="../privacy-policy.html">Política de Privacidade</a> &middot; <a href="../legal.html">Aviso Legal</a></p>
   </div>
@@ -169,7 +169,7 @@
       </details>
       <label class="consent-label"><input type="checkbox" id="cc-9"><span>Ich stimme zu, meinen Lizenzschlüssel <strong>sofort nach dem Kauf</strong> zu erhalten.<small class="sub">Für EU/EWR-Bewohner: Ich erkenne an, dass damit das 14-tägige Widerrufsrecht nicht zur Anwendung kommt.</small></span></label>
     </div>
-    <a class="btn" id="pb-9" href="https://buy.stripe.com/dRm6oH4SR8ck1Bgaea2Ry00" disabled>Zur Zahlung</a>
+    <button type="button" class="btn" id="pb-9" disabled>Zur Zahlung</button>
     <p class="note">Nach dem Kauf wird Ihr Lizenzschlüssel an Ihre E-Mail gesendet.</p>
     <p class="links"><a href="../terms.html">Nutzungsbedingungen</a> &middot; <a href="../privacy-policy.html">Datenschutzrichtlinie</a> &middot; <a href="../legal.html">Impressum</a></p>
   </div>
@@ -212,6 +212,54 @@
     sc('cc-7','pb-7');
     sc('cc-8','pb-8');
     sc('cc-9','pb-9');
+
+    var CHECKOUT_URL = 'https://umczaaooqinddgnhxbvp.supabase.co/functions/v1/create-checkout-session';
+    var ERR_MSG = {
+      en: 'Sorry, we could not start the payment. Please try again or contact support.',
+      ja: '申し訳ありません、決済を開始できませんでした。もう一度お試しいただくか、サポートまでご連絡ください。',
+      es: 'Lo sentimos, no se pudo iniciar el pago. Inténtelo de nuevo o contacte con soporte.',
+      fr: 'Désolé, le paiement n\'a pas pu démarrer. Veuillez réessayer ou contacter le support.',
+      ko: '죄송합니다. 결제를 시작할 수 없습니다. 다시 시도하시거나 지원팀에 문의해 주세요.',
+      it: 'Spiacenti, non è stato possibile avviare il pagamento. Riprova o contatta il supporto.',
+      zh_CN: '抱歉，无法启动付款。请重试或联系支持团队。',
+      zh_TW: '抱歉，無法啟動付款。請重試或聯絡支援團隊。',
+      pt_BR: 'Desculpe, não foi possível iniciar o pagamento. Tente novamente ou entre em contato com o suporte.',
+      de: 'Leider konnte die Zahlung nicht gestartet werden. Bitte versuchen Sie es erneut oder kontaktieren Sie den Support.'
+    };
+
+    function startCheckout(btn) {
+      if (btn.disabled || btn.dataset.busy === '1') return;
+      var container = btn.closest('[data-lang]');
+      var lang = container ? container.getAttribute('data-lang') : 'en';
+      var original = btn.textContent;
+      btn.dataset.busy = '1';
+      btn.disabled = true;
+      btn.textContent = '…';
+      var ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+      var timer = ctrl ? setTimeout(function() { ctrl.abort(); }, 15000) : 0;
+      fetch(CHECKOUT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ lang: lang }),
+        signal: ctrl ? ctrl.signal : undefined
+      }).then(function(res) {
+        if (!res.ok) throw new Error('http ' + res.status);
+        return res.json();
+      }).then(function(data) {
+        if (!data || !data.url) throw new Error('no url');
+        window.location.href = data.url;
+      }).catch(function() {
+        if (timer) clearTimeout(timer);
+        btn.dataset.busy = '';
+        btn.disabled = false;
+        btn.textContent = original;
+        alert(ERR_MSG[lang] || ERR_MSG.en);
+      });
+    }
+
+    Array.prototype.forEach.call(document.querySelectorAll('button.btn[id^="pb-"]'), function(btn) {
+      btn.addEventListener('click', function() { startCheckout(btn); });
+    });
   </script>
 </body>
 </html>
