@@ -23,11 +23,33 @@
     .lang-sel { position: fixed; top: 1rem; right: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.3rem 0.5rem; font-size: 0.8rem; color: #2563eb; cursor: pointer; }
     [data-lang] { display: none; }
     [data-lang].active { display: block; }
+    .license-box { background: #f0f7ff; border: 2px solid #2563eb; border-radius: 8px; padding: 18px 20px; margin: 0 0 20px; text-align: left; }
+    .license-box[hidden] { display: none; }
+    .license-box .license-label { font-size: 0.85rem; color: #1a1a1a; font-weight: 600; margin: 0 0 10px; text-align: center; }
+    .license-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center; }
+    .license-key { flex: 1 1 auto; min-width: 0; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 1.05rem; font-weight: 700; color: #1a1d26; background: #fff; padding: 10px 14px; border-radius: 6px; letter-spacing: 1px; word-break: break-all; text-align: center; }
+    .license-key.masked { letter-spacing: 4px; color: #94a3b8; }
+    .btn-icon { background: #2563eb; color: #fff; border: none; border-radius: 6px; padding: 8px 14px; font-size: 0.85rem; font-weight: 600; cursor: pointer; font-family: inherit; flex: 0 0 auto; }
+    .btn-icon:hover { background: #1d4ed8; }
+    .btn-icon.copied { background: #16a34a; }
+    .license-hint { font-size: 0.78rem; color: #555; margin: 12px 0 0; text-align: center; line-height: 1.5; }
+    .license-pending { background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px; padding: 14px 18px; margin: 0 0 20px; font-size: 0.85rem; color: #555; text-align: center; }
+    .license-pending[hidden] { display: none; }
   </style>
 </head>
 <body>
   <select id="lang-sel" class="lang-sel" onchange="onLangChange(event)"><option value="en">English</option><option value="ja">日本語</option><option value="es">Español</option><option value="fr">Français</option><option value="ko">한국어</option><option value="it">Italiano</option><option value="zh_CN">简体中文</option><option value="zh_TW">繁體中文</option><option value="pt_BR">Português</option><option value="de">Deutsch</option></select>
   <div class="container">
+    <div id="license-pending" class="license-pending" hidden></div>
+    <div id="license-box" class="license-box" hidden>
+      <p class="license-label" id="lic-label"></p>
+      <div class="license-row">
+        <code class="license-key masked" id="lic-key">XXXX-XXXX-XXXX-XXXX</code>
+        <button type="button" class="btn-icon" id="lic-show"></button>
+        <button type="button" class="btn-icon" id="lic-copy"></button>
+      </div>
+      <p class="license-hint" id="lic-hint"></p>
+    </div>
     <div data-lang="en">
       <div class="icon">&#10003;</div>
       <h1>Thank you for your purchase!</h1>
@@ -182,6 +204,24 @@
       pt_BR: 'Idioma',
       de: 'Sprache'
     };
+
+    var LICENSE_STR = {
+      en: { label: "Your license key:", show: "Show", hide: "Hide", copy: "Copy", copied: "Copied!", hint: "A copy has also been sent to your email as backup.", pending: "Issuing your license — this usually takes a few seconds. Please wait…" },
+      ja: { label: "ライセンスキー", show: "表示", hide: "隠す", copy: "コピー", copied: "コピーしました！", hint: "同じキーをメールでもお送りしていますので、保管用にご利用ください。", pending: "ライセンス発行中です。通常は数秒で完了します。少々お待ちください…" },
+      es: { label: "Su clave de licencia:", show: "Mostrar", hide: "Ocultar", copy: "Copiar", copied: "¡Copiado!", hint: "También se ha enviado una copia a su correo electrónico como respaldo.", pending: "Emitiendo su licencia — suele tardar unos segundos. Por favor espere…" },
+      fr: { label: "Votre clé de licence :", show: "Afficher", hide: "Masquer", copy: "Copier", copied: "Copié !", hint: "Une copie a également été envoyée à votre adresse e-mail à titre de sauvegarde.", pending: "Émission de votre licence — cela prend généralement quelques secondes. Veuillez patienter…" },
+      ko: { label: "라이선스 키:", show: "표시", hide: "숨기기", copy: "복사", copied: "복사됨!", hint: "백업용으로 동일한 키를 이메일로도 전송했습니다.", pending: "라이선스를 발급하는 중입니다. 보통 몇 초 안에 완료됩니다. 잠시만 기다려 주세요…" },
+      it: { label: "La tua chiave di licenza:", show: "Mostra", hide: "Nascondi", copy: "Copia", copied: "Copiato!", hint: "Una copia è stata inviata anche al tuo indirizzo email come backup.", pending: "Emissione della tua licenza — di solito richiede alcuni secondi. Attendi…" },
+      zh_CN: { label: "您的许可证密钥：", show: "显示", hide: "隐藏", copy: "复制", copied: "已复制！", hint: "我们还将相同的密钥发送到您的邮箱作为备份。", pending: "正在发放许可证 — 通常需要几秒钟。请稍候…" },
+      zh_TW: { label: "您的授權金鑰：", show: "顯示", hide: "隱藏", copy: "複製", copied: "已複製！", hint: "我們也會將相同的金鑰寄送至您的電子郵件作為備份。", pending: "正在核發授權 — 通常需要幾秒鐘。請稍候…" },
+      pt_BR: { label: "Sua chave de licença:", show: "Mostrar", hide: "Ocultar", copy: "Copiar", copied: "Copiado!", hint: "Uma cópia também foi enviada para o seu e-mail como backup.", pending: "Emitindo sua licença — geralmente leva alguns segundos. Aguarde…" },
+      de: { label: "Ihr Lizenzschlüssel:", show: "Anzeigen", hide: "Verbergen", copy: "Kopieren", copied: "Kopiert!", hint: "Eine Kopie wurde zur Sicherheit auch an Ihre E-Mail-Adresse gesendet.", pending: "Ihre Lizenz wird ausgestellt — das dauert normalerweise einige Sekunden. Bitte warten…" }
+    };
+
+    var ENDPOINT = 'https://umczaaooqinddgnhxbvp.supabase.co/functions/v1/get-license-by-session';
+    var POLL_INTERVAL_MS = 2000;
+    var POLL_MAX_ATTEMPTS = 30;
+
     function getLang() {
       var s = localStorage.getItem('gaf-lang');
       if (s) return s;
@@ -197,6 +237,20 @@
       if (n.startsWith('zh')) return 'zh_CN';
       return 'en';
     }
+    function applyLicenseStrings(l) {
+      var t = LICENSE_STR[l] || LICENSE_STR.en;
+      var label = document.getElementById('lic-label');
+      var hint = document.getElementById('lic-hint');
+      var show = document.getElementById('lic-show');
+      var copy = document.getElementById('lic-copy');
+      var pending = document.getElementById('license-pending');
+      var key = document.getElementById('lic-key');
+      if (label) label.textContent = t.label;
+      if (hint) hint.textContent = t.hint;
+      if (pending) pending.textContent = t.pending;
+      if (show) show.textContent = (key && !key.classList.contains('masked')) ? t.hide : t.show;
+      if (copy) copy.textContent = (copy.dataset.copied === '1') ? t.copied : t.copy;
+    }
     function setLang(l) {
       localStorage.setItem('gaf-lang', l);
       document.querySelectorAll('[data-lang]').forEach(function(e) {
@@ -210,9 +264,138 @@
       }
       var active = document.querySelector('[data-lang="' + l + '"] h1');
       if (active && active.textContent.trim()) document.title = active.textContent.trim() + ' - Grab All Files';
+      applyLicenseStrings(l);
     }
     function onLangChange(e) { setLang(e.target.value); }
     setLang(getLang());
+
+    function getSessionId() {
+      try {
+        var p = new URLSearchParams(window.location.search);
+        var v = p.get('session_id');
+        if (v && /^cs_(test|live)_[A-Za-z0-9]+$/.test(v) && v.length <= 256) return v;
+      } catch (_) {}
+      return null;
+    }
+    function showLicenseKey(key) {
+      var box = document.getElementById('license-box');
+      var pending = document.getElementById('license-pending');
+      var keyEl = document.getElementById('lic-key');
+      if (!box || !keyEl) return;
+      keyEl.dataset.real = key;
+      keyEl.textContent = key.replace(/[A-Z0-9]/g, '•');
+      keyEl.classList.add('masked');
+      box.hidden = false;
+      if (pending) pending.hidden = true;
+      applyLicenseStrings(getLang());
+    }
+    function hidePendingState() {
+      var pending = document.getElementById('license-pending');
+      if (pending) pending.hidden = true;
+    }
+    function showPendingState() {
+      var pending = document.getElementById('license-pending');
+      if (pending) {
+        applyLicenseStrings(getLang());
+        pending.hidden = false;
+      }
+    }
+    function fetchLicenseOnce(sessionId) {
+      return fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ session_id: sessionId })
+      }).then(function(res) {
+        if (!res.ok) throw new Error('http ' + res.status);
+        return res.json();
+      });
+    }
+    function pollForLicense(sessionId, attempt) {
+      fetchLicenseOnce(sessionId).then(function(data) {
+        if (data && data.status === 'ready' && typeof data.license_key === 'string') {
+          showLicenseKey(data.license_key);
+          return;
+        }
+        if (data && data.status === 'pending') {
+          if (attempt >= POLL_MAX_ATTEMPTS) {
+            hidePendingState();
+            return;
+          }
+          setTimeout(function() { pollForLicense(sessionId, attempt + 1); }, POLL_INTERVAL_MS);
+          return;
+        }
+        // not_paid / not_found / revoked / unknown — don't poll, keep the
+        // existing email-only fallback message shown.
+        hidePendingState();
+      }).catch(function() {
+        hidePendingState();
+      });
+    }
+    (function initLicenseFetch() {
+      var sid = getSessionId();
+      if (!sid) return;
+      showPendingState();
+      pollForLicense(sid, 1);
+    })();
+
+    document.addEventListener('click', function(ev) {
+      var t = ev.target;
+      if (!t || !t.id) return;
+      var keyEl = document.getElementById('lic-key');
+      if (!keyEl) return;
+      if (t.id === 'lic-show') {
+        var real = keyEl.dataset.real || '';
+        if (!real) return;
+        if (keyEl.classList.contains('masked')) {
+          keyEl.textContent = real;
+          keyEl.classList.remove('masked');
+        } else {
+          keyEl.textContent = real.replace(/[A-Z0-9]/g, '•');
+          keyEl.classList.add('masked');
+        }
+        applyLicenseStrings(getLang());
+      } else if (t.id === 'lic-copy') {
+        var real2 = keyEl.dataset.real || '';
+        if (!real2) return;
+        var done = function() {
+          t.dataset.copied = '1';
+          t.classList.add('copied');
+          applyLicenseStrings(getLang());
+          setTimeout(function() {
+            t.dataset.copied = '';
+            t.classList.remove('copied');
+            applyLicenseStrings(getLang());
+          }, 1800);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(real2).then(done, function() {
+            try {
+              var ta = document.createElement('textarea');
+              ta.value = real2;
+              ta.style.position = 'fixed';
+              ta.style.opacity = '0';
+              document.body.appendChild(ta);
+              ta.select();
+              document.execCommand('copy');
+              document.body.removeChild(ta);
+              done();
+            } catch (_) {}
+          });
+        } else {
+          try {
+            var ta2 = document.createElement('textarea');
+            ta2.value = real2;
+            ta2.style.position = 'fixed';
+            ta2.style.opacity = '0';
+            document.body.appendChild(ta2);
+            ta2.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta2);
+            done();
+          } catch (_) {}
+        }
+      }
+    });
   </script>
 </body>
 </html>
