@@ -69,7 +69,7 @@
       "price": "9.99",
       "priceCurrency": "USD",
       "category": "OneTimePayment",
-      "description": "One-time purchase, perpetual license, activates on up to 3 devices. / 買い切りの永続ライセンス。最大3台まで有効化。購入前に14日間無料トライアルあり。",
+      "description": "One-time purchase, perpetual license, activates on up to 3 devices. / 永続ライセンス（サブスクなし）。最大3台まで有効化。購入前に14日間無料トライアルあり。",
       "url": "https://grab-all-files.app/purchase/"
     },
     "author": {
@@ -150,12 +150,78 @@
   </script>
 
   <style>
+    :root {
+      color-scheme: light;
+      --bg: #f8f9fa;
+      --surface: #fff;
+      --surface-alt: #f8fafc;
+      --surface-soft: #f1f5f9;
+      --text: #1a1a1a;
+      --text-strong: #1e293b;
+      --text-muted: #475569;
+      --text-faint: #64748b;
+      --border: #e2e8f0;
+      --border-strong: #cbd5e1;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-text: #fff;
+      --accent-soft: #dbeafe;
+      --accent-soft-text: #1e40af;
+      --accent-icon: #2563eb;
+      --shadow-primary: 0 4px 16px rgba(37, 99, 235, 0.15);
+      --shadow-soft: 0 1px 3px rgba(0,0,0,0.05);
+      --shadow-btn: 0 4px 12px rgba(37, 99, 235, 0.25);
+      --footer-bg: #1e293b;
+      --footer-text: #cbd5e1;
+      --footer-link: #93c5fd;
+      --footer-border: #334155;
+      --footer-meta: #94a3b8;
+      --footer-h: #fff;
+      --details-open-border: #93c5fd;
+      --check: #16a34a;
+    }
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #0b1220;
+      --surface: #111827;
+      --surface-alt: #0f172a;
+      --surface-soft: #1f2937;
+      --text: #e2e8f0;
+      --text-strong: #f1f5f9;
+      --text-muted: #cbd5e1;
+      --text-faint: #94a3b8;
+      --border: #1f2937;
+      --border-strong: #334155;
+      --primary: #3b82f6;
+      --primary-hover: #60a5fa;
+      --primary-text: #fff;
+      --accent-soft: #1e3a8a;
+      --accent-soft-text: #bfdbfe;
+      --accent-icon: #93c5fd;
+      --shadow-primary: 0 4px 16px rgba(0, 0, 0, 0.5);
+      --shadow-soft: 0 1px 3px rgba(0,0,0,0.5);
+      --shadow-btn: 0 4px 12px rgba(0, 0, 0, 0.5);
+      --footer-bg: #060a13;
+      --footer-text: #94a3b8;
+      --footer-link: #93c5fd;
+      --footer-border: #1f2937;
+      --footer-meta: #64748b;
+      --footer-h: #f1f5f9;
+      --details-open-border: #3b82f6;
+      --check: #4ade80;
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", Roboto, sans-serif; line-height: 1.65; color: #1a1a1a; background: #f8f9fa; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", Roboto, sans-serif; line-height: 1.65; color: var(--text); background: var(--bg); transition: background-color 0.2s ease, color 0.2s ease; }
     img { max-width: 100%; height: auto; display: block; }
 
-    .lang-sel { position: fixed; top: 1rem; right: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.35rem 0.6rem; font-size: 0.85rem; color: #2563eb; cursor: pointer; z-index: 100; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    .header-controls { position: fixed; top: 1rem; right: 1rem; display: flex; gap: 0.45rem; z-index: 100; }
+    .lang-sel { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 0.35rem 0.6rem; font-size: 0.85rem; color: var(--primary); cursor: pointer; box-shadow: var(--shadow-soft); }
+    .theme-toggle { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 0; font-size: 1rem; line-height: 1; color: var(--primary); cursor: pointer; box-shadow: var(--shadow-soft); display: inline-flex; align-items: center; justify-content: center; width: 2.15rem; height: 2.15rem; font-family: inherit; }
+    .theme-toggle:hover { background: var(--surface-soft); }
+    .theme-toggle .theme-icon-light, .theme-toggle .theme-icon-dark { display: none; }
+    :root[data-theme="dark"] .theme-toggle .theme-icon-light { display: inline; }
+    :root:not([data-theme="dark"]) .theme-toggle .theme-icon-dark { display: inline; }
 
     .container { max-width: 880px; margin: 0 auto; padding: 0 1.2rem; }
 
@@ -163,79 +229,96 @@
     [data-lang].active { display: block; }
 
     .hero { padding: 4rem 0 3rem; text-align: center; }
-    .hero-logo { width: 96px; height: 96px; margin: 0 auto 1.2rem; border-radius: 22px; box-shadow: 0 4px 16px rgba(37, 99, 235, 0.15); }
-    .hero h1 { font-size: 2.2rem; line-height: 1.25; margin-bottom: 0.8rem; }
-    .hero .lead { font-size: 1.1rem; color: #475569; max-width: 640px; margin: 0 auto 1.8rem; }
+    .hero-logo { width: 96px; height: 96px; margin: 0 auto 1.2rem; border-radius: 22px; box-shadow: var(--shadow-primary); }
+    .hero h1 { font-size: 2.2rem; line-height: 1.25; margin-bottom: 0.8rem; color: var(--text-strong); }
+    .hero .lead { font-size: 1.1rem; color: var(--text-muted); max-width: 640px; margin: 0 auto 1.8rem; }
     .hero-cta { display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-top: 0.6rem; }
-    .btn { display: inline-block; padding: 0.75rem 1.6rem; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 0.95rem; transition: transform 0.05s ease, box-shadow 0.15s ease; }
-    .btn-primary { background: #2563eb; color: #fff; }
-    .btn-primary:hover { background: #1d4ed8; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25); }
-    .btn-secondary { background: #fff; color: #2563eb; border: 1px solid #cbd5e1; }
-    .btn-secondary:hover { background: #f1f5f9; }
-    .badge { display: inline-block; background: #dbeafe; color: #1e40af; padding: 0.2rem 0.7rem; border-radius: 999px; font-size: 0.78rem; font-weight: 600; margin-bottom: 1rem; }
+    .btn { display: inline-block; padding: 0.75rem 1.6rem; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 0.95rem; transition: transform 0.05s ease, box-shadow 0.15s ease, background 0.15s ease; }
+    .btn-primary { background: var(--primary); color: var(--primary-text); }
+    .btn-primary:hover { background: var(--primary-hover); box-shadow: var(--shadow-btn); }
+    .btn-secondary { background: var(--surface); color: var(--primary); border: 1px solid var(--border-strong); }
+    .btn-secondary:hover { background: var(--surface-soft); }
+    .badge { display: inline-block; background: var(--accent-soft); color: var(--accent-soft-text); padding: 0.2rem 0.7rem; border-radius: 999px; font-size: 0.78rem; font-weight: 600; margin-bottom: 1rem; }
 
     section.block { padding: 2.5rem 0; }
-    section.block.alt { background: #fff; }
-    section.block h2 { font-size: 1.5rem; margin-bottom: 0.8rem; color: #1e293b; }
-    section.block p.section-lead { color: #475569; max-width: 640px; margin-bottom: 1.6rem; }
+    section.block.alt { background: var(--surface); }
+    section.block h2 { font-size: 1.5rem; margin-bottom: 0.8rem; color: var(--text-strong); }
+    section.block p.section-lead { color: var(--text-muted); max-width: 640px; margin-bottom: 1.6rem; }
 
     .grid { display: grid; gap: 1rem; grid-template-columns: 1fr; }
     @media (min-width: 640px) { .grid.cols-2 { grid-template-columns: 1fr 1fr; } }
     @media (min-width: 768px) { .grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; } }
 
-    .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 1.2rem 1.3rem; }
-    section.block.alt .card { background: #f8fafc; }
-    .card h3 { font-size: 1.02rem; color: #1e293b; margin-bottom: 0.45rem; display: flex; align-items: center; gap: 0.5rem; }
-    .card .icon { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 7px; background: #dbeafe; color: #2563eb; font-size: 0.9rem; flex-shrink: 0; }
-    .card p { font-size: 0.92rem; color: #475569; margin: 0; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.3rem; }
+    section.block.alt .card { background: var(--surface-alt); }
+    .card h3 { font-size: 1.02rem; color: var(--text-strong); margin-bottom: 0.45rem; display: flex; align-items: center; gap: 0.5rem; }
+    .card .icon { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 7px; background: var(--accent-soft); color: var(--accent-icon); font-size: 0.9rem; flex-shrink: 0; }
+    .card p { font-size: 0.92rem; color: var(--text-muted); margin: 0; }
 
     .steps { counter-reset: step; display: grid; gap: 0.9rem; }
-    .step { display: flex; gap: 0.9rem; align-items: flex-start; background: #fff; padding: 1rem 1.2rem; border-radius: 10px; border: 1px solid #e2e8f0; }
-    .step::before { counter-increment: step; content: counter(step); flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: #2563eb; color: #fff; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; }
-    .step h3 { font-size: 1rem; margin-bottom: 0.25rem; color: #1e293b; }
-    .step p { font-size: 0.92rem; color: #475569; margin: 0; }
+    .step { display: flex; gap: 0.9rem; align-items: flex-start; background: var(--surface); padding: 1rem 1.2rem; border-radius: 10px; border: 1px solid var(--border); }
+    .step::before { counter-increment: step; content: counter(step); flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--primary); color: var(--primary-text); font-weight: 700; display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; }
+    .step h3 { font-size: 1rem; margin-bottom: 0.25rem; color: var(--text-strong); }
+    .step p { font-size: 0.92rem; color: var(--text-muted); margin: 0; }
 
-    .faq details { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; margin-bottom: 0.7rem; padding: 0.9rem 1.2rem; }
-    .faq details[open] { border-color: #93c5fd; }
-    .faq summary { font-weight: 600; cursor: pointer; color: #1e293b; font-size: 0.98rem; }
-    .faq details p { font-size: 0.92rem; color: #475569; margin-top: 0.6rem; }
+    .faq details { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 0.7rem; padding: 0.9rem 1.2rem; }
+    .faq details[open] { border-color: var(--details-open-border); }
+    .faq summary { font-weight: 600; cursor: pointer; color: var(--text-strong); font-size: 0.98rem; }
+    .faq details p { font-size: 0.92rem; color: var(--text-muted); margin-top: 0.6rem; }
 
-    .pricing-card { background: #fff; border: 2px solid #2563eb; border-radius: 12px; padding: 1.8rem; text-align: center; max-width: 420px; margin: 0 auto; }
-    .pricing-card .price { font-size: 2.4rem; font-weight: 700; color: #2563eb; margin: 0.4rem 0; }
-    .pricing-card .price small { font-size: 0.85rem; color: #64748b; font-weight: 400; }
+    .pricing-card { background: var(--surface); border: 2px solid var(--primary); border-radius: 12px; padding: 1.8rem; text-align: center; max-width: 420px; margin: 0 auto; }
+    .pricing-card .price { font-size: 2.4rem; font-weight: 700; color: var(--primary); margin: 0.4rem 0; }
+    .pricing-card .price small { font-size: 0.85rem; color: var(--text-faint); font-weight: 400; }
     .pricing-card ul { list-style: none; padding: 0; margin: 1.2rem 0; text-align: left; }
-    .pricing-card ul li { padding: 0.4rem 0; font-size: 0.92rem; color: #475569; }
-    .pricing-card ul li::before { content: "✓"; color: #16a34a; font-weight: 700; margin-right: 0.5rem; }
+    .pricing-card ul li { padding: 0.4rem 0; font-size: 0.92rem; color: var(--text-muted); }
+    .pricing-card ul li::before { content: "✓"; color: var(--check); font-weight: 700; margin-right: 0.5rem; }
 
-    footer { padding: 2.5rem 0 3rem; background: #1e293b; color: #cbd5e1; }
-    footer h3 { font-size: 0.95rem; margin-bottom: 0.6rem; color: #fff; }
-    footer p { font-size: 0.85rem; line-height: 1.6; margin-bottom: 0.6rem; color: #cbd5e1; }
-    footer a { color: #93c5fd; text-decoration: none; }
+    footer { padding: 2.5rem 0 3rem; background: var(--footer-bg); color: var(--footer-text); }
+    footer h3 { font-size: 0.95rem; margin-bottom: 0.6rem; color: var(--footer-h); }
+    footer p { font-size: 0.85rem; line-height: 1.6; margin-bottom: 0.6rem; color: var(--footer-text); }
+    footer a { color: var(--footer-link); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
     footer .legal-links { margin: 1rem 0; }
     footer .legal-links a { display: inline-block; margin-right: 1.2rem; font-size: 0.88rem; }
-    footer .footer-meta { margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid #334155; font-size: 0.78rem; color: #94a3b8; line-height: 1.55; }
-    footer .footer-meta p { font-size: 0.78rem; color: #94a3b8; }
+    footer .footer-meta { margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid var(--footer-border); font-size: 0.78rem; color: var(--footer-meta); line-height: 1.55; }
+    footer .footer-meta p { font-size: 0.78rem; color: var(--footer-meta); }
 
-    .skip-link { position: absolute; left: -9999px; top: 0; padding: 0.5rem 1rem; background: #2563eb; color: #fff; }
+    .skip-link { position: absolute; left: -9999px; top: 0; padding: 0.5rem 1rem; background: var(--primary); color: var(--primary-text); }
     .skip-link:focus { left: 0; z-index: 200; }
   </style>
+  <script>
+    (function(){
+      try {
+        var t = localStorage.getItem('gaf-theme');
+        if (t !== 'light' && t !== 'dark') {
+          t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (_) {}
+    })();
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content / 本文へ移動</a>
 
-  <select id="lang-sel" class="lang-sel" aria-label="Language / 言語">
-    <option value="en">English</option>
-    <option value="ja">日本語</option>
-    <option value="es">Español</option>
-    <option value="fr">Français</option>
-    <option value="de">Deutsch</option>
-    <option value="it">Italiano</option>
-    <option value="ko">한국어</option>
-    <option value="pt_BR">Português (BR)</option>
-    <option value="zh_CN">简体中文</option>
-    <option value="zh_TW">繁體中文</option>
-  </select>
+  <div class="header-controls">
+    <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode / ダークモード切替" title="Toggle dark mode / ダークモード切替">
+      <span class="theme-icon-dark" aria-hidden="true">🌙</span>
+      <span class="theme-icon-light" aria-hidden="true">☀️</span>
+    </button>
+    <select id="lang-sel" class="lang-sel" aria-label="Language / 言語">
+      <option value="en">English</option>
+      <option value="ja">日本語</option>
+      <option value="es">Español</option>
+      <option value="fr">Français</option>
+      <option value="de">Deutsch</option>
+      <option value="it">Italiano</option>
+      <option value="ko">한국어</option>
+      <option value="pt_BR">Português (BR)</option>
+      <option value="zh_CN">简体中文</option>
+      <option value="zh_TW">繁體中文</option>
+    </select>
+  </div>
 
   <main id="main">
 
@@ -254,7 +337,7 @@
         </div>
 
         <div data-lang="ja">
-          <span class="badge">14日間無料トライアル · 買い切り $9.99</span>
+          <span class="badge">14日間無料トライアル · 永続ライセンス $9.99（サブスクなし）</span>
           <h1>ファイル一括ダウンロード</h1>
           <p class="lead">Webページ上のPDF・Word・Excel・PowerPoint・画像・ZIP・CSVなど、ダウンロード可能なファイルをまとめて検出します。iframe、PDFビューア、遅延読み込み、fetch/XHRレスポンス、blob URL、CMSダウンロードルートなど、通常見落としがちな場所のファイルもカバー。必要なものを選んで一括保存、PDF結合もブラウザ内で完結します。</p>
           <div class="hero-cta">
@@ -705,7 +788,7 @@
         <div data-lang="ja">
           <h2 style="text-align:center;">価格</h2>
           <div class="pricing-card">
-            <p style="color:#64748b;font-size:0.9rem;">買い切り</p>
+            <p style="color:#64748b;font-size:0.9rem;">永続ライセンス（サブスクなし）</p>
             <div class="price">$9.99 <small>USD</small></div>
             <ul>
               <li>14日間無料トライアル（クレジットカード不要）</li>
@@ -817,7 +900,7 @@
         <div data-lang="ja">
           <h2>よくある質問</h2>
           <details><summary>無料トライアルはありますか？</summary><p>はい、14日間すべての機能を無料でご利用いただけます。クレジットカード登録は不要です。</p></details>
-          <details><summary>トライアル後の料金は？</summary><p>$9.99 USDの買い切りです。永続ライセンスでサブスクなし。最大3台のデバイスで利用できます。</p></details>
+          <details><summary>トライアル後の料金は？</summary><p>$9.99 USDの永続ライセンス（サブスクなし）です。最大3台のデバイスで利用できます。</p></details>
           <details><summary>閲覧データはどこかへ送信されますか？</summary><p>いいえ。ファイルはソースサイトから端末へ直接ダウンロードされます。当社サーバーへ送信されるのはライセンス検証のみです。</p></details>
           <details><summary>対応ブラウザは？</summary><p>Google Chrome および Microsoft Edge（Chromium 102 以降）。</p></details>
           <details><summary>返金はできますか？</summary><p>即時提供のデジタル製品のため、原則として返金には応じておりません。14日間無料トライアルで購入前に十分にお試しください。技術的な不具合により動作しない場合は、初回報告から30日以内であれば全額返金いたします。</p></details>
@@ -1000,6 +1083,28 @@
     }
     document.getElementById('lang-sel').addEventListener('change', function(e) { setLang(e.target.value); });
     setLang(detectLang());
+
+    function getTheme() {
+      try { var t = localStorage.getItem('gaf-theme'); if (t === 'light' || t === 'dark') return t; } catch (_) {}
+      return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+    }
+    function setTheme(t) {
+      document.documentElement.setAttribute('data-theme', t);
+      try { localStorage.setItem('gaf-theme', t); } catch (_) {}
+    }
+    var themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', function() { setTheme(getTheme() === 'dark' ? 'light' : 'dark'); });
+    }
+    if (window.matchMedia) {
+      try {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+          var stored = null;
+          try { stored = localStorage.getItem('gaf-theme'); } catch (_) {}
+          if (stored !== 'light' && stored !== 'dark') setTheme(e.matches ? 'dark' : 'light');
+        });
+      } catch (_) {}
+    }
   </script>
 </body>
 </html>

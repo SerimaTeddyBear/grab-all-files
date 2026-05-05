@@ -4,50 +4,120 @@
   <meta name="robots" content="noindex, nofollow">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
   <title>Purchase Complete / 購入完了 - Grab All Files</title>
   <style>
+    :root {
+      color-scheme: light;
+      --bg: #f8f9fa;
+      --surface: #fff;
+      --surface-soft: #f1f5f9;
+      --surface-alt: #f8fafc;
+      --highlight-bg: #f0f7ff;
+      --resend-hover: #eff6ff;
+      --text: #1a1a1a;
+      --text-key: #1a1d26;
+      --text-muted: #555;
+      --text-faint: #666;
+      --text-very-faint: #94a3b8;
+      --border: #e2e8f0;
+      --border-dashed: #cbd5e1;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-text: #fff;
+      --success: #16a34a;
+      --warn: #b45309;
+      --err: #dc2626;
+      --shadow-soft: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #0b1220;
+      --surface: #111827;
+      --surface-soft: #1f2937;
+      --surface-alt: #0f172a;
+      --highlight-bg: #0f1f3a;
+      --resend-hover: #1e293b;
+      --text: #e2e8f0;
+      --text-key: #f1f5f9;
+      --text-muted: #cbd5e1;
+      --text-faint: #94a3b8;
+      --text-very-faint: #64748b;
+      --border: #1f2937;
+      --border-dashed: #334155;
+      --primary: #3b82f6;
+      --primary-hover: #60a5fa;
+      --primary-text: #fff;
+      --success: #4ade80;
+      --warn: #fbbf24;
+      --err: #f87171;
+      --shadow-soft: 0 1px 4px rgba(0,0,0,0.5);
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", Roboto, sans-serif; line-height: 1.7; color: #1a1a1a; background: #f8f9fa; padding: 2rem 1rem; }
-    .container { max-width: 560px; margin: 60px auto; background: #fff; border-radius: 12px; padding: 2.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08); text-align: center; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", Roboto, sans-serif; line-height: 1.7; color: var(--text); background: var(--bg); padding: 2rem 1rem; transition: background-color 0.2s ease, color 0.2s ease; }
+    .container { max-width: 560px; margin: 60px auto; background: var(--surface); border-radius: 12px; padding: 2.5rem; box-shadow: var(--shadow-soft); text-align: center; }
     .icon { font-size: 48px; margin-bottom: 16px; }
-    h1 { font-size: 1.5rem; margin-bottom: 0.5rem; color: #16a34a; }
-    p { font-size: 0.95rem; color: #555; margin-bottom: 1rem; }
-    .highlight { background: #f0f7ff; border: 2px solid #2563eb; border-radius: 8px; padding: 16px; margin: 20px 0; }
-    .highlight p { color: #1a1d26; font-weight: 600; margin-bottom: 0; }
+    h1 { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--success); }
+    p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem; }
+    .highlight { background: var(--highlight-bg); border: 2px solid var(--primary); border-radius: 8px; padding: 16px; margin: 20px 0; }
+    .highlight p { color: var(--text-key); font-weight: 600; margin-bottom: 0; }
     .steps { text-align: left; margin: 20px 0; }
     .steps ol { padding-left: 1.5rem; }
-    .steps li { font-size: 0.95rem; color: #555; margin-bottom: 0.5rem; }
-    .support { background: #f1f5f9; border-radius: 8px; padding: 16px; margin-top: 24px; }
-    .support p { font-size: 0.85rem; color: #666; margin-bottom: 0.3rem; }
-    .support a { color: #2563eb; }
-    .lang-sel { position: fixed; top: 1rem; right: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.3rem 0.5rem; font-size: 0.8rem; color: #2563eb; cursor: pointer; }
+    .steps li { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+    .support { background: var(--surface-soft); border-radius: 8px; padding: 16px; margin-top: 24px; }
+    .support p { font-size: 0.85rem; color: var(--text-faint); margin-bottom: 0.3rem; }
+    .support a { color: var(--primary); }
+    .header-controls { position: fixed; top: 1rem; right: 1rem; display: flex; gap: 0.45rem; z-index: 100; }
+    .lang-sel { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 0.3rem 0.5rem; font-size: 0.8rem; color: var(--primary); cursor: pointer; box-shadow: var(--shadow-soft); }
+    .theme-toggle { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 0; font-size: 0.95rem; line-height: 1; color: var(--primary); cursor: pointer; box-shadow: var(--shadow-soft); display: inline-flex; align-items: center; justify-content: center; width: 1.95rem; height: 1.95rem; font-family: inherit; }
+    .theme-toggle:hover { background: var(--surface-soft); }
+    .theme-toggle .theme-icon-light, .theme-toggle .theme-icon-dark { display: none; }
+    :root[data-theme="dark"] .theme-toggle .theme-icon-light { display: inline; }
+    :root:not([data-theme="dark"]) .theme-toggle .theme-icon-dark { display: inline; }
     [data-lang] { display: none; }
     [data-lang].active { display: block; }
-    .license-box { background: #f0f7ff; border: 2px solid #2563eb; border-radius: 8px; padding: 18px 20px; margin: 0 0 20px; text-align: left; }
+    .license-box { background: var(--highlight-bg); border: 2px solid var(--primary); border-radius: 8px; padding: 18px 20px; margin: 0 0 20px; text-align: left; }
     .license-box[hidden] { display: none; }
-    .license-box .license-label { font-size: 0.85rem; color: #1a1a1a; font-weight: 600; margin: 0 0 10px; text-align: center; }
+    .license-box .license-label { font-size: 0.85rem; color: var(--text); font-weight: 600; margin: 0 0 10px; text-align: center; }
     .license-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center; }
-    .license-key { flex: 1 1 auto; min-width: 0; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 1.05rem; font-weight: 700; color: #1a1d26; background: #fff; padding: 10px 14px; border-radius: 6px; letter-spacing: 1px; word-break: break-all; text-align: center; }
-    .license-key.masked { letter-spacing: 4px; color: #94a3b8; }
-    .btn-icon { background: #2563eb; color: #fff; border: none; border-radius: 6px; padding: 8px 14px; font-size: 0.85rem; font-weight: 600; cursor: pointer; font-family: inherit; flex: 0 0 auto; }
-    .btn-icon:hover { background: #1d4ed8; }
-    .btn-icon.copied { background: #16a34a; }
-    .license-hint { font-size: 0.78rem; color: #555; margin: 12px 0 0; text-align: center; line-height: 1.5; }
-    .license-pending { background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px; padding: 14px 18px; margin: 0 0 20px; font-size: 0.85rem; color: #555; text-align: center; }
+    .license-key { flex: 1 1 auto; min-width: 0; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 1.05rem; font-weight: 700; color: var(--text-key); background: var(--surface); padding: 10px 14px; border-radius: 6px; letter-spacing: 1px; word-break: break-all; text-align: center; }
+    .license-key.masked { letter-spacing: 4px; color: var(--text-very-faint); }
+    .btn-icon { background: var(--primary); color: var(--primary-text); border: none; border-radius: 6px; padding: 8px 14px; font-size: 0.85rem; font-weight: 600; cursor: pointer; font-family: inherit; flex: 0 0 auto; }
+    .btn-icon:hover { background: var(--primary-hover); }
+    .btn-icon.copied { background: var(--success); }
+    .license-hint { font-size: 0.78rem; color: var(--text-muted); margin: 12px 0 0; text-align: center; line-height: 1.5; }
+    .license-pending { background: var(--surface-alt); border: 1px dashed var(--border-dashed); border-radius: 8px; padding: 14px 18px; margin: 0 0 20px; font-size: 0.85rem; color: var(--text-muted); text-align: center; }
     .license-pending[hidden] { display: none; }
     .resend-block { margin: 0 0 24px; text-align: center; }
     .resend-block[hidden] { display: none; }
-    .btn-resend { background: #fff; color: #2563eb; border: 1px solid #2563eb; padding: 0.6rem 1.4rem; border-radius: 8px; font-size: 0.88rem; font-weight: 600; cursor: pointer; font-family: inherit; }
-    .btn-resend:hover:not(:disabled) { background: #eff6ff; }
+    .btn-resend { background: var(--surface); color: var(--primary); border: 1px solid var(--primary); padding: 0.6rem 1.4rem; border-radius: 8px; font-size: 0.88rem; font-weight: 600; cursor: pointer; font-family: inherit; }
+    .btn-resend:hover:not(:disabled) { background: var(--resend-hover); }
     .btn-resend:disabled { opacity: 0.55; cursor: not-allowed; }
     .resend-status { font-size: 0.8rem; margin: 8px 0 0; min-height: 1.2em; line-height: 1.5; }
-    .resend-status.is-ok { color: #16a34a; }
-    .resend-status.is-warn { color: #b45309; }
-    .resend-status.is-err { color: #dc2626; }
+    .resend-status.is-ok { color: var(--success); }
+    .resend-status.is-warn { color: var(--warn); }
+    .resend-status.is-err { color: var(--err); }
   </style>
+  <script>
+    (function(){
+      try {
+        var t = localStorage.getItem('gaf-theme');
+        if (t !== 'light' && t !== 'dark') {
+          t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (_) {}
+    })();
+  </script>
 </head>
 <body>
-  <select id="lang-sel" class="lang-sel" onchange="onLangChange(event)"><option value="en">English</option><option value="ja">日本語</option><option value="es">Español</option><option value="fr">Français</option><option value="ko">한국어</option><option value="it">Italiano</option><option value="zh_CN">简体中文</option><option value="zh_TW">繁體中文</option><option value="pt_BR">Português</option><option value="de">Deutsch</option></select>
+  <div class="header-controls">
+    <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode / ダークモード切替" title="Toggle dark mode / ダークモード切替">
+      <span class="theme-icon-dark" aria-hidden="true">🌙</span>
+      <span class="theme-icon-light" aria-hidden="true">☀️</span>
+    </button>
+    <select id="lang-sel" class="lang-sel" onchange="onLangChange(event)"><option value="en">English</option><option value="ja">日本語</option><option value="es">Español</option><option value="fr">Français</option><option value="ko">한국어</option><option value="it">Italiano</option><option value="zh_CN">简体中文</option><option value="zh_TW">繁體中文</option><option value="pt_BR">Português</option><option value="de">Deutsch</option></select>
+  </div>
   <div class="container">
     <div id="license-pending" class="license-pending" hidden></div>
     <div id="license-box" class="license-box" hidden>
@@ -298,6 +368,28 @@
     }
     function onLangChange(e) { setLang(e.target.value); }
     setLang(getLang());
+
+    function getTheme() {
+      try { var t = localStorage.getItem('gaf-theme'); if (t === 'light' || t === 'dark') return t; } catch (_) {}
+      return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+    }
+    function setTheme(t) {
+      document.documentElement.setAttribute('data-theme', t);
+      try { localStorage.setItem('gaf-theme', t); } catch (_) {}
+    }
+    var themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', function() { setTheme(getTheme() === 'dark' ? 'light' : 'dark'); });
+    }
+    if (window.matchMedia) {
+      try {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+          var stored = null;
+          try { stored = localStorage.getItem('gaf-theme'); } catch (_) {}
+          if (stored !== 'light' && stored !== 'dark') setTheme(e.matches ? 'dark' : 'light');
+        });
+      } catch (_) {}
+    }
 
     function getSessionId() {
       try {

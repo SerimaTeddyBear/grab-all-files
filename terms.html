@@ -4,26 +4,79 @@
   <meta name="robots" content="noindex, nofollow">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
   <title>Terms of Service / 利用規約 - Grab All Files</title>
   <style>
+    :root {
+      color-scheme: light;
+      --bg: #f8f9fa;
+      --surface: #fff;
+      --surface-soft: #f1f5f9;
+      --text: #1a1a1a;
+      --text-muted: #666;
+      --border: #e2e8f0;
+      --primary: #2563eb;
+      --shadow-soft: 0 1px 4px rgba(0,0,0,0.08);
+      --note-bg: #fffbe6;
+      --note-border: #f59e0b;
+      --note-text: #555;
+    }
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #0b1220;
+      --surface: #111827;
+      --surface-soft: #1f2937;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --border: #1f2937;
+      --primary: #60a5fa;
+      --shadow-soft: 0 1px 4px rgba(0,0,0,0.5);
+      --note-bg: #2a2310;
+      --note-border: #f59e0b;
+      --note-text: #fde68a;
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", Roboto, sans-serif; line-height: 1.7; color: #1a1a1a; background: #f8f9fa; padding: 2rem 1rem; }
-    .container { max-width: 720px; margin: 0 auto; background: #fff; border-radius: 12px; padding: 2.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-    h1 { font-size: 1.6rem; margin-bottom: 0.3rem; }
-    .updated { color: #666; font-size: 0.85rem; margin-bottom: 2rem; }
-    h2 { font-size: 1.15rem; margin-top: 1.8rem; margin-bottom: 0.5rem; color: #2563eb; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", Roboto, sans-serif; line-height: 1.7; color: var(--text); background: var(--bg); padding: 2rem 1rem; transition: background-color 0.2s ease, color 0.2s ease; }
+    .container { max-width: 720px; margin: 0 auto; background: var(--surface); border-radius: 12px; padding: 2.5rem; box-shadow: var(--shadow-soft); }
+    h1 { font-size: 1.6rem; margin-bottom: 0.3rem; color: var(--text); }
+    .updated { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 2rem; }
+    h2 { font-size: 1.15rem; margin-top: 1.8rem; margin-bottom: 0.5rem; color: var(--primary); }
     p, li { font-size: 0.95rem; margin-bottom: 0.6rem; }
     ul, ol { padding-left: 1.5rem; margin-bottom: 0.8rem; }
-    .contact { background: #f1f5f9; border-radius: 8px; padding: 1rem 1.2rem; margin-top: 1.5rem; }
-    .contact a { color: #2563eb; }
-    .lang-sel { position: fixed; top: 1rem; right: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.3rem 0.5rem; font-size: 0.8rem; cursor: pointer; color: #2563eb; }
+    code { background: var(--surface-soft); padding: 0 0.25rem; border-radius: 3px; font-size: 0.9em; }
+    .contact { background: var(--surface-soft); border-radius: 8px; padding: 1rem 1.2rem; margin-top: 1.5rem; }
+    .contact a { color: var(--primary); }
+    .header-controls { position: fixed; top: 1rem; right: 1rem; display: flex; gap: 0.45rem; z-index: 100; }
+    .lang-sel { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 0.3rem 0.5rem; font-size: 0.8rem; cursor: pointer; color: var(--primary); box-shadow: var(--shadow-soft); }
+    .theme-toggle { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 0; font-size: 0.95rem; line-height: 1; color: var(--primary); cursor: pointer; box-shadow: var(--shadow-soft); display: inline-flex; align-items: center; justify-content: center; width: 1.95rem; height: 1.95rem; font-family: inherit; }
+    .theme-toggle:hover { background: var(--surface-soft); }
+    .theme-toggle .theme-icon-light, .theme-toggle .theme-icon-dark { display: none; }
+    :root[data-theme="dark"] .theme-toggle .theme-icon-light { display: inline; }
+    :root:not([data-theme="dark"]) .theme-toggle .theme-icon-dark { display: inline; }
     [data-lang] { display: none; }
     [data-lang].active { display: block; }
-    .legal-note { font-size: 0.85rem; color: #555; background: #fffbe6; border-left: 3px solid #f59e0b; padding: 0.6rem 0.9rem; margin: 1rem 0; }
+    .legal-note { font-size: 0.85rem; color: var(--note-text); background: var(--note-bg); border-left: 3px solid var(--note-border); padding: 0.6rem 0.9rem; margin: 1rem 0; }
   </style>
+  <script>
+    (function(){
+      try {
+        var t = localStorage.getItem('gaf-theme');
+        if (t !== 'light' && t !== 'dark') {
+          t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (_) {}
+    })();
+  </script>
 </head>
 <body>
-  <select id="lang-sel" class="lang-sel" onchange="onLangChange(event)"><option value="en">English</option><option value="ja">日本語</option><option value="es">Español</option><option value="fr">Français</option><option value="ko">한국어</option><option value="it">Italiano</option><option value="zh_CN">简体中文</option><option value="zh_TW">繁體中文</option><option value="pt_BR">Português</option><option value="de">Deutsch</option></select>
+  <div class="header-controls">
+    <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode / ダークモード切替" title="Toggle dark mode / ダークモード切替">
+      <span class="theme-icon-dark" aria-hidden="true">🌙</span>
+      <span class="theme-icon-light" aria-hidden="true">☀️</span>
+    </button>
+    <select id="lang-sel" class="lang-sel" onchange="onLangChange(event)"><option value="en">English</option><option value="ja">日本語</option><option value="es">Español</option><option value="fr">Français</option><option value="ko">한국어</option><option value="it">Italiano</option><option value="zh_CN">简体中文</option><option value="zh_TW">繁體中文</option><option value="pt_BR">Português</option><option value="de">Deutsch</option></select>
+  </div>
   <div class="container">
 
     <div data-lang="en">

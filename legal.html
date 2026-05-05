@@ -5,26 +5,76 @@
   <meta name="robots" content="noindex, nofollow">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
   <title>Legal Notice / 特定商取引法に基づく表記 - Grab All Files</title>
   <style>
+    :root {
+      color-scheme: light;
+      --bg: #f8f9fa;
+      --surface: #fff;
+      --surface-soft: #f1f5f9;
+      --text: #1a1a1a;
+      --text-muted: #666;
+      --text-faint: #777;
+      --border: #e2e8f0;
+      --primary: #2563eb;
+      --shadow-soft: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #0b1220;
+      --surface: #111827;
+      --surface-soft: #1f2937;
+      --text: #e2e8f0;
+      --text-muted: #cbd5e1;
+      --text-faint: #94a3b8;
+      --border: #1f2937;
+      --primary: #60a5fa;
+      --shadow-soft: 0 1px 4px rgba(0,0,0,0.5);
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", Roboto, sans-serif; line-height: 1.8; color: #1a1a1a; background: #f8f9fa; padding: 2rem 1rem; }
-    .container { max-width: 720px; margin: 0 auto; background: #fff; border-radius: 12px; padding: 2.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-    h1 { font-size: 1.4rem; margin-bottom: 0.3rem; }
-    .subtitle { color: #666; font-size: 0.85rem; margin-bottom: 1.5rem; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", Roboto, sans-serif; line-height: 1.8; color: var(--text); background: var(--bg); padding: 2rem 1rem; transition: background-color 0.2s ease, color 0.2s ease; }
+    .container { max-width: 720px; margin: 0 auto; background: var(--surface); border-radius: 12px; padding: 2.5rem; box-shadow: var(--shadow-soft); }
+    h1 { font-size: 1.4rem; margin-bottom: 0.3rem; color: var(--text); }
+    .subtitle { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem; }
     table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
-    th, td { border: 1px solid #e2e8f0; padding: 0.75rem 1rem; text-align: left; vertical-align: top; }
-    th { background: #f1f5f9; font-weight: 600; width: 30%; white-space: nowrap; }
+    th, td { border: 1px solid var(--border); padding: 0.75rem 1rem; text-align: left; vertical-align: top; }
+    th { background: var(--surface-soft); font-weight: 600; width: 30%; white-space: nowrap; color: var(--text); }
     .back { margin-top: 1.5rem; text-align: center; }
-    .back a { color: #2563eb; text-decoration: none; }
+    .back a { color: var(--primary); text-decoration: none; }
     .back a:hover { text-decoration: underline; }
-    .lang-sel { position: fixed; top: 1rem; right: 1rem; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.3rem 0.5rem; font-size: 0.8rem; color: #2563eb; cursor: pointer; }
+    .container hr { border: 0; border-top: 1px solid var(--border); margin: 1.6rem 0 1rem; }
+    .container .footnote { font-size: 0.78rem; color: var(--text-faint); margin-bottom: 0.4rem; }
+    .header-controls { position: fixed; top: 1rem; right: 1rem; display: flex; gap: 0.45rem; z-index: 100; }
+    .lang-sel { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 0.3rem 0.5rem; font-size: 0.8rem; color: var(--primary); cursor: pointer; box-shadow: var(--shadow-soft); }
+    .theme-toggle { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 0; font-size: 0.95rem; line-height: 1; color: var(--primary); cursor: pointer; box-shadow: var(--shadow-soft); display: inline-flex; align-items: center; justify-content: center; width: 1.95rem; height: 1.95rem; font-family: inherit; }
+    .theme-toggle:hover { background: var(--surface-soft); }
+    .theme-toggle .theme-icon-light, .theme-toggle .theme-icon-dark { display: none; }
+    :root[data-theme="dark"] .theme-toggle .theme-icon-light { display: inline; }
+    :root:not([data-theme="dark"]) .theme-toggle .theme-icon-dark { display: inline; }
     [data-lang] { display: none; }
     [data-lang].active { display: block; }
   </style>
+  <script>
+    (function(){
+      try {
+        var t = localStorage.getItem('gaf-theme');
+        if (t !== 'light' && t !== 'dark') {
+          t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (_) {}
+    })();
+  </script>
 </head>
 <body>
-  <select id="lang-sel" class="lang-sel" onchange="onLangChange(event)"><option value="en">English</option><option value="ja">日本語</option><option value="es">Español</option><option value="fr">Français</option><option value="ko">한국어</option><option value="it">Italiano</option><option value="zh_CN">简体中文</option><option value="zh_TW">繁體中文</option><option value="pt_BR">Português</option><option value="de">Deutsch</option></select>
+  <div class="header-controls">
+    <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode / ダークモード切替" title="Toggle dark mode / ダークモード切替">
+      <span class="theme-icon-dark" aria-hidden="true">🌙</span>
+      <span class="theme-icon-light" aria-hidden="true">☀️</span>
+    </button>
+    <select id="lang-sel" class="lang-sel" onchange="onLangChange(event)"><option value="en">English</option><option value="ja">日本語</option><option value="es">Español</option><option value="fr">Français</option><option value="ko">한국어</option><option value="it">Italiano</option><option value="zh_CN">简体中文</option><option value="zh_TW">繁體中文</option><option value="pt_BR">Português</option><option value="de">Deutsch</option></select>
+  </div>
   <div class="container">
     <div data-lang="en">
       <h1>Legal Notice / Commercial Disclosure</h1>
@@ -228,9 +278,9 @@
       <div class="back"><a href="index.html">&larr; Zurück zur Startseite</a></div>
     </div>
 
-    <hr style="margin: 1.6rem 0 1rem; border: 0; border-top: 1px solid #e2e8f0;">
-    <p style="font-size: 0.78rem; color: #777; margin-bottom: 0.4rem;">"Google Chrome" and "Chrome Web Store" are trademarks of Google LLC. "Microsoft Edge" and "Microsoft Edge Add-ons" are trademarks of Microsoft Corporation. Use is descriptive only and does not imply affiliation with or endorsement by Google or Microsoft. Sold by <strong>Tetsunobu Kawai</strong> as an independent product.</p>
-    <p style="font-size: 0.78rem; color: #777;">「Google Chrome」および「Chrome Web Store」は Google LLC の商標です。「Microsoft Edge」および「Microsoft Edge Add-ons」は Microsoft Corporation の商標です。本書面における使用は説明目的に限られ、提携または推奨を意味しません。本製品は <strong>Tetsunobu Kawai</strong> が独立して販売しています。</p>
+    <hr>
+    <p class="footnote">"Google Chrome" and "Chrome Web Store" are trademarks of Google LLC. "Microsoft Edge" and "Microsoft Edge Add-ons" are trademarks of Microsoft Corporation. Use is descriptive only and does not imply affiliation with or endorsement by Google or Microsoft. Sold by <strong>Tetsunobu Kawai</strong> as an independent product.</p>
+    <p class="footnote">「Google Chrome」および「Chrome Web Store」は Google LLC の商標です。「Microsoft Edge」および「Microsoft Edge Add-ons」は Microsoft Corporation の商標です。本書面における使用は説明目的に限られ、提携または推奨を意味しません。本製品は <strong>Tetsunobu Kawai</strong> が独立して販売しています。</p>
   </div>
   <script>
     var LANGUAGE_LABELS = {
@@ -276,6 +326,28 @@
     }
     function onLangChange(e) { setLang(e.target.value); }
     setLang(getLang());
+
+    function getTheme() {
+      try { var t = localStorage.getItem('gaf-theme'); if (t === 'light' || t === 'dark') return t; } catch (_) {}
+      return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+    }
+    function setTheme(t) {
+      document.documentElement.setAttribute('data-theme', t);
+      try { localStorage.setItem('gaf-theme', t); } catch (_) {}
+    }
+    var themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', function() { setTheme(getTheme() === 'dark' ? 'light' : 'dark'); });
+    }
+    if (window.matchMedia) {
+      try {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+          var stored = null;
+          try { stored = localStorage.getItem('gaf-theme'); } catch (_) {}
+          if (stored !== 'light' && stored !== 'dark') setTheme(e.matches ? 'dark' : 'light');
+        });
+      } catch (_) {}
+    }
   </script>
 </body>
 </html>

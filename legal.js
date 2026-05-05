@@ -85,4 +85,26 @@
   if (toggle) toggle.addEventListener('click', toggleJaEn);
 
   setLang(getLang(), { persist: false });
+
+  function getTheme() {
+    try { var t = localStorage.getItem('gaf-theme'); if (t === 'light' || t === 'dark') return t; } catch (_) {}
+    return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  }
+  function setTheme(t) {
+    document.documentElement.setAttribute('data-theme', t);
+    try { localStorage.setItem('gaf-theme', t); } catch (_) {}
+  }
+  var themeBtn = document.getElementById('theme-toggle');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function () { setTheme(getTheme() === 'dark' ? 'light' : 'dark'); });
+  }
+  if (window.matchMedia) {
+    try {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+        var stored = null;
+        try { stored = localStorage.getItem('gaf-theme'); } catch (_) {}
+        if (stored !== 'light' && stored !== 'dark') setTheme(e.matches ? 'dark' : 'light');
+      });
+    } catch (_) {}
+  }
 })();
