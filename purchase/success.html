@@ -35,6 +35,15 @@
     .license-hint { font-size: 0.78rem; color: #555; margin: 12px 0 0; text-align: center; line-height: 1.5; }
     .license-pending { background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px; padding: 14px 18px; margin: 0 0 20px; font-size: 0.85rem; color: #555; text-align: center; }
     .license-pending[hidden] { display: none; }
+    .resend-block { margin: 0 0 24px; text-align: center; }
+    .resend-block[hidden] { display: none; }
+    .btn-resend { background: #fff; color: #2563eb; border: 1px solid #2563eb; padding: 0.6rem 1.4rem; border-radius: 8px; font-size: 0.88rem; font-weight: 600; cursor: pointer; font-family: inherit; }
+    .btn-resend:hover:not(:disabled) { background: #eff6ff; }
+    .btn-resend:disabled { opacity: 0.55; cursor: not-allowed; }
+    .resend-status { font-size: 0.8rem; margin: 8px 0 0; min-height: 1.2em; line-height: 1.5; }
+    .resend-status.is-ok { color: #16a34a; }
+    .resend-status.is-warn { color: #b45309; }
+    .resend-status.is-err { color: #dc2626; }
   </style>
 </head>
 <body>
@@ -49,6 +58,10 @@
         <button type="button" class="btn-icon" id="lic-copy"></button>
       </div>
       <p class="license-hint" id="lic-hint"></p>
+    </div>
+    <div id="resend-block" class="resend-block" hidden>
+      <button type="button" class="btn-resend" id="resend-btn"></button>
+      <p class="resend-status" id="resend-status"></p>
     </div>
     <div data-lang="en">
       <div class="icon">&#10003;</div>
@@ -205,6 +218,19 @@
       de: 'Sprache'
     };
 
+    var RESEND_STR = {
+      en:    { btn: 'Resend email', sending: 'Sending…', ok: 'Email sent. Please check your inbox (and spam folder).', tooSoon: 'Please wait %s seconds before resending.', limit: 'Daily resend limit reached. Try again later.', notFound: 'No purchase was found for this session.', inactive: 'This license is no longer active.', noEmail: 'No email address is on record for this purchase.', err: 'Could not send. Please contact support.' },
+      ja:    { btn: 'メールを再送する', sending: '送信中…', ok: 'メールを送信しました。受信トレイ（と迷惑メールフォルダ）をご確認ください。', tooSoon: '再送まであと %s 秒お待ちください。', limit: '本日の再送上限に達しました。時間をおいて再度お試しください。', notFound: 'この購入セッションは見つかりませんでした。', inactive: 'このライセンスは無効化されています。', noEmail: 'この購入にはメールアドレスが記録されていません。', err: '送信に失敗しました。サポートまでご連絡ください。' },
+      es:    { btn: 'Reenviar correo', sending: 'Enviando…', ok: 'Correo enviado. Revise su bandeja de entrada (y carpeta de spam).', tooSoon: 'Espere %s segundos antes de reenviar.', limit: 'Límite diario alcanzado. Inténtelo más tarde.', notFound: 'No se encontró la compra para esta sesión.', inactive: 'Esta licencia ya no está activa.', noEmail: 'No hay dirección de correo registrada para esta compra.', err: 'No se pudo enviar. Contacte con soporte.' },
+      fr:    { btn: "Renvoyer l'e-mail", sending: 'Envoi…', ok: 'E-mail envoyé. Vérifiez votre boîte de réception (et dossier spam).', tooSoon: 'Veuillez patienter %s secondes avant de renvoyer.', limit: 'Limite quotidienne atteinte. Réessayez plus tard.', notFound: 'Aucun achat trouvé pour cette session.', inactive: "Cette licence n'est plus active.", noEmail: "Aucune adresse e-mail n'est enregistrée pour cet achat.", err: "Échec de l'envoi. Veuillez contacter le support." },
+      ko:    { btn: '이메일 재전송', sending: '전송 중…', ok: '이메일을 보냈습니다. 받은편지함(과 스팸 폴더)을 확인해 주세요.', tooSoon: '%s초 후 다시 시도해 주세요.', limit: '하루 재전송 한도에 도달했습니다. 잠시 후 다시 시도해 주세요.', notFound: '이 세션에 해당하는 구매를 찾을 수 없습니다.', inactive: '이 라이선스는 더 이상 활성 상태가 아닙니다.', noEmail: '이 구매에 등록된 이메일 주소가 없습니다.', err: '전송에 실패했습니다. 지원팀에 문의해 주세요.' },
+      it:    { btn: 'Reinvia email', sending: 'Invio…', ok: 'Email inviata. Controlla la tua casella di posta (e la cartella spam).', tooSoon: 'Attendi %s secondi prima di reinviare.', limit: 'Limite giornaliero raggiunto. Riprova più tardi.', notFound: 'Nessun acquisto trovato per questa sessione.', inactive: 'Questa licenza non è più attiva.', noEmail: 'Nessun indirizzo email registrato per questo acquisto.', err: "Invio fallito. Contatta l'assistenza." },
+      zh_CN: { btn: '重新发送邮件', sending: '发送中…', ok: '邮件已发送。请查看您的收件箱（和垃圾邮件文件夹）。', tooSoon: '请等待 %s 秒后再试。', limit: '已达到每日重发上限。请稍后再试。', notFound: '未找到此会话的购买记录。', inactive: '此许可证已不再有效。', noEmail: '此购买未登记电子邮件地址。', err: '发送失败。请联系支持。' },
+      zh_TW: { btn: '重新傳送郵件', sending: '傳送中…', ok: '郵件已傳送。請查看您的收件匣（和垃圾郵件資料夾）。', tooSoon: '請等待 %s 秒後再試。', limit: '已達到每日重新傳送上限。請稍後再試。', notFound: '找不到此工作階段的購買記錄。', inactive: '此授權已停用。', noEmail: '此購買未登記電子郵件地址。', err: '傳送失敗。請聯絡支援。' },
+      pt_BR: { btn: 'Reenviar e-mail', sending: 'Enviando…', ok: 'E-mail enviado. Verifique sua caixa de entrada (e pasta de spam).', tooSoon: 'Aguarde %s segundos antes de reenviar.', limit: 'Limite diário atingido. Tente novamente mais tarde.', notFound: 'Nenhuma compra encontrada para esta sessão.', inactive: 'Esta licença não está mais ativa.', noEmail: 'Nenhum endereço de e-mail registrado para esta compra.', err: 'Falha no envio. Entre em contato com o suporte.' },
+      de:    { btn: 'E-Mail erneut senden', sending: 'Senden…', ok: 'E-Mail gesendet. Bitte prüfen Sie Ihren Posteingang (und Spam-Ordner).', tooSoon: 'Bitte %s Sekunden warten, bevor Sie erneut senden.', limit: 'Tageslimit erreicht. Bitte später erneut versuchen.', notFound: 'Kein Kauf für diese Sitzung gefunden.', inactive: 'Diese Lizenz ist nicht mehr aktiv.', noEmail: 'Für diesen Kauf ist keine E-Mail-Adresse hinterlegt.', err: 'Senden fehlgeschlagen. Bitte kontaktieren Sie den Support.' }
+    };
+
     var LICENSE_STR = {
       en: { label: "Your license key:", show: "Show", hide: "Hide", copy: "Copy", copied: "Copied!", hint: "A copy has also been sent to your email as backup.", pending: "Issuing your license — this usually takes a few seconds. Please wait…" },
       ja: { label: "ライセンスキー", show: "表示", hide: "隠す", copy: "コピー", copied: "コピーしました！", hint: "同じキーをメールでもお送りしていますので、保管用にご利用ください。", pending: "ライセンス発行中です。通常は数秒で完了します。少々お待ちください…" },
@@ -219,6 +245,7 @@
     };
 
     var ENDPOINT = 'https://umczaaooqinddgnhxbvp.supabase.co/functions/v1/get-license-by-session';
+    var RESEND_ENDPOINT = 'https://umczaaooqinddgnhxbvp.supabase.co/functions/v1/resend-license-email';
     var POLL_INTERVAL_MS = 2000;
     var POLL_MAX_ATTEMPTS = 30;
 
@@ -250,6 +277,9 @@
       if (pending) pending.textContent = t.pending;
       if (show) show.textContent = (key && !key.classList.contains('masked')) ? t.hide : t.show;
       if (copy) copy.textContent = (copy.dataset.copied === '1') ? t.copied : t.copy;
+      var rbtn = document.getElementById('resend-btn');
+      var rt = RESEND_STR[l] || RESEND_STR.en;
+      if (rbtn && rbtn.dataset.busy !== '1') rbtn.textContent = rt.btn;
     }
     function setLang(l) {
       localStorage.setItem('gaf-lang', l);
@@ -336,6 +366,79 @@
       if (!sid) return;
       showPendingState();
       pollForLicense(sid, 1);
+    })();
+
+    (function initResend() {
+      var sid = getSessionId();
+      if (!sid) return;
+      var block = document.getElementById('resend-block');
+      var btn = document.getElementById('resend-btn');
+      var status = document.getElementById('resend-status');
+      if (!block || !btn || !status) return;
+      // Show the resend affordance up-front. Customers who arrive on this
+      // page after losing the original email need it whether the
+      // get-license-by-session lookup succeeds or not.
+      applyLicenseStrings(getLang());
+      block.hidden = false;
+
+      function setStatus(text, kind) {
+        status.textContent = text || '';
+        status.classList.remove('is-ok', 'is-warn', 'is-err');
+        if (kind) status.classList.add('is-' + kind);
+      }
+
+      btn.addEventListener('click', function () {
+        if (btn.disabled) return;
+        var lang = getLang();
+        var t = RESEND_STR[lang] || RESEND_STR.en;
+        btn.disabled = true;
+        btn.dataset.busy = '1';
+        btn.textContent = t.sending;
+        setStatus('', null);
+
+        var ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+        var timer = ctrl ? setTimeout(function () { ctrl.abort(); }, 12000) : 0;
+
+        fetch(RESEND_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ session_id: sid, lang: lang }),
+          signal: ctrl ? ctrl.signal : undefined
+        }).then(function (res) {
+          return res.json().catch(function () { return {}; }).then(function (data) {
+            return { status: res.status, data: data || {} };
+          });
+        }).then(function (r) {
+          if (timer) clearTimeout(timer);
+          btn.dataset.busy = '';
+          btn.textContent = t.btn;
+          if (r.status === 200 && r.data && r.data.ok) {
+            setStatus(t.ok, 'ok');
+            // Leave the button disabled until the user reloads — this
+            // prevents accidental double-sends during the success window.
+            return;
+          }
+          var err = r.data && r.data.error;
+          var retry = (r.data && r.data.retry_after_sec) || 0;
+          if (err === 'too-soon') {
+            setStatus(t.tooSoon.replace('%s', String(retry)), 'warn');
+            setTimeout(function () { btn.disabled = false; }, retry * 1000);
+            return;
+          }
+          if (err === 'daily-limit-reached') { setStatus(t.limit, 'warn'); return; }
+          if (err === 'session-not-found')   { setStatus(t.notFound, 'err'); return; }
+          if (err === 'license-inactive')    { setStatus(t.inactive, 'err'); return; }
+          if (err === 'no-email-on-record')  { setStatus(t.noEmail, 'err'); return; }
+          setStatus(t.err, 'err');
+          btn.disabled = false;
+        }).catch(function () {
+          if (timer) clearTimeout(timer);
+          btn.dataset.busy = '';
+          btn.textContent = t.btn;
+          setStatus(t.err, 'err');
+          btn.disabled = false;
+        });
+      });
     })();
 
     document.addEventListener('click', function(ev) {
