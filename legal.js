@@ -30,30 +30,59 @@
   }
 
   function getLang() {
-    var saved = localStorage.getItem('gaf-lang') || localStorage.getItem('fbd-lang');
+    var saved = localStorage.getItem('fbd-lang');
     if (saved && SUPPORTED.indexOf(saved) !== -1) return saved;
     return detectLang();
   }
 
-  function setLang(lang) {
-    if (SUPPORTED.indexOf(lang) === -1) lang = 'en';
-    localStorage.setItem('gaf-lang', lang);
+  function getAvailableLangs() {
+    var langs = [];
     document.querySelectorAll('[data-lang]').forEach(function (el) {
-      el.classList.toggle('active', el.getAttribute('data-lang') === lang);
+      var lang = el.getAttribute('data-lang');
+      if (lang && langs.indexOf(lang) === -1) langs.push(lang);
     });
-    document.documentElement.lang = lang.replace('_', '-');
+    return langs;
+  }
+
+  function setLang(lang, options) {
+    if (SUPPORTED.indexOf(lang) === -1) lang = 'en';
+    var available = getAvailableLangs();
+    var activeLang = lang;
+    if (available.length && available.indexOf(activeLang) === -1) {
+      activeLang = available.indexOf('en') !== -1 ? 'en' : available[0];
+    }
+    var persist = !options || options.persist !== false;
+    if (persist) localStorage.setItem('fbd-lang', activeLang);
+    document.querySelectorAll('[data-lang]').forEach(function (el) {
+      el.classList.toggle('active', el.getAttribute('data-lang') === activeLang);
+    });
+    document.documentElement.lang = activeLang.replace('_', '-');
     var sel = document.getElementById('lang-sel');
     if (sel) {
-      sel.value = lang;
-      sel.setAttribute('aria-label', LANGUAGE_LABELS[lang] || LANGUAGE_LABELS.en);
+      sel.value = activeLang;
+      sel.setAttribute('aria-label', LANGUAGE_LABELS[activeLang] || LANGUAGE_LABELS.en);
     }
-    var active = document.querySelector('[data-lang="' + lang + '"] h1');
+    var toggle = document.getElementById('btn-lang-toggle');
+    if (toggle) {
+      toggle.setAttribute('aria-label', activeLang === 'ja'
+        ? 'Switch to English / 英語に切り替え'
+        : '日本語に切り替え / Switch to Japanese');
+    }
+    var active = document.querySelector('[data-lang="' + activeLang + '"] h1');
     if (active && active.textContent.trim()) {
       document.title = active.textContent.trim() + ' - Grab All Files';
     }
   }
 
+  function toggleJaEn() {
+    var current = (document.documentElement.lang || '').toLowerCase().startsWith('ja') ? 'ja' : 'en';
+    setLang(current === 'ja' ? 'en' : 'ja');
+  }
+
   window.onLangChange = function (e) { setLang(e.target.value); };
 
-  setLang(getLang());
+  var toggle = document.getElementById('btn-lang-toggle');
+  if (toggle) toggle.addEventListener('click', toggleJaEn);
+
+  setLang(getLang(), { persist: false });
 })();
