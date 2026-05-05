@@ -14,6 +14,8 @@
     .btn { display: inline-block; background: #2563eb; color: #fff; padding: 0.75rem 2rem; border-radius: 8px; text-decoration: none; font-family: inherit; font-size: 1rem; font-weight: 600; cursor: pointer; border: none; }
     .btn:hover { background: #1d4ed8; }
     .btn:disabled { background: #94a3b8; cursor: not-allowed; }
+    .btn-spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.45); border-top-color: #fff; border-radius: 50%; animation: btn-spin 0.7s linear infinite; vertical-align: -2px; margin-right: 8px; }
+    @keyframes btn-spin { to { transform: rotate(360deg); } }
     .note { font-size: 0.8rem; color: #888; margin-top: 1rem; }
     .consent-box { text-align: left; background: #f1f5f9; border-radius: 8px; padding: 1rem 1.2rem; margin-bottom: 1.5rem; }
     .consent-box summary { font-size: 0.85rem; color: #2563eb; cursor: pointer; }
@@ -242,6 +244,23 @@
     sc('cc-9','pb-9');
 
     var CHECKOUT_URL = 'https://umczaaooqinddgnhxbvp.supabase.co/functions/v1/create-checkout-session';
+    var LOADING_MSG = {
+      en: 'Redirecting…',
+      ja: '決済画面へ移動中…',
+      es: 'Redirigiendo…',
+      fr: 'Redirection…',
+      ko: '이동 중…',
+      it: 'Reindirizzamento…',
+      zh_CN: '跳转中…',
+      zh_TW: '跳轉中…',
+      pt_BR: 'Redirecionando…',
+      de: 'Weiterleitung…'
+    };
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"]/g, function(c) {
+        return c === '&' ? '&amp;' : c === '<' ? '&lt;' : c === '>' ? '&gt;' : '&quot;';
+      });
+    }
     var ERR_MSG = {
       en: 'Sorry, we could not start the payment. Please try again or contact support.',
       ja: '申し訳ありません、決済を開始できませんでした。もう一度お試しいただくか、サポートまでご連絡ください。',
@@ -269,10 +288,12 @@
       if (btn.disabled || btn.dataset.busy === '1') return;
       var container = btn.closest('[data-lang]');
       var lang = container ? container.getAttribute('data-lang') : 'en';
-      var original = btn.textContent;
+      var original = btn.innerHTML;
+      var w = btn.getBoundingClientRect().width;
+      btn.style.minWidth = w + 'px';
       btn.dataset.busy = '1';
       btn.disabled = true;
-      btn.textContent = '…';
+      btn.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span>' + escapeHtml(LOADING_MSG[lang] || LOADING_MSG.en);
       var ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
       var timer = ctrl ? setTimeout(function() { ctrl.abort(); }, 15000) : 0;
       fetch(CHECKOUT_URL, {
@@ -290,7 +311,8 @@
         if (timer) clearTimeout(timer);
         btn.dataset.busy = '';
         btn.disabled = false;
-        btn.textContent = original;
+        btn.innerHTML = original;
+        btn.style.minWidth = '';
         alert(ERR_MSG[lang] || ERR_MSG.en);
       });
     }
