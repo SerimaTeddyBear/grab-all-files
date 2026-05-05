@@ -69,4 +69,4 @@ Disallow: /legal.html
 Disallow: /tokushoho.html
 Allow: /
 
-Sitemap: https://serimateddybear.github.io/grab-all-files/sitemap.xml
+Sitemap: https://grab-all-files.app/sitemap.xml
