@@ -16,7 +16,16 @@
  *     they accept.
  */
 (function () {
-  var GA_MEASUREMENT_ID = 'G-JT57WKZNTP';
+  /*
+   * Use the loader/hub ID (G-QGGRXL6CX0) — NOT the new property's
+   * G-JT57WKZNTP. Both belong to the same Google Tag container
+   * (GT-KVJKKX2V); G-QGGRXL6CX0 has a standalone gtag/js endpoint
+   * while G-JT57WKZNTP is only a destination of that container and
+   * returns 404 if requested directly. Hits sent to G-QGGRXL6CX0 are
+   * fanned out by the container to G-JT57WKZNTP too, so the new
+   * "Grab All Files" property still receives data.
+   */
+  var GA_MEASUREMENT_ID = 'G-QGGRXL6CX0';
   if (!GA_MEASUREMENT_ID || GA_MEASUREMENT_ID === 'G-XXXXXXXXXX') return;
 
   var EU_REGIONS = [
