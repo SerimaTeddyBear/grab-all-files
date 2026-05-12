@@ -16,7 +16,7 @@
  *     they accept.
  */
 (function () {
-  var GA_MEASUREMENT_ID = 'G-QGGRXL6CX0';
+  var GA_MEASUREMENT_ID = 'G-JT57WKZNTP';
   if (!GA_MEASUREMENT_ID || GA_MEASUREMENT_ID === 'G-XXXXXXXXXX') return;
 
   var EU_REGIONS = [
