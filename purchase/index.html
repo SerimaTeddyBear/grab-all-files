@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta name="robots" content="noindex, nofollow">
   <meta charset="UTF-8">
@@ -7,72 +7,114 @@
   <meta name="color-scheme" content="light dark">
   <title>Purchase / 購入 - Grab All Files</title>
   <script defer src="/analytics.js"></script>
+  <link rel="icon" type="image/png" sizes="128x128" href="../favicon-128.png">
   <style>
     :root {
       color-scheme: light;
-      --bg: #f8f9fa;
-      --surface: #fff;
-      --surface-soft: #f1f5f9;
-      --text: #1a1a1a;
-      --text-muted: #555;
-      --text-faint: #888;
-      --text-very-faint: #94a3b8;
-      --label-text: #333;
-      --border: #e2e8f0;
-      --primary: #2563eb;
-      --primary-hover: #1d4ed8;
-      --primary-text: #fff;
-      --primary-disabled: #94a3b8;
-      --shadow-soft: 0 1px 4px rgba(0,0,0,0.08);
+      --bg: #f8f9fa; --surface: #ffffff; --surface-alt: #f8fafc; --surface-soft: #f1f5f9;
+      --text: #1a1a1a; --text-strong: #0f172a; --text-muted: #475569; --text-faint: #64748b;
+      --border: #e2e8f0; --border-strong: #cbd5e1;
+      --primary: #2563eb; --primary-hover: #1d4ed8; --primary-text: #ffffff; --primary-disabled: #94a3b8;
+      --accent-soft: #dbeafe; --accent-soft-text: #1e40af; --check: #16a34a;
+      --shadow-soft: 0 1px 3px rgba(15,23,42,0.05);
+      --shadow-card-lg: 0 1px 2px rgba(15,23,42,0.05), 0 20px 50px -16px rgba(15,23,42,0.18);
     }
     :root[data-theme="dark"] {
       color-scheme: dark;
-      --bg: #0b1220;
-      --surface: #111827;
-      --surface-soft: #1f2937;
-      --text: #e2e8f0;
-      --text-muted: #cbd5e1;
-      --text-faint: #94a3b8;
-      --text-very-faint: #64748b;
-      --label-text: #e2e8f0;
-      --border: #1f2937;
-      --primary: #3b82f6;
-      --primary-hover: #60a5fa;
-      --primary-text: #fff;
-      --primary-disabled: #475569;
-      --shadow-soft: 0 1px 4px rgba(0,0,0,0.5);
+      --bg: #0b1220; --surface: #111827; --surface-alt: #0f172a; --surface-soft: #1f2937;
+      --text: #e2e8f0; --text-strong: #f1f5f9; --text-muted: #cbd5e1; --text-faint: #94a3b8;
+      --border: #1f2937; --border-strong: #334155;
+      --primary: #3b82f6; --primary-hover: #60a5fa; --primary-disabled: #475569;
+      --accent-soft: #1e3a8a; --accent-soft-text: #bfdbfe; --check: #4ade80;
+      --shadow-soft: 0 1px 3px rgba(0,0,0,0.5);
+      --shadow-card-lg: 0 1px 2px rgba(0,0,0,0.5), 0 30px 60px -20px rgba(0,0,0,0.7);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", Roboto, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; background: var(--bg); color: var(--text); transition: background-color 0.2s ease, color 0.2s ease; }
-    .container { text-align: center; max-width: 480px; background: var(--surface); border-radius: 12px; padding: 2.5rem; box-shadow: var(--shadow-soft); }
-    h1 { font-size: 1.4rem; margin-bottom: 1rem; color: var(--text); }
-    p { font-size: 0.95rem; margin-bottom: 1.2rem; line-height: 1.6; color: var(--text-muted); }
-    .btn { display: inline-block; background: var(--primary); color: var(--primary-text); padding: 0.75rem 2rem; border-radius: 8px; text-decoration: none; font-family: inherit; font-size: 1rem; font-weight: 600; cursor: pointer; border: none; transition: background 0.15s ease; }
-    .btn:hover { background: var(--primary-hover); }
-    .btn:disabled { background: var(--primary-disabled); cursor: not-allowed; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; transition: background-color 0.2s ease, color 0.2s ease; -webkit-font-smoothing: antialiased; }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { display: block; max-width: 100%; }
+
+    [data-lang] { display: none; }
+    [data-lang].active { display: revert; }
+
+    .topbar { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: saturate(180%) blur(14px); -webkit-backdrop-filter: saturate(180%) blur(14px); border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent); }
+    .topbar-inner { max-width: 980px; margin: 0 auto; padding: 0.7rem 1.4rem; display: flex; align-items: center; gap: 0.7rem; }
+    .brand { display: flex; align-items: center; gap: 0.55rem; text-decoration: none; color: var(--text-strong); font-weight: 700; font-size: 0.95rem; }
+    .brand:hover { text-decoration: none; }
+    .brand img { width: 26px; height: 26px; border-radius: 6px; }
+    .topbar-spacer { flex: 1; }
+    .icon-btn, .back-link, .lang-sel { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--text-strong); cursor: pointer; font-family: inherit; height: 32px; padding: 0 0.65rem; font-size: 0.82rem; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; transition: background 0.15s ease, border-color 0.15s ease; text-decoration: none; }
+    .icon-btn { width: 32px; padding: 0; font-size: 0.9rem; }
+    .icon-btn:hover, .back-link:hover, .lang-sel:hover { background: var(--surface-soft); border-color: var(--border-strong); text-decoration: none; }
+    .icon-btn .theme-icon-light, .icon-btn .theme-icon-dark { display: none; }
+    :root[data-theme="dark"] .icon-btn .theme-icon-light { display: inline; }
+    :root:not([data-theme="dark"]) .icon-btn .theme-icon-dark { display: inline; }
+    @media (max-width: 540px) { .back-link span:last-child { display: none; } }
+
+    main { flex: 1; padding: 3rem 1.4rem 4rem; display: flex; align-items: flex-start; justify-content: center; }
+    .grid { max-width: 980px; width: 100%; display: grid; gap: 1.4rem; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); }
+    @media (max-width: 820px) { .grid { grid-template-columns: 1fr; } }
+
+    .order { background: var(--surface); border: 2px solid var(--primary); border-radius: 16px; padding: 1.8rem 1.8rem 1.6rem; box-shadow: var(--shadow-card-lg); position: relative; overflow: hidden; }
+    .order::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(420px 220px at 0% 0%, color-mix(in srgb, var(--primary) 10%, transparent), transparent 70%); }
+    .order .head { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1rem; position: relative; }
+    .order .head img { width: 42px; height: 42px; border-radius: 10px; border: 1px solid var(--border); }
+    .order .head h2 { font-size: 1.05rem; color: var(--text-strong); font-weight: 700; letter-spacing: -0.01em; }
+    .order .head .sub { font-size: 0.78rem; color: var(--text-faint); margin-top: 0.1rem; }
+    .order .price-row { display: flex; align-items: baseline; gap: 0.5rem; padding: 1rem 0 0.4rem; border-top: 1px dashed var(--border-strong); position: relative; }
+    .order .price-row .price { font-size: 2.6rem; font-weight: 800; color: var(--primary); letter-spacing: -0.03em; }
+    .order .price-row .ccy { font-size: 0.85rem; color: var(--text-faint); font-weight: 500; }
+    .order .price-row .strike { margin-left: auto; font-size: 0.85rem; color: var(--text-faint); }
+    .order .price-sub { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1rem; }
+    .order ul { list-style: none; display: grid; gap: 0.3rem; margin-bottom: 0.4rem; }
+    .order ul li { font-size: 0.9rem; color: var(--text-muted); display: flex; gap: 0.55rem; align-items: flex-start; padding: 0.18rem 0; }
+    .order ul li::before { content: "✓"; color: var(--check); font-weight: 700; flex-shrink: 0; }
+    .order .ribbon { display: inline-flex; align-items: center; gap: 0.35rem; background: var(--primary); color: var(--primary-text); padding: 0.22rem 0.6rem; border-radius: 999px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.9rem; position: relative; }
+
+    .checkout { display: grid; gap: 1rem; align-content: start; }
+    .panel { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.4rem; }
+    .panel h3 { font-size: 0.95rem; font-weight: 600; color: var(--text-strong); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.5rem; letter-spacing: -0.005em; }
+    .panel h3 .num { width: 22px; height: 22px; border-radius: 50%; background: var(--accent-soft); color: var(--accent-soft-text); display: inline-flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 700; flex-shrink: 0; }
+    .panel p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+
+    .trial-strip { display: flex; align-items: center; gap: 0.5rem; background: var(--accent-soft); color: var(--accent-soft-text); padding: 0.7rem 0.9rem; border-radius: 10px; font-size: 0.84rem; font-weight: 500; flex-wrap: wrap; }
+    .trial-strip .day { background: #fff; color: var(--primary); padding: 0.1rem 0.5rem; border-radius: 999px; font-weight: 700; font-size: 0.78rem; }
+    :root[data-theme="dark"] .trial-strip .day { background: #0b1220; color: var(--primary); }
+
+    .consent details { background: var(--surface-alt); border: 1px solid var(--border); border-radius: 10px; padding: 0.7rem 0.9rem; margin-bottom: 0.7rem; }
+    .consent summary { font-size: 0.85rem; color: var(--primary); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
+    .consent summary::after { content: "+"; color: var(--text-faint); font-size: 1.2rem; line-height: 1; font-weight: 400; }
+    .consent details[open] summary::after { content: "−"; color: var(--primary); }
+    .consent summary::-webkit-details-marker { display: none; }
+    .consent details p { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.55rem; line-height: 1.6; }
+    .consent .eu-note { display: block; font-size: 0.74rem; color: var(--text-faint); margin-top: 0.5rem; line-height: 1.55; }
+    .consent-label { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.88rem; color: var(--text); cursor: pointer; line-height: 1.55; padding: 0.7rem 0.9rem; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); transition: border-color 0.15s ease, background 0.15s ease; }
+    .consent-label:hover { border-color: var(--border-strong); }
+    .consent-label.is-checked { border-color: var(--primary); background: color-mix(in srgb, var(--primary) 4%, var(--surface)); }
+    .consent-label input { margin-top: 0.25rem; flex-shrink: 0; width: 16px; height: 16px; accent-color: var(--primary); cursor: pointer; }
+    .consent-label .sub { display: block; font-size: 0.74rem; color: var(--text-faint); margin-top: 0.3rem; font-weight: 400; }
+
+    .pay-btn, .btn { width: 100%; background: var(--primary); color: var(--primary-text); border: 0; padding: 0.95rem 1.2rem; border-radius: 11px; font-family: inherit; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.15s ease, box-shadow 0.15s ease; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1rem; }
+    .pay-btn:hover:not(:disabled), .btn:hover:not(:disabled) { background: var(--primary-hover); box-shadow: 0 8px 24px rgba(37,99,235,0.22); }
+    .pay-btn:disabled, .btn:disabled { background: var(--primary-disabled); cursor: not-allowed; }
+    .pay-btn .arrow, .btn .arrow { transition: transform 0.15s ease; }
+    .pay-btn:hover:not(:disabled) .arrow, .btn:hover:not(:disabled) .arrow { transform: translateX(2px); }
+    .pay-btn .lock, .btn .lock { font-size: 0.95rem; }
+    .pay-meta, .note { font-size: 0.78rem; color: var(--text-faint); text-align: center; margin-top: 0.7rem; }
+
+    .trust-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-top: 0.4rem; }
+    .trust-row .t { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 0.7rem 0.8rem; }
+    .trust-row .t h4 { font-size: 0.82rem; color: var(--text-strong); font-weight: 600; display: flex; gap: 0.4rem; align-items: center; margin-bottom: 0.2rem; }
+    .trust-row .t h4 .ic { width: 22px; height: 22px; border-radius: 6px; background: var(--accent-soft); color: var(--accent-soft-text); display: inline-flex; align-items: center; justify-content: center; font-size: 0.78rem; }
+    .trust-row .t p { font-size: 0.78rem; color: var(--text-faint); line-height: 1.55; margin: 0; }
+
+    .links { font-size: 0.78rem; color: var(--text-faint); text-align: center; margin-top: 1rem; }
+    .links a { color: var(--text-muted); }
+    .links a:hover { color: var(--primary); }
+
     .btn-spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.45); border-top-color: #fff; border-radius: 50%; animation: btn-spin 0.7s linear infinite; vertical-align: -2px; margin-right: 8px; }
     @keyframes btn-spin { to { transform: rotate(360deg); } }
-    .note { font-size: 0.8rem; color: var(--text-faint); margin-top: 1rem; }
-    .consent-box { text-align: left; background: var(--surface-soft); border-radius: 8px; padding: 1rem 1.2rem; margin-bottom: 1.5rem; }
-    .consent-box summary { font-size: 0.85rem; color: var(--primary); cursor: pointer; }
-    .consent-box .detail-text { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; margin-top: 0.5rem; }
-    .consent-box .detail-text ul { padding-left: 1.2rem; margin-top: 0.3rem; }
-    .consent-box .detail-text li { margin-bottom: 0.3rem; }
-    .consent-box .eu-note { display: block; font-size: 0.7rem; color: var(--text-very-faint); margin-top: 0.6rem; line-height: 1.5; }
-    .consent-label { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.85rem; color: var(--label-text); cursor: pointer; margin-top: 0.8rem; line-height: 1.5; }
-    .consent-label input { margin-top: 0.2rem; flex-shrink: 0; }
-    .consent-label .sub { display: block; font-size: 0.72rem; color: var(--text-very-faint); margin-top: 0.3rem; font-weight: normal; line-height: 1.4; }
-    .links { font-size: 0.8rem; color: var(--text-faint); margin-top: 1.2rem; }
-    .links a { color: var(--primary); text-decoration: none; }
-    .header-controls { position: fixed; top: 1rem; right: 1rem; display: flex; gap: 0.45rem; z-index: 100; }
-    .lang-sel { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 0.3rem 0.5rem; font-size: 0.8rem; color: var(--primary); cursor: pointer; box-shadow: var(--shadow-soft); }
-    .theme-toggle { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 0; font-size: 0.95rem; line-height: 1; color: var(--primary); cursor: pointer; box-shadow: var(--shadow-soft); display: inline-flex; align-items: center; justify-content: center; width: 1.95rem; height: 1.95rem; font-family: inherit; }
-    .theme-toggle:hover { background: var(--surface-soft); }
-    .theme-toggle .theme-icon-light, .theme-toggle .theme-icon-dark { display: none; }
-    :root[data-theme="dark"] .theme-toggle .theme-icon-light { display: inline; }
-    :root:not([data-theme="dark"]) .theme-toggle .theme-icon-dark { display: inline; }
-    [data-lang] { display: none; }
-    [data-lang].active { display: block; }
   </style>
   <script>
     (function(){
@@ -87,320 +129,581 @@
   </script>
 </head>
 <body>
-  <div class="header-controls">
-    <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode / ダークモード切替" title="Toggle dark mode / ダークモード切替">
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../">
+      <img src="../icon-512.png" alt="">
+      <span>Grab All Files</span>
+    </a>
+    <div class="topbar-spacer"></div>
+    <a class="back-link" href="../">
+      <span aria-hidden="true">←</span>
+      <span data-lang="en" class="active">Back</span><span data-lang="ja">戻る</span><span data-lang="es">Atrás</span><span data-lang="fr">Retour</span><span data-lang="ko">뒤로</span><span data-lang="it">Indietro</span><span data-lang="zh_CN">返回</span><span data-lang="zh_TW">返回</span><span data-lang="pt_BR">Voltar</span><span data-lang="de">Zurück</span>
+    </a>
+    <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle dark mode / ダークモード切替" title="Toggle dark mode / ダークモード切替">
       <span class="theme-icon-dark" aria-hidden="true">🌙</span>
       <span class="theme-icon-light" aria-hidden="true">☀️</span>
     </button>
-    <select id="lang-sel" class="lang-sel" onchange="onLangChange(event)"><option value="en">English</option><option value="ja">日本語</option><option value="es">Español</option><option value="fr">Français</option><option value="ko">한국어</option><option value="it">Italiano</option><option value="zh_CN">简体中文</option><option value="zh_TW">繁體中文</option><option value="pt_BR">Português</option><option value="de">Deutsch</option></select>
+    <select id="lang-sel" class="lang-sel" onchange="onLangChange(event)" aria-label="Language">
+      <option value="en">English</option>
+      <option value="ja">日本語</option>
+      <option value="es">Español</option>
+      <option value="fr">Français</option>
+      <option value="ko">한국어</option>
+      <option value="it">Italiano</option>
+      <option value="zh_CN">简体中文</option>
+      <option value="zh_TW">繁體中文</option>
+      <option value="pt_BR">Português</option>
+      <option value="de">Deutsch</option>
+    </select>
   </div>
-  <div class="container" data-lang="en">
-    <h1>Grab All Files</h1>
-    <p><strong>$19.99</strong> &mdash; Lifetime license, no subscription</p>
-    <div class="consent-box">
-      <details><summary>About this consent</summary>
-        <div class="detail-text"><p>This extension offers a <strong>14-day free trial</strong>, so you can fully evaluate it before purchasing. After purchase, your license key is delivered by email right away &mdash; that is why we ask for your confirmation below.</p>
-        <small class="eu-note">For EU/EEA residents: digital content delivered immediately is excluded from the 14-day right of withdrawal once you give express consent (EU Consumer Rights Directive 2011/83/EU, Article 16(m)).</small></div>
-      </details>
-      <label class="consent-label"><input type="checkbox" id="cc-0"><span>I agree to receive my license key <strong>immediately after purchase</strong>.<small class="sub">For EU/EEA residents: I acknowledge that this means the 14-day right of withdrawal will not apply.</small></span></label>
-    </div>
-    <button type="button" class="btn" id="pb-0" disabled>Proceed to Payment</button>
-    <p class="note">After purchase, your license key will be sent to your email.</p>
-    <p class="links"><a href="../terms.html">Terms of Service</a> &middot; <a href="../privacy-policy.html">Privacy Policy</a> &middot; <a href="../legal.html">Legal Notice</a></p>
-  </div>
-  <div class="container" data-lang="ja">
-    <h1>ファイル一括ダウンロード</h1>
-    <p><strong>$19.99</strong> 永続ライセンス（サブスクなし）</p>
-    <div class="consent-box">
-      <details><summary>この同意について</summary>
-        <div class="detail-text"><p>本拡張機能は購入前に<strong>14日間の無料トライアル</strong>をご利用いただけます。十分にお試しいただいた上でご購入ください。購入後はライセンスキーをメールですぐにお送りするため、以下のチェックボックスにご同意をお願いしています。</p>
-        <small class="eu-note">EU/EEA在住の方へ：通常、オンライン購入には14日間の返品（撤回）権がありますが、即時提供されるデジタル商品は、お客様の明示的な同意があれば適用対象外となります（EU指令2011/83/EU 第16条(m)）。</small></div>
-      </details>
-      <label class="consent-label"><input type="checkbox" id="cc-1"><span>ライセンスキーを<strong>購入後すぐに受け取ること</strong>に同意します。<small class="sub">EU/EEA在住の方：これにより14日間の撤回権が適用されないことを了承します。</small></span></label>
-    </div>
-    <button type="button" class="btn" id="pb-1" disabled>お支払いへ進む</button>
-    <p class="note">購入後、ライセンスキーがメールで送信されます。</p>
-    <p class="links"><a href="../terms.html">利用規約</a> &middot; <a href="../privacy-policy.html">プライバシーポリシー</a> &middot; <a href="../legal.html">特定商取引法に基づく表記</a></p>
-  </div>
-  <div class="container" data-lang="es">
-    <h1>Descargar todos los archivos</h1>
-    <p><strong>$19.99</strong> &mdash; Licencia de por vida, sin suscripción</p>
-    <div class="consent-box">
-      <details><summary>Sobre este consentimiento</summary>
-        <div class="detail-text"><p>Esta extensión ofrece una <strong>prueba gratuita de 14 días</strong> para que pueda evaluarla completamente antes de comprar. Después de la compra, su clave de licencia se entrega de inmediato por correo electrónico &mdash; por eso le pedimos su confirmación a continuación.</p>
-        <small class="eu-note">Para residentes en UE/EEE: el contenido digital entregado de inmediato queda excluido del derecho de desistimiento de 14 días una vez que usted da su consentimiento expreso (Directiva de Derechos del Consumidor de la UE 2011/83/UE, Artículo 16(m)).</small></div>
-      </details>
-      <label class="consent-label"><input type="checkbox" id="cc-2"><span>Acepto recibir mi clave de licencia <strong>inmediatamente después de la compra</strong>.<small class="sub">Para residentes en UE/EEE: reconozco que esto significa que el derecho de desistimiento de 14 días no se aplicará.</small></span></label>
-    </div>
-    <button type="button" class="btn" id="pb-2" disabled>Proceder al pago</button>
-    <p class="note">Después de la compra, su clave de licencia se enviará a su correo electrónico.</p>
-    <p class="links"><a href="../terms.html">Términos de servicio</a> &middot; <a href="../privacy-policy.html">Política de privacidad</a> &middot; <a href="../legal.html">Aviso Legal</a></p>
-  </div>
-  <div class="container" data-lang="fr">
-    <h1>Télécharger tous les fichiers</h1>
-    <p><strong>$19.99</strong> &mdash; Licence à vie, sans abonnement</p>
-    <div class="consent-box">
-      <details><summary>À propos de ce consentement</summary>
-        <div class="detail-text"><p>Cette extension propose un <strong>essai gratuit de 14 jours</strong> pour une évaluation complète avant achat. Après achat, votre clé de licence est livrée immédiatement par e-mail &mdash; c'est pourquoi nous vous demandons votre confirmation ci-dessous.</p>
-        <small class="eu-note">Pour les résidents de l'UE/EEE : le contenu numérique livré immédiatement est exclu du droit de rétractation de 14 jours dès lors que vous donnez votre consentement exprès (Directive sur les droits des consommateurs 2011/83/UE, Article 16(m)).</small></div>
-      </details>
-      <label class="consent-label"><input type="checkbox" id="cc-3"><span>J'accepte de recevoir ma clé de licence <strong>immédiatement après l'achat</strong>.<small class="sub">Pour les résidents UE/EEE : je reconnais que le droit de rétractation de 14 jours ne s'appliquera pas.</small></span></label>
-    </div>
-    <button type="button" class="btn" id="pb-3" disabled>Procéder au paiement</button>
-    <p class="note">Après achat, votre clé de licence sera envoyée par e-mail.</p>
-    <p class="links"><a href="../terms.html">Conditions d'utilisation</a> &middot; <a href="../privacy-policy.html">Politique de confidentialité</a> &middot; <a href="../legal.html">Mentions légales</a></p>
-  </div>
-  <div class="container" data-lang="ko">
-    <h1>파일 일괄 다운로드</h1>
-    <p><strong>$19.99</strong> &mdash; 영구 라이선스, 구독 없음</p>
-    <div class="consent-box">
-      <details><summary>이 동의에 대하여</summary>
-        <div class="detail-text"><p>이 확장 프로그램은 구매 전에 <strong>14일 무료 체험</strong>을 제공합니다. 충분히 검토하신 후 구매해 주세요. 구매 후에는 라이선스 키가 이메일로 즉시 전송되므로, 아래 체크박스에 동의해 주시기 바랍니다.</p>
-        <small class="eu-note">EU/EEA 거주자께: 즉시 제공되는 디지털 콘텐츠는 명시적 동의가 있는 경우 14일 철회권 적용 대상에서 제외됩니다(EU 소비자 권리 지침 2011/83/EU, 제16조(m)).</small></div>
-      </details>
-      <label class="consent-label"><input type="checkbox" id="cc-4"><span>라이선스 키를 <strong>구매 후 즉시 받는 것</strong>에 동의합니다.<small class="sub">EU/EEA 거주자: 이로 인해 14일간의 철회권이 적용되지 않음을 인정합니다.</small></span></label>
-    </div>
-    <button type="button" class="btn" id="pb-4" disabled>결제 진행</button>
-    <p class="note">구매 후 라이선스 키가 이메일로 전송됩니다.</p>
-    <p class="links"><a href="../terms.html">이용약관</a> &middot; <a href="../privacy-policy.html">개인정보 처리방침</a> &middot; <a href="../legal.html">법적 고지</a></p>
-  </div>
-  <div class="container" data-lang="it">
-    <h1>Scarica tutti i file</h1>
-    <p><strong>$19.99</strong> &mdash; Licenza a vita, nessun abbonamento</p>
-    <div class="consent-box">
-      <details><summary>Informazioni su questo consenso</summary>
-        <div class="detail-text"><p>Questa estensione offre una <strong>prova gratuita di 14 giorni</strong> per una valutazione completa prima dell'acquisto. Dopo l'acquisto, la chiave di licenza viene consegnata immediatamente via e-mail &mdash; per questo ti chiediamo la conferma qui sotto.</p>
-        <small class="eu-note">Per i residenti UE/SEE: i contenuti digitali consegnati immediatamente sono esclusi dal diritto di recesso di 14 giorni una volta che fornisci il consenso espresso (Direttiva sui diritti dei consumatori 2011/83/UE, Articolo 16(m)).</small></div>
-      </details>
-      <label class="consent-label"><input type="checkbox" id="cc-5"><span>Acconsento a ricevere la mia chiave di licenza <strong>immediatamente dopo l'acquisto</strong>.<small class="sub">Per i residenti UE/SEE: riconosco che ciò significa che il diritto di recesso di 14 giorni non si applicherà.</small></span></label>
-    </div>
-    <button type="button" class="btn" id="pb-5" disabled>Procedi al pagamento</button>
-    <p class="note">Dopo l'acquisto, la chiave di licenza verrà inviata alla tua email.</p>
-    <p class="links"><a href="../terms.html">Termini di servizio</a> &middot; <a href="../privacy-policy.html">Informativa sulla privacy</a> &middot; <a href="../legal.html">Note legali</a></p>
-  </div>
-  <div class="container" data-lang="zh_CN">
-    <h1>批量下载文件</h1>
-    <p><strong>$19.99</strong> &mdash; 永久授权，无订阅</p>
-    <div class="consent-box">
-      <details><summary>关于此同意</summary>
-        <div class="detail-text"><p>本扩展程序在购买前提供<strong>14天免费试用</strong>，您可以充分评估后再购买。购买后，许可证密钥将通过电子邮件立即发送，因此我们请您勾选下方的复选框确认。</p>
-        <small class="eu-note">EU/EEA居民请注意：在您明确同意的情况下，立即交付的数字内容不适用14天撤回权（欧盟消费者权利指令2011/83/EU 第16条(m)）。</small></div>
-      </details>
-      <label class="consent-label"><input type="checkbox" id="cc-6"><span>我同意在<strong>购买后立即收到</strong>许可证密钥。<small class="sub">EU/EEA居民：我了解此举意味着14天撤回权将不适用。</small></span></label>
-    </div>
-    <button type="button" class="btn" id="pb-6" disabled>继续付款</button>
-    <p class="note">购买后，许可证密钥将发送至您的电子邮箱。</p>
-    <p class="links"><a href="../terms.html">服务条款</a> &middot; <a href="../privacy-policy.html">隐私政策</a> &middot; <a href="../legal.html">法律声明</a></p>
-  </div>
-  <div class="container" data-lang="zh_TW">
-    <h1>批次下載檔案</h1>
-    <p><strong>$19.99</strong> &mdash; 永久授權，無訂閱</p>
-    <div class="consent-box">
-      <details><summary>關於此同意</summary>
-        <div class="detail-text"><p>本擴充功能在購買前提供<strong>14天免費試用</strong>，您可以充分評估後再購買。購買後，授權金鑰將透過電子郵件立即傳送，因此我們請您勾選下方的核取方塊確認。</p>
-        <small class="eu-note">EU/EEA居民請注意：在您明確同意的情況下，立即交付的數位內容不適用14天撤回權（歐盟消費者權利指令2011/83/EU 第16條(m)）。</small></div>
-      </details>
-      <label class="consent-label"><input type="checkbox" id="cc-7"><span>我同意在<strong>購買後立即收到</strong>授權金鑰。<small class="sub">EU/EEA居民：我了解此舉意味著14天撤回權將不適用。</small></span></label>
-    </div>
-    <button type="button" class="btn" id="pb-7" disabled>繼續付款</button>
-    <p class="note">購買後，授權金鑰將傳送至您的電子郵件地址。</p>
-    <p class="links"><a href="../terms.html">服務條款</a> &middot; <a href="../privacy-policy.html">隱私權政策</a> &middot; <a href="../legal.html">法律聲明</a></p>
-  </div>
-  <div class="container" data-lang="pt_BR">
-    <h1>Baixar todos os arquivos</h1>
-    <p><strong>$19.99</strong> &mdash; Licença vitalícia, sem assinatura</p>
-    <div class="consent-box">
-      <details><summary>Sobre este consentimento</summary>
-        <div class="detail-text"><p>Esta extensão oferece um <strong>teste gratuito de 14 dias</strong> para avaliação completa antes da compra. Após a compra, sua chave de licença é entregue imediatamente por e-mail &mdash; por isso solicitamos sua confirmação abaixo.</p>
-        <small class="eu-note">Para residentes na UE/EEE: conteúdo digital entregue imediatamente é excluído do direito de desistência de 14 dias quando você dá seu consentimento expresso (Diretiva de Direitos do Consumidor da UE 2011/83/UE, Artigo 16(m)).</small></div>
-      </details>
-      <label class="consent-label"><input type="checkbox" id="cc-8"><span>Concordo em receber minha chave de licença <strong>imediatamente após a compra</strong>.<small class="sub">Para residentes na UE/EEE: reconheço que isso significa que o direito de desistência de 14 dias não se aplicará.</small></span></label>
-    </div>
-    <button type="button" class="btn" id="pb-8" disabled>Prosseguir para pagamento</button>
-    <p class="note">Após a compra, sua chave de licença será enviada para seu e-mail.</p>
-    <p class="links"><a href="../terms.html">Termos de Serviço</a> &middot; <a href="../privacy-policy.html">Política de Privacidade</a> &middot; <a href="../legal.html">Aviso Legal</a></p>
-  </div>
-  <div class="container" data-lang="de">
-    <h1>Alle Dateien herunterladen</h1>
-    <p><strong>$19.99</strong> &mdash; Lebenslange Lizenz, kein Abo</p>
-    <div class="consent-box">
-      <details><summary>Über diese Zustimmung</summary>
-        <div class="detail-text"><p>Diese Erweiterung bietet eine <strong>14-tägige kostenlose Testphase</strong> zur vollständigen Bewertung vor dem Kauf. Nach dem Kauf wird Ihr Lizenzschlüssel sofort per E-Mail geliefert &mdash; deshalb bitten wir Sie unten um Ihre Bestätigung.</p>
-        <small class="eu-note">Für EU/EWR-Bewohner: Sofort gelieferte digitale Inhalte sind vom 14-tägigen Widerrufsrecht ausgenommen, sobald Sie Ihre ausdrückliche Zustimmung geben (EU-Verbraucherrechterichtlinie 2011/83/EU, Artikel 16(m)).</small></div>
-      </details>
-      <label class="consent-label"><input type="checkbox" id="cc-9"><span>Ich stimme zu, meinen Lizenzschlüssel <strong>sofort nach dem Kauf</strong> zu erhalten.<small class="sub">Für EU/EWR-Bewohner: Ich erkenne an, dass damit das 14-tägige Widerrufsrecht nicht zur Anwendung kommt.</small></span></label>
-    </div>
-    <button type="button" class="btn" id="pb-9" disabled>Zur Zahlung</button>
-    <p class="note">Nach dem Kauf wird Ihr Lizenzschlüssel an Ihre E-Mail gesendet.</p>
-    <p class="links"><a href="../terms.html">Nutzungsbedingungen</a> &middot; <a href="../privacy-policy.html">Datenschutzrichtlinie</a> &middot; <a href="../legal.html">Impressum</a></p>
-  </div>
-  <script>
-    var LANGUAGE_LABELS = {
-      en: 'Language',
-      ja: '言語',
-      es: 'Idioma',
-      fr: 'Langue',
-      ko: '언어',
-      it: 'Lingua',
-      zh_CN: '语言',
-      zh_TW: '語言',
-      pt_BR: 'Idioma',
-      de: 'Sprache'
-    };
-    var PAGE_TITLES = {
-      en: 'Purchase - Grab All Files',
-      ja: '購入 - ファイル一括ダウンロード',
-      es: 'Comprar - Descargar todos los archivos',
-      fr: 'Achat - Télécharger tous les fichiers',
-      ko: '구매 - 파일 일괄 다운로드',
-      it: 'Acquisto - Scarica tutti i file',
-      zh_CN: '购买 - 批量下载文件',
-      zh_TW: '購買 - 批次下載檔案',
-      pt_BR: 'Comprar - Baixar todos os arquivos',
-      de: 'Kauf - Alle Dateien herunterladen'
-    };
-    function getLang() {
-      var s = localStorage.getItem('gaf-lang');
-      if (s) return s;
-      var n = (navigator.language || '').toLowerCase();
-      if (n.startsWith('ja')) return 'ja';
-      if (n.startsWith('ko')) return 'ko';
-      if (n.startsWith('it')) return 'it';
-      if (n.startsWith('de')) return 'de';
-      if (n.startsWith('es')) return 'es';
-      if (n.startsWith('fr')) return 'fr';
-      if (n.startsWith('pt')) return 'pt_BR';
-      if (n === 'zh-tw' || n === 'zh-hant' || n.startsWith('zh-hant')) return 'zh_TW';
-      if (n.startsWith('zh')) return 'zh_CN';
-      return 'en';
-    }
-    function setLang(l) {
-      localStorage.setItem('gaf-lang', l);
-      document.querySelectorAll('[data-lang]').forEach(function(e) {
-        e.classList.toggle('active', e.getAttribute('data-lang') === l);
-      });
-      document.documentElement.lang = l.replace('_','-');
-      var sel = document.getElementById('lang-sel');
-      if (sel) {
-        sel.value = l;
-        sel.setAttribute('aria-label', LANGUAGE_LABELS[l] || LANGUAGE_LABELS.en);
-      }
-      document.title = PAGE_TITLES[l] || PAGE_TITLES.en;
-    }
-    function onLangChange(e) { setLang(e.target.value); }
-    setLang(getLang());
+</header>
 
-    function getTheme() {
-      try { var t = localStorage.getItem('gaf-theme'); if (t === 'light' || t === 'dark') return t; } catch (_) {}
-      return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
-    }
-    function setTheme(t) {
-      document.documentElement.setAttribute('data-theme', t);
-      try { localStorage.setItem('gaf-theme', t); } catch (_) {}
-    }
-    var themeBtn = document.getElementById('theme-toggle');
-    if (themeBtn) {
-      themeBtn.addEventListener('click', function() { setTheme(getTheme() === 'dark' ? 'light' : 'dark'); });
-    }
-    if (window.matchMedia) {
-      try {
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-          var stored = null;
-          try { stored = localStorage.getItem('gaf-theme'); } catch (_) {}
-          if (stored !== 'light' && stored !== 'dark') setTheme(e.matches ? 'dark' : 'light');
-        });
-      } catch (_) {}
-    }
+<main>
+  <!-- Each language has its own grid with order summary + checkout panel. -->
+  <!-- IDs cc-0..cc-9 and pb-0..pb-9 must stay stable for the existing JS. -->
 
-    function sc(cid,bid){var c=document.getElementById(cid),b=document.getElementById(bid);function u(){if(c.checked){b.removeAttribute('disabled');b.style.pointerEvents='';}else{b.setAttribute('disabled','');b.style.pointerEvents='none';}}c.addEventListener('change',u);u();}
-    sc('cc-0','pb-0');
-    sc('cc-1','pb-1');
-    sc('cc-2','pb-2');
-    sc('cc-3','pb-3');
-    sc('cc-4','pb-4');
-    sc('cc-5','pb-5');
-    sc('cc-6','pb-6');
-    sc('cc-7','pb-7');
-    sc('cc-8','pb-8');
-    sc('cc-9','pb-9');
+  <div class="grid" data-lang="en">
+    <div class="order">
+      <span class="ribbon">14-day free trial included</span>
+      <div class="head"><img src="../icon-512.png" alt=""><div><h2>Grab All Files</h2><div class="sub">Lifetime license · Chrome™ &amp; Edge™</div></div></div>
+      <div class="price-row"><span class="price">$19.99</span><span class="ccy">USD</span><span class="strike">One-time payment</span></div>
+      <p class="price-sub">No subscription. No auto-renew. Pay once, keep forever.</p>
+      <ul>
+        <li>Activates on up to <strong>3 devices</strong> per license</li>
+        <li>All features unlocked — bulk save, PDF merge, ZIP, CSV</li>
+        <li>Future updates included — Manifest V3 ready</li>
+        <li>Local processing — no upload, no server</li>
+        <li>10 UI languages (EN / JA / ES / FR / DE / IT / KO / PT-BR / ZH)</li>
+      </ul>
+    </div>
+    <div class="checkout">
+      <div class="panel"><h3><span class="num">1</span>Try free for 14 days</h3>
+        <div class="trial-strip"><span class="day">Day 0</span>Install →<span class="day">Day 1–14</span>Full features, no card →<span class="day">Day 15+</span>Decide</div>
+        <p style="margin-top:.7rem">If you haven't tried it yet, the trial is the right place to start — full features for 14 days, no credit card required.</p>
+      </div>
+      <div class="panel"><h3><span class="num">2</span>Confirm &amp; pay</h3>
+        <div class="consent">
+          <details><summary><span>About this consent</span></summary><p>This extension offers a <strong>14-day free trial</strong>, so you can fully evaluate it before purchasing. After purchase, your license key is delivered by email right away — that is why we ask for your confirmation below.</p><small class="eu-note">For EU/EEA residents: digital content delivered immediately is excluded from the 14-day right of withdrawal once you give express consent (EU Consumer Rights Directive 2011/83/EU, Article 16(m)).</small></details>
+          <label class="consent-label"><input type="checkbox" id="cc-0"><span>I agree to receive my license key <strong>immediately after purchase</strong>.<small class="sub">For EU/EEA residents: I acknowledge that this means the 14-day right of withdrawal will not apply.</small></span></label>
+        </div>
+        <button type="button" class="pay-btn" id="pb-0" disabled><span class="lock" aria-hidden="true">🔒</span>Proceed to secure payment — $19.99<span class="arrow" aria-hidden="true">→</span></button>
+        <div class="pay-meta">After purchase, your license key will be sent to your email.</div>
+      </div>
+      <div class="trust-row">
+        <div class="t"><h4><span class="ic">🔒</span>Secure checkout</h4><p>Powered by <strong>Stripe</strong>. Card details never touch our servers.</p></div>
+        <div class="t"><h4><span class="ic">📨</span>Instant delivery</h4><p>License key arrives in your inbox within seconds.</p></div>
+        <div class="t"><h4><span class="ic">↺</span>30-day defect refund</h4><p>If a technical defect prevents use, contact within 30 days for a full refund.</p></div>
+        <div class="t"><h4><span class="ic">🌐</span>Vendor</h4><p>Tetsunobu Kawai (sole proprietor, Japan). Independent.</p></div>
+      </div>
+      <p class="links"><a href="../terms.html">Terms of Service</a> · <a href="../privacy-policy.html">Privacy Policy</a> · <a href="../legal.html">Legal Notice</a></p>
+    </div>
+  </div>
 
-    var CHECKOUT_URL = 'https://umczaaooqinddgnhxbvp.supabase.co/functions/v1/create-checkout-session';
-    var LOADING_MSG = {
-      en: 'Redirecting…',
-      ja: '決済画面へ移動中…',
-      es: 'Redirigiendo…',
-      fr: 'Redirection…',
-      ko: '이동 중…',
-      it: 'Reindirizzamento…',
-      zh_CN: '跳转中…',
-      zh_TW: '跳轉中…',
-      pt_BR: 'Redirecionando…',
-      de: 'Weiterleitung…'
-    };
-    function escapeHtml(s) {
-      return String(s).replace(/[&<>"]/g, function(c) {
-        return c === '&' ? '&amp;' : c === '<' ? '&lt;' : c === '>' ? '&gt;' : '&quot;';
-      });
-    }
-    var ERR_MSG = {
-      en: 'Sorry, we could not start the payment. Please try again or contact support.',
-      ja: '申し訳ありません、決済を開始できませんでした。もう一度お試しいただくか、サポートまでご連絡ください。',
-      es: 'Lo sentimos, no se pudo iniciar el pago. Inténtelo de nuevo o contacte con soporte.',
-      fr: 'Désolé, le paiement n\'a pas pu démarrer. Veuillez réessayer ou contacter le support.',
-      ko: '죄송합니다. 결제를 시작할 수 없습니다. 다시 시도하시거나 지원팀에 문의해 주세요.',
-      it: 'Spiacenti, non è stato possibile avviare il pagamento. Riprova o contatta il supporto.',
-      zh_CN: '抱歉，无法启动付款。请重试或联系支持团队。',
-      zh_TW: '抱歉，無法啟動付款。請重試或聯絡支援團隊。',
-      pt_BR: 'Desculpe, não foi possível iniciar o pagamento. Tente novamente ou entre em contato com o suporte.',
-      de: 'Leider konnte die Zahlung nicht gestartet werden. Bitte versuchen Sie es erneut oder kontaktieren Sie den Support.'
-    };
+  <div class="grid" data-lang="ja">
+    <div class="order">
+      <span class="ribbon">14日間無料トライアル付き</span>
+      <div class="head"><img src="../icon-512.png" alt=""><div><h2>ファイル一括ダウンロード</h2><div class="sub">永続ライセンス · Chrome™ / Edge™ 対応</div></div></div>
+      <div class="price-row"><span class="price">$19.99</span><span class="ccy">USD</span><span class="strike">買い切り（一度のみ）</span></div>
+      <p class="price-sub">サブスクなし・自動更新なし。一度の購入で永続利用。</p>
+      <ul>
+        <li>1ライセンスで最大 <strong>3台</strong> まで有効化</li>
+        <li>全機能ロック解除（一括保存・PDF結合・ZIP・CSV）</li>
+        <li>今後のアップデート込み（Manifest V3 対応）</li>
+        <li>ローカル処理 — アップロード/サーバー送信なし</li>
+        <li>10言語UI（EN/JA/ES/FR/DE/IT/KO/PT-BR/ZH）</li>
+      </ul>
+    </div>
+    <div class="checkout">
+      <div class="panel"><h3><span class="num">1</span>まずは14日間 無料でお試し</h3>
+        <div class="trial-strip"><span class="day">Day 0</span>インストール →<span class="day">Day 1–14</span>全機能・カード不要 →<span class="day">Day 15+</span>納得して購入</div>
+        <p style="margin-top:.7rem">まだ試していない方は、まず無料トライアルから。カード登録なしで14日間、全機能をご利用いただけます。</p>
+      </div>
+      <div class="panel"><h3><span class="num">2</span>確認してお支払い</h3>
+        <div class="consent">
+          <details><summary><span>この同意について</span></summary><p>本拡張機能は購入前に<strong>14日間の無料トライアル</strong>をご利用いただけます。十分にお試しいただいた上でご購入ください。購入後はライセンスキーをメールですぐにお送りするため、以下のチェックボックスにご同意をお願いしています。</p><small class="eu-note">EU/EEA在住の方へ：通常、オンライン購入には14日間の返品（撤回）権がありますが、即時提供されるデジタル商品は、お客様の明示的な同意があれば適用対象外となります（EU指令2011/83/EU 第16条(m)）。</small></details>
+          <label class="consent-label"><input type="checkbox" id="cc-1"><span>ライセンスキーを<strong>購入後すぐに受け取ること</strong>に同意します。<small class="sub">EU/EEA在住の方：これにより14日間の撤回権が適用されないことを了承します。</small></span></label>
+        </div>
+        <button type="button" class="pay-btn" id="pb-1" disabled><span class="lock" aria-hidden="true">🔒</span>安全な決済へ進む — $19.99<span class="arrow" aria-hidden="true">→</span></button>
+        <div class="pay-meta">購入後、ライセンスキーがメールで送信されます。</div>
+      </div>
+      <div class="trust-row">
+        <div class="t"><h4><span class="ic">🔒</span>安全な決済</h4><p>決済は <strong>Stripe</strong>。カード情報は当方サーバーに到達しません。</p></div>
+        <div class="t"><h4><span class="ic">📨</span>即時お届け</h4><p>ライセンスキーは数秒でメール到着。</p></div>
+        <div class="t"><h4><span class="ic">↺</span>30日不具合返金</h4><p>技術的な不具合で動作しない場合、30日以内のご連絡で全額返金。</p></div>
+        <div class="t"><h4><span class="ic">🌐</span>販売者</h4><p>河井 哲信（個人事業主・日本）独立運営。</p></div>
+      </div>
+      <p class="links"><a href="../terms.html">利用規約</a> · <a href="../privacy-policy.html">プライバシーポリシー</a> · <a href="../legal.html">特定商取引法に基づく表記</a></p>
+    </div>
+  </div>
 
-    // One idempotency key per page-load. If the user double-clicks or the
-    // network retries within this page session, Stripe returns the same
-    // Checkout Session instead of creating a duplicate. Reset on next nav.
-    var IDEMPOTENCY_KEY = (function() {
-      try {
-        if (typeof crypto !== 'undefined' && crypto.randomUUID) return 'gaf-' + crypto.randomUUID();
-      } catch (_) {}
-      return 'gaf-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10);
-    })();
+  <div class="grid" data-lang="es">
+    <div class="order">
+      <span class="ribbon">Prueba gratuita de 14 días incluida</span>
+      <div class="head"><img src="../icon-512.png" alt=""><div><h2>Descargar todos los archivos</h2><div class="sub">Licencia de por vida · Chrome™ y Edge™</div></div></div>
+      <div class="price-row"><span class="price">$19.99</span><span class="ccy">USD</span><span class="strike">Pago único</span></div>
+      <p class="price-sub">Sin suscripción. Sin renovación automática. Paga una vez, conserva para siempre.</p>
+      <ul>
+        <li>Activa hasta en <strong>3 dispositivos</strong> por licencia</li>
+        <li>Todas las funciones desbloqueadas — descarga masiva, fusión PDF, ZIP, CSV</li>
+        <li>Actualizaciones futuras incluidas — Manifest V3 listo</li>
+        <li>Procesamiento local — sin subida, sin servidor</li>
+        <li>10 idiomas de UI (EN / JA / ES / FR / DE / IT / KO / PT-BR / ZH)</li>
+      </ul>
+    </div>
+    <div class="checkout">
+      <div class="panel"><h3><span class="num">1</span>Prueba gratis 14 días</h3>
+        <div class="trial-strip"><span class="day">Día 0</span>Instalar →<span class="day">Día 1–14</span>Funciones completas, sin tarjeta →<span class="day">Día 15+</span>Decide</div>
+        <p style="margin-top:.7rem">Si aún no la has probado, empieza por la prueba — todas las funciones durante 14 días, sin tarjeta de crédito.</p>
+      </div>
+      <div class="panel"><h3><span class="num">2</span>Confirma y paga</h3>
+        <div class="consent">
+          <details><summary><span>Sobre este consentimiento</span></summary><p>Esta extensión ofrece una <strong>prueba gratuita de 14 días</strong> para que pueda evaluarla completamente antes de comprar. Después de la compra, su clave de licencia se entrega de inmediato por correo electrónico — por eso le pedimos su confirmación a continuación.</p><small class="eu-note">Para residentes en UE/EEE: el contenido digital entregado de inmediato queda excluido del derecho de desistimiento de 14 días una vez que usted da su consentimiento expreso (Directiva de Derechos del Consumidor de la UE 2011/83/UE, Artículo 16(m)).</small></details>
+          <label class="consent-label"><input type="checkbox" id="cc-2"><span>Acepto recibir mi clave de licencia <strong>inmediatamente después de la compra</strong>.<small class="sub">Para residentes en UE/EEE: reconozco que esto significa que el derecho de desistimiento de 14 días no se aplicará.</small></span></label>
+        </div>
+        <button type="button" class="pay-btn" id="pb-2" disabled><span class="lock" aria-hidden="true">🔒</span>Pago seguro — $19.99<span class="arrow" aria-hidden="true">→</span></button>
+        <div class="pay-meta">Después de la compra, su clave de licencia se enviará a su correo electrónico.</div>
+      </div>
+      <div class="trust-row">
+        <div class="t"><h4><span class="ic">🔒</span>Pago seguro</h4><p>Procesado por <strong>Stripe</strong>. Los datos de tarjeta no pasan por nuestros servidores.</p></div>
+        <div class="t"><h4><span class="ic">📨</span>Entrega inmediata</h4><p>La clave de licencia llega a tu bandeja en segundos.</p></div>
+        <div class="t"><h4><span class="ic">↺</span>Reembolso 30 días por defecto</h4><p>Si un defecto técnico impide el uso, contáctanos en 30 días para reembolso completo.</p></div>
+        <div class="t"><h4><span class="ic">🌐</span>Vendedor</h4><p>Tetsunobu Kawai (autónomo, Japón). Producto independiente.</p></div>
+      </div>
+      <p class="links"><a href="../terms.html">Términos de servicio</a> · <a href="../privacy-policy.html">Política de privacidad</a> · <a href="../legal.html">Aviso Legal</a></p>
+    </div>
+  </div>
 
-    function startCheckout(btn) {
-      if (btn.disabled || btn.dataset.busy === '1') return;
-      var container = btn.closest('[data-lang]');
-      var lang = container ? container.getAttribute('data-lang') : 'en';
-      var original = btn.innerHTML;
-      var w = btn.getBoundingClientRect().width;
-      btn.style.minWidth = w + 'px';
-      btn.dataset.busy = '1';
-      btn.disabled = true;
-      btn.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span>' + escapeHtml(LOADING_MSG[lang] || LOADING_MSG.en);
-      var ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
-      var timer = ctrl ? setTimeout(function() { ctrl.abort(); }, 15000) : 0;
-      fetch(CHECKOUT_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ lang: lang, idempotency_key: IDEMPOTENCY_KEY }),
-        signal: ctrl ? ctrl.signal : undefined
-      }).then(function(res) {
-        if (!res.ok) throw new Error('http ' + res.status);
-        return res.json();
-      }).then(function(data) {
-        if (!data || !data.url) throw new Error('no url');
-        window.location.href = data.url;
-      }).catch(function() {
-        if (timer) clearTimeout(timer);
-        btn.dataset.busy = '';
-        btn.disabled = false;
-        btn.innerHTML = original;
-        btn.style.minWidth = '';
-        alert(ERR_MSG[lang] || ERR_MSG.en);
-      });
-    }
+  <div class="grid" data-lang="fr">
+    <div class="order">
+      <span class="ribbon">Essai gratuit de 14 jours inclus</span>
+      <div class="head"><img src="../icon-512.png" alt=""><div><h2>Télécharger tous les fichiers</h2><div class="sub">Licence à vie · Chrome™ et Edge™</div></div></div>
+      <div class="price-row"><span class="price">$19.99</span><span class="ccy">USD</span><span class="strike">Paiement unique</span></div>
+      <p class="price-sub">Sans abonnement. Sans renouvellement automatique. Payez une fois, gardez pour toujours.</p>
+      <ul>
+        <li>Activation jusqu'à <strong>3 appareils</strong> par licence</li>
+        <li>Toutes les fonctionnalités — téléchargement en masse, fusion PDF, ZIP, CSV</li>
+        <li>Mises à jour futures incluses — Manifest V3 prêt</li>
+        <li>Traitement local — aucun téléchargement, aucun serveur</li>
+        <li>10 langues d'interface (EN / JA / ES / FR / DE / IT / KO / PT-BR / ZH)</li>
+      </ul>
+    </div>
+    <div class="checkout">
+      <div class="panel"><h3><span class="num">1</span>Essai gratuit 14 jours</h3>
+        <div class="trial-strip"><span class="day">J0</span>Installer →<span class="day">J1–14</span>Toutes fonctionnalités, sans carte →<span class="day">J15+</span>Décidez</div>
+        <p style="margin-top:.7rem">Si vous n'avez pas encore essayé, commencez par l'essai — toutes les fonctionnalités pendant 14 jours, sans carte de crédit.</p>
+      </div>
+      <div class="panel"><h3><span class="num">2</span>Confirmer et payer</h3>
+        <div class="consent">
+          <details><summary><span>À propos de ce consentement</span></summary><p>Cette extension propose un <strong>essai gratuit de 14 jours</strong> pour une évaluation complète avant achat. Après achat, votre clé de licence est livrée immédiatement par e-mail — c'est pourquoi nous vous demandons votre confirmation ci-dessous.</p><small class="eu-note">Pour les résidents de l'UE/EEE : le contenu numérique livré immédiatement est exclu du droit de rétractation de 14 jours dès lors que vous donnez votre consentement exprès (Directive sur les droits des consommateurs 2011/83/UE, Article 16(m)).</small></details>
+          <label class="consent-label"><input type="checkbox" id="cc-3"><span>J'accepte de recevoir ma clé de licence <strong>immédiatement après l'achat</strong>.<small class="sub">Pour les résidents UE/EEE : je reconnais que le droit de rétractation de 14 jours ne s'appliquera pas.</small></span></label>
+        </div>
+        <button type="button" class="pay-btn" id="pb-3" disabled><span class="lock" aria-hidden="true">🔒</span>Paiement sécurisé — $19.99<span class="arrow" aria-hidden="true">→</span></button>
+        <div class="pay-meta">Après achat, votre clé de licence sera envoyée par e-mail.</div>
+      </div>
+      <div class="trust-row">
+        <div class="t"><h4><span class="ic">🔒</span>Paiement sécurisé</h4><p>Propulsé par <strong>Stripe</strong>. Les détails de carte ne touchent jamais nos serveurs.</p></div>
+        <div class="t"><h4><span class="ic">📨</span>Livraison instantanée</h4><p>La clé arrive dans votre boîte mail en quelques secondes.</p></div>
+        <div class="t"><h4><span class="ic">↺</span>Remboursement défaut 30 jours</h4><p>Si un défaut technique empêche l'utilisation, contactez-nous sous 30 jours pour un remboursement intégral.</p></div>
+        <div class="t"><h4><span class="ic">🌐</span>Vendeur</h4><p>Tetsunobu Kawai (entrepreneur individuel, Japon). Indépendant.</p></div>
+      </div>
+      <p class="links"><a href="../terms.html">Conditions d'utilisation</a> · <a href="../privacy-policy.html">Politique de confidentialité</a> · <a href="../legal.html">Mentions légales</a></p>
+    </div>
+  </div>
 
-    Array.prototype.forEach.call(document.querySelectorAll('button.btn[id^="pb-"]'), function(btn) {
-      btn.addEventListener('click', function() { startCheckout(btn); });
+  <div class="grid" data-lang="ko">
+    <div class="order">
+      <span class="ribbon">14일 무료 체험 포함</span>
+      <div class="head"><img src="../icon-512.png" alt=""><div><h2>파일 일괄 다운로드</h2><div class="sub">평생 라이선스 · Chrome™ / Edge™</div></div></div>
+      <div class="price-row"><span class="price">$19.99</span><span class="ccy">USD</span><span class="strike">일회성 결제</span></div>
+      <p class="price-sub">구독 없음. 자동 갱신 없음. 한 번 결제로 평생 사용.</p>
+      <ul>
+        <li>라이선스당 <strong>최대 3대 기기</strong>에서 활성화</li>
+        <li>모든 기능 잠금 해제 — 일괄 저장, PDF 병합, ZIP, CSV</li>
+        <li>향후 업데이트 포함 — Manifest V3 대응</li>
+        <li>로컬 처리 — 업로드 / 서버 전송 없음</li>
+        <li>10개 UI 언어 (EN / JA / ES / FR / DE / IT / KO / PT-BR / ZH)</li>
+      </ul>
+    </div>
+    <div class="checkout">
+      <div class="panel"><h3><span class="num">1</span>14일 무료 체험</h3>
+        <div class="trial-strip"><span class="day">Day 0</span>설치 →<span class="day">Day 1–14</span>전 기능, 카드 불필요 →<span class="day">Day 15+</span>구매 결정</div>
+        <p style="margin-top:.7rem">아직 사용해보지 않으셨다면 먼저 무료 체험을 — 카드 등록 없이 14일간 모든 기능을 이용하실 수 있습니다.</p>
+      </div>
+      <div class="panel"><h3><span class="num">2</span>확인 후 결제</h3>
+        <div class="consent">
+          <details><summary><span>이 동의에 대하여</span></summary><p>이 확장 프로그램은 구매 전에 <strong>14일 무료 체험</strong>을 제공합니다. 충분히 검토하신 후 구매해 주세요. 구매 후에는 라이선스 키가 이메일로 즉시 전송되므로, 아래 체크박스에 동의해 주시기 바랍니다.</p><small class="eu-note">EU/EEA 거주자께: 즉시 제공되는 디지털 콘텐츠는 명시적 동의가 있는 경우 14일 철회권 적용 대상에서 제외됩니다(EU 소비자 권리 지침 2011/83/EU, 제16조(m)).</small></details>
+          <label class="consent-label"><input type="checkbox" id="cc-4"><span>라이선스 키를 <strong>구매 후 즉시 받는 것</strong>에 동의합니다.<small class="sub">EU/EEA 거주자: 이로 인해 14일간의 철회권이 적용되지 않음을 인정합니다.</small></span></label>
+        </div>
+        <button type="button" class="pay-btn" id="pb-4" disabled><span class="lock" aria-hidden="true">🔒</span>안전한 결제로 진행 — $19.99<span class="arrow" aria-hidden="true">→</span></button>
+        <div class="pay-meta">구매 후 라이선스 키가 이메일로 전송됩니다.</div>
+      </div>
+      <div class="trust-row">
+        <div class="t"><h4><span class="ic">🔒</span>안전한 결제</h4><p><strong>Stripe</strong> 사용. 카드 정보는 당사 서버에 도달하지 않습니다.</p></div>
+        <div class="t"><h4><span class="ic">📨</span>즉시 전달</h4><p>라이선스 키가 수 초 내에 받은편지함으로 도착합니다.</p></div>
+        <div class="t"><h4><span class="ic">↺</span>30일 불량 환불</h4><p>기술적 결함으로 사용할 수 없는 경우 30일 이내 연락 주시면 전액 환불.</p></div>
+        <div class="t"><h4><span class="ic">🌐</span>판매자</h4><p>Tetsunobu Kawai (개인사업자, 일본). 독립 운영.</p></div>
+      </div>
+      <p class="links"><a href="../terms.html">이용약관</a> · <a href="../privacy-policy.html">개인정보 처리방침</a> · <a href="../legal.html">법적 고지</a></p>
+    </div>
+  </div>
+
+  <div class="grid" data-lang="it">
+    <div class="order">
+      <span class="ribbon">Prova gratuita di 14 giorni inclusa</span>
+      <div class="head"><img src="../icon-512.png" alt=""><div><h2>Scarica tutti i file</h2><div class="sub">Licenza a vita · Chrome™ e Edge™</div></div></div>
+      <div class="price-row"><span class="price">$19.99</span><span class="ccy">USD</span><span class="strike">Acquisto singolo</span></div>
+      <p class="price-sub">Nessun abbonamento. Nessun rinnovo automatico. Paghi una volta, mantieni per sempre.</p>
+      <ul>
+        <li>Attivazione su un massimo di <strong>3 dispositivi</strong> per licenza</li>
+        <li>Tutte le funzionalità sbloccate — salvataggio in massa, unione PDF, ZIP, CSV</li>
+        <li>Aggiornamenti futuri inclusi — pronto Manifest V3</li>
+        <li>Elaborazione locale — nessun upload, nessun server</li>
+        <li>10 lingue UI (EN / JA / ES / FR / DE / IT / KO / PT-BR / ZH)</li>
+      </ul>
+    </div>
+    <div class="checkout">
+      <div class="panel"><h3><span class="num">1</span>Prova gratis 14 giorni</h3>
+        <div class="trial-strip"><span class="day">Day 0</span>Installa →<span class="day">Day 1–14</span>Tutte le funzioni, senza carta →<span class="day">Day 15+</span>Decidi</div>
+        <p style="margin-top:.7rem">Se non l'hai ancora provata, parti dalla prova gratuita — tutte le funzionalità per 14 giorni, senza carta di credito.</p>
+      </div>
+      <div class="panel"><h3><span class="num">2</span>Conferma e paga</h3>
+        <div class="consent">
+          <details><summary><span>Informazioni su questo consenso</span></summary><p>Questa estensione offre una <strong>prova gratuita di 14 giorni</strong> per una valutazione completa prima dell'acquisto. Dopo l'acquisto, la chiave di licenza viene consegnata immediatamente via e-mail — per questo ti chiediamo la conferma qui sotto.</p><small class="eu-note">Per i residenti UE/SEE: i contenuti digitali consegnati immediatamente sono esclusi dal diritto di recesso di 14 giorni una volta che fornisci il consenso espresso (Direttiva sui diritti dei consumatori 2011/83/UE, Articolo 16(m)).</small></details>
+          <label class="consent-label"><input type="checkbox" id="cc-5"><span>Acconsento a ricevere la mia chiave di licenza <strong>immediatamente dopo l'acquisto</strong>.<small class="sub">Per i residenti UE/SEE: riconosco che ciò significa che il diritto di recesso di 14 giorni non si applicherà.</small></span></label>
+        </div>
+        <button type="button" class="pay-btn" id="pb-5" disabled><span class="lock" aria-hidden="true">🔒</span>Pagamento sicuro — $19.99<span class="arrow" aria-hidden="true">→</span></button>
+        <div class="pay-meta">Dopo l'acquisto, la chiave di licenza verrà inviata alla tua email.</div>
+      </div>
+      <div class="trust-row">
+        <div class="t"><h4><span class="ic">🔒</span>Pagamento sicuro</h4><p>Gestito da <strong>Stripe</strong>. I dati della carta non passano dai nostri server.</p></div>
+        <div class="t"><h4><span class="ic">📨</span>Consegna immediata</h4><p>La chiave arriva nella tua casella in pochi secondi.</p></div>
+        <div class="t"><h4><span class="ic">↺</span>Rimborso 30 giorni per difetto</h4><p>Se un difetto tecnico impedisce l'uso, contattaci entro 30 giorni per rimborso completo.</p></div>
+        <div class="t"><h4><span class="ic">🌐</span>Venditore</h4><p>Tetsunobu Kawai (libero professionista, Giappone). Indipendente.</p></div>
+      </div>
+      <p class="links"><a href="../terms.html">Termini di servizio</a> · <a href="../privacy-policy.html">Informativa sulla privacy</a> · <a href="../legal.html">Note legali</a></p>
+    </div>
+  </div>
+
+  <div class="grid" data-lang="zh_CN">
+    <div class="order">
+      <span class="ribbon">含14天免费试用</span>
+      <div class="head"><img src="../icon-512.png" alt=""><div><h2>批量下载文件</h2><div class="sub">永久授权 · Chrome™ / Edge™</div></div></div>
+      <div class="price-row"><span class="price">$19.99</span><span class="ccy">USD</span><span class="strike">一次性付款</span></div>
+      <p class="price-sub">无订阅。无自动续费。一次付款，永久使用。</p>
+      <ul>
+        <li>每个许可证可在 <strong>3 台设备</strong> 上激活</li>
+        <li>全部功能解锁 — 批量保存、PDF 合并、ZIP、CSV</li>
+        <li>包含未来更新 — 兼容 Manifest V3</li>
+        <li>本地处理 — 无上传、无服务器</li>
+        <li>10 种界面语言 (EN / JA / ES / FR / DE / IT / KO / PT-BR / ZH)</li>
+      </ul>
+    </div>
+    <div class="checkout">
+      <div class="panel"><h3><span class="num">1</span>14天免费试用</h3>
+        <div class="trial-strip"><span class="day">第0天</span>安装 →<span class="day">第1-14天</span>全功能、无需信用卡 →<span class="day">第15天起</span>决定</div>
+        <p style="margin-top:.7rem">如果还没用过，请先从免费试用开始 — 14 天全功能，无需信用卡。</p>
+      </div>
+      <div class="panel"><h3><span class="num">2</span>确认并付款</h3>
+        <div class="consent">
+          <details><summary><span>关于此同意</span></summary><p>本扩展程序在购买前提供<strong>14天免费试用</strong>，您可以充分评估后再购买。购买后，许可证密钥将通过电子邮件立即发送，因此我们请您勾选下方的复选框确认。</p><small class="eu-note">EU/EEA居民请注意：在您明确同意的情况下，立即交付的数字内容不适用14天撤回权（欧盟消费者权利指令2011/83/EU 第16条(m)）。</small></details>
+          <label class="consent-label"><input type="checkbox" id="cc-6"><span>我同意在<strong>购买后立即收到</strong>许可证密钥。<small class="sub">EU/EEA居民：我了解此举意味着14天撤回权将不适用。</small></span></label>
+        </div>
+        <button type="button" class="pay-btn" id="pb-6" disabled><span class="lock" aria-hidden="true">🔒</span>安全支付 — $19.99<span class="arrow" aria-hidden="true">→</span></button>
+        <div class="pay-meta">购买后，许可证密钥将发送至您的电子邮箱。</div>
+      </div>
+      <div class="trust-row">
+        <div class="t"><h4><span class="ic">🔒</span>安全结账</h4><p>由 <strong>Stripe</strong> 提供支持。卡片信息不经过我们的服务器。</p></div>
+        <div class="t"><h4><span class="ic">📨</span>即时送达</h4><p>许可证密钥在数秒内送达您的收件箱。</p></div>
+        <div class="t"><h4><span class="ic">↺</span>30天故障退款</h4><p>如因技术故障无法使用，30天内联系我们可全额退款。</p></div>
+        <div class="t"><h4><span class="ic">🌐</span>销售方</h4><p>Tetsunobu Kawai（个体经营者，日本）。独立产品。</p></div>
+      </div>
+      <p class="links"><a href="../terms.html">服务条款</a> · <a href="../privacy-policy.html">隐私政策</a> · <a href="../legal.html">法律声明</a></p>
+    </div>
+  </div>
+
+  <div class="grid" data-lang="zh_TW">
+    <div class="order">
+      <span class="ribbon">含14天免費試用</span>
+      <div class="head"><img src="../icon-512.png" alt=""><div><h2>批次下載檔案</h2><div class="sub">永久授權 · Chrome™ / Edge™</div></div></div>
+      <div class="price-row"><span class="price">$19.99</span><span class="ccy">USD</span><span class="strike">一次性付款</span></div>
+      <p class="price-sub">無訂閱。無自動續費。一次付款，永久使用。</p>
+      <ul>
+        <li>每組授權可在 <strong>3 台裝置</strong> 上啟用</li>
+        <li>全功能解鎖 — 批次儲存、PDF 合併、ZIP、CSV</li>
+        <li>包含未來更新 — 相容 Manifest V3</li>
+        <li>本機處理 — 無上傳、無伺服器</li>
+        <li>10 種介面語言 (EN / JA / ES / FR / DE / IT / KO / PT-BR / ZH)</li>
+      </ul>
+    </div>
+    <div class="checkout">
+      <div class="panel"><h3><span class="num">1</span>14天免費試用</h3>
+        <div class="trial-strip"><span class="day">第0天</span>安裝 →<span class="day">第1-14天</span>全功能、無需信用卡 →<span class="day">第15天起</span>決定</div>
+        <p style="margin-top:.7rem">若尚未試用過，請先從免費試用開始 — 14 天全功能，無需信用卡。</p>
+      </div>
+      <div class="panel"><h3><span class="num">2</span>確認並付款</h3>
+        <div class="consent">
+          <details><summary><span>關於此同意</span></summary><p>本擴充功能在購買前提供<strong>14天免費試用</strong>，您可以充分評估後再購買。購買後，授權金鑰將透過電子郵件立即傳送，因此我們請您勾選下方的核取方塊確認。</p><small class="eu-note">EU/EEA居民請注意：在您明確同意的情況下，立即交付的數位內容不適用14天撤回權（歐盟消費者權利指令2011/83/EU 第16條(m)）。</small></details>
+          <label class="consent-label"><input type="checkbox" id="cc-7"><span>我同意在<strong>購買後立即收到</strong>授權金鑰。<small class="sub">EU/EEA居民：我了解此舉意味著14天撤回權將不適用。</small></span></label>
+        </div>
+        <button type="button" class="pay-btn" id="pb-7" disabled><span class="lock" aria-hidden="true">🔒</span>安全付款 — $19.99<span class="arrow" aria-hidden="true">→</span></button>
+        <div class="pay-meta">購買後，授權金鑰將傳送至您的電子郵件地址。</div>
+      </div>
+      <div class="trust-row">
+        <div class="t"><h4><span class="ic">🔒</span>安全結帳</h4><p>由 <strong>Stripe</strong> 提供。卡片資料不會經過我們的伺服器。</p></div>
+        <div class="t"><h4><span class="ic">📨</span>即時送達</h4><p>授權金鑰在數秒內送達您的收件匣。</p></div>
+        <div class="t"><h4><span class="ic">↺</span>30天瑕疵退款</h4><p>若技術瑕疵導致無法使用，30天內聯絡我們可全額退款。</p></div>
+        <div class="t"><h4><span class="ic">🌐</span>銷售方</h4><p>Tetsunobu Kawai（個人事業主，日本）。獨立運營。</p></div>
+      </div>
+      <p class="links"><a href="../terms.html">服務條款</a> · <a href="../privacy-policy.html">隱私權政策</a> · <a href="../legal.html">法律聲明</a></p>
+    </div>
+  </div>
+
+  <div class="grid" data-lang="pt_BR">
+    <div class="order">
+      <span class="ribbon">Teste gratuito de 14 dias incluído</span>
+      <div class="head"><img src="../icon-512.png" alt=""><div><h2>Baixar todos os arquivos</h2><div class="sub">Licença vitalícia · Chrome™ e Edge™</div></div></div>
+      <div class="price-row"><span class="price">$19.99</span><span class="ccy">USD</span><span class="strike">Pagamento único</span></div>
+      <p class="price-sub">Sem assinatura. Sem renovação automática. Pague uma vez, mantenha para sempre.</p>
+      <ul>
+        <li>Ativação em até <strong>3 dispositivos</strong> por licença</li>
+        <li>Todos os recursos liberados — download em massa, mesclagem PDF, ZIP, CSV</li>
+        <li>Atualizações futuras incluídas — pronto para Manifest V3</li>
+        <li>Processamento local — sem upload, sem servidor</li>
+        <li>10 idiomas de UI (EN / JA / ES / FR / DE / IT / KO / PT-BR / ZH)</li>
+      </ul>
+    </div>
+    <div class="checkout">
+      <div class="panel"><h3><span class="num">1</span>Teste grátis 14 dias</h3>
+        <div class="trial-strip"><span class="day">Dia 0</span>Instalar →<span class="day">Dia 1–14</span>Recursos completos, sem cartão →<span class="day">Dia 15+</span>Decida</div>
+        <p style="margin-top:.7rem">Se ainda não testou, comece pelo teste gratuito — todos os recursos por 14 dias, sem cartão de crédito.</p>
+      </div>
+      <div class="panel"><h3><span class="num">2</span>Confirmar e pagar</h3>
+        <div class="consent">
+          <details><summary><span>Sobre este consentimento</span></summary><p>Esta extensão oferece um <strong>teste gratuito de 14 dias</strong> para avaliação completa antes da compra. Após a compra, sua chave de licença é entregue imediatamente por e-mail — por isso solicitamos sua confirmação abaixo.</p><small class="eu-note">Para residentes na UE/EEE: conteúdo digital entregue imediatamente é excluído do direito de desistência de 14 dias quando você dá seu consentimento expresso (Diretiva de Direitos do Consumidor da UE 2011/83/UE, Artigo 16(m)).</small></details>
+          <label class="consent-label"><input type="checkbox" id="cc-8"><span>Concordo em receber minha chave de licença <strong>imediatamente após a compra</strong>.<small class="sub">Para residentes na UE/EEE: reconheço que isso significa que o direito de desistência de 14 dias não se aplicará.</small></span></label>
+        </div>
+        <button type="button" class="pay-btn" id="pb-8" disabled><span class="lock" aria-hidden="true">🔒</span>Pagamento seguro — $19.99<span class="arrow" aria-hidden="true">→</span></button>
+        <div class="pay-meta">Após a compra, sua chave de licença será enviada para seu e-mail.</div>
+      </div>
+      <div class="trust-row">
+        <div class="t"><h4><span class="ic">🔒</span>Checkout seguro</h4><p>Processado por <strong>Stripe</strong>. Dados do cartão não passam pelos nossos servidores.</p></div>
+        <div class="t"><h4><span class="ic">📨</span>Entrega instantânea</h4><p>A chave de licença chega à sua caixa de entrada em segundos.</p></div>
+        <div class="t"><h4><span class="ic">↺</span>Reembolso 30 dias por defeito</h4><p>Se um defeito técnico impedir o uso, contate em 30 dias para reembolso integral.</p></div>
+        <div class="t"><h4><span class="ic">🌐</span>Vendedor</h4><p>Tetsunobu Kawai (autônomo, Japão). Independente.</p></div>
+      </div>
+      <p class="links"><a href="../terms.html">Termos de Serviço</a> · <a href="../privacy-policy.html">Política de Privacidade</a> · <a href="../legal.html">Aviso Legal</a></p>
+    </div>
+  </div>
+
+  <div class="grid" data-lang="de">
+    <div class="order">
+      <span class="ribbon">14 Tage kostenlose Testphase enthalten</span>
+      <div class="head"><img src="../icon-512.png" alt=""><div><h2>Alle Dateien herunterladen</h2><div class="sub">Lebenslange Lizenz · Chrome™ &amp; Edge™</div></div></div>
+      <div class="price-row"><span class="price">$19.99</span><span class="ccy">USD</span><span class="strike">Einmalige Zahlung</span></div>
+      <p class="price-sub">Kein Abo. Keine automatische Verlängerung. Einmal zahlen, für immer behalten.</p>
+      <ul>
+        <li>Aktivierung auf bis zu <strong>3 Geräten</strong> pro Lizenz</li>
+        <li>Alle Funktionen freigeschaltet — Massendownload, PDF-Zusammenführung, ZIP, CSV</li>
+        <li>Zukünftige Updates inklusive — Manifest V3 bereit</li>
+        <li>Lokale Verarbeitung — kein Upload, kein Server</li>
+        <li>10 UI-Sprachen (EN / JA / ES / FR / DE / IT / KO / PT-BR / ZH)</li>
+      </ul>
+    </div>
+    <div class="checkout">
+      <div class="panel"><h3><span class="num">1</span>14 Tage kostenlos testen</h3>
+        <div class="trial-strip"><span class="day">Tag 0</span>Installieren →<span class="day">Tag 1–14</span>Volle Funktionen, keine Karte →<span class="day">Tag 15+</span>Entscheiden</div>
+        <p style="margin-top:.7rem">Wenn Sie es noch nicht ausprobiert haben, beginnen Sie mit der Testphase — 14 Tage volle Funktionen, ohne Kreditkarte.</p>
+      </div>
+      <div class="panel"><h3><span class="num">2</span>Bestätigen &amp; bezahlen</h3>
+        <div class="consent">
+          <details><summary><span>Über diese Zustimmung</span></summary><p>Diese Erweiterung bietet eine <strong>14-tägige kostenlose Testphase</strong> zur vollständigen Bewertung vor dem Kauf. Nach dem Kauf wird Ihr Lizenzschlüssel sofort per E-Mail geliefert — deshalb bitten wir Sie unten um Ihre Bestätigung.</p><small class="eu-note">Für EU/EWR-Bewohner: Sofort gelieferte digitale Inhalte sind vom 14-tägigen Widerrufsrecht ausgenommen, sobald Sie Ihre ausdrückliche Zustimmung geben (EU-Verbraucherrechterichtlinie 2011/83/EU, Artikel 16(m)).</small></details>
+          <label class="consent-label"><input type="checkbox" id="cc-9"><span>Ich stimme zu, meinen Lizenzschlüssel <strong>sofort nach dem Kauf</strong> zu erhalten.<small class="sub">Für EU/EWR-Bewohner: Ich erkenne an, dass damit das 14-tägige Widerrufsrecht nicht zur Anwendung kommt.</small></span></label>
+        </div>
+        <button type="button" class="pay-btn" id="pb-9" disabled><span class="lock" aria-hidden="true">🔒</span>Sichere Zahlung — $19.99<span class="arrow" aria-hidden="true">→</span></button>
+        <div class="pay-meta">Nach dem Kauf wird Ihr Lizenzschlüssel an Ihre E-Mail gesendet.</div>
+      </div>
+      <div class="trust-row">
+        <div class="t"><h4><span class="ic">🔒</span>Sicherer Checkout</h4><p>Bereitgestellt von <strong>Stripe</strong>. Kartendaten erreichen nie unsere Server.</p></div>
+        <div class="t"><h4><span class="ic">📨</span>Sofortige Lieferung</h4><p>Der Lizenzschlüssel landet in Sekunden in Ihrem Posteingang.</p></div>
+        <div class="t"><h4><span class="ic">↺</span>30 Tage Defekt-Rückerstattung</h4><p>Wenn ein technischer Defekt die Nutzung verhindert, kontaktieren Sie uns innerhalb von 30 Tagen für volle Rückerstattung.</p></div>
+        <div class="t"><h4><span class="ic">🌐</span>Anbieter</h4><p>Tetsunobu Kawai (Einzelunternehmer, Japan). Unabhängig.</p></div>
+      </div>
+      <p class="links"><a href="../terms.html">Nutzungsbedingungen</a> · <a href="../privacy-policy.html">Datenschutzrichtlinie</a> · <a href="../legal.html">Impressum</a></p>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  var LANGUAGE_LABELS = {
+    en: 'Language', ja: '言語', es: 'Idioma', fr: 'Langue', ko: '언어', it: 'Lingua',
+    zh_CN: '语言', zh_TW: '語言', pt_BR: 'Idioma', de: 'Sprache'
+  };
+  var PAGE_TITLES = {
+    en: 'Purchase - Grab All Files',
+    ja: '購入 - ファイル一括ダウンロード',
+    es: 'Comprar - Descargar todos los archivos',
+    fr: 'Achat - Télécharger tous les fichiers',
+    ko: '구매 - 파일 일괄 다운로드',
+    it: 'Acquisto - Scarica tutti i file',
+    zh_CN: '购买 - 批量下载文件',
+    zh_TW: '購買 - 批次下載檔案',
+    pt_BR: 'Comprar - Baixar todos os arquivos',
+    de: 'Kauf - Alle Dateien herunterladen'
+  };
+  function getLang() {
+    var s = localStorage.getItem('gaf-lang');
+    if (s) return s;
+    var n = (navigator.language || '').toLowerCase();
+    if (n.startsWith('ja')) return 'ja';
+    if (n.startsWith('ko')) return 'ko';
+    if (n.startsWith('it')) return 'it';
+    if (n.startsWith('de')) return 'de';
+    if (n.startsWith('es')) return 'es';
+    if (n.startsWith('fr')) return 'fr';
+    if (n.startsWith('pt')) return 'pt_BR';
+    if (n === 'zh-tw' || n === 'zh-hant' || n.startsWith('zh-hant')) return 'zh_TW';
+    if (n.startsWith('zh')) return 'zh_CN';
+    return 'en';
+  }
+  function setLang(l) {
+    localStorage.setItem('gaf-lang', l);
+    document.querySelectorAll('[data-lang]').forEach(function(e) {
+      e.classList.toggle('active', e.getAttribute('data-lang') === l);
     });
-  </script>
+    document.documentElement.lang = l.replace('_','-');
+    var sel = document.getElementById('lang-sel');
+    if (sel) {
+      sel.value = l;
+      sel.setAttribute('aria-label', LANGUAGE_LABELS[l] || LANGUAGE_LABELS.en);
+    }
+    document.title = PAGE_TITLES[l] || PAGE_TITLES.en;
+  }
+  function onLangChange(e) { setLang(e.target.value); }
+  setLang(getLang());
+
+  function getTheme() {
+    try { var t = localStorage.getItem('gaf-theme'); if (t === 'light' || t === 'dark') return t; } catch (_) {}
+    return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  }
+  function setTheme(t) {
+    document.documentElement.setAttribute('data-theme', t);
+    try { localStorage.setItem('gaf-theme', t); } catch (_) {}
+  }
+  var themeBtn = document.getElementById('theme-toggle');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function() { setTheme(getTheme() === 'dark' ? 'light' : 'dark'); });
+  }
+  if (window.matchMedia) {
+    try {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+        var stored = null;
+        try { stored = localStorage.getItem('gaf-theme'); } catch (_) {}
+        if (stored !== 'light' && stored !== 'dark') setTheme(e.matches ? 'dark' : 'light');
+      });
+    } catch (_) {}
+  }
+
+  function sc(cid,bid){
+    var c=document.getElementById(cid),b=document.getElementById(bid);
+    function u(){
+      if(c.checked){b.removeAttribute('disabled');b.style.pointerEvents='';}
+      else{b.setAttribute('disabled','');b.style.pointerEvents='none';}
+      var label=c.closest('.consent-label');
+      if(label) label.classList.toggle('is-checked', c.checked);
+    }
+    c.addEventListener('change',u);u();
+  }
+  sc('cc-0','pb-0');
+  sc('cc-1','pb-1');
+  sc('cc-2','pb-2');
+  sc('cc-3','pb-3');
+  sc('cc-4','pb-4');
+  sc('cc-5','pb-5');
+  sc('cc-6','pb-6');
+  sc('cc-7','pb-7');
+  sc('cc-8','pb-8');
+  sc('cc-9','pb-9');
+
+  var CHECKOUT_URL = 'https://umczaaooqinddgnhxbvp.supabase.co/functions/v1/create-checkout-session';
+  var LOADING_MSG = {
+    en: 'Redirecting…',
+    ja: '決済画面へ移動中…',
+    es: 'Redirigiendo…',
+    fr: 'Redirection…',
+    ko: '이동 중…',
+    it: 'Reindirizzamento…',
+    zh_CN: '跳转中…',
+    zh_TW: '跳轉中…',
+    pt_BR: 'Redirecionando…',
+    de: 'Weiterleitung…'
+  };
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"]/g, function(c) {
+      return c === '&' ? '&amp;' : c === '<' ? '&lt;' : c === '>' ? '&gt;' : '&quot;';
+    });
+  }
+  var ERR_MSG = {
+    en: 'Sorry, we could not start the payment. Please try again or contact support.',
+    ja: '申し訳ありません、決済を開始できませんでした。もう一度お試しいただくか、サポートまでご連絡ください。',
+    es: 'Lo sentimos, no se pudo iniciar el pago. Inténtelo de nuevo o contacte con soporte.',
+    fr: 'Désolé, le paiement n\'a pas pu démarrer. Veuillez réessayer ou contacter le support.',
+    ko: '죄송합니다. 결제를 시작할 수 없습니다. 다시 시도하시거나 지원팀에 문의해 주세요.',
+    it: 'Spiacenti, non è stato possibile avviare il pagamento. Riprova o contatta il supporto.',
+    zh_CN: '抱歉，无法启动付款。请重试或联系支持团队。',
+    zh_TW: '抱歉，無法啟動付款。請重試或聯絡支援團隊。',
+    pt_BR: 'Desculpe, não foi possível iniciar o pagamento. Tente novamente ou entre em contato com o suporte.',
+    de: 'Leider konnte die Zahlung nicht gestartet werden. Bitte versuchen Sie es erneut oder kontaktieren Sie den Support.'
+  };
+
+  // One idempotency key per page-load. If the user double-clicks or the
+  // network retries within this page session, Stripe returns the same
+  // Checkout Session instead of creating a duplicate. Reset on next nav.
+  var IDEMPOTENCY_KEY = (function() {
+    try {
+      if (typeof crypto !== 'undefined' && crypto.randomUUID) return 'gaf-' + crypto.randomUUID();
+    } catch (_) {}
+    return 'gaf-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10);
+  })();
+
+  function startCheckout(btn) {
+    if (btn.disabled || btn.dataset.busy === '1') return;
+    var container = btn.closest('[data-lang]');
+    var lang = container ? container.getAttribute('data-lang') : 'en';
+    var original = btn.innerHTML;
+    var w = btn.getBoundingClientRect().width;
+    btn.style.minWidth = w + 'px';
+    btn.dataset.busy = '1';
+    btn.disabled = true;
+    btn.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span>' + escapeHtml(LOADING_MSG[lang] || LOADING_MSG.en);
+    var ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+    var timer = ctrl ? setTimeout(function() { ctrl.abort(); }, 15000) : 0;
+    fetch(CHECKOUT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ lang: lang, idempotency_key: IDEMPOTENCY_KEY }),
+      signal: ctrl ? ctrl.signal : undefined
+    }).then(function(res) {
+      if (!res.ok) throw new Error('http ' + res.status);
+      return res.json();
+    }).then(function(data) {
+      if (!data || !data.url) throw new Error('no url');
+      window.location.href = data.url;
+    }).catch(function() {
+      if (timer) clearTimeout(timer);
+      btn.dataset.busy = '';
+      btn.disabled = false;
+      btn.innerHTML = original;
+      btn.style.minWidth = '';
+      alert(ERR_MSG[lang] || ERR_MSG.en);
+    });
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('button.pay-btn[id^="pb-"]'), function(btn) {
+    btn.addEventListener('click', function() { startCheckout(btn); });
+  });
+</script>
 </body>
 </html>
