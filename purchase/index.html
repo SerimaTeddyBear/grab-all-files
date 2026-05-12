@@ -35,8 +35,7 @@
     a:hover { text-decoration: underline; }
     img { display: block; max-width: 100%; }
 
-    [data-lang] { display: none; }
-    [data-lang].active { display: revert; }
+    [data-lang]:not(.active) { display: none; }
 
     .topbar { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: saturate(180%) blur(14px); -webkit-backdrop-filter: saturate(180%) blur(14px); border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent); }
     .topbar-inner { max-width: 980px; margin: 0 auto; padding: 0.7rem 1.4rem; display: flex; align-items: center; gap: 0.7rem; }
