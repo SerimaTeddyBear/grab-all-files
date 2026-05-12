@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Purchase / 購入 — Grab All Files</title>
+<link rel="icon" type="image/png" href="assets/favicon-128.png">
+<style>
+  :root{color-scheme:light;
+    --bg:#f8f9fa;--surface:#fff;--surface-alt:#f8fafc;--surface-soft:#f1f5f9;
+    --text-strong:#0f172a;--text:#1a1a1a;--text-muted:#475569;--text-faint:#64748b;
+    --border:#e2e8f0;--border-strong:#cbd5e1;
+    --primary:#2563eb;--primary-hover:#1d4ed8;--primary-text:#fff;--primary-disabled:#94a3b8;
+    --accent-soft:#dbeafe;--accent-soft-text:#1e40af;--check:#16a34a;
+    --shadow-soft:0 1px 3px rgba(15,23,42,.05);
+    --shadow-card-lg:0 1px 2px rgba(15,23,42,.05),0 20px 50px -16px rgba(15,23,42,.18);
+  }
+  :root[data-theme="dark"]{color-scheme:dark;
+    --bg:#0b1220;--surface:#111827;--surface-alt:#0f172a;--surface-soft:#1f2937;
+    --text-strong:#f1f5f9;--text:#e2e8f0;--text-muted:#cbd5e1;--text-faint:#94a3b8;
+    --border:#1f2937;--border-strong:#334155;
+    --primary:#3b82f6;--primary-hover:#60a5fa;--primary-disabled:#475569;
+    --accent-soft:#1e3a8a;--accent-soft-text:#bfdbfe;--check:#4ade80;
+    --shadow-soft:0 1px 3px rgba(0,0,0,.5);
+    --shadow-card-lg:0 1px 2px rgba(0,0,0,.5),0 30px 60px -20px rgba(0,0,0,.7);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Noto Sans JP",Roboto,sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;
+    display:flex;flex-direction:column;
+    transition:background-color .2s ease,color .2s ease;-webkit-font-smoothing:antialiased}
+  a{color:var(--primary);text-decoration:none}
+  a:hover{text-decoration:underline}
+  img{display:block;max-width:100%}
+  .lang-hidden{display:none!important}
+
+  .topbar{position:sticky;top:0;z-index:50;
+    background:color-mix(in srgb,var(--bg) 88%,transparent);
+    backdrop-filter:saturate(180%) blur(14px);
+    border-bottom:1px solid color-mix(in srgb,var(--border) 70%,transparent)}
+  .topbar-inner{max-width:980px;margin:0 auto;padding:.7rem 1.4rem;
+    display:flex;align-items:center;gap:1rem}
+  .brand{display:flex;align-items:center;gap:.55rem;text-decoration:none;color:var(--text-strong);font-weight:700;font-size:.95rem}
+  .brand:hover{text-decoration:none}
+  .brand img{width:26px;height:26px;border-radius:6px}
+  .brand .ja{color:var(--text-faint);font-weight:500;font-size:.8rem;margin-left:.3rem}
+  .topbar-spacer{flex:1}
+  .icon-btn,.lang-pill,.back-link{
+    background:var(--surface);border:1px solid var(--border);border-radius:8px;
+    color:var(--text-strong);cursor:pointer;font-family:inherit;
+    height:32px;padding:0 .65rem;font-size:.82rem;font-weight:500;
+    display:inline-flex;align-items:center;justify-content:center;gap:.4rem;
+    transition:background .15s ease,border-color .15s ease;text-decoration:none}
+  .icon-btn{width:32px;padding:0;font-size:.9rem}
+  .icon-btn:hover,.lang-pill:hover,.back-link:hover{background:var(--surface-soft);border-color:var(--border-strong);text-decoration:none}
+  .icon-btn .theme-icon-light,.icon-btn .theme-icon-dark{display:none}
+  :root[data-theme="dark"] .icon-btn .theme-icon-light{display:inline}
+  :root:not([data-theme="dark"]) .icon-btn .theme-icon-dark{display:inline}
+
+  main{flex:1;padding:3rem 1.4rem 4rem;display:flex;align-items:flex-start;justify-content:center}
+  .grid{max-width:980px;width:100%;display:grid;gap:1.4rem;
+    grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)}
+  @media(max-width:820px){.grid{grid-template-columns:1fr}}
+
+  /* ── Order summary card ─────────────────── */
+  .order{
+    background:var(--surface);border:2px solid var(--primary);border-radius:16px;
+    padding:1.8rem 1.8rem 1.6rem;box-shadow:var(--shadow-card-lg);
+    position:relative;overflow:hidden}
+  .order::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(420px 220px at 0% 0%,color-mix(in srgb,var(--primary) 10%,transparent),transparent 70%)}
+  .order .head{display:flex;align-items:center;gap:.7rem;margin-bottom:1rem;position:relative}
+  .order .head img{width:42px;height:42px;border-radius:10px;border:1px solid var(--border)}
+  .order .head h2{font-size:1.05rem;color:var(--text-strong);font-weight:700;letter-spacing:-.01em}
+  .order .head .sub{font-size:.78rem;color:var(--text-faint);margin-top:.1rem}
+  .order .price-row{display:flex;align-items:baseline;gap:.5rem;
+    padding:1rem 0 .4rem;border-top:1px dashed var(--border-strong);position:relative}
+  .order .price-row .price{font-size:2.6rem;font-weight:800;color:var(--primary);letter-spacing:-.03em}
+  .order .price-row .ccy{font-size:.85rem;color:var(--text-faint);font-weight:500}
+  .order .price-row .strike{margin-left:auto;font-size:.85rem;color:var(--text-faint)}
+  .order .price-sub{font-size:.88rem;color:var(--text-muted);margin-bottom:1rem}
+  .order ul{list-style:none;display:grid;gap:.3rem;margin-bottom:.4rem}
+  .order ul li{font-size:.9rem;color:var(--text-muted);
+    display:flex;gap:.55rem;align-items:flex-start;padding:.18rem 0}
+  .order ul li::before{content:"✓";color:var(--check);font-weight:700;flex-shrink:0}
+  .order .ribbon{display:inline-flex;align-items:center;gap:.35rem;
+    background:var(--primary);color:var(--primary-text);
+    padding:.22rem .6rem;border-radius:999px;font-size:.7rem;font-weight:600;
+    text-transform:uppercase;letter-spacing:.04em;margin-bottom:.9rem;position:relative}
+
+  /* ── Checkout column ────────────────────── */
+  .checkout{display:grid;gap:1rem;align-content:start}
+  .panel{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.4rem}
+  .panel h3{font-size:.95rem;font-weight:600;color:var(--text-strong);margin-bottom:.6rem;
+    display:flex;align-items:center;gap:.5rem;letter-spacing:-.005em}
+  .panel h3 .num{
+    width:22px;height:22px;border-radius:50%;background:var(--accent-soft);color:var(--accent-soft-text);
+    display:inline-flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0}
+  .panel p{font-size:.88rem;color:var(--text-muted);line-height:1.6}
+
+  /* trial pill steps */
+  .trial-strip{display:flex;align-items:center;gap:.5rem;
+    background:var(--accent-soft);color:var(--accent-soft-text);
+    padding:.7rem .9rem;border-radius:10px;font-size:.84rem;font-weight:500;flex-wrap:wrap}
+  .trial-strip .day{
+    background:#fff;color:var(--primary);padding:.1rem .5rem;
+    border-radius:999px;font-weight:700;font-size:.78rem}
+  :root[data-theme="dark"] .trial-strip .day{background:#0b1220;color:var(--primary)}
+
+  /* Consent box */
+  .consent details{background:var(--surface-alt);border:1px solid var(--border);border-radius:10px;
+    padding:.7rem .9rem;margin-bottom:.7rem}
+  .consent summary{font-size:.85rem;color:var(--primary);cursor:pointer;list-style:none;
+    display:flex;justify-content:space-between;align-items:center;gap:.5rem}
+  .consent summary::after{content:"+";color:var(--text-faint);font-size:1.2rem;line-height:1;font-weight:400}
+  .consent details[open] summary::after{content:"−";color:var(--primary)}
+  .consent summary::-webkit-details-marker{display:none}
+  .consent details p{font-size:.82rem;color:var(--text-muted);margin-top:.55rem;line-height:1.6}
+  .consent .eu-note{display:block;font-size:.74rem;color:var(--text-faint);margin-top:.5rem;line-height:1.55}
+  .consent-label{display:flex;align-items:flex-start;gap:.6rem;
+    font-size:.88rem;color:var(--text);cursor:pointer;line-height:1.55;
+    padding:.7rem .9rem;border:1px solid var(--border);border-radius:10px;
+    background:var(--surface);transition:border-color .15s ease,background .15s ease}
+  .consent-label:hover{border-color:var(--border-strong)}
+  .consent-label.is-checked{border-color:var(--primary);background:color-mix(in srgb,var(--primary) 4%,var(--surface))}
+  .consent-label input{margin-top:.25rem;flex-shrink:0;width:16px;height:16px;accent-color:var(--primary);cursor:pointer}
+  .consent-label .sub{display:block;font-size:.74rem;color:var(--text-faint);margin-top:.3rem;font-weight:400}
+
+  /* CTA button */
+  .pay-btn{
+    width:100%;background:var(--primary);color:var(--primary-text);
+    border:0;padding:.95rem 1.2rem;border-radius:11px;
+    font-family:inherit;font-size:1rem;font-weight:600;
+    cursor:pointer;transition:background .15s ease,box-shadow .15s ease;
+    display:inline-flex;align-items:center;justify-content:center;gap:.5rem}
+  .pay-btn:hover:not(:disabled){background:var(--primary-hover);box-shadow:0 8px 24px rgba(37,99,235,.22)}
+  .pay-btn:disabled{background:var(--primary-disabled);cursor:not-allowed}
+  .pay-btn .arrow{transition:transform .15s ease}
+  .pay-btn:hover:not(:disabled) .arrow{transform:translateX(2px)}
+  .pay-btn .lock{font-size:.95rem}
+  .pay-meta{font-size:.78rem;color:var(--text-faint);text-align:center;margin-top:.7rem}
+  .stripe-badge{display:inline-flex;align-items:center;gap:.3rem;
+    color:var(--text-faint);font-size:.75rem;margin-top:.5rem}
+  .stripe-badge strong{color:var(--text-muted);font-weight:600}
+
+  /* Trust strip below CTA */
+  .trust-row{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:.4rem}
+  .trust-row .t{
+    background:var(--surface);border:1px solid var(--border);border-radius:10px;
+    padding:.7rem .8rem}
+  .trust-row .t h4{font-size:.82rem;color:var(--text-strong);font-weight:600;display:flex;gap:.4rem;align-items:center;margin-bottom:.2rem}
+  .trust-row .t h4 .ic{width:22px;height:22px;border-radius:6px;background:var(--accent-soft);color:var(--accent-soft-text);
+    display:inline-flex;align-items:center;justify-content:center;font-size:.78rem}
+  .trust-row .t p{font-size:.78rem;color:var(--text-faint);line-height:1.55;margin:0}
+  .links{font-size:.78rem;color:var(--text-faint);text-align:center;margin-top:1rem}
+  .links a{color:var(--text-muted)}
+  .links a:hover{color:var(--primary)}
+
+  /* spinner */
+  .btn-spinner{display:inline-block;width:14px;height:14px;
+    border:2px solid rgba(255,255,255,.45);border-top-color:#fff;border-radius:50%;
+    animation:btn-spin .7s linear infinite}
+  @keyframes btn-spin{to{transform:rotate(360deg)}}
+</style>
+<script>
+  (function(){try{var t=localStorage.getItem('gaf-theme');if(t!=='light'&&t!=='dark')t=(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';document.documentElement.setAttribute('data-theme',t);var l=localStorage.getItem('gaf-lang')||'en';document.documentElement.setAttribute('data-lang',l)}catch(_){}})();
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="Landing.html">
+      <img src="assets/icon-512.png" alt="">
+      <span>Grab All Files<span class="ja" data-lang="ja"> ／ ファイル一括ダウンロード</span></span>
+    </a>
+    <div class="topbar-spacer"></div>
+    <a class="back-link" href="Landing.html">
+      <span aria-hidden="true">←</span>
+      <span data-lang="en">Back</span><span data-lang="ja">戻る</span>
+    </a>
+    <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle theme">
+      <span class="theme-icon-dark" aria-hidden="true">🌙</span>
+      <span class="theme-icon-light" aria-hidden="true">☀️</span>
+    </button>
+    <button id="lang-pill" class="lang-pill" type="button">
+      <span data-lang="en">EN · 日本語</span><span data-lang="ja">日本語 · EN</span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <div class="grid">
+
+    <!-- ── Order summary ── -->
+    <div class="order">
+      <span class="ribbon"><span data-lang="en">14-day free trial included</span><span data-lang="ja">14日間無料トライアル付き</span></span>
+      <div class="head">
+        <img src="assets/icon-512.png" alt="">
+        <div>
+          <h2>Grab All Files<span data-lang="ja"> ／ ファイル一括ダウンロード</span></h2>
+          <div class="sub">
+            <span data-lang="en">Lifetime license · Chrome™ &amp; Edge™</span>
+            <span data-lang="ja">永続ライセンス · Chrome™ / Edge™ 対応</span>
+          </div>
+        </div>
+      </div>
+      <div class="price-row">
+        <span class="price">$19.99</span>
+        <span class="ccy">USD</span>
+        <span class="strike">
+          <span data-lang="en">One-time payment</span>
+          <span data-lang="ja">買い切り（一度のみ）</span>
+        </span>
+      </div>
+      <p class="price-sub">
+        <span data-lang="en">No subscription. No auto-renew. Pay once, keep forever.</span>
+        <span data-lang="ja">サブスクなし・自動更新なし。一度の購入で永続利用。</span>
+      </p>
+      <ul>
+        <li><span data-lang="en">Activates on up to <strong>3 devices</strong> per license</span><span data-lang="ja">1ライセンスで最大 <strong>3台</strong> まで有効化</span></li>
+        <li><span data-lang="en">All features unlocked — bulk save, PDF merge, ZIP, CSV</span><span data-lang="ja">全機能ロック解除（一括保存・PDF結合・ZIP・CSV）</span></li>
+        <li><span data-lang="en">Future updates included — Manifest V3 ready</span><span data-lang="ja">今後のアップデート込み（Manifest V3 対応）</span></li>
+        <li><span data-lang="en">Local processing — no upload, no server</span><span data-lang="ja">ローカル処理 — アップロード/サーバー送信なし</span></li>
+        <li><span data-lang="en">10 UI languages (EN / JA / ES / FR / DE / IT / KO / PT-BR / ZH)</span><span data-lang="ja">10言語UI（EN/JA/ES/FR/DE/IT/KO/PT-BR/ZH）</span></li>
+      </ul>
+    </div>
+
+    <!-- ── Checkout ── -->
+    <div class="checkout">
+
+      <div class="panel">
+        <h3><span class="num">1</span>
+          <span data-lang="en">Try free for 14 days</span>
+          <span data-lang="ja">まずは14日間 無料でお試し</span>
+        </h3>
+        <div class="trial-strip">
+          <span class="day">Day 0</span>
+          <span data-lang="en">Install →</span><span data-lang="ja">インストール →</span>
+          <span class="day">Day 1–14</span>
+          <span data-lang="en">Full features, no card →</span><span data-lang="ja">全機能・カード不要 →</span>
+          <span class="day">Day 15+</span>
+          <span data-lang="en">Decide</span><span data-lang="ja">納得して購入</span>
+        </div>
+        <p style="margin-top:.7rem">
+          <span data-lang="en">If you haven't tried it yet, the trial is the right place to start — full features for 14 days, no credit card required.</span>
+          <span data-lang="ja">まだ試していない方は、まず無料トライアルから。カード登録なしで14日間、全機能をご利用いただけます。</span>
+        </p>
+      </div>
+
+      <div class="panel">
+        <h3><span class="num">2</span>
+          <span data-lang="en">Confirm &amp; pay</span>
+          <span data-lang="ja">確認してお支払い</span>
+        </h3>
+        <div class="consent">
+          <details>
+            <summary>
+              <span><span data-lang="en">About this consent</span><span data-lang="ja">この同意について</span></span>
+            </summary>
+            <p data-lang="en">Your license key is delivered by email immediately after payment, which is why we ask for explicit consent below.</p>
+            <p data-lang="ja">購入後すぐにライセンスキーをメールでお送りするため、以下の同意をお願いしています。</p>
+            <small class="eu-note" data-lang="en">EU/EEA: digital content delivered immediately is excluded from the 14-day right of withdrawal once you give express consent (Directive 2011/83/EU, Art. 16(m)).</small>
+            <small class="eu-note" data-lang="ja">EU/EEA在住の方：即時提供されるデジタル商品は、明示的な同意により14日間の撤回権が適用対象外となります（EU指令 2011/83/EU 第16条(m)）。</small>
+          </details>
+          <label class="consent-label" id="consent-label">
+            <input type="checkbox" id="consent">
+            <span>
+              <span data-lang="en">I agree to receive my license key <strong>immediately after purchase</strong>.<small class="sub">EU/EEA: I acknowledge that the 14-day right of withdrawal will not apply.</small></span>
+              <span data-lang="ja">ライセンスキーを<strong>購入後すぐに受け取ること</strong>に同意します。<small class="sub">EU/EEA在住の方：これにより14日間の撤回権が適用されないことを了承します。</small></span>
+            </span>
+          </label>
+        </div>
+
+        <button type="button" class="pay-btn" id="pay-btn" disabled style="margin-top:1rem">
+          <span class="lock" aria-hidden="true">🔒</span>
+          <span data-lang="en">Proceed to secure payment — $19.99</span>
+          <span data-lang="ja">安全な決済へ進む — $19.99</span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </button>
+        <div class="pay-meta">
+          <span data-lang="en">License key sent to your email right after payment.</span>
+          <span data-lang="ja">決済完了後、ライセンスキーをメールで即時送信します。</span>
+        </div>
+      </div>
+
+      <div class="trust-row">
+        <div class="t">
+          <h4><span class="ic">🔒</span><span data-lang="en">Secure checkout</span><span data-lang="ja">安全な決済</span></h4>
+          <p data-lang="en">Powered by <strong>Stripe</strong>. Card details never touch our servers.</p>
+          <p data-lang="ja">決済は <strong>Stripe</strong>。カード情報は当方サーバーに到達しません。</p>
+        </div>
+        <div class="t">
+          <h4><span class="ic">📨</span><span data-lang="en">Instant delivery</span><span data-lang="ja">即時お届け</span></h4>
+          <p data-lang="en">License key arrives in your inbox within seconds.</p>
+          <p data-lang="ja">ライセンスキーは数秒でメール到着。</p>
+        </div>
+        <div class="t">
+          <h4><span class="ic">↺</span><span data-lang="en">30-day defect refund</span><span data-lang="ja">30日不具合返金</span></h4>
+          <p data-lang="en">If a technical defect prevents use, contact within 30 days for a full refund.</p>
+          <p data-lang="ja">技術的な不具合で動作しない場合、30日以内のご連絡で全額返金。</p>
+        </div>
+        <div class="t">
+          <h4><span class="ic">🌐</span><span data-lang="en">Vendor</span><span data-lang="ja">販売者</span></h4>
+          <p data-lang="en">Tetsunobu Kawai (sole proprietor, Japan). Independent.</p>
+          <p data-lang="ja">河井 哲信（個人事業主・日本）独立運営。</p>
+        </div>
+      </div>
+
+      <p class="links">
+        <a href="terms.html" data-lang="en">Terms of Service</a><a href="terms.html" data-lang="ja">利用規約</a>
+        &middot;
+        <a href="privacy-policy.html" data-lang="en">Privacy Policy</a><a href="privacy-policy.html" data-lang="ja">プライバシーポリシー</a>
+        &middot;
+        <a href="legal.html" data-lang="en">Legal Notice</a><a href="legal.html" data-lang="ja">特定商取引法に基づく表記</a>
+      </p>
+    </div>
+  </div>
+</main>
+
+<script>
+  // Bilingual visibility ───────────────────────────────────
+  (function () {
+    var root = document.documentElement;
+    function applyLang(l) {
+      root.setAttribute('data-lang', l);
+      try { localStorage.setItem('gaf-lang', l); } catch (_) {}
+      document.querySelectorAll('[data-lang]').forEach(function (el) {
+        var langs = (el.getAttribute('data-lang') || '').split(/\s+/);
+        if (langs.indexOf(l) !== -1) el.classList.remove('lang-hidden');
+        else el.classList.add('lang-hidden');
+      });
+    }
+    var saved;
+    try { saved = localStorage.getItem('gaf-lang') || 'en'; } catch (_) { saved = 'en'; }
+    if (saved !== 'en' && saved !== 'ja') saved = 'en';
+    applyLang(saved);
+
+    document.getElementById('theme-toggle').addEventListener('click', function () {
+      var t = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', t);
+      try { localStorage.setItem('gaf-theme', t); } catch (_) {}
+    });
+    document.getElementById('lang-pill').addEventListener('click', function () {
+      var cur = root.getAttribute('data-lang') === 'ja' ? 'en' : 'ja';
+      applyLang(cur);
+    });
+  })();
+
+  // Consent + pay button ───────────────────────────────────
+  (function () {
+    var cb = document.getElementById('consent');
+    var btn = document.getElementById('pay-btn');
+    var label = document.getElementById('consent-label');
+    function sync() {
+      btn.disabled = !cb.checked;
+      label.classList.toggle('is-checked', cb.checked);
+    }
+    cb.addEventListener('change', sync); sync();
+    btn.addEventListener('click', function () {
+      if (btn.disabled) return;
+      btn.disabled = true;
+      btn.innerHTML = '<span class="btn-spinner"></span>' +
+        '<span>' + (document.documentElement.getAttribute('data-lang') === 'ja'
+          ? '決済画面に移動しています…' : 'Redirecting to secure checkout…') + '</span>';
+    });
+  })();
+</script>
+</body>
+</html>
