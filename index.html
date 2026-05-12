@@ -157,146 +157,259 @@
   <style>
     :root {
       color-scheme: light;
-      --bg: #f8f9fa;
-      --surface: #fff;
-      --surface-alt: #f8fafc;
-      --surface-soft: #f1f5f9;
-      --text: #1a1a1a;
-      --text-strong: #1e293b;
-      --text-muted: #475569;
-      --text-faint: #64748b;
-      --border: #e2e8f0;
-      --border-strong: #cbd5e1;
-      --primary: #2563eb;
-      --primary-hover: #1d4ed8;
-      --primary-text: #fff;
-      --accent-soft: #dbeafe;
-      --accent-soft-text: #1e40af;
-      --accent-icon: #2563eb;
-      --shadow-primary: 0 4px 16px rgba(37, 99, 235, 0.15);
-      --shadow-soft: 0 1px 3px rgba(0,0,0,0.05);
-      --shadow-btn: 0 4px 12px rgba(37, 99, 235, 0.25);
-      --footer-bg: #1e293b;
-      --footer-text: #cbd5e1;
-      --footer-link: #93c5fd;
-      --footer-border: #334155;
-      --footer-meta: #94a3b8;
-      --footer-h: #fff;
-      --details-open-border: #93c5fd;
+      --bg: #f8f9fa; --surface: #ffffff; --surface-alt: #f8fafc; --surface-soft: #f1f5f9; --surface-deep: #eef2f7;
+      --text: #1a1a1a; --text-strong: #0f172a; --text-muted: #475569; --text-faint: #64748b;
+      --border: #e2e8f0; --border-strong: #cbd5e1;
+      --primary: #2563eb; --primary-hover: #1d4ed8; --primary-text: #ffffff;
+      --accent-soft: #dbeafe; --accent-soft-text: #1e40af; --accent-icon: #2563eb;
       --check: #16a34a;
+      --footer-bg: #0f172a; --footer-text: #cbd5e1; --footer-link: #93c5fd; --footer-border: #1e293b; --footer-meta: #94a3b8; --footer-h: #f8fafc;
+      --shadow-soft: 0 1px 3px rgba(15,23,42,0.05);
+      --shadow-card: 0 1px 2px rgba(15,23,42,0.04), 0 4px 18px rgba(15,23,42,0.04);
+      --shadow-card-lg: 0 1px 2px rgba(15,23,42,0.05), 0 20px 50px -16px rgba(15,23,42,0.18);
+      --shadow-primary: 0 8px 24px rgba(37,99,235,0.18);
     }
     :root[data-theme="dark"] {
       color-scheme: dark;
-      --bg: #0b1220;
-      --surface: #111827;
-      --surface-alt: #0f172a;
-      --surface-soft: #1f2937;
-      --text: #e2e8f0;
-      --text-strong: #f1f5f9;
-      --text-muted: #cbd5e1;
-      --text-faint: #94a3b8;
-      --border: #1f2937;
-      --border-strong: #334155;
-      --primary: #3b82f6;
-      --primary-hover: #60a5fa;
-      --primary-text: #fff;
-      --accent-soft: #1e3a8a;
-      --accent-soft-text: #bfdbfe;
-      --accent-icon: #93c5fd;
-      --shadow-primary: 0 4px 16px rgba(0, 0, 0, 0.5);
-      --shadow-soft: 0 1px 3px rgba(0,0,0,0.5);
-      --shadow-btn: 0 4px 12px rgba(0, 0, 0, 0.5);
-      --footer-bg: #060a13;
-      --footer-text: #94a3b8;
-      --footer-link: #93c5fd;
-      --footer-border: #1f2937;
-      --footer-meta: #64748b;
-      --footer-h: #f1f5f9;
-      --details-open-border: #3b82f6;
+      --bg: #0b1220; --surface: #111827; --surface-alt: #0f172a; --surface-soft: #1f2937; --surface-deep: #0a1019;
+      --text: #e2e8f0; --text-strong: #f1f5f9; --text-muted: #cbd5e1; --text-faint: #94a3b8;
+      --border: #1f2937; --border-strong: #334155;
+      --primary: #3b82f6; --primary-hover: #60a5fa;
+      --accent-soft: #1e3a8a; --accent-soft-text: #bfdbfe; --accent-icon: #93c5fd;
       --check: #4ade80;
+      --footer-bg: #04070d; --footer-text: #94a3b8; --footer-border: #1f2937; --footer-meta: #64748b; --footer-h: #f1f5f9;
+      --shadow-soft: 0 1px 3px rgba(0,0,0,0.5);
+      --shadow-card: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.35);
+      --shadow-card-lg: 0 1px 2px rgba(0,0,0,0.5), 0 30px 60px -20px rgba(0,0,0,0.7);
+      --shadow-primary: 0 8px 24px rgba(0,0,0,0.6);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", Roboto, sans-serif; line-height: 1.65; color: var(--text); background: var(--bg); transition: background-color 0.2s ease, color 0.2s ease; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", Roboto, sans-serif; line-height: 1.65; color: var(--text); background: var(--bg); transition: background-color 0.2s ease, color 0.2s ease; -webkit-font-smoothing: antialiased; }
     img { max-width: 100%; height: auto; display: block; }
-
-    .header-controls { position: fixed; top: 1rem; right: 1rem; display: flex; gap: 0.45rem; z-index: 100; }
-    .lang-sel { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 0.35rem 0.6rem; font-size: 0.85rem; color: var(--primary); cursor: pointer; box-shadow: var(--shadow-soft); }
-    .theme-toggle { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 0; font-size: 1rem; line-height: 1; color: var(--primary); cursor: pointer; box-shadow: var(--shadow-soft); display: inline-flex; align-items: center; justify-content: center; width: 2.15rem; height: 2.15rem; font-family: inherit; }
-    .theme-toggle:hover { background: var(--surface-soft); }
-    .theme-toggle .theme-icon-light, .theme-toggle .theme-icon-dark { display: none; }
-    :root[data-theme="dark"] .theme-toggle .theme-icon-light { display: inline; }
-    :root:not([data-theme="dark"]) .theme-toggle .theme-icon-dark { display: inline; }
-
-    .container { max-width: 880px; margin: 0 auto; padding: 0 1.2rem; }
+    a { color: inherit; }
 
     [data-lang] { display: none; }
-    [data-lang].active { display: block; }
-
-    .hero { padding: 4rem 0 3rem; text-align: center; }
-    .hero-logo { width: 96px; height: 96px; margin: 0 auto 1.2rem; border-radius: 22px; box-shadow: var(--shadow-primary); }
-    .hero h1 { font-size: 2.2rem; line-height: 1.25; margin-bottom: 0.8rem; color: var(--text-strong); }
-    .hero .lead { font-size: 1.1rem; color: var(--text-muted); max-width: 640px; margin: 0 auto 1.8rem; }
-    .hero-cta { display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-top: 0.6rem; }
-    .btn { display: inline-block; padding: 0.75rem 1.6rem; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 0.95rem; transition: transform 0.05s ease, box-shadow 0.15s ease, background 0.15s ease; }
-    .btn-primary { background: var(--primary); color: var(--primary-text); }
-    .btn-primary:hover { background: var(--primary-hover); box-shadow: var(--shadow-btn); }
-    .btn-secondary { background: var(--surface); color: var(--primary); border: 1px solid var(--border-strong); }
-    .btn-secondary:hover { background: var(--surface-soft); }
-    .badge { display: inline-block; background: var(--accent-soft); color: var(--accent-soft-text); padding: 0.2rem 0.7rem; border-radius: 999px; font-size: 0.78rem; font-weight: 600; margin-bottom: 1rem; }
-
-    .store-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.55rem; margin-top: 1.1rem; font-size: 0.85rem; color: var(--text-faint); }
-    .store-row .store-label { margin-right: 0.15rem; }
-    .store-btn { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.45rem 0.9rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600; text-decoration: none; background: var(--surface); color: var(--text-strong); border: 1px solid var(--border-strong); transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease; }
-    .store-btn:hover { background: var(--surface-soft); border-color: var(--primary); color: var(--primary); }
-    .store-btn .store-arrow { font-size: 0.78rem; opacity: 0.7; }
-
-    section.block { padding: 2.5rem 0; }
-    section.block.alt { background: var(--surface); }
-    section.block h2 { font-size: 1.5rem; margin-bottom: 0.8rem; color: var(--text-strong); }
-    section.block p.section-lead { color: var(--text-muted); max-width: 640px; margin-bottom: 1.6rem; }
-
-    .grid { display: grid; gap: 1rem; grid-template-columns: 1fr; }
-    @media (min-width: 640px) { .grid.cols-2 { grid-template-columns: 1fr 1fr; } }
-    @media (min-width: 768px) { .grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; } }
-
-    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.3rem; }
-    section.block.alt .card { background: var(--surface-alt); }
-    .card h3 { font-size: 1.02rem; color: var(--text-strong); margin-bottom: 0.45rem; display: flex; align-items: center; gap: 0.5rem; }
-    .card .icon { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 7px; background: var(--accent-soft); color: var(--accent-icon); font-size: 0.9rem; flex-shrink: 0; }
-    .card p { font-size: 0.92rem; color: var(--text-muted); margin: 0; }
-
-    .steps { counter-reset: step; display: grid; gap: 0.9rem; }
-    .step { display: flex; gap: 0.9rem; align-items: flex-start; background: var(--surface); padding: 1rem 1.2rem; border-radius: 10px; border: 1px solid var(--border); }
-    .step::before { counter-increment: step; content: counter(step); flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--primary); color: var(--primary-text); font-weight: 700; display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; }
-    .step h3 { font-size: 1rem; margin-bottom: 0.25rem; color: var(--text-strong); }
-    .step p { font-size: 0.92rem; color: var(--text-muted); margin: 0; }
-
-    .faq details { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 0.7rem; padding: 0.9rem 1.2rem; }
-    .faq details[open] { border-color: var(--details-open-border); }
-    .faq summary { font-weight: 600; cursor: pointer; color: var(--text-strong); font-size: 0.98rem; }
-    .faq details p { font-size: 0.92rem; color: var(--text-muted); margin-top: 0.6rem; }
-
-    .pricing-card { background: var(--surface); border: 2px solid var(--primary); border-radius: 12px; padding: 1.8rem; text-align: center; max-width: 420px; margin: 0 auto; }
-    .pricing-card .price { font-size: 2.4rem; font-weight: 700; color: var(--primary); margin: 0.4rem 0; }
-    .pricing-card .price small { font-size: 0.85rem; color: var(--text-faint); font-weight: 400; }
-    .pricing-card ul { list-style: none; padding: 0; margin: 1.2rem 0; text-align: left; }
-    .pricing-card ul li { padding: 0.4rem 0; font-size: 0.92rem; color: var(--text-muted); }
-    .pricing-card ul li::before { content: "✓"; color: var(--check); font-weight: 700; margin-right: 0.5rem; }
-
-    footer { padding: 2.5rem 0 3rem; background: var(--footer-bg); color: var(--footer-text); }
-    footer h3 { font-size: 0.95rem; margin-bottom: 0.6rem; color: var(--footer-h); }
-    footer p { font-size: 0.85rem; line-height: 1.6; margin-bottom: 0.6rem; color: var(--footer-text); }
-    footer a { color: var(--footer-link); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-    footer .legal-links { margin: 1rem 0; }
-    footer .legal-links a { display: inline-block; margin-right: 1.2rem; font-size: 0.88rem; }
-    footer .footer-meta { margin-top: 1.5rem; padding-top: 1.2rem; border-top: 1px solid var(--footer-border); font-size: 0.78rem; color: var(--footer-meta); line-height: 1.55; }
-    footer .footer-meta p { font-size: 0.78rem; color: var(--footer-meta); }
+    [data-lang].active { display: revert; }
 
     .skip-link { position: absolute; left: -9999px; top: 0; padding: 0.5rem 1rem; background: var(--primary); color: var(--primary-text); }
     .skip-link:focus { left: 0; z-index: 200; }
+
+    /* Top nav */
+    .nav { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: saturate(180%) blur(14px); -webkit-backdrop-filter: saturate(180%) blur(14px); border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent); }
+    .nav-inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; gap: 1.2rem; padding: 0.7rem 1.4rem; }
+    .brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+    .brand img { width: 28px; height: 28px; border-radius: 7px; }
+    .brand-name { font-weight: 700; color: var(--text-strong); font-size: 0.95rem; letter-spacing: -0.01em; }
+    .nav-links { display: flex; gap: 1.3rem; margin-left: 1.4rem; }
+    @media (max-width: 820px) { .nav-links { display: none; } }
+    .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.88rem; font-weight: 500; }
+    .nav-links a:hover { color: var(--text-strong); }
+    .nav-spacer { flex: 1; }
+    .nav-controls { display: flex; align-items: center; gap: 0.4rem; }
+    .icon-btn { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--text-strong); cursor: pointer; font-family: inherit; height: 34px; width: 34px; padding: 0; display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; transition: background 0.15s ease, border-color 0.15s ease; }
+    .icon-btn:hover { background: var(--surface-soft); border-color: var(--border-strong); }
+    .icon-btn .theme-icon-light, .icon-btn .theme-icon-dark { display: none; }
+    :root[data-theme="dark"] .icon-btn .theme-icon-light { display: inline; }
+    :root:not([data-theme="dark"]) .icon-btn .theme-icon-dark { display: inline; }
+    .lang-sel { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--text-strong); cursor: pointer; font-family: inherit; height: 34px; padding: 0 0.55rem; font-size: 0.82rem; font-weight: 500; transition: background 0.15s ease, border-color 0.15s ease; }
+    .lang-sel:hover { background: var(--surface-soft); border-color: var(--border-strong); }
+    .nav-cta { background: var(--primary); color: var(--primary-text); border: 0; padding: 0 0.95rem; height: 34px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem; transition: background 0.15s ease; }
+    .nav-cta:hover { background: var(--primary-hover); }
+    @media (max-width: 540px) { .nav-cta .nav-cta-price { display: none; } }
+
+    /* Layout */
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 1.4rem; }
+    .wrap-narrow { max-width: 880px; margin: 0 auto; padding: 0 1.4rem; }
+
+    /* Hero */
+    .hero { padding: 4.5rem 0 4rem; position: relative; overflow: hidden; }
+    .hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(800px 380px at 14% 0%, color-mix(in srgb, var(--primary) 10%, transparent), transparent 60%), radial-gradient(700px 340px at 90% 30%, color-mix(in srgb, var(--primary) 7%, transparent), transparent 65%); pointer-events: none; }
+    .hero-grid { display: grid; gap: 3rem; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); align-items: center; position: relative; }
+    @media (max-width: 940px) { .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--surface); border: 1px solid var(--border); color: var(--text-strong); padding: 0.3rem 0.75rem 0.3rem 0.4rem; border-radius: 999px; font-size: 0.78rem; font-weight: 500; box-shadow: var(--shadow-soft); }
+    .hero-eyebrow .dot { width: 18px; height: 18px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-soft-text); display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem; }
+    .hero-eyebrow .sep { color: var(--text-faint); }
+    .hero-eyebrow .price-tag { color: var(--primary); font-weight: 600; }
+    .hero h1 { margin-top: 1.2rem; font-size: clamp(2rem, 4.2vw, 3.2rem); line-height: 1.1; letter-spacing: -0.025em; color: var(--text-strong); font-weight: 700; }
+    .hero h1 .em { color: var(--primary); }
+    .hero-lead { font-size: 1.05rem; color: var(--text-muted); margin-top: 1.2rem; max-width: 560px; }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.6rem; }
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.1rem; border-radius: 9px; font-weight: 600; font-size: 0.92rem; text-decoration: none; border: 1px solid transparent; transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease; cursor: pointer; font-family: inherit; }
+    .btn-primary { background: var(--primary); color: var(--primary-text); }
+    .btn-primary:hover { background: var(--primary-hover); box-shadow: var(--shadow-primary); }
+    .btn-primary .arrow { transition: transform 0.15s ease; }
+    .btn-primary:hover .arrow { transform: translateX(2px); }
+    .btn-ghost { background: var(--surface); color: var(--text-strong); border-color: var(--border-strong); }
+    .btn-ghost:hover { background: var(--surface-soft); }
+
+    .hero-stores { display: flex; align-items: center; gap: 0.6rem; margin-top: 1.4rem; flex-wrap: wrap; font-size: 0.83rem; color: var(--text-faint); }
+    .store-btn { display: inline-flex; align-items: center; gap: 0.45rem; background: var(--surface); border: 1px solid var(--border); color: var(--text-strong); text-decoration: none; padding: 0.42rem 0.8rem; border-radius: 8px; font-size: 0.82rem; font-weight: 500; transition: border-color 0.15s ease, color 0.15s ease; }
+    .store-btn:hover { border-color: var(--primary); color: var(--primary); }
+    .store-btn svg { width: 14px; height: 14px; }
+
+    .hero-trust { display: flex; gap: 1.6rem; flex-wrap: wrap; margin-top: 2.2rem; padding-top: 1.4rem; border-top: 1px dashed var(--border-strong); font-size: 0.82rem; color: var(--text-faint); }
+    .hero-trust .ti strong { display: block; color: var(--text-strong); font-size: 1.05rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 0.05rem; }
+
+    /* Hero mock */
+    .mock-stage { position: relative; min-height: 460px; }
+    .mock-window { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow-card-lg); overflow: hidden; position: relative; width: 100%; max-width: 480px; margin: 0 auto; }
+    .mock-titlebar { display: flex; align-items: center; gap: 0.45rem; padding: 0.6rem 0.9rem; background: var(--surface-soft); border-bottom: 1px solid var(--border); }
+    .mock-titlebar .dots { display: flex; gap: 0.3rem; }
+    .mock-titlebar .dots span { width: 10px; height: 10px; border-radius: 50%; background: var(--border-strong); }
+    .mock-titlebar .url { flex: 1; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 0.18rem 0.5rem; font-size: 0.72rem; color: var(--text-faint); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .mock-titlebar .ext-pill { display: inline-flex; align-items: center; gap: 0.35rem; background: var(--accent-soft); color: var(--accent-soft-text); padding: 0.18rem 0.5rem; border-radius: 6px; font-size: 0.72rem; font-weight: 600; }
+    .mock-titlebar .ext-pill img { width: 14px; height: 14px; border-radius: 3px; }
+    .mock-toolbar { display: flex; align-items: center; gap: 0.5rem; padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--border); background: var(--surface); flex-wrap: wrap; }
+    .mock-search { flex: 1; min-width: 0; background: var(--surface-soft); border: 1px solid var(--border); border-radius: 7px; padding: 0.35rem 0.5rem 0.35rem 0.65rem; font-size: 0.78rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.45rem; }
+    .mock-chip { background: var(--surface-soft); border: 1px solid var(--border); border-radius: 7px; padding: 0.25rem 0.55rem; font-size: 0.72rem; color: var(--text-muted); display: inline-flex; align-items: center; gap: 0.3rem; white-space: nowrap; }
+    .mock-chip.active { background: var(--accent-soft); color: var(--accent-soft-text); border-color: color-mix(in srgb, var(--primary) 35%, transparent); }
+    .mock-chip .count { color: var(--text-faint); }
+    .mock-chip.active .count { color: var(--accent-soft-text); opacity: 0.75; }
+    .mock-summary { padding: 0.55rem 0.9rem; font-size: 0.74rem; color: var(--text-faint); background: var(--surface-alt); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .mock-summary .sel { color: var(--primary); font-weight: 600; }
+    .mock-list { padding: 0.2rem 0; }
+    .mock-row { display: grid; grid-template-columns: 18px 30px 1fr auto; gap: 0.6rem; align-items: center; padding: 0.42rem 0.9rem; font-size: 0.78rem; border-bottom: 1px solid color-mix(in srgb, var(--border) 60%, transparent); }
+    .mock-row:last-child { border-bottom: 0; }
+    .mock-row.sel { background: color-mix(in srgb, var(--primary) 6%, transparent); }
+    .mock-check { width: 14px; height: 14px; border-radius: 4px; border: 1.5px solid var(--border-strong); display: inline-flex; align-items: center; justify-content: center; background: var(--surface); }
+    .mock-row.sel .mock-check { background: var(--primary); border-color: var(--primary); color: #fff; }
+    .mock-check svg { width: 9px; height: 9px; display: none; }
+    .mock-row.sel .mock-check svg { display: block; }
+    .ext-tag { width: 30px; height: 22px; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.62rem; font-weight: 700; color: #fff; letter-spacing: 0.02em; }
+    .ext-pdf { background: #dc2626; } .ext-docx { background: #2563eb; } .ext-xlsx { background: #16a34a; } .ext-zip { background: #f59e0b; } .ext-csv { background: #0ea5e9; } .ext-png { background: #8b5cf6; }
+    .mock-name { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: var(--text-strong); font-weight: 500; }
+    .mock-name .src { display: block; font-size: 0.66rem; color: var(--text-faint); font-weight: 400; margin-top: 0.05rem; }
+    .mock-size { color: var(--text-faint); font-size: 0.72rem; font-variant-numeric: tabular-nums; }
+    .mock-row.scanning { animation: scanflash 1.6s ease-in-out infinite; }
+    @keyframes scanflash { 0%, 100% { background: transparent; } 50% { background: color-mix(in srgb, var(--primary) 8%, transparent); } }
+    .mock-footer { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.7rem 0.9rem; border-top: 1px solid var(--border); background: var(--surface-alt); }
+    .mock-footer-actions { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .mock-btn { background: var(--surface); border: 1px solid var(--border); color: var(--text-strong); padding: 0.35rem 0.6rem; border-radius: 7px; font-size: 0.72rem; font-weight: 500; display: inline-flex; align-items: center; gap: 0.3rem; cursor: pointer; }
+    .mock-btn.primary { background: var(--primary); border-color: var(--primary); color: var(--primary-text); }
+    .mock-progress { height: 4px; background: var(--surface-soft); border-bottom: 1px solid var(--border); overflow: hidden; }
+    .mock-progress span { display: block; height: 100%; background: linear-gradient(90deg, transparent, var(--primary), transparent); width: 30%; animation: scanbar 2.4s linear infinite; }
+    @keyframes scanbar { 0% { transform: translateX(-100%); } 100% { transform: translateX(400%); } }
+    .mock-orbit { position: absolute; inset: 0; pointer-events: none; }
+    .mock-orbit .chip { position: absolute; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 0.35rem 0.6rem; font-size: 0.72rem; color: var(--text-muted); box-shadow: var(--shadow-card); display: inline-flex; align-items: center; gap: 0.4rem; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; animation: float 6s ease-in-out infinite; }
+    .mock-orbit .chip strong { color: var(--text-strong); font-weight: 600; }
+    .mock-orbit .chip .d { width: 6px; height: 6px; border-radius: 50%; background: var(--check); }
+    .mock-orbit .chip:nth-child(1) { top: 6%; left: -6%; animation-delay: 0s; }
+    .mock-orbit .chip:nth-child(2) { top: 38%; right: -10%; animation-delay: -1.5s; }
+    .mock-orbit .chip:nth-child(3) { bottom: 6%; left: -2%; animation-delay: -3s; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+    @media (max-width: 940px) { .mock-orbit .chip:nth-child(1) { left: 2%; } .mock-orbit .chip:nth-child(2) { right: 2%; } .mock-orbit .chip:nth-child(3) { left: 6%; } }
+
+    /* Roles strip */
+    .logos-strip { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 1.3rem 0; background: var(--surface-alt); }
+    .logos-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem 2.4rem; color: var(--text-faint); font-size: 0.82rem; }
+    .logos-inner .role { color: var(--text-muted); font-weight: 500; display: inline-flex; align-items: center; gap: 0.4rem; }
+    .logos-inner .role .icon { color: var(--primary); }
+
+    /* Sections */
+    section.block { padding: 4.5rem 0; }
+    section.block.alt { background: var(--surface-alt); }
+    .section-head { max-width: 720px; margin: 0 auto 2.4rem; text-align: center; }
+    .section-eyebrow { display: inline-block; background: var(--accent-soft); color: var(--accent-soft-text); padding: 0.25rem 0.65rem; border-radius: 999px; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; margin-bottom: 0.85rem; }
+    .section-head h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); line-height: 1.15; letter-spacing: -0.02em; color: var(--text-strong); font-weight: 700; }
+    .section-head p { color: var(--text-muted); font-size: 1.02rem; margin-top: 0.8rem; }
+
+    /* Detect grid */
+    .detect-grid { display: grid; grid-template-columns: 1fr 1.1fr 1fr; gap: 1rem; align-items: stretch; }
+    @media (max-width: 880px) { .detect-grid { grid-template-columns: 1fr; } }
+    .detect-sources, .detect-results { display: grid; gap: 0.5rem; align-content: center; }
+    .src-row, .res-row { background: var(--surface); border: 1px solid var(--border); border-radius: 9px; padding: 0.7rem 0.85rem; display: flex; align-items: center; gap: 0.6rem; font-size: 0.84rem; color: var(--text-strong); box-shadow: var(--shadow-soft); }
+    .src-row .tag, .res-row .tag { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.7rem; background: var(--surface-soft); color: var(--text-faint); padding: 0.15rem 0.4rem; border-radius: 5px; }
+    .src-row .sub, .res-row .sub { margin-left: auto; font-size: 0.72rem; color: var(--text-faint); }
+    .detect-core { background: linear-gradient(180deg, var(--accent-soft), color-mix(in srgb, var(--surface) 75%, var(--accent-soft))); border: 1px solid color-mix(in srgb, var(--primary) 30%, transparent); border-radius: 14px; padding: 1.4rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; position: relative; box-shadow: var(--shadow-card); }
+    .detect-core .core-logo { width: 56px; height: 56px; border-radius: 14px; background: var(--surface); padding: 6px; box-shadow: var(--shadow-card); }
+    .detect-core h3 { font-size: 1rem; color: var(--text-strong); font-weight: 700; }
+    .detect-core p { font-size: 0.82rem; color: var(--accent-soft-text); margin: 0; }
+    .detect-core .pulse { position: absolute; inset: 0; border-radius: 14px; border: 1px solid color-mix(in srgb, var(--primary) 50%, transparent); animation: corepulse 2.4s ease-out infinite; pointer-events: none; }
+    @keyframes corepulse { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.04); opacity: 0; } }
+
+    /* Features grid */
+    .features-grid { display: grid; gap: 1rem; grid-template-columns: repeat(3, 1fr); }
+    @media (max-width: 880px) { .features-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .features-grid { grid-template-columns: 1fr; } }
+    .feature-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.4rem 1.4rem 1.5rem; transition: border-color 0.15s ease, box-shadow 0.15s ease; }
+    .feature-card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-card); }
+    .feature-card .tile { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 9px; background: var(--accent-soft); color: var(--accent-icon); font-size: 1.1rem; margin-bottom: 0.9rem; }
+    .feature-card h3 { font-size: 1.02rem; color: var(--text-strong); font-weight: 600; margin-bottom: 0.4rem; letter-spacing: -0.01em; }
+    .feature-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* Use cases */
+    .usecase-grid { display: grid; gap: 1rem; grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 720px) { .usecase-grid { grid-template-columns: 1fr; } }
+    .usecase-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.4rem; }
+    .usecase-card h3 { font-size: 1rem; color: var(--text-strong); font-weight: 600; margin-bottom: 0.45rem; display: flex; align-items: center; gap: 0.5rem; }
+    .usecase-card h3 .icon { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 7px; background: var(--accent-soft); color: var(--accent-icon); font-size: 0.95rem; }
+    .usecase-card p { font-size: 0.9rem; color: var(--text-muted); }
+
+    /* Steps */
+    .steps { display: grid; gap: 1rem; grid-template-columns: repeat(3, 1fr); counter-reset: step; }
+    @media (max-width: 880px) { .steps { grid-template-columns: 1fr; } }
+    .step { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.4rem; position: relative; }
+    .step .step-num { counter-increment: step; display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: var(--primary); color: var(--primary-text); font-weight: 700; font-size: 0.9rem; margin-bottom: 0.9rem; }
+    .step .step-num::before { content: counter(step); }
+    .step h3 { font-size: 1rem; color: var(--text-strong); font-weight: 600; margin-bottom: 0.4rem; }
+    .step p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* Pricing */
+    .pricing-split { display: grid; grid-template-columns: 1.05fr 1fr; gap: 2rem; align-items: stretch; }
+    @media (max-width: 880px) { .pricing-split { grid-template-columns: 1fr; } }
+    .pricing-card { background: var(--surface); border: 2px solid var(--primary); border-radius: 16px; padding: 2rem; box-shadow: var(--shadow-card-lg); position: relative; overflow: hidden; }
+    .pricing-card::before { content: ""; position: absolute; inset: 0; background: radial-gradient(400px 200px at 0% 0%, color-mix(in srgb, var(--primary) 10%, transparent), transparent 70%); pointer-events: none; }
+    .pricing-card .ribbon { display: inline-block; background: var(--primary); color: var(--primary-text); padding: 0.22rem 0.6rem; border-radius: 999px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 1rem; }
+    .pricing-card .price { font-size: 2.8rem; color: var(--primary); font-weight: 800; letter-spacing: -0.03em; display: flex; align-items: baseline; gap: 0.4rem; }
+    .pricing-card .price small { font-size: 0.9rem; color: var(--text-faint); font-weight: 500; }
+    .pricing-card .price-sub { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.2rem; }
+    .pricing-card ul { list-style: none; margin: 1.2rem 0 1.5rem; }
+    .pricing-card ul li { font-size: 0.92rem; color: var(--text-muted); padding: 0.35rem 0; display: flex; align-items: flex-start; gap: 0.55rem; }
+    .pricing-card ul li::before { content: "✓"; color: var(--check); font-weight: 700; flex-shrink: 0; }
+    .pricing-card .pricing-cta { display: flex; flex-wrap: wrap; gap: 0.55rem; position: relative; }
+    .pricing-aside { display: grid; align-content: center; gap: 1rem; }
+    .pricing-aside .mini-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1.3rem; }
+    .pricing-aside .mini-card h4 { font-size: 0.92rem; color: var(--text-strong); font-weight: 600; margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.45rem; }
+    .pricing-aside .mini-card h4 .icon { width: 24px; height: 24px; border-radius: 6px; background: var(--accent-soft); color: var(--accent-icon); display: inline-flex; align-items: center; justify-content: center; font-size: 0.85rem; }
+    .pricing-aside .mini-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* FAQ */
+    .faq-list { display: grid; gap: 0.6rem; max-width: 760px; margin: 0 auto; }
+    .faq-list details { background: var(--surface); border: 1px solid var(--border); border-radius: 11px; padding: 1rem 1.2rem; transition: border-color 0.15s ease; }
+    .faq-list details[open] { border-color: var(--primary); }
+    .faq-list summary { cursor: pointer; font-weight: 600; color: var(--text-strong); font-size: 0.97rem; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after { content: "+"; color: var(--text-faint); font-size: 1.3rem; line-height: 1; font-weight: 400; transition: transform 0.15s ease; }
+    .faq-list details[open] summary::after { content: "−"; color: var(--primary); }
+    .faq-list details p { font-size: 0.9rem; color: var(--text-muted); margin-top: 0.6rem; line-height: 1.6; }
+
+    /* CTA strip */
+    .cta-strip { background: linear-gradient(135deg, var(--primary), color-mix(in srgb, var(--primary) 70%, #0f172a)); color: #fff; border-radius: 18px; padding: 2.6rem 2rem; text-align: center; position: relative; overflow: hidden; }
+    .cta-strip h2 { font-size: clamp(1.6rem, 2.6vw, 2rem); letter-spacing: -0.02em; line-height: 1.2; font-weight: 700; }
+    .cta-strip p { color: rgba(255,255,255,0.85); margin-top: 0.6rem; font-size: 1rem; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .cta-strip .cta-btns { display: inline-flex; flex-wrap: wrap; gap: 0.55rem; margin-top: 1.4rem; justify-content: center; }
+    .cta-strip .btn-primary { background: #fff; color: var(--primary); }
+    .cta-strip .btn-primary:hover { background: #f1f5f9; box-shadow: none; }
+    .cta-strip .btn-ghost { background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.25); }
+    .cta-strip .btn-ghost:hover { background: rgba(255,255,255,0.16); }
+
+    /* Footer */
+    footer { background: var(--footer-bg); color: var(--footer-text); padding: 3rem 0 2rem; margin-top: 4.5rem; }
+    footer .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 2rem; }
+    @media (max-width: 760px) { footer .foot-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 460px) { footer .foot-grid { grid-template-columns: 1fr; } }
+    footer h4 { color: var(--footer-h); font-size: 0.85rem; font-weight: 600; margin-bottom: 0.7rem; letter-spacing: 0.02em; text-transform: uppercase; }
+    footer ul { list-style: none; display: grid; gap: 0.4rem; }
+    footer a { color: var(--footer-link); text-decoration: none; font-size: 0.88rem; }
+    footer a:hover { text-decoration: underline; }
+    footer .brand-block .b { display: flex; align-items: center; gap: 0.55rem; color: var(--footer-h); font-weight: 700; }
+    footer .brand-block .b img { width: 28px; height: 28px; border-radius: 7px; }
+    footer .brand-block p { font-size: 0.85rem; color: var(--footer-text); margin-top: 0.8rem; line-height: 1.6; }
+    footer .meta { margin-top: 2.2rem; padding-top: 1.4rem; border-top: 1px solid var(--footer-border); font-size: 0.78rem; color: var(--footer-meta); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    footer .meta p { font-size: 0.78rem; color: var(--footer-meta); margin: 0; }
   </style>
+
   <script>
     (function(){
       try {
@@ -312,775 +425,760 @@
 <body>
   <a class="skip-link" href="#main">Skip to content / 本文へ移動</a>
 
-  <div class="header-controls">
-    <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode / ダークモード切替" title="Toggle dark mode / ダークモード切替">
-      <span class="theme-icon-dark" aria-hidden="true">🌙</span>
-      <span class="theme-icon-light" aria-hidden="true">☀️</span>
-    </button>
-    <select id="lang-sel" class="lang-sel" aria-label="Language / 言語">
-      <option value="en">English</option>
-      <option value="ja">日本語</option>
-      <option value="es">Español</option>
-      <option value="fr">Français</option>
-      <option value="de">Deutsch</option>
-      <option value="it">Italiano</option>
-      <option value="ko">한국어</option>
-      <option value="pt_BR">Português (BR)</option>
-      <option value="zh_CN">简体中文</option>
-      <option value="zh_TW">繁體中文</option>
-    </select>
-  </div>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top" aria-label="Grab All Files home">
+        <img src="icon-512.png" alt="">
+        <span class="brand-name">Grab All Files</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="nav-spacer"></div>
+      <div class="nav-controls">
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle dark mode / ダークモード切替" title="Toggle dark mode / ダークモード切替">
+          <span class="theme-icon-dark" aria-hidden="true">🌙</span>
+          <span class="theme-icon-light" aria-hidden="true">☀️</span>
+        </button>
+        <select id="lang-sel" class="lang-sel" aria-label="Language / 言語">
+          <option value="en">English</option>
+          <option value="ja">日本語</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+          <option value="it">Italiano</option>
+          <option value="ko">한국어</option>
+          <option value="pt_BR">Português (BR)</option>
+          <option value="zh_CN">简体中文</option>
+          <option value="zh_TW">繁體中文</option>
+        </select>
+        <a href="#pricing" class="nav-cta">
+          <span>Get a license</span><span class="nav-cta-price"> · $19.99</span>
+        </a>
+      </div>
+    </div>
+  </header>
 
   <main id="main">
 
-    <section class="hero">
-      <div class="container">
-        <img src="icon-512.png" alt="Grab All Files / ファイル一括ダウンロード icon" class="hero-logo" width="96" height="96">
-
-        <div data-lang="en">
-          <span class="badge">14-day free trial · $19.99 lifetime</span>
-          <h1>Grab All Files</h1>
-          <p class="lead">Find every downloadable PDF, Office document, image, ZIP and CSV on any web page — even files hidden behind iframes, viewers, lazy loading, fetch/XHR, blob URLs, and CMS download routes. Select what you need, save them all in one click, and optionally merge PDFs locally in your browser.</p>
-          <div class="hero-cta">
-            <a href="purchase/" class="btn btn-primary">Get a license — $19.99</a>
-            <a href="#features" class="btn btn-secondary">See what it does</a>
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div>
+          <div data-lang="en">
+            <span class="hero-eyebrow"><span class="dot">✓</span>14-day free trial<span class="sep">·</span><span class="price-tag">$19.99</span> lifetime</span>
+            <h1>Grab every file on a page — even the <span class="em">hidden</span> ones.</h1>
+            <p class="hero-lead">Find every downloadable PDF, Office document, image, ZIP and CSV on any web page — even files hidden behind iframes, viewers, lazy loading, fetch/XHR, blob URLs, and CMS download routes. Select what you need, save them all in one click, and optionally merge PDFs locally in your browser.</p>
+            <div class="hero-cta">
+              <a href="purchase/" class="btn btn-primary">Get a license — $19.99 <span class="arrow" aria-hidden="true">→</span></a>
+              <a href="#features" class="btn btn-ghost">See what it does</a>
+            </div>
+            <div class="hero-stores"><span>Install free trial:</span>
+              <a class="store-btn" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-label="Install from Chrome Web Store">Chrome Web Store <span aria-hidden="true">↗</span></a>
+              <a class="store-btn" href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" aria-label="Install from Microsoft Edge Add-ons">Edge Add-ons <span aria-hidden="true">↗</span></a>
+            </div>
           </div>
-          <div class="store-row">
-            <span class="store-label">Install free trial:</span>
-            <a href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" class="store-btn" aria-label="Install from Chrome Web Store">Chrome Web Store <span aria-hidden="true" class="store-arrow">↗</span></a>
-            <a href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" class="store-btn" aria-label="Install from Microsoft Edge Add-ons">Edge Add-ons <span aria-hidden="true" class="store-arrow">↗</span></a>
+          <div data-lang="ja">
+            <span class="hero-eyebrow"><span class="dot">✓</span>14日間無料トライアル<span class="sep">·</span><span class="price-tag">$19.99</span> 永続ライセンス（サブスクなし）</span>
+            <h1>ページ上のすべてのファイルを <span class="em">一括</span>ダウンロード。</h1>
+            <p class="hero-lead">Webページ上のPDF・Word・Excel・PowerPoint・画像・ZIP・CSVなど、ダウンロード可能なファイルをまとめて検出します。iframe、PDFビューア、遅延読み込み、fetch/XHRレスポンス、blob URL、CMSダウンロードルートなど、通常見落としがちな場所のファイルもカバー。必要なものを選んで一括保存、PDF結合もブラウザ内で完結します。</p>
+            <div class="hero-cta">
+              <a href="purchase/" class="btn btn-primary">ライセンス購入 — $19.99 <span class="arrow" aria-hidden="true">→</span></a>
+              <a href="#features" class="btn btn-ghost">機能を見る</a>
+            </div>
+            <div class="hero-stores"><span>無料トライアル：</span>
+              <a class="store-btn" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-label="Chrome ウェブストアからインストール">Chrome ウェブストア <span aria-hidden="true">↗</span></a>
+              <a class="store-btn" href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" aria-label="Microsoft Edge アドオンからインストール">Edge アドオン <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <div data-lang="es">
+            <span class="hero-eyebrow"><span class="dot">✓</span>Prueba gratis de 14 días<span class="sep">·</span><span class="price-tag">$19.99</span> de por vida</span>
+            <h1>Captura cada archivo de una página — incluso los <span class="em">ocultos</span>.</h1>
+            <p class="hero-lead">Encuentra todos los PDF, documentos de Office, imágenes, ZIP y CSV descargables en cualquier página web — incluso los ocultos en iframes, visores, carga diferida, fetch/XHR, URLs blob y rutas de descarga de CMS. Selecciona lo que necesitas, guárdalo todo con un clic y combina PDFs localmente.</p>
+            <div class="hero-cta">
+              <a href="purchase/" class="btn btn-primary">Comprar licencia — $19.99 <span class="arrow" aria-hidden="true">→</span></a>
+              <a href="#features" class="btn btn-ghost">Ver características</a>
+            </div>
+            <div class="hero-stores"><span>Probar gratis:</span>
+              <a class="store-btn" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-label="Instalar desde Chrome Web Store">Chrome Web Store <span aria-hidden="true">↗</span></a>
+              <a class="store-btn" href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" aria-label="Instalar desde Microsoft Edge Add-ons">Edge Add-ons <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <div data-lang="fr">
+            <span class="hero-eyebrow"><span class="dot">✓</span>Essai gratuit de 14 jours<span class="sep">·</span><span class="price-tag">$19.99</span> à vie</span>
+            <h1>Récupérez chaque fichier d'une page — même ceux <span class="em">cachés</span>.</h1>
+            <p class="hero-lead">Trouvez tous les PDF, documents Office, images, ZIP et CSV téléchargeables sur n'importe quelle page web — même ceux cachés derrière des iframes, des visionneuses, du chargement différé, fetch/XHR, des URLs blob et des routes de téléchargement CMS. Sélectionnez ce dont vous avez besoin, enregistrez tout en un clic et fusionnez des PDF localement.</p>
+            <div class="hero-cta">
+              <a href="purchase/" class="btn btn-primary">Acheter une licence — $19.99 <span class="arrow" aria-hidden="true">→</span></a>
+              <a href="#features" class="btn btn-ghost">Voir les fonctionnalités</a>
+            </div>
+            <div class="hero-stores"><span>Essai gratuit :</span>
+              <a class="store-btn" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-label="Installer depuis le Chrome Web Store">Chrome Web Store <span aria-hidden="true">↗</span></a>
+              <a class="store-btn" href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" aria-label="Installer depuis Microsoft Edge Add-ons">Edge Add-ons <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <div data-lang="de">
+            <span class="hero-eyebrow"><span class="dot">✓</span>14 Tage kostenlos testen<span class="sep">·</span><span class="price-tag">$19.99</span> lebenslang</span>
+            <h1>Holen Sie jede Datei einer Seite — auch die <span class="em">versteckten</span>.</h1>
+            <p class="hero-lead">Finden Sie jede herunterladbare PDF-, Office-, Bild-, ZIP- und CSV-Datei auf jeder Webseite — auch solche, die in iFrames, Viewern, Lazy Loading, fetch/XHR, Blob-URLs und CMS-Download-Routen versteckt sind. Wählen Sie aus, was Sie brauchen, speichern Sie alles mit einem Klick und führen Sie PDFs lokal zusammen.</p>
+            <div class="hero-cta">
+              <a href="purchase/" class="btn btn-primary">Lizenz kaufen — $19.99 <span class="arrow" aria-hidden="true">→</span></a>
+              <a href="#features" class="btn btn-ghost">Funktionen ansehen</a>
+            </div>
+            <div class="hero-stores"><span>Kostenlos testen:</span>
+              <a class="store-btn" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-label="Im Chrome Web Store installieren">Chrome Web Store <span aria-hidden="true">↗</span></a>
+              <a class="store-btn" href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" aria-label="In Microsoft Edge Add-ons installieren">Edge Add-ons <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <div data-lang="it">
+            <span class="hero-eyebrow"><span class="dot">✓</span>Prova gratuita di 14 giorni<span class="sep">·</span><span class="price-tag">$19.99</span> a vita</span>
+            <h1>Cattura ogni file di una pagina — anche quelli <span class="em">nascosti</span>.</h1>
+            <p class="hero-lead">Trova ogni PDF, documento Office, immagine, ZIP e CSV scaricabile su qualsiasi pagina web — anche quelli nascosti dietro iframe, visualizzatori, caricamento differito, fetch/XHR, URL blob e percorsi di download CMS. Seleziona ciò che ti serve, salva tutto con un clic e unisci i PDF localmente.</p>
+            <div class="hero-cta">
+              <a href="purchase/" class="btn btn-primary">Acquista licenza — $19.99 <span class="arrow" aria-hidden="true">→</span></a>
+              <a href="#features" class="btn btn-ghost">Vedi le funzionalità</a>
+            </div>
+            <div class="hero-stores"><span>Prova gratuita:</span>
+              <a class="store-btn" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-label="Installa dal Chrome Web Store">Chrome Web Store <span aria-hidden="true">↗</span></a>
+              <a class="store-btn" href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" aria-label="Installa da Microsoft Edge Add-ons">Edge Add-ons <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <div data-lang="ko">
+            <span class="hero-eyebrow"><span class="dot">✓</span>14일 무료 체험<span class="sep">·</span><span class="price-tag">$19.99</span> 평생 라이선스</span>
+            <h1>페이지의 모든 파일을 — <span class="em">숨겨진</span> 파일까지.</h1>
+            <p class="hero-lead">웹 페이지의 다운로드 가능한 PDF, Office 문서, 이미지, ZIP, CSV 파일을 모두 찾습니다 — iframe, 뷰어, 지연 로딩, fetch/XHR 응답, blob URL, CMS 다운로드 경로에 숨겨진 파일까지. 필요한 항목을 선택하여 한 번의 클릭으로 모두 저장하고, PDF를 브라우저에서 로컬로 병합할 수 있습니다.</p>
+            <div class="hero-cta">
+              <a href="purchase/" class="btn btn-primary">라이선스 구매 — $19.99 <span class="arrow" aria-hidden="true">→</span></a>
+              <a href="#features" class="btn btn-ghost">기능 보기</a>
+            </div>
+            <div class="hero-stores"><span>무료 체험:</span>
+              <a class="store-btn" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-label="Chrome 웹 스토어에서 설치">Chrome 웹 스토어 <span aria-hidden="true">↗</span></a>
+              <a class="store-btn" href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" aria-label="Microsoft Edge 추가 기능에서 설치">Edge 추가 기능 <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <div data-lang="pt_BR">
+            <span class="hero-eyebrow"><span class="dot">✓</span>Teste gratuito de 14 dias<span class="sep">·</span><span class="price-tag">$19.99</span> vitalício</span>
+            <h1>Baixe todos os arquivos da página — até os <span class="em">ocultos</span>.</h1>
+            <p class="hero-lead">Encontre todos os PDFs, documentos do Office, imagens, ZIPs e CSVs disponíveis em qualquer página web — incluindo os ocultos em iframes, visualizadores, carregamento preguiçoso, fetch/XHR, URLs blob e rotas de download de CMS. Selecione o que precisa, salve tudo com um clique e mescle PDFs localmente.</p>
+            <div class="hero-cta">
+              <a href="purchase/" class="btn btn-primary">Comprar licença — $19.99 <span class="arrow" aria-hidden="true">→</span></a>
+              <a href="#features" class="btn btn-ghost">Ver recursos</a>
+            </div>
+            <div class="hero-stores"><span>Teste grátis:</span>
+              <a class="store-btn" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-label="Instalar na Chrome Web Store">Chrome Web Store <span aria-hidden="true">↗</span></a>
+              <a class="store-btn" href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" aria-label="Instalar em Microsoft Edge Add-ons">Edge Add-ons <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <div data-lang="zh_CN">
+            <span class="hero-eyebrow"><span class="dot">✓</span>14天免费试用<span class="sep">·</span><span class="price-tag">$19.99</span> 永久授权</span>
+            <h1>抓取页面上所有文件 — 包括<span class="em">隐藏</span>的。</h1>
+            <p class="hero-lead">在任何网页上查找所有可下载的PDF、Office文档、图片、ZIP和CSV文件 — 包括隐藏在iframe、查看器、懒加载、fetch/XHR、blob URL和CMS下载路径中的文件。选择所需文件，一键全部保存，并可在浏览器中本地合并PDF。</p>
+            <div class="hero-cta">
+              <a href="purchase/" class="btn btn-primary">购买许可证 — $19.99 <span class="arrow" aria-hidden="true">→</span></a>
+              <a href="#features" class="btn btn-ghost">查看功能</a>
+            </div>
+            <div class="hero-stores"><span>免费试用：</span>
+              <a class="store-btn" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-label="从 Chrome 应用商店安装">Chrome 应用商店 <span aria-hidden="true">↗</span></a>
+              <a class="store-btn" href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" aria-label="从 Microsoft Edge 加载项安装">Edge 加载项 <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+          <div data-lang="zh_TW">
+            <span class="hero-eyebrow"><span class="dot">✓</span>14天免費試用<span class="sep">·</span><span class="price-tag">$19.99</span> 永久授權</span>
+            <h1>抓取頁面上所有檔案 — 連<span class="em">隱藏</span>的也一併下載。</h1>
+            <p class="hero-lead">在任何網頁上找出所有可下載的PDF、Office文件、圖片、ZIP和CSV — 包括隱藏在iframe、檢視器、延遲載入、fetch/XHR、blob URL和CMS下載路徑中的檔案。選擇所需檔案，一鍵全部儲存，並可在瀏覽器中本機合併PDF。</p>
+            <div class="hero-cta">
+              <a href="purchase/" class="btn btn-primary">購買授權 — $19.99 <span class="arrow" aria-hidden="true">→</span></a>
+              <a href="#features" class="btn btn-ghost">查看功能</a>
+            </div>
+            <div class="hero-stores"><span>免費試用：</span>
+              <a class="store-btn" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-label="從 Chrome 線上應用程式商店安裝">Chrome 線上應用程式商店 <span aria-hidden="true">↗</span></a>
+              <a class="store-btn" href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" aria-label="從 Microsoft Edge 附加元件安裝">Edge 附加元件 <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+
+          <div class="hero-trust">
+            <span class="ti"><strong>100,000</strong>pages / run</span>
+            <span class="ti"><strong>30+</strong>detection signals</span>
+            <span class="ti"><strong>10</strong>UI languages</span>
+            <span class="ti"><strong>0</strong>files uploaded</span>
           </div>
         </div>
 
-        <div data-lang="ja">
-          <span class="badge">14日間無料トライアル · 永続ライセンス $19.99（サブスクなし）</span>
-          <h1>ファイル一括ダウンロード</h1>
-          <p class="lead">Webページ上のPDF・Word・Excel・PowerPoint・画像・ZIP・CSVなど、ダウンロード可能なファイルをまとめて検出します。iframe、PDFビューア、遅延読み込み、fetch/XHRレスポンス、blob URL、CMSダウンロードルートなど、通常見落としがちな場所のファイルもカバー。必要なものを選んで一括保存、PDF結合もブラウザ内で完結します。</p>
-          <div class="hero-cta">
-            <a href="purchase/" class="btn btn-primary">ライセンス購入 — $19.99</a>
-            <a href="#features" class="btn btn-secondary">機能を見る</a>
+        <!-- Extension popup mock (shared, decorative) -->
+        <div class="mock-stage" aria-hidden="true">
+          <div class="mock-orbit">
+            <span class="chip"><span class="d"></span>iframe<strong>.pdf</strong></span>
+            <span class="chip"><span class="d"></span>blob:<strong>image/png</strong></span>
+            <span class="chip"><span class="d"></span>fetch /<strong>cms-download</strong></span>
           </div>
-          <div class="store-row">
-            <span class="store-label">無料トライアル：</span>
-            <a href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" class="store-btn" aria-label="Chrome ウェブストアからインストール">Chrome ウェブストア <span aria-hidden="true" class="store-arrow">↗</span></a>
-            <a href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" class="store-btn" aria-label="Microsoft Edge アドオンからインストール">Edge アドオン <span aria-hidden="true" class="store-arrow">↗</span></a>
-          </div>
-        </div>
-
-        <div data-lang="es">
-          <span class="badge">Prueba gratis de 14 días · $19.99 de por vida</span>
-          <h1>Descargar todos los archivos</h1>
-          <p class="lead">Encuentra todos los PDF, documentos de Office, imágenes, ZIP y CSV descargables en cualquier página web — incluso los ocultos en iframes, visores, carga diferida, fetch/XHR, URLs blob y rutas de descarga de CMS. Selecciona lo que necesitas, guárdalo todo con un clic y combina PDFs localmente.</p>
-          <div class="hero-cta">
-            <a href="purchase/" class="btn btn-primary">Comprar licencia — $19.99</a>
-            <a href="#features" class="btn btn-secondary">Ver características</a>
-          </div>
-          <div class="store-row">
-            <span class="store-label">Probar gratis:</span>
-            <a href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" class="store-btn" aria-label="Instalar desde Chrome Web Store">Chrome Web Store <span aria-hidden="true" class="store-arrow">↗</span></a>
-            <a href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" class="store-btn" aria-label="Instalar desde Microsoft Edge Add-ons">Edge Add-ons <span aria-hidden="true" class="store-arrow">↗</span></a>
-          </div>
-        </div>
-
-        <div data-lang="fr">
-          <span class="badge">Essai gratuit de 14 jours · $19.99 à vie</span>
-          <h1>Télécharger tous les fichiers</h1>
-          <p class="lead">Trouvez tous les PDF, documents Office, images, ZIP et CSV téléchargeables sur n'importe quelle page web — même ceux cachés derrière des iframes, des visionneuses, du chargement différé, fetch/XHR, des URLs blob et des routes de téléchargement CMS. Sélectionnez ce dont vous avez besoin, enregistrez tout en un clic et fusionnez des PDF localement.</p>
-          <div class="hero-cta">
-            <a href="purchase/" class="btn btn-primary">Acheter une licence — $19.99</a>
-            <a href="#features" class="btn btn-secondary">Voir les fonctionnalités</a>
-          </div>
-          <div class="store-row">
-            <span class="store-label">Essai gratuit :</span>
-            <a href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" class="store-btn" aria-label="Installer depuis le Chrome Web Store">Chrome Web Store <span aria-hidden="true" class="store-arrow">↗</span></a>
-            <a href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" class="store-btn" aria-label="Installer depuis Microsoft Edge Add-ons">Edge Add-ons <span aria-hidden="true" class="store-arrow">↗</span></a>
-          </div>
-        </div>
-
-        <div data-lang="de">
-          <span class="badge">14 Tage kostenlos testen · $19.99 lebenslang</span>
-          <h1>Alle Dateien herunterladen</h1>
-          <p class="lead">Finden Sie jede herunterladbare PDF-, Office-, Bild-, ZIP- und CSV-Datei auf jeder Webseite — auch solche, die in iFrames, Viewern, Lazy Loading, fetch/XHR, Blob-URLs und CMS-Download-Routen versteckt sind. Wählen Sie aus, was Sie brauchen, speichern Sie alles mit einem Klick und führen Sie PDFs lokal zusammen.</p>
-          <div class="hero-cta">
-            <a href="purchase/" class="btn btn-primary">Lizenz kaufen — $19.99</a>
-            <a href="#features" class="btn btn-secondary">Funktionen ansehen</a>
-          </div>
-          <div class="store-row">
-            <span class="store-label">Kostenlos testen:</span>
-            <a href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" class="store-btn" aria-label="Im Chrome Web Store installieren">Chrome Web Store <span aria-hidden="true" class="store-arrow">↗</span></a>
-            <a href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" class="store-btn" aria-label="In Microsoft Edge Add-ons installieren">Edge Add-ons <span aria-hidden="true" class="store-arrow">↗</span></a>
-          </div>
-        </div>
-
-        <div data-lang="it">
-          <span class="badge">Prova gratuita di 14 giorni · $19.99 a vita</span>
-          <h1>Scarica tutti i file</h1>
-          <p class="lead">Trova ogni PDF, documento Office, immagine, ZIP e CSV scaricabile su qualsiasi pagina web — anche quelli nascosti dietro iframe, visualizzatori, caricamento differito, fetch/XHR, URL blob e percorsi di download CMS. Seleziona ciò che ti serve, salva tutto con un clic e unisci i PDF localmente.</p>
-          <div class="hero-cta">
-            <a href="purchase/" class="btn btn-primary">Acquista licenza — $19.99</a>
-            <a href="#features" class="btn btn-secondary">Vedi le funzionalità</a>
-          </div>
-          <div class="store-row">
-            <span class="store-label">Prova gratuita:</span>
-            <a href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" class="store-btn" aria-label="Installa dal Chrome Web Store">Chrome Web Store <span aria-hidden="true" class="store-arrow">↗</span></a>
-            <a href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" class="store-btn" aria-label="Installa da Microsoft Edge Add-ons">Edge Add-ons <span aria-hidden="true" class="store-arrow">↗</span></a>
-          </div>
-        </div>
-
-        <div data-lang="ko">
-          <span class="badge">14일 무료 체험 · $19.99 평생 라이선스</span>
-          <h1>파일 일괄 다운로드</h1>
-          <p class="lead">웹 페이지의 다운로드 가능한 PDF, Office 문서, 이미지, ZIP, CSV 파일을 모두 찾습니다 — iframe, 뷰어, 지연 로딩, fetch/XHR 응답, blob URL, CMS 다운로드 경로에 숨겨진 파일까지. 필요한 항목을 선택하여 한 번의 클릭으로 모두 저장하고, PDF를 브라우저에서 로컬로 병합할 수 있습니다.</p>
-          <div class="hero-cta">
-            <a href="purchase/" class="btn btn-primary">라이선스 구매 — $19.99</a>
-            <a href="#features" class="btn btn-secondary">기능 보기</a>
-          </div>
-          <div class="store-row">
-            <span class="store-label">무료 체험:</span>
-            <a href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" class="store-btn" aria-label="Chrome 웹 스토어에서 설치">Chrome 웹 스토어 <span aria-hidden="true" class="store-arrow">↗</span></a>
-            <a href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" class="store-btn" aria-label="Microsoft Edge 추가 기능에서 설치">Edge 추가 기능 <span aria-hidden="true" class="store-arrow">↗</span></a>
-          </div>
-        </div>
-
-        <div data-lang="pt_BR">
-          <span class="badge">Teste gratuito de 14 dias · $19.99 vitalício</span>
-          <h1>Baixar todos os arquivos</h1>
-          <p class="lead">Encontre todos os PDFs, documentos do Office, imagens, ZIPs e CSVs disponíveis em qualquer página web — incluindo os ocultos em iframes, visualizadores, carregamento preguiçoso, fetch/XHR, URLs blob e rotas de download de CMS. Selecione o que precisa, salve tudo com um clique e mescle PDFs localmente.</p>
-          <div class="hero-cta">
-            <a href="purchase/" class="btn btn-primary">Comprar licença — $19.99</a>
-            <a href="#features" class="btn btn-secondary">Ver recursos</a>
-          </div>
-          <div class="store-row">
-            <span class="store-label">Teste grátis:</span>
-            <a href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" class="store-btn" aria-label="Instalar na Chrome Web Store">Chrome Web Store <span aria-hidden="true" class="store-arrow">↗</span></a>
-            <a href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" class="store-btn" aria-label="Instalar em Microsoft Edge Add-ons">Edge Add-ons <span aria-hidden="true" class="store-arrow">↗</span></a>
-          </div>
-        </div>
-
-        <div data-lang="zh_CN">
-          <span class="badge">14天免费试用 · $19.99 永久授权</span>
-          <h1>批量下载文件</h1>
-          <p class="lead">在任何网页上查找所有可下载的PDF、Office文档、图片、ZIP和CSV文件 — 包括隐藏在iframe、查看器、懒加载、fetch/XHR、blob URL和CMS下载路径中的文件。选择所需文件，一键全部保存，并可在浏览器中本地合并PDF。</p>
-          <div class="hero-cta">
-            <a href="purchase/" class="btn btn-primary">购买许可证 — $19.99</a>
-            <a href="#features" class="btn btn-secondary">查看功能</a>
-          </div>
-          <div class="store-row">
-            <span class="store-label">免费试用：</span>
-            <a href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" class="store-btn" aria-label="从 Chrome 应用商店安装">Chrome 应用商店 <span aria-hidden="true" class="store-arrow">↗</span></a>
-            <a href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" class="store-btn" aria-label="从 Microsoft Edge 加载项安装">Edge 加载项 <span aria-hidden="true" class="store-arrow">↗</span></a>
-          </div>
-        </div>
-
-        <div data-lang="zh_TW">
-          <span class="badge">14天免費試用 · $19.99 永久授權</span>
-          <h1>批次下載檔案</h1>
-          <p class="lead">在任何網頁上找出所有可下載的PDF、Office文件、圖片、ZIP和CSV — 包括隱藏在iframe、檢視器、延遲載入、fetch/XHR、blob URL和CMS下載路徑中的檔案。選擇所需檔案，一鍵全部儲存，並可在瀏覽器中本機合併PDF。</p>
-          <div class="hero-cta">
-            <a href="purchase/" class="btn btn-primary">購買授權 — $19.99</a>
-            <a href="#features" class="btn btn-secondary">查看功能</a>
-          </div>
-          <div class="store-row">
-            <span class="store-label">免費試用：</span>
-            <a href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" class="store-btn" aria-label="從 Chrome 線上應用程式商店安裝">Chrome 線上應用程式商店 <span aria-hidden="true" class="store-arrow">↗</span></a>
-            <a href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" class="store-btn" aria-label="從 Microsoft Edge 附加元件安裝">Edge 附加元件 <span aria-hidden="true" class="store-arrow">↗</span></a>
+          <div class="mock-window">
+            <div class="mock-titlebar">
+              <div class="dots"><span></span><span></span><span></span></div>
+              <div class="url">city.example.go.jp/reports/2025</div>
+              <div class="ext-pill"><img src="icon-512.png" alt=""> 47 files</div>
+            </div>
+            <div class="mock-progress"><span></span></div>
+            <div class="mock-toolbar">
+              <div class="mock-search"><span aria-hidden="true">🔎</span><span>Search filename or URL…</span></div>
+              <span class="mock-chip active">PDF <span class="count">23</span></span>
+              <span class="mock-chip">DOCX <span class="count">8</span></span>
+              <span class="mock-chip">XLSX <span class="count">6</span></span>
+              <span class="mock-chip">ZIP <span class="count">4</span></span>
+              <span class="mock-chip">+3</span>
+            </div>
+            <div class="mock-summary">
+              <span><span class="sel">12 selected</span> · 47 detected</span>
+              <span>Total 84.3&nbsp;MB</span>
+            </div>
+            <div class="mock-list">
+              <div class="mock-row sel"><span class="mock-check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="ext-tag ext-pdf">PDF</span><span class="mock-name">2025-budget-annex-A.pdf<span class="src">iframe · /viewer?id=4821</span></span><span class="mock-size">3.2 MB</span></div>
+              <div class="mock-row sel"><span class="mock-check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="ext-tag ext-pdf">PDF</span><span class="mock-name">council-minutes-jun.pdf<span class="src">blob: · resolved</span></span><span class="mock-size">812 KB</span></div>
+              <div class="mock-row sel"><span class="mock-check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="ext-tag ext-xlsx">XLS</span><span class="mock-name">tax-rates-2025-q2.xlsx<span class="src">fetch · /api/dl/8821</span></span><span class="mock-size">96 KB</span></div>
+              <div class="mock-row"><span class="mock-check"></span><span class="ext-tag ext-docx">DOC</span><span class="mock-name">working-paper-draft.docx<span class="src">CMS · /download/v2</span></span><span class="mock-size">214 KB</span></div>
+              <div class="mock-row sel"><span class="mock-check"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="ext-tag ext-zip">ZIP</span><span class="mock-name">附属資料-1〜8.zip<span class="src">data-href · lazy</span></span><span class="mock-size">21.4 MB</span></div>
+              <div class="mock-row"><span class="mock-check"></span><span class="ext-tag ext-csv">CSV</span><span class="mock-name">attendance-2024.csv<span class="src">XHR · /export</span></span><span class="mock-size">38 KB</span></div>
+              <div class="mock-row scanning"><span class="mock-check"></span><span class="ext-tag ext-png">PNG</span><span class="mock-name">map-overlay-tile-04.png<span class="src">data-bgimg · scanning…</span></span><span class="mock-size">—</span></div>
+            </div>
+            <div class="mock-footer">
+              <div class="mock-footer-actions">
+                <button class="mock-btn primary" type="button"><span aria-hidden="true">⬇</span> Download 12</button>
+                <button class="mock-btn" type="button"><span aria-hidden="true">📚</span> Merge PDFs</button>
+                <button class="mock-btn" type="button"><span aria-hidden="true">🗜️</span> ZIP</button>
+                <button class="mock-btn" type="button"><span aria-hidden="true">📊</span> CSV</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="features" class="block alt">
-      <div class="container">
+    <!-- Roles strip -->
+    <div class="logos-strip">
+      <div class="wrap logos-inner">
+        <span class="role"><span class="icon">📑</span>Researchers</span>
+        <span class="role"><span class="icon">🏛️</span>Public-records archivists</span>
+        <span class="role"><span class="icon">🏢</span>Internal-portal users</span>
+        <span class="role"><span class="icon">🎓</span>Students</span>
+        <span class="role"><span class="icon">🎨</span>Designers</span>
+      </div>
+    </div>
+
+
+    <!-- FEATURES -->
+    <section class="block" id="features">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="section-eyebrow"><span data-lang="en" class="active">What it does</span><span data-lang="ja">主な機能</span><span data-lang="es">Qué hace</span><span data-lang="fr">Fonctionnalités</span><span data-lang="de">Funktionen</span><span data-lang="it">Funzionalità</span><span data-lang="ko">주요 기능</span><span data-lang="pt_BR">Recursos</span><span data-lang="zh_CN">功能概览</span><span data-lang="zh_TW">功能概覽</span></span>
+          <div data-lang="en"><h2>What it does</h2><p>Built for people who collect documents from many web pages — researchers, public-records archivists, internal-portal users, designers, students, and anyone tired of clicking "Save as…" hundreds of times.</p></div>
+          <div data-lang="ja"><h2>主な機能</h2><p>複数ページから資料を集める人のためのツールです。調査・研究、自治体・大学公開資料の収集、社内ポータル業務、デザイン素材集め、論文・教材ダウンロードなど、「保存」を何度もクリックする作業から解放します。</p></div>
+          <div data-lang="es"><h2>Qué hace</h2><p>Diseñado para quienes recopilan documentos de muchas páginas web — investigadores, archivistas, usuarios de portales internos, diseñadores y estudiantes.</p></div>
+          <div data-lang="fr"><h2>Ce que fait l'extension</h2><p>Conçu pour ceux qui collectent des documents sur de nombreuses pages web — chercheurs, archivistes, utilisateurs de portails internes, designers et étudiants.</p></div>
+          <div data-lang="de"><h2>Was es macht</h2><p>Entwickelt für alle, die Dokumente von vielen Webseiten sammeln — Forscher, Archivare, Nutzer interner Portale, Designer und Studenten.</p></div>
+          <div data-lang="it"><h2>Cosa fa</h2><p>Progettato per chi raccoglie documenti da molte pagine web — ricercatori, archivisti, utenti di portali interni, designer e studenti.</p></div>
+          <div data-lang="ko"><h2>주요 기능</h2><p>여러 웹 페이지에서 문서를 수집하는 사람들을 위해 설계되었습니다 — 연구자, 기록 보관 담당자, 사내 포털 사용자, 디자이너, 학생.</p></div>
+          <div data-lang="pt_BR"><h2>O que faz</h2><p>Projetado para quem coleta documentos de muitas páginas web — pesquisadores, arquivistas, usuários de portais internos, designers e estudantes.</p></div>
+          <div data-lang="zh_CN"><h2>功能概览</h2><p>为从多个网页收集文档的用户设计 — 研究人员、档案管理员、内部门户用户、设计师和学生。</p></div>
+          <div data-lang="zh_TW"><h2>功能概覽</h2><p>為從多個網頁收集文件的使用者設計 — 研究人員、檔案管理員、內部入口網站使用者、設計師和學生。</p></div>
+        </div>
 
         <div data-lang="en">
-          <h2>What it does</h2>
-          <p class="section-lead">Built for people who collect documents from many web pages — researchers, public-records archivists, internal-portal users, designers, students, and anyone tired of clicking "Save as…" hundreds of times.</p>
-          <div class="grid cols-2">
-            <div class="card"><h3><span class="icon">🔎</span>Finds files others miss</h3><p>Detects iframe-embedded PDFs, lazy-loaded images, fetch/XHR file responses, blob URLs, CMS download routes, hidden form values, and 30+ data-* attributes that plain link scrapers ignore.</p></div>
-            <div class="card"><h3><span class="icon">⚙️</span>Smart filtering</h3><p>Filter results by extension, file size, file name, page title, or modification date. Sort, manually reorder, and copy URLs as plain text.</p></div>
-            <div class="card"><h3><span class="icon">🕸️</span>Same-site crawl</h3><p>Choose a depth (0–5 or unlimited) and visit every same-domain link to surface PDFs on subpages, viewer URLs, and CMS document routes — up to 100,000 pages per run.</p></div>
-            <div class="card"><h3><span class="icon">📚</span>Local PDF merge</h3><p>Combine selected PDFs into a single file with one click. No upload, no server. Your files stay on your device.</p></div>
-            <div class="card"><h3><span class="icon">🗜️</span>ZIP archive</h3><p>Bundle selected files into a single ZIP for tidy distribution, archiving, or sharing — generated entirely in your browser.</p></div>
-            <div class="card"><h3><span class="icon">📊</span>CSV export</h3><p>Export URLs, file names, sizes, types, and titles to CSV for documentation, audit, inventory, or downstream automation.</p></div>
+          <div class="features-grid">
+            <div class="feature-card"><span class="tile">🔎</span><h3>Finds files others miss</h3><p>Detects iframe-embedded PDFs, lazy-loaded images, fetch/XHR file responses, blob URLs, CMS download routes, hidden form values, and 30+ data-* attributes that plain link scrapers ignore.</p></div>
+            <div class="feature-card"><span class="tile">⚙️</span><h3>Smart filtering</h3><p>Filter results by extension, file size, file name, page title, or modification date. Sort, manually reorder, and copy URLs as plain text.</p></div>
+            <div class="feature-card"><span class="tile">🕸️</span><h3>Same-site crawl</h3><p>Choose a depth (0–5 or unlimited) and visit every same-domain link to surface PDFs on subpages, viewer URLs, and CMS document routes — up to 100,000 pages per run.</p></div>
+            <div class="feature-card"><span class="tile">📚</span><h3>Local PDF merge</h3><p>Combine selected PDFs into a single file with one click. No upload, no server. Your files stay on your device.</p></div>
+            <div class="feature-card"><span class="tile">🗜️</span><h3>ZIP archive</h3><p>Bundle selected files into a single ZIP for tidy distribution, archiving, or sharing — generated entirely in your browser.</p></div>
+            <div class="feature-card"><span class="tile">📊</span><h3>CSV export</h3><p>Export URLs, file names, sizes, types, and titles to CSV for documentation, audit, inventory, or downstream automation.</p></div>
           </div>
         </div>
-
         <div data-lang="ja">
-          <h2>主な機能</h2>
-          <p class="section-lead">複数ページから資料を集める人のためのツールです。調査・研究、自治体・大学公開資料の収集、社内ポータル業務、デザイン素材集め、論文・教材ダウンロードなど、「保存」を何度もクリックする作業から解放します。</p>
-          <div class="grid cols-2">
-            <div class="card"><h3><span class="icon">🔎</span>見落としがちなファイルも検出</h3><p>iframe内のPDF、遅延読み込み画像、fetch/XHRで取得されるファイル、blob URL、CMSダウンロードルート、hidden inputの値、30種類以上のdata-*属性まで網羅。通常のリンクスクレイパーでは拾えないファイルも検出します。</p></div>
-            <div class="card"><h3><span class="icon">⚙️</span>スマートフィルタ</h3><p>拡張子、ファイルサイズ、ファイル名、ページタイトル、更新日で絞り込み・並べ替え・手動並べ替え。URLのプレーンテキストコピーにも対応。</p></div>
-            <div class="card"><h3><span class="icon">🕸️</span>同一サイトクロール</h3><p>深度0〜5または無制限を選んで、同一ドメインのリンク先を巡回。サブページに散らばったPDF、ビューアURL、CMS文書ルートまで一気に収集。1回の実行で最大10万ページまで。</p></div>
-            <div class="card"><h3><span class="icon">📚</span>PDF結合（ローカル）</h3><p>選択したPDFを1つにまとめます。アップロード不要・サーバー送信なし。ファイルは端末から外に出ません。</p></div>
-            <div class="card"><h3><span class="icon">🗜️</span>ZIP化</h3><p>選択したファイルを1つのZIPにまとめて配布・アーカイブ・共有しやすく。ブラウザ内ですべて完結します。</p></div>
-            <div class="card"><h3><span class="icon">📊</span>CSV出力</h3><p>URL、ファイル名、サイズ、種類、タイトルをCSV出力。資料台帳、棚卸し、報告書、後続の自動処理にそのまま使えます。</p></div>
+          <div class="features-grid">
+            <div class="feature-card"><span class="tile">🔎</span><h3>見落としがちなファイルも検出</h3><p>iframe内のPDF、遅延読み込み画像、fetch/XHRで取得されるファイル、blob URL、CMSダウンロードルート、hidden inputの値、30種類以上のdata-*属性まで網羅。通常のリンクスクレイパーでは拾えないファイルも検出します。</p></div>
+            <div class="feature-card"><span class="tile">⚙️</span><h3>スマートフィルタ</h3><p>拡張子、ファイルサイズ、ファイル名、ページタイトル、更新日で絞り込み・並べ替え・手動並べ替え。URLのプレーンテキストコピーにも対応。</p></div>
+            <div class="feature-card"><span class="tile">🕸️</span><h3>同一サイトクロール</h3><p>深度0〜5または無制限を選んで、同一ドメインのリンク先を巡回。サブページに散らばったPDF、ビューアURL、CMS文書ルートまで一気に収集。1回の実行で最大10万ページまで。</p></div>
+            <div class="feature-card"><span class="tile">📚</span><h3>PDF結合（ローカル）</h3><p>選択したPDFを1つにまとめます。アップロード不要・サーバー送信なし。ファイルは端末から外に出ません。</p></div>
+            <div class="feature-card"><span class="tile">🗜️</span><h3>ZIP化</h3><p>選択したファイルを1つのZIPにまとめて配布・アーカイブ・共有しやすく。ブラウザ内ですべて完結します。</p></div>
+            <div class="feature-card"><span class="tile">📊</span><h3>CSV出力</h3><p>URL、ファイル名、サイズ、種類、タイトルをCSV出力。資料台帳、棚卸し、報告書、後続の自動処理にそのまま使えます。</p></div>
           </div>
         </div>
-
         <div data-lang="es">
-          <h2>Qué hace</h2>
-          <p class="section-lead">Diseñado para quienes recopilan documentos de muchas páginas web — investigadores, archivistas, usuarios de portales internos, diseñadores y estudiantes.</p>
-          <div class="grid cols-2">
-            <div class="card"><h3><span class="icon">🔎</span>Encuentra archivos ocultos</h3><p>Detecta PDFs en iframes, imágenes con carga diferida, respuestas fetch/XHR, URLs blob, rutas de descarga de CMS y más de 30 atributos data-*.</p></div>
-            <div class="card"><h3><span class="icon">⚙️</span>Filtrado inteligente</h3><p>Filtra por extensión, tamaño, nombre, fecha. Ordena, reordena manualmente y copia URLs como texto plano.</p></div>
-            <div class="card"><h3><span class="icon">🕸️</span>Rastreo del mismo sitio</h3><p>Elige una profundidad (0–5 o ilimitada) y visita cada enlace del mismo dominio. Hasta 100,000 páginas por ejecución.</p></div>
-            <div class="card"><h3><span class="icon">📚</span>Fusión local de PDF</h3><p>Combina PDFs seleccionados en un solo archivo. Sin subida, sin servidor. Tus archivos permanecen en tu dispositivo.</p></div>
-            <div class="card"><h3><span class="icon">🗜️</span>Archivo ZIP</h3><p>Empaqueta archivos seleccionados en un único ZIP — generado totalmente en tu navegador.</p></div>
-            <div class="card"><h3><span class="icon">📊</span>Exportación CSV</h3><p>Exporta URLs, nombres, tamaños, tipos y títulos a CSV para documentación, auditoría o automatización.</p></div>
+          <div class="features-grid">
+            <div class="feature-card"><span class="tile">🔎</span><h3>Encuentra archivos ocultos</h3><p>Detecta PDFs en iframes, imágenes con carga diferida, respuestas fetch/XHR, URLs blob, rutas de descarga de CMS y más de 30 atributos data-*.</p></div>
+            <div class="feature-card"><span class="tile">⚙️</span><h3>Filtrado inteligente</h3><p>Filtra por extensión, tamaño, nombre, fecha. Ordena, reordena manualmente y copia URLs como texto plano.</p></div>
+            <div class="feature-card"><span class="tile">🕸️</span><h3>Rastreo del mismo sitio</h3><p>Elige una profundidad (0–5 o ilimitada) y visita cada enlace del mismo dominio. Hasta 100,000 páginas por ejecución.</p></div>
+            <div class="feature-card"><span class="tile">📚</span><h3>Fusión local de PDF</h3><p>Combina PDFs seleccionados en un solo archivo. Sin subida, sin servidor. Tus archivos permanecen en tu dispositivo.</p></div>
+            <div class="feature-card"><span class="tile">🗜️</span><h3>Archivo ZIP</h3><p>Empaqueta archivos seleccionados en un único ZIP — generado totalmente en tu navegador.</p></div>
+            <div class="feature-card"><span class="tile">📊</span><h3>Exportación CSV</h3><p>Exporta URLs, nombres, tamaños, tipos y títulos a CSV para documentación, auditoría o automatización.</p></div>
           </div>
         </div>
-
         <div data-lang="fr">
-          <h2>Ce que fait l'extension</h2>
-          <p class="section-lead">Conçu pour ceux qui collectent des documents sur de nombreuses pages web — chercheurs, archivistes, utilisateurs de portails internes, designers et étudiants.</p>
-          <div class="grid cols-2">
-            <div class="card"><h3><span class="icon">🔎</span>Trouve les fichiers cachés</h3><p>Détecte les PDF dans les iframes, les images chargées paresseusement, les réponses fetch/XHR, les URLs blob, les routes CMS et plus de 30 attributs data-*.</p></div>
-            <div class="card"><h3><span class="icon">⚙️</span>Filtrage intelligent</h3><p>Filtrez par extension, taille, nom, date. Triez, réorganisez manuellement et copiez les URLs en texte brut.</p></div>
-            <div class="card"><h3><span class="icon">🕸️</span>Crawl du même site</h3><p>Choisissez une profondeur (0–5 ou illimitée) et visitez chaque lien du même domaine. Jusqu'à 100 000 pages par exécution.</p></div>
-            <div class="card"><h3><span class="icon">📚</span>Fusion PDF locale</h3><p>Combinez les PDF sélectionnés en un seul fichier. Aucun téléchargement, aucun serveur. Vos fichiers restent sur votre appareil.</p></div>
-            <div class="card"><h3><span class="icon">🗜️</span>Archive ZIP</h3><p>Regroupez les fichiers sélectionnés dans un ZIP — généré entièrement dans votre navigateur.</p></div>
-            <div class="card"><h3><span class="icon">📊</span>Export CSV</h3><p>Exportez les URLs, noms, tailles, types et titres en CSV pour documentation, audit ou automatisation.</p></div>
+          <div class="features-grid">
+            <div class="feature-card"><span class="tile">🔎</span><h3>Trouve les fichiers cachés</h3><p>Détecte les PDF dans les iframes, les images chargées paresseusement, les réponses fetch/XHR, les URLs blob, les routes CMS et plus de 30 attributs data-*.</p></div>
+            <div class="feature-card"><span class="tile">⚙️</span><h3>Filtrage intelligent</h3><p>Filtrez par extension, taille, nom, date. Triez, réorganisez manuellement et copiez les URLs en texte brut.</p></div>
+            <div class="feature-card"><span class="tile">🕸️</span><h3>Crawl du même site</h3><p>Choisissez une profondeur (0–5 ou illimitée) et visitez chaque lien du même domaine. Jusqu'à 100 000 pages par exécution.</p></div>
+            <div class="feature-card"><span class="tile">📚</span><h3>Fusion PDF locale</h3><p>Combinez les PDF sélectionnés en un seul fichier. Aucun téléchargement, aucun serveur. Vos fichiers restent sur votre appareil.</p></div>
+            <div class="feature-card"><span class="tile">🗜️</span><h3>Archive ZIP</h3><p>Regroupez les fichiers sélectionnés dans un ZIP — généré entièrement dans votre navigateur.</p></div>
+            <div class="feature-card"><span class="tile">📊</span><h3>Export CSV</h3><p>Exportez les URLs, noms, tailles, types et titres en CSV pour documentation, audit ou automatisation.</p></div>
           </div>
         </div>
-
         <div data-lang="de">
-          <h2>Was es macht</h2>
-          <p class="section-lead">Entwickelt für alle, die Dokumente von vielen Webseiten sammeln — Forscher, Archivare, Nutzer interner Portale, Designer und Studenten.</p>
-          <div class="grid cols-2">
-            <div class="card"><h3><span class="icon">🔎</span>Findet versteckte Dateien</h3><p>Erkennt PDFs in iFrames, lazy-loaded Bilder, fetch/XHR-Antworten, Blob-URLs, CMS-Download-Routen und über 30 data-*-Attribute.</p></div>
-            <div class="card"><h3><span class="icon">⚙️</span>Intelligente Filterung</h3><p>Filtern nach Erweiterung, Größe, Name, Datum. Sortieren, manuell neu anordnen und URLs als Klartext kopieren.</p></div>
-            <div class="card"><h3><span class="icon">🕸️</span>Same-Site-Crawl</h3><p>Wählen Sie eine Tiefe (0–5 oder unbegrenzt) und besuchen Sie jeden Link derselben Domain. Bis zu 100.000 Seiten pro Lauf.</p></div>
-            <div class="card"><h3><span class="icon">📚</span>Lokale PDF-Zusammenführung</h3><p>Kombinieren Sie ausgewählte PDFs zu einer Datei. Kein Upload, kein Server. Ihre Dateien bleiben auf Ihrem Gerät.</p></div>
-            <div class="card"><h3><span class="icon">🗜️</span>ZIP-Archiv</h3><p>Bündeln Sie ausgewählte Dateien in einem einzigen ZIP — vollständig in Ihrem Browser generiert.</p></div>
-            <div class="card"><h3><span class="icon">📊</span>CSV-Export</h3><p>Exportieren Sie URLs, Namen, Größen, Typen und Titel als CSV für Dokumentation, Audit oder Automatisierung.</p></div>
+          <div class="features-grid">
+            <div class="feature-card"><span class="tile">🔎</span><h3>Findet versteckte Dateien</h3><p>Erkennt PDFs in iFrames, lazy-loaded Bilder, fetch/XHR-Antworten, Blob-URLs, CMS-Download-Routen und über 30 data-*-Attribute.</p></div>
+            <div class="feature-card"><span class="tile">⚙️</span><h3>Intelligente Filterung</h3><p>Filtern nach Erweiterung, Größe, Name, Datum. Sortieren, manuell neu anordnen und URLs als Klartext kopieren.</p></div>
+            <div class="feature-card"><span class="tile">🕸️</span><h3>Same-Site-Crawl</h3><p>Wählen Sie eine Tiefe (0–5 oder unbegrenzt) und besuchen Sie jeden Link derselben Domain. Bis zu 100.000 Seiten pro Lauf.</p></div>
+            <div class="feature-card"><span class="tile">📚</span><h3>Lokale PDF-Zusammenführung</h3><p>Kombinieren Sie ausgewählte PDFs zu einer Datei. Kein Upload, kein Server. Ihre Dateien bleiben auf Ihrem Gerät.</p></div>
+            <div class="feature-card"><span class="tile">🗜️</span><h3>ZIP-Archiv</h3><p>Bündeln Sie ausgewählte Dateien in einem einzigen ZIP — vollständig in Ihrem Browser generiert.</p></div>
+            <div class="feature-card"><span class="tile">📊</span><h3>CSV-Export</h3><p>Exportieren Sie URLs, Namen, Größen, Typen und Titel als CSV für Dokumentation, Audit oder Automatisierung.</p></div>
           </div>
         </div>
-
         <div data-lang="it">
-          <h2>Cosa fa</h2>
-          <p class="section-lead">Progettato per chi raccoglie documenti da molte pagine web — ricercatori, archivisti, utenti di portali interni, designer e studenti.</p>
-          <div class="grid cols-2">
-            <div class="card"><h3><span class="icon">🔎</span>Trova file nascosti</h3><p>Rileva PDF in iframe, immagini lazy-loaded, risposte fetch/XHR, URL blob, percorsi di download CMS e oltre 30 attributi data-*.</p></div>
-            <div class="card"><h3><span class="icon">⚙️</span>Filtro intelligente</h3><p>Filtra per estensione, dimensione, nome, data. Ordina, riordina manualmente e copia URL come testo semplice.</p></div>
-            <div class="card"><h3><span class="icon">🕸️</span>Crawl dello stesso sito</h3><p>Scegli una profondità (0–5 o illimitata) e visita ogni link dello stesso dominio. Fino a 100.000 pagine per esecuzione.</p></div>
-            <div class="card"><h3><span class="icon">📚</span>Unione PDF locale</h3><p>Combina i PDF selezionati in un unico file. Nessun upload, nessun server. I tuoi file rimangono sul tuo dispositivo.</p></div>
-            <div class="card"><h3><span class="icon">🗜️</span>Archivio ZIP</h3><p>Raggruppa i file selezionati in un unico ZIP — generato interamente nel tuo browser.</p></div>
-            <div class="card"><h3><span class="icon">📊</span>Esportazione CSV</h3><p>Esporta URL, nomi, dimensioni, tipi e titoli in CSV per documentazione, audit o automazione.</p></div>
+          <div class="features-grid">
+            <div class="feature-card"><span class="tile">🔎</span><h3>Trova file nascosti</h3><p>Rileva PDF in iframe, immagini lazy-loaded, risposte fetch/XHR, URL blob, percorsi di download CMS e oltre 30 attributi data-*.</p></div>
+            <div class="feature-card"><span class="tile">⚙️</span><h3>Filtro intelligente</h3><p>Filtra per estensione, dimensione, nome, data. Ordina, riordina manualmente e copia URL come testo semplice.</p></div>
+            <div class="feature-card"><span class="tile">🕸️</span><h3>Crawl dello stesso sito</h3><p>Scegli una profondità (0–5 o illimitata) e visita ogni link dello stesso dominio. Fino a 100.000 pagine per esecuzione.</p></div>
+            <div class="feature-card"><span class="tile">📚</span><h3>Unione PDF locale</h3><p>Combina i PDF selezionati in un unico file. Nessun upload, nessun server. I tuoi file rimangono sul tuo dispositivo.</p></div>
+            <div class="feature-card"><span class="tile">🗜️</span><h3>Archivio ZIP</h3><p>Raggruppa i file selezionati in un unico ZIP — generato interamente nel tuo browser.</p></div>
+            <div class="feature-card"><span class="tile">📊</span><h3>Esportazione CSV</h3><p>Esporta URL, nomi, dimensioni, tipi e titoli in CSV per documentazione, audit o automazione.</p></div>
           </div>
         </div>
-
         <div data-lang="ko">
-          <h2>주요 기능</h2>
-          <p class="section-lead">여러 웹 페이지에서 문서를 수집하는 사람들을 위해 설계되었습니다 — 연구자, 기록 보관 담당자, 사내 포털 사용자, 디자이너, 학생.</p>
-          <div class="grid cols-2">
-            <div class="card"><h3><span class="icon">🔎</span>숨겨진 파일 검출</h3><p>iframe 내 PDF, 지연 로딩 이미지, fetch/XHR 응답, blob URL, CMS 다운로드 경로, 30개 이상의 data-* 속성을 감지합니다.</p></div>
-            <div class="card"><h3><span class="icon">⚙️</span>스마트 필터링</h3><p>확장자, 크기, 이름, 날짜로 필터링. 정렬, 수동 재정렬, URL 일반 텍스트 복사 지원.</p></div>
-            <div class="card"><h3><span class="icon">🕸️</span>동일 사이트 크롤링</h3><p>깊이(0~5 또는 무제한)를 선택하여 동일 도메인의 모든 링크를 방문. 한 번 실행에 최대 100,000 페이지.</p></div>
-            <div class="card"><h3><span class="icon">📚</span>로컬 PDF 병합</h3><p>선택한 PDF를 하나의 파일로 결합. 업로드 없음, 서버 없음. 파일은 기기에 남아 있습니다.</p></div>
-            <div class="card"><h3><span class="icon">🗜️</span>ZIP 아카이브</h3><p>선택한 파일을 하나의 ZIP으로 묶어 배포 — 브라우저에서 모두 생성.</p></div>
-            <div class="card"><h3><span class="icon">📊</span>CSV 내보내기</h3><p>URL, 이름, 크기, 유형, 제목을 CSV로 내보내 문서화, 감사, 자동화에 활용.</p></div>
+          <div class="features-grid">
+            <div class="feature-card"><span class="tile">🔎</span><h3>숨겨진 파일 검출</h3><p>iframe 내 PDF, 지연 로딩 이미지, fetch/XHR 응답, blob URL, CMS 다운로드 경로, 30개 이상의 data-* 속성을 감지합니다.</p></div>
+            <div class="feature-card"><span class="tile">⚙️</span><h3>스마트 필터링</h3><p>확장자, 크기, 이름, 날짜로 필터링. 정렬, 수동 재정렬, URL 일반 텍스트 복사 지원.</p></div>
+            <div class="feature-card"><span class="tile">🕸️</span><h3>동일 사이트 크롤링</h3><p>깊이(0~5 또는 무제한)를 선택하여 동일 도메인의 모든 링크를 방문. 한 번 실행에 최대 100,000 페이지.</p></div>
+            <div class="feature-card"><span class="tile">📚</span><h3>로컬 PDF 병합</h3><p>선택한 PDF를 하나의 파일로 결합. 업로드 없음, 서버 없음. 파일은 기기에 남아 있습니다.</p></div>
+            <div class="feature-card"><span class="tile">🗜️</span><h3>ZIP 아카이브</h3><p>선택한 파일을 하나의 ZIP으로 묶어 배포 — 브라우저에서 모두 생성.</p></div>
+            <div class="feature-card"><span class="tile">📊</span><h3>CSV 내보내기</h3><p>URL, 이름, 크기, 유형, 제목을 CSV로 내보내 문서화, 감사, 자동화에 활용.</p></div>
           </div>
         </div>
-
         <div data-lang="pt_BR">
-          <h2>O que faz</h2>
-          <p class="section-lead">Projetado para quem coleta documentos de muitas páginas web — pesquisadores, arquivistas, usuários de portais internos, designers e estudantes.</p>
-          <div class="grid cols-2">
-            <div class="card"><h3><span class="icon">🔎</span>Encontra arquivos ocultos</h3><p>Detecta PDFs em iframes, imagens com carregamento preguiçoso, respostas fetch/XHR, URLs blob, rotas de download de CMS e mais de 30 atributos data-*.</p></div>
-            <div class="card"><h3><span class="icon">⚙️</span>Filtragem inteligente</h3><p>Filtre por extensão, tamanho, nome, data. Ordene, reordene manualmente e copie URLs como texto simples.</p></div>
-            <div class="card"><h3><span class="icon">🕸️</span>Rastreamento do mesmo site</h3><p>Escolha uma profundidade (0–5 ou ilimitada) e visite cada link do mesmo domínio. Até 100.000 páginas por execução.</p></div>
-            <div class="card"><h3><span class="icon">📚</span>Mesclagem local de PDF</h3><p>Combine PDFs selecionados em um único arquivo. Sem upload, sem servidor. Seus arquivos ficam no seu dispositivo.</p></div>
-            <div class="card"><h3><span class="icon">🗜️</span>Arquivo ZIP</h3><p>Agrupe arquivos selecionados em um único ZIP — gerado totalmente no seu navegador.</p></div>
-            <div class="card"><h3><span class="icon">📊</span>Exportação CSV</h3><p>Exporte URLs, nomes, tamanhos, tipos e títulos para CSV para documentação, auditoria ou automação.</p></div>
+          <div class="features-grid">
+            <div class="feature-card"><span class="tile">🔎</span><h3>Encontra arquivos ocultos</h3><p>Detecta PDFs em iframes, imagens com carregamento preguiçoso, respostas fetch/XHR, URLs blob, rotas de download de CMS e mais de 30 atributos data-*.</p></div>
+            <div class="feature-card"><span class="tile">⚙️</span><h3>Filtragem inteligente</h3><p>Filtre por extensão, tamanho, nome, data. Ordene, reordene manualmente e copie URLs como texto simples.</p></div>
+            <div class="feature-card"><span class="tile">🕸️</span><h3>Rastreamento do mesmo site</h3><p>Escolha uma profundidade (0–5 ou ilimitada) e visite cada link do mesmo domínio. Até 100.000 páginas por execução.</p></div>
+            <div class="feature-card"><span class="tile">📚</span><h3>Mesclagem local de PDF</h3><p>Combine PDFs selecionados em um único arquivo. Sem upload, sem servidor. Seus arquivos ficam no seu dispositivo.</p></div>
+            <div class="feature-card"><span class="tile">🗜️</span><h3>Arquivo ZIP</h3><p>Agrupe arquivos selecionados em um único ZIP — gerado totalmente no seu navegador.</p></div>
+            <div class="feature-card"><span class="tile">📊</span><h3>Exportação CSV</h3><p>Exporte URLs, nomes, tamanhos, tipos e títulos para CSV para documentação, auditoria ou automação.</p></div>
           </div>
         </div>
-
         <div data-lang="zh_CN">
-          <h2>功能概览</h2>
-          <p class="section-lead">为从多个网页收集文档的用户设计 — 研究人员、档案管理员、内部门户用户、设计师和学生。</p>
-          <div class="grid cols-2">
-            <div class="card"><h3><span class="icon">🔎</span>查找隐藏文件</h3><p>检测iframe中的PDF、懒加载图片、fetch/XHR响应、blob URL、CMS下载路径以及30多个data-*属性。</p></div>
-            <div class="card"><h3><span class="icon">⚙️</span>智能过滤</h3><p>按扩展名、大小、名称、日期过滤。排序、手动重排序，将URL复制为纯文本。</p></div>
-            <div class="card"><h3><span class="icon">🕸️</span>同站点爬取</h3><p>选择深度（0–5或无限）访问同一域名的每个链接。每次运行最多100,000页。</p></div>
-            <div class="card"><h3><span class="icon">📚</span>本地PDF合并</h3><p>将选定的PDF合并为单个文件。无上传，无服务器。文件保留在您的设备上。</p></div>
-            <div class="card"><h3><span class="icon">🗜️</span>ZIP打包</h3><p>将选定文件打包为单个ZIP — 完全在浏览器中生成。</p></div>
-            <div class="card"><h3><span class="icon">📊</span>CSV导出</h3><p>将URL、名称、大小、类型和标题导出为CSV，用于文档、审计或自动化。</p></div>
+          <div class="features-grid">
+            <div class="feature-card"><span class="tile">🔎</span><h3>查找隐藏文件</h3><p>检测iframe中的PDF、懒加载图片、fetch/XHR响应、blob URL、CMS下载路径以及30多个data-*属性。</p></div>
+            <div class="feature-card"><span class="tile">⚙️</span><h3>智能过滤</h3><p>按扩展名、大小、名称、日期过滤。排序、手动重排序，将URL复制为纯文本。</p></div>
+            <div class="feature-card"><span class="tile">🕸️</span><h3>同站点爬取</h3><p>选择深度（0–5或无限）访问同一域名的每个链接。每次运行最多100,000页。</p></div>
+            <div class="feature-card"><span class="tile">📚</span><h3>本地PDF合并</h3><p>将选定的PDF合并为单个文件。无上传，无服务器。文件保留在您的设备上。</p></div>
+            <div class="feature-card"><span class="tile">🗜️</span><h3>ZIP打包</h3><p>将选定文件打包为单个ZIP — 完全在浏览器中生成。</p></div>
+            <div class="feature-card"><span class="tile">📊</span><h3>CSV导出</h3><p>将URL、名称、大小、类型和标题导出为CSV，用于文档、审计或自动化。</p></div>
           </div>
         </div>
-
         <div data-lang="zh_TW">
-          <h2>功能概覽</h2>
-          <p class="section-lead">為從多個網頁收集文件的使用者設計 — 研究人員、檔案管理員、內部入口網站使用者、設計師和學生。</p>
-          <div class="grid cols-2">
-            <div class="card"><h3><span class="icon">🔎</span>找出隱藏檔案</h3><p>偵測iframe內的PDF、延遲載入圖片、fetch/XHR回應、blob URL、CMS下載路徑及30多種data-*屬性。</p></div>
-            <div class="card"><h3><span class="icon">⚙️</span>智慧篩選</h3><p>依副檔名、大小、名稱、日期篩選。排序、手動重新排序、將URL複製為純文字。</p></div>
-            <div class="card"><h3><span class="icon">🕸️</span>同站爬取</h3><p>選擇深度（0–5或無限）造訪同網域的每個連結。每次執行最多100,000頁。</p></div>
-            <div class="card"><h3><span class="icon">📚</span>本機PDF合併</h3><p>將選取的PDF合併為單一檔案。無需上傳、無需伺服器。檔案保留在您的裝置上。</p></div>
-            <div class="card"><h3><span class="icon">🗜️</span>ZIP封存</h3><p>將選取的檔案封存為單一ZIP — 完全在瀏覽器中產生。</p></div>
-            <div class="card"><h3><span class="icon">📊</span>CSV匯出</h3><p>將URL、名稱、大小、類型和標題匯出為CSV，用於文件、稽核或自動化。</p></div>
+          <div class="features-grid">
+            <div class="feature-card"><span class="tile">🔎</span><h3>找出隱藏檔案</h3><p>偵測iframe內的PDF、延遲載入圖片、fetch/XHR回應、blob URL、CMS下載路徑及30多種data-*屬性。</p></div>
+            <div class="feature-card"><span class="tile">⚙️</span><h3>智慧篩選</h3><p>依副檔名、大小、名稱、日期篩選。排序、手動重新排序、將URL複製為純文字。</p></div>
+            <div class="feature-card"><span class="tile">🕸️</span><h3>同站爬取</h3><p>選擇深度（0–5或無限）造訪同網域的每個連結。每次執行最多100,000頁。</p></div>
+            <div class="feature-card"><span class="tile">📚</span><h3>本機PDF合併</h3><p>將選取的PDF合併為單一檔案。無需上傳、無需伺服器。檔案保留在您的裝置上。</p></div>
+            <div class="feature-card"><span class="tile">🗜️</span><h3>ZIP封存</h3><p>將選取的檔案封存為單一ZIP — 完全在瀏覽器中產生。</p></div>
+            <div class="feature-card"><span class="tile">📊</span><h3>CSV匯出</h3><p>將URL、名稱、大小、類型和標題匯出為CSV，用於文件、稽核或自動化。</p></div>
           </div>
         </div>
-
       </div>
     </section>
 
-    <section id="use-cases" class="block">
-      <div class="container">
-
-        <div data-lang="en">
-          <h2>Who uses it</h2>
-          <div class="grid cols-2">
-            <div class="card"><h3>Public records &amp; government archives</h3><p>Bulk-download PDF reports, application forms, and disclosures from city, prefecture, and national agency websites.</p></div>
-            <div class="card"><h3>Universities &amp; research</h3><p>Collect papers, course materials, lab reports, and dataset files spread across faculty pages and repositories.</p></div>
-            <div class="card"><h3>Internal portals &amp; LMS</h3><p>Pull attached documents from corporate intranets, learning management systems (Moodle, Canvas, Blackboard), and member sites.</p></div>
-            <div class="card"><h3>Image &amp; data libraries</h3><p>Save image galleries, dataset files, and CSV exports for offline review or downstream processing.</p></div>
-          </div>
+    <!-- USE CASES -->
+    <section class="block alt" id="use-cases">
+      <div class="wrap">
+        <div class="section-head">
+          <div data-lang="en"><h2>Who uses it</h2></div>
+          <div data-lang="ja"><h2>こんな方が使っています</h2></div>
+          <div data-lang="es"><h2>Quién lo usa</h2></div>
+          <div data-lang="fr"><h2>Qui l'utilise</h2></div>
+          <div data-lang="de"><h2>Wer es nutzt</h2></div>
+          <div data-lang="it"><h2>Chi lo usa</h2></div>
+          <div data-lang="ko"><h2>이런 분들이 사용합니다</h2></div>
+          <div data-lang="pt_BR"><h2>Quem usa</h2></div>
+          <div data-lang="zh_CN"><h2>谁在使用</h2></div>
+          <div data-lang="zh_TW"><h2>誰在使用</h2></div>
         </div>
-
-        <div data-lang="ja">
-          <h2>こんな方が使っています</h2>
-          <div class="grid cols-2">
-            <div class="card"><h3>自治体・官公庁の公開資料収集</h3><p>市区町村・都道府県・省庁のサイトから報告書PDF、申請書、公開資料をまとめてダウンロード。</p></div>
-            <div class="card"><h3>大学・研究機関</h3><p>各教員ページや論文リポジトリに分散した論文・講義資料・実験レポート・データセットを一括取得。</p></div>
-            <div class="card"><h3>社内ポータル・LMS</h3><p>イントラネット、学習管理システム（Moodle、Canvas、Blackboard）、会員サイトの添付資料を効率収集。</p></div>
-            <div class="card"><h3>画像・データライブラリ</h3><p>画像ギャラリー、データセット、CSV出力をオフライン閲覧・後処理用に一括保存。</p></div>
-          </div>
-        </div>
-
-        <div data-lang="es">
-          <h2>Quién lo usa</h2>
-          <div class="grid cols-2">
-            <div class="card"><h3>Registros públicos y archivos gubernamentales</h3><p>Descarga masiva de PDFs, formularios y divulgaciones de sitios municipales y nacionales.</p></div>
-            <div class="card"><h3>Universidades e investigación</h3><p>Recopila artículos, materiales de cursos y datasets dispersos en páginas de facultad.</p></div>
-            <div class="card"><h3>Portales internos y LMS</h3><p>Extrae documentos de intranets corporativas y sistemas de gestión de aprendizaje (Moodle, Canvas, Blackboard).</p></div>
-            <div class="card"><h3>Bibliotecas de imágenes y datos</h3><p>Guarda galerías y datasets para revisión offline.</p></div>
-          </div>
-        </div>
-
-        <div data-lang="fr">
-          <h2>Qui l'utilise</h2>
-          <div class="grid cols-2">
-            <div class="card"><h3>Archives publiques et gouvernementales</h3><p>Téléchargement en masse de rapports PDF, formulaires et publications des sites municipaux et nationaux.</p></div>
-            <div class="card"><h3>Universités et recherche</h3><p>Collectez articles, supports de cours et datasets répartis sur les pages des facultés.</p></div>
-            <div class="card"><h3>Portails internes et LMS</h3><p>Extrayez les documents d'intranets et de systèmes de gestion d'apprentissage (Moodle, Canvas, Blackboard).</p></div>
-            <div class="card"><h3>Bibliothèques d'images et de données</h3><p>Sauvegardez galeries et datasets pour consultation hors ligne.</p></div>
-          </div>
-        </div>
-
-        <div data-lang="de">
-          <h2>Wer es nutzt</h2>
-          <div class="grid cols-2">
-            <div class="card"><h3>Öffentliche Aufzeichnungen und Behördenarchive</h3><p>Massendownload von PDF-Berichten, Antragsformularen und Veröffentlichungen von Behörden- und Stadtwebsites.</p></div>
-            <div class="card"><h3>Universitäten und Forschung</h3><p>Sammeln Sie Arbeiten, Kursmaterialien und Datensätze, die über Fakultätsseiten verteilt sind.</p></div>
-            <div class="card"><h3>Interne Portale und LMS</h3><p>Holen Sie Dokumente aus Intranets und Lernmanagementsystemen (Moodle, Canvas, Blackboard).</p></div>
-            <div class="card"><h3>Bild- und Datenbibliotheken</h3><p>Speichern Sie Galerien, Medienarchive und Datensätze für die Offline-Nutzung.</p></div>
-          </div>
-        </div>
-
-        <div data-lang="it">
-          <h2>Chi lo usa</h2>
-          <div class="grid cols-2">
-            <div class="card"><h3>Archivi pubblici e governativi</h3><p>Download in massa di report PDF, moduli e divulgazioni da siti comunali e nazionali.</p></div>
-            <div class="card"><h3>Università e ricerca</h3><p>Raccogli articoli, materiali didattici e dataset distribuiti su pagine universitarie.</p></div>
-            <div class="card"><h3>Portali interni e LMS</h3><p>Estrai documenti da intranet aziendali e sistemi di gestione dell'apprendimento (Moodle, Canvas, Blackboard).</p></div>
-            <div class="card"><h3>Librerie di immagini e dati</h3><p>Salva gallerie e dataset per la revisione offline.</p></div>
-          </div>
-        </div>
-
-        <div data-lang="ko">
-          <h2>이런 분들이 사용합니다</h2>
-          <div class="grid cols-2">
-            <div class="card"><h3>공공 기록 및 정부 자료 수집</h3><p>시·도·중앙 부처 사이트에서 PDF 보고서, 신청서, 공개 자료를 일괄 다운로드.</p></div>
-            <div class="card"><h3>대학 및 연구</h3><p>여러 교수 페이지와 저장소에 분산된 논문, 강의 자료, 데이터셋을 수집.</p></div>
-            <div class="card"><h3>사내 포털 및 LMS</h3><p>인트라넷, 학습 관리 시스템(Moodle, Canvas, Blackboard), 회원 사이트의 첨부 자료 수집.</p></div>
-            <div class="card"><h3>이미지·데이터 라이브러리</h3><p>이미지 갤러리, 데이터셋을 오프라인 검토용으로 일괄 저장.</p></div>
-          </div>
-        </div>
-
-        <div data-lang="pt_BR">
-          <h2>Quem usa</h2>
-          <div class="grid cols-2">
-            <div class="card"><h3>Registros públicos e arquivos governamentais</h3><p>Download em massa de PDFs, formulários e divulgações de sites municipais e nacionais.</p></div>
-            <div class="card"><h3>Universidades e pesquisa</h3><p>Colete artigos, materiais de curso e datasets distribuídos em páginas universitárias.</p></div>
-            <div class="card"><h3>Portais internos e LMS</h3><p>Extraia documentos de intranets e sistemas de gestão de aprendizagem (Moodle, Canvas, Blackboard).</p></div>
-            <div class="card"><h3>Bibliotecas de imagens e dados</h3><p>Salve galerias e datasets para revisão offline.</p></div>
-          </div>
-        </div>
-
-        <div data-lang="zh_CN">
-          <h2>谁在使用</h2>
-          <div class="grid cols-2">
-            <div class="card"><h3>公共档案和政府资料</h3><p>从市、省、国家级机构网站批量下载PDF报告、申请表和公开资料。</p></div>
-            <div class="card"><h3>大学和研究机构</h3><p>收集分散在教师页面和知识库中的论文、课程材料和数据集。</p></div>
-            <div class="card"><h3>内部门户和LMS</h3><p>从企业内网、学习管理系统（Moodle、Canvas、Blackboard）和会员网站提取附件。</p></div>
-            <div class="card"><h3>图片和数据库</h3><p>保存图片库、数据集供离线查阅。</p></div>
-          </div>
-        </div>
-
-        <div data-lang="zh_TW">
-          <h2>誰在使用</h2>
-          <div class="grid cols-2">
-            <div class="card"><h3>公共檔案和政府資料</h3><p>從市、縣、中央機構網站批次下載PDF報告、申請表和公開資料。</p></div>
-            <div class="card"><h3>大學和研究機構</h3><p>收集分散在教師頁面和知識庫中的論文、課程教材和資料集。</p></div>
-            <div class="card"><h3>內部入口網站和LMS</h3><p>從企業內網、學習管理系統（Moodle、Canvas、Blackboard）和會員網站擷取附件。</p></div>
-            <div class="card"><h3>圖片和資料庫</h3><p>儲存圖片庫、資料集供離線查閱。</p></div>
-          </div>
-        </div>
-
+        <div data-lang="en"><div class="usecase-grid">
+          <div class="usecase-card"><h3><span class="icon">🏛️</span>Public records &amp; government archives</h3><p>Bulk-download PDF reports, application forms, and disclosures from city, prefecture, and national agency websites.</p></div>
+          <div class="usecase-card"><h3><span class="icon">🎓</span>Universities &amp; research</h3><p>Collect papers, course materials, lab reports, and dataset files spread across faculty pages and repositories.</p></div>
+          <div class="usecase-card"><h3><span class="icon">🏢</span>Internal portals &amp; LMS</h3><p>Pull attached documents from corporate intranets, learning management systems (Moodle, Canvas, Blackboard), and member sites.</p></div>
+          <div class="usecase-card"><h3><span class="icon">🖼️</span>Image &amp; data libraries</h3><p>Save image galleries, dataset files, and CSV exports for offline review or downstream processing.</p></div>
+        </div></div>
+        <div data-lang="ja"><div class="usecase-grid">
+          <div class="usecase-card"><h3><span class="icon">🏛️</span>自治体・官公庁の公開資料収集</h3><p>市区町村・都道府県・省庁のサイトから報告書PDF、申請書、公開資料をまとめてダウンロード。</p></div>
+          <div class="usecase-card"><h3><span class="icon">🎓</span>大学・研究機関</h3><p>各教員ページや論文リポジトリに分散した論文・講義資料・実験レポート・データセットを一括取得。</p></div>
+          <div class="usecase-card"><h3><span class="icon">🏢</span>社内ポータル・LMS</h3><p>イントラネット、学習管理システム（Moodle、Canvas、Blackboard）、会員サイトの添付資料を効率収集。</p></div>
+          <div class="usecase-card"><h3><span class="icon">🖼️</span>画像・データライブラリ</h3><p>画像ギャラリー、データセット、CSV出力をオフライン閲覧・後処理用に一括保存。</p></div>
+        </div></div>
+        <div data-lang="es"><div class="usecase-grid">
+          <div class="usecase-card"><h3><span class="icon">🏛️</span>Registros públicos y archivos gubernamentales</h3><p>Descarga masiva de PDFs, formularios y divulgaciones de sitios municipales y nacionales.</p></div>
+          <div class="usecase-card"><h3><span class="icon">🎓</span>Universidades e investigación</h3><p>Recopila artículos, materiales de cursos y datasets dispersos en páginas de facultad.</p></div>
+          <div class="usecase-card"><h3><span class="icon">🏢</span>Portales internos y LMS</h3><p>Extrae documentos de intranets corporativas y sistemas de gestión de aprendizaje (Moodle, Canvas, Blackboard).</p></div>
+          <div class="usecase-card"><h3><span class="icon">🖼️</span>Bibliotecas de imágenes y datos</h3><p>Guarda galerías y datasets para revisión offline.</p></div>
+        </div></div>
+        <div data-lang="fr"><div class="usecase-grid">
+          <div class="usecase-card"><h3><span class="icon">🏛️</span>Archives publiques et gouvernementales</h3><p>Téléchargement en masse de rapports PDF, formulaires et publications des sites municipaux et nationaux.</p></div>
+          <div class="usecase-card"><h3><span class="icon">🎓</span>Universités et recherche</h3><p>Collectez articles, supports de cours et datasets répartis sur les pages des facultés.</p></div>
+          <div class="usecase-card"><h3><span class="icon">🏢</span>Portails internes et LMS</h3><p>Extrayez les documents d'intranets et de systèmes de gestion d'apprentissage (Moodle, Canvas, Blackboard).</p></div>
+          <div class="usecase-card"><h3><span class="icon">🖼️</span>Bibliothèques d'images et de données</h3><p>Sauvegardez galeries et datasets pour consultation hors ligne.</p></div>
+        </div></div>
+        <div data-lang="de"><div class="usecase-grid">
+          <div class="usecase-card"><h3><span class="icon">🏛️</span>Öffentliche Aufzeichnungen und Behördenarchive</h3><p>Massendownload von PDF-Berichten, Antragsformularen und Veröffentlichungen von Behörden- und Stadtwebsites.</p></div>
+          <div class="usecase-card"><h3><span class="icon">🎓</span>Universitäten und Forschung</h3><p>Sammeln Sie Arbeiten, Kursmaterialien und Datensätze, die über Fakultätsseiten verteilt sind.</p></div>
+          <div class="usecase-card"><h3><span class="icon">🏢</span>Interne Portale und LMS</h3><p>Holen Sie Dokumente aus Intranets und Lernmanagementsystemen (Moodle, Canvas, Blackboard).</p></div>
+          <div class="usecase-card"><h3><span class="icon">🖼️</span>Bild- und Datenbibliotheken</h3><p>Speichern Sie Galerien, Medienarchive und Datensätze für die Offline-Nutzung.</p></div>
+        </div></div>
+        <div data-lang="it"><div class="usecase-grid">
+          <div class="usecase-card"><h3><span class="icon">🏛️</span>Archivi pubblici e governativi</h3><p>Download in massa di report PDF, moduli e divulgazioni da siti comunali e nazionali.</p></div>
+          <div class="usecase-card"><h3><span class="icon">🎓</span>Università e ricerca</h3><p>Raccogli articoli, materiali didattici e dataset distribuiti su pagine universitarie.</p></div>
+          <div class="usecase-card"><h3><span class="icon">🏢</span>Portali interni e LMS</h3><p>Estrai documenti da intranet aziendali e sistemi di gestione dell'apprendimento (Moodle, Canvas, Blackboard).</p></div>
+          <div class="usecase-card"><h3><span class="icon">🖼️</span>Librerie di immagini e dati</h3><p>Salva gallerie e dataset per la revisione offline.</p></div>
+        </div></div>
+        <div data-lang="ko"><div class="usecase-grid">
+          <div class="usecase-card"><h3><span class="icon">🏛️</span>공공 기록 및 정부 자료 수집</h3><p>시·도·중앙 부처 사이트에서 PDF 보고서, 신청서, 공개 자료를 일괄 다운로드.</p></div>
+          <div class="usecase-card"><h3><span class="icon">🎓</span>대학 및 연구</h3><p>여러 교수 페이지와 저장소에 분산된 논문, 강의 자료, 데이터셋을 수집.</p></div>
+          <div class="usecase-card"><h3><span class="icon">🏢</span>사내 포털 및 LMS</h3><p>인트라넷, 학습 관리 시스템(Moodle, Canvas, Blackboard), 회원 사이트의 첨부 자료 수집.</p></div>
+          <div class="usecase-card"><h3><span class="icon">🖼️</span>이미지·데이터 라이브러리</h3><p>이미지 갤러리, 데이터셋을 오프라인 검토용으로 일괄 저장.</p></div>
+        </div></div>
+        <div data-lang="pt_BR"><div class="usecase-grid">
+          <div class="usecase-card"><h3><span class="icon">🏛️</span>Registros públicos e arquivos governamentais</h3><p>Download em massa de PDFs, formulários e divulgações de sites municipais e nacionais.</p></div>
+          <div class="usecase-card"><h3><span class="icon">🎓</span>Universidades e pesquisa</h3><p>Colete artigos, materiais de curso e datasets distribuídos em páginas universitárias.</p></div>
+          <div class="usecase-card"><h3><span class="icon">🏢</span>Portais internos e LMS</h3><p>Extraia documentos de intranets e sistemas de gestão de aprendizagem (Moodle, Canvas, Blackboard).</p></div>
+          <div class="usecase-card"><h3><span class="icon">🖼️</span>Bibliotecas de imagens e dados</h3><p>Salve galerias e datasets para revisão offline.</p></div>
+        </div></div>
+        <div data-lang="zh_CN"><div class="usecase-grid">
+          <div class="usecase-card"><h3><span class="icon">🏛️</span>公共档案和政府资料</h3><p>从市、省、国家级机构网站批量下载PDF报告、申请表和公开资料。</p></div>
+          <div class="usecase-card"><h3><span class="icon">🎓</span>大学和研究机构</h3><p>收集分散在教师页面和知识库中的论文、课程材料和数据集。</p></div>
+          <div class="usecase-card"><h3><span class="icon">🏢</span>内部门户和LMS</h3><p>从企业内网、学习管理系统（Moodle、Canvas、Blackboard）和会员网站提取附件。</p></div>
+          <div class="usecase-card"><h3><span class="icon">🖼️</span>图片和数据库</h3><p>保存图片库、数据集供离线查阅。</p></div>
+        </div></div>
+        <div data-lang="zh_TW"><div class="usecase-grid">
+          <div class="usecase-card"><h3><span class="icon">🏛️</span>公共檔案和政府資料</h3><p>從市、縣、中央機構網站批次下載PDF報告、申請表和公開資料。</p></div>
+          <div class="usecase-card"><h3><span class="icon">🎓</span>大學和研究機構</h3><p>收集分散在教師頁面和知識庫中的論文、課程教材和資料集。</p></div>
+          <div class="usecase-card"><h3><span class="icon">🏢</span>內部入口網站和LMS</h3><p>從企業內網、學習管理系統（Moodle、Canvas、Blackboard）和會員網站擷取附件。</p></div>
+          <div class="usecase-card"><h3><span class="icon">🖼️</span>圖片和資料庫</h3><p>儲存圖片庫、資料集供離線查閱。</p></div>
+        </div></div>
       </div>
     </section>
 
-    <section id="how-it-works" class="block alt">
-      <div class="container">
-
-        <div data-lang="en">
-          <h2>How it works</h2>
-          <div class="steps">
-            <div class="step"><div><h3>Open the page or paste a URL</h3><p>Use the current tab, or paste a URL into the popup. Choose how deep to crawl: just this page, 1–5 levels of same-site links, or unlimited.</p></div></div>
-            <div class="step"><div><h3>The extension lists every detectable file</h3><p>Results show file name, type, size, page title, and source URL. Filter, sort, search, and reorder before saving.</p></div></div>
-            <div class="step"><div><h3>Select what you want, then save or merge</h3><p>Bulk-download to a folder of your choice (optionally organized by file type or domain), bundle into a ZIP, or merge selected PDFs into one — all locally in your browser.</p></div></div>
-          </div>
+    <!-- HOW IT WORKS -->
+    <section class="block" id="how">
+      <div class="wrap">
+        <div class="section-head">
+          <div data-lang="en"><h2>How it works</h2><p>Three steps. No accounts, no uploads, no sign-up flow inside the extension.</p></div>
+          <div data-lang="ja"><h2>使い方</h2><p>たった3ステップ。アカウント不要・アップロード不要・拡張機能内に登録フローもありません。</p></div>
+          <div data-lang="es"><h2>Cómo funciona</h2></div>
+          <div data-lang="fr"><h2>Comment ça marche</h2></div>
+          <div data-lang="de"><h2>So funktioniert es</h2></div>
+          <div data-lang="it"><h2>Come funziona</h2></div>
+          <div data-lang="ko"><h2>사용 방법</h2></div>
+          <div data-lang="pt_BR"><h2>Como funciona</h2></div>
+          <div data-lang="zh_CN"><h2>使用方法</h2></div>
+          <div data-lang="zh_TW"><h2>使用方法</h2></div>
         </div>
-
-        <div data-lang="ja">
-          <h2>使い方</h2>
-          <div class="steps">
-            <div class="step"><div><h3>ページを開く / URLを貼り付ける</h3><p>現在のタブを使うか、ポップアップにURLを貼り付け。クロール深度を「このページのみ」「同一サイト内1〜5段」「無制限」から選びます。</p></div></div>
-            <div class="step"><div><h3>検出可能なファイルが一覧表示される</h3><p>ファイル名、種類、サイズ、ページタイトル、ソースURLを確認できます。保存前に絞り込み・並べ替え・検索・手動並べ替えが可能。</p></div></div>
-            <div class="step"><div><h3>選んで保存・ZIP化・PDF結合</h3><p>指定フォルダへ一括保存（種類別・ドメイン別整理オプションあり）、ZIPにまとめる、選択したPDFを1つに結合 — すべてブラウザ内で完結。</p></div></div>
-          </div>
-        </div>
-
-        <div data-lang="es">
-          <h2>Cómo funciona</h2>
-          <div class="steps">
-            <div class="step"><div><h3>Abre la página o pega una URL</h3><p>Usa la pestaña actual o pega una URL. Elige la profundidad: solo esta página, 1–5 niveles, o ilimitado.</p></div></div>
-            <div class="step"><div><h3>La extensión lista todos los archivos detectables</h3><p>Los resultados muestran nombre, tipo, tamaño, título y URL. Filtra, ordena y busca antes de guardar.</p></div></div>
-            <div class="step"><div><h3>Selecciona y guarda, comprime o fusiona</h3><p>Descarga masiva a la carpeta elegida, agrupa en ZIP, o fusiona PDFs en uno — todo localmente.</p></div></div>
-          </div>
-        </div>
-
-        <div data-lang="fr">
-          <h2>Comment ça marche</h2>
-          <div class="steps">
-            <div class="step"><div><h3>Ouvrez la page ou collez une URL</h3><p>Utilisez l'onglet actuel ou collez une URL. Choisissez la profondeur : cette page, 1–5 niveaux, ou illimité.</p></div></div>
-            <div class="step"><div><h3>L'extension liste tous les fichiers détectables</h3><p>Les résultats affichent nom, type, taille, titre et URL. Filtrez, triez, recherchez avant d'enregistrer.</p></div></div>
-            <div class="step"><div><h3>Sélectionnez et enregistrez, archivez ou fusionnez</h3><p>Téléchargement en masse vers le dossier choisi, archive ZIP, ou fusion PDF — tout localement.</p></div></div>
-          </div>
-        </div>
-
-        <div data-lang="de">
-          <h2>So funktioniert es</h2>
-          <div class="steps">
-            <div class="step"><div><h3>Seite öffnen oder URL einfügen</h3><p>Verwenden Sie den aktuellen Tab oder fügen Sie eine URL ein. Wählen Sie die Tiefe: nur diese Seite, 1–5 Ebenen oder unbegrenzt.</p></div></div>
-            <div class="step"><div><h3>Die Erweiterung listet alle erkennbaren Dateien auf</h3><p>Ergebnisse zeigen Name, Typ, Größe, Titel und URL. Vor dem Speichern filtern, sortieren und suchen.</p></div></div>
-            <div class="step"><div><h3>Auswählen und speichern, packen oder zusammenführen</h3><p>Massendownload in den gewählten Ordner, ZIP-Archiv oder PDF-Zusammenführung — alles lokal.</p></div></div>
-          </div>
-        </div>
-
-        <div data-lang="it">
-          <h2>Come funziona</h2>
-          <div class="steps">
-            <div class="step"><div><h3>Apri la pagina o incolla un URL</h3><p>Usa la scheda corrente o incolla un URL. Scegli la profondità: solo questa pagina, 1–5 livelli o illimitato.</p></div></div>
-            <div class="step"><div><h3>L'estensione elenca tutti i file rilevabili</h3><p>I risultati mostrano nome, tipo, dimensione, titolo e URL. Filtra, ordina e cerca prima di salvare.</p></div></div>
-            <div class="step"><div><h3>Seleziona e salva, archivia o unisci</h3><p>Download in massa nella cartella scelta, archivio ZIP o unione PDF — tutto in locale.</p></div></div>
-          </div>
-        </div>
-
-        <div data-lang="ko">
-          <h2>사용 방법</h2>
-          <div class="steps">
-            <div class="step"><div><h3>페이지를 열거나 URL을 붙여넣기</h3><p>현재 탭을 사용하거나 URL을 붙여넣고, 크롤링 깊이를 선택합니다(이 페이지만, 1~5단계, 무제한).</p></div></div>
-            <div class="step"><div><h3>감지 가능한 모든 파일이 나열됨</h3><p>파일 이름, 유형, 크기, 페이지 제목, URL을 확인. 저장 전에 필터링, 정렬, 검색 가능.</p></div></div>
-            <div class="step"><div><h3>선택 후 저장, ZIP 압축, PDF 병합</h3><p>선택한 폴더에 일괄 다운로드, ZIP으로 묶기, PDF 병합 — 모두 브라우저 내에서.</p></div></div>
-          </div>
-        </div>
-
-        <div data-lang="pt_BR">
-          <h2>Como funciona</h2>
-          <div class="steps">
-            <div class="step"><div><h3>Abra a página ou cole uma URL</h3><p>Use a aba atual ou cole uma URL. Escolha a profundidade: apenas esta página, 1–5 níveis, ou ilimitado.</p></div></div>
-            <div class="step"><div><h3>A extensão lista todos os arquivos detectáveis</h3><p>Os resultados mostram nome, tipo, tamanho, título e URL. Filtre, ordene e pesquise antes de salvar.</p></div></div>
-            <div class="step"><div><h3>Selecione e salve, compacte ou mescle</h3><p>Download em massa para a pasta escolhida, arquivo ZIP ou mesclagem de PDF — tudo localmente.</p></div></div>
-          </div>
-        </div>
-
-        <div data-lang="zh_CN">
-          <h2>使用方法</h2>
-          <div class="steps">
-            <div class="step"><div><h3>打开页面或粘贴URL</h3><p>使用当前标签页或粘贴URL。选择爬取深度：仅此页面、1–5级或无限。</p></div></div>
-            <div class="step"><div><h3>扩展列出所有可检测文件</h3><p>结果显示文件名、类型、大小、标题和URL。保存前可过滤、排序、搜索。</p></div></div>
-            <div class="step"><div><h3>选择并保存、压缩或合并</h3><p>批量下载到所选文件夹、打包为ZIP，或合并PDF — 全部在本地完成。</p></div></div>
-          </div>
-        </div>
-
-        <div data-lang="zh_TW">
-          <h2>使用方法</h2>
-          <div class="steps">
-            <div class="step"><div><h3>開啟頁面或貼上URL</h3><p>使用目前分頁或貼上URL。選擇爬取深度：僅此頁面、1–5層或無限。</p></div></div>
-            <div class="step"><div><h3>擴充功能列出所有可偵測檔案</h3><p>結果顯示檔案名稱、類型、大小、標題和URL。儲存前可篩選、排序、搜尋。</p></div></div>
-            <div class="step"><div><h3>選擇並儲存、封存或合併</h3><p>批次下載至所選資料夾、封存為ZIP，或合併PDF — 全部在本機完成。</p></div></div>
-          </div>
-        </div>
-
+        <div data-lang="en"><div class="steps">
+          <div class="step"><div class="step-num"></div><h3>Open the page or paste a URL</h3><p>Use the current tab, or paste a URL into the popup. Choose how deep to crawl: just this page, 1–5 levels of same-site links, or unlimited.</p></div>
+          <div class="step"><div class="step-num"></div><h3>The extension lists every detectable file</h3><p>Results show file name, type, size, page title, and source URL. Filter, sort, search, and reorder before saving.</p></div>
+          <div class="step"><div class="step-num"></div><h3>Select what you want, then save or merge</h3><p>Bulk-download to a folder of your choice (optionally organized by file type or domain), bundle into a ZIP, or merge selected PDFs into one — all locally in your browser.</p></div>
+        </div></div>
+        <div data-lang="ja"><div class="steps">
+          <div class="step"><div class="step-num"></div><h3>ページを開く / URLを貼り付ける</h3><p>現在のタブを使うか、ポップアップにURLを貼り付け。クロール深度を「このページのみ」「同一サイト内1〜5段」「無制限」から選びます。</p></div>
+          <div class="step"><div class="step-num"></div><h3>検出可能なファイルが一覧表示される</h3><p>ファイル名、種類、サイズ、ページタイトル、ソースURLを確認できます。保存前に絞り込み・並べ替え・検索・手動並べ替えが可能。</p></div>
+          <div class="step"><div class="step-num"></div><h3>選んで保存・ZIP化・PDF結合</h3><p>指定フォルダへ一括保存（種類別・ドメイン別整理オプションあり）、ZIPにまとめる、選択したPDFを1つに結合 — すべてブラウザ内で完結。</p></div>
+        </div></div>
+        <div data-lang="es"><div class="steps">
+          <div class="step"><div class="step-num"></div><h3>Abre la página o pega una URL</h3><p>Usa la pestaña actual o pega una URL. Elige la profundidad: solo esta página, 1–5 niveles, o ilimitado.</p></div>
+          <div class="step"><div class="step-num"></div><h3>La extensión lista todos los archivos detectables</h3><p>Los resultados muestran nombre, tipo, tamaño, título y URL. Filtra, ordena y busca antes de guardar.</p></div>
+          <div class="step"><div class="step-num"></div><h3>Selecciona y guarda, comprime o fusiona</h3><p>Descarga masiva a la carpeta elegida, agrupa en ZIP, o fusiona PDFs en uno — todo localmente.</p></div>
+        </div></div>
+        <div data-lang="fr"><div class="steps">
+          <div class="step"><div class="step-num"></div><h3>Ouvrez la page ou collez une URL</h3><p>Utilisez l'onglet actuel ou collez une URL. Choisissez la profondeur : cette page, 1–5 niveaux, ou illimité.</p></div>
+          <div class="step"><div class="step-num"></div><h3>L'extension liste tous les fichiers détectables</h3><p>Les résultats affichent nom, type, taille, titre et URL. Filtrez, triez, recherchez avant d'enregistrer.</p></div>
+          <div class="step"><div class="step-num"></div><h3>Sélectionnez et enregistrez, archivez ou fusionnez</h3><p>Téléchargement en masse vers le dossier choisi, archive ZIP, ou fusion PDF — tout localement.</p></div>
+        </div></div>
+        <div data-lang="de"><div class="steps">
+          <div class="step"><div class="step-num"></div><h3>Seite öffnen oder URL einfügen</h3><p>Verwenden Sie den aktuellen Tab oder fügen Sie eine URL ein. Wählen Sie die Tiefe: nur diese Seite, 1–5 Ebenen oder unbegrenzt.</p></div>
+          <div class="step"><div class="step-num"></div><h3>Die Erweiterung listet alle erkennbaren Dateien auf</h3><p>Ergebnisse zeigen Name, Typ, Größe, Titel und URL. Vor dem Speichern filtern, sortieren und suchen.</p></div>
+          <div class="step"><div class="step-num"></div><h3>Auswählen und speichern, packen oder zusammenführen</h3><p>Massendownload in den gewählten Ordner, ZIP-Archiv oder PDF-Zusammenführung — alles lokal.</p></div>
+        </div></div>
+        <div data-lang="it"><div class="steps">
+          <div class="step"><div class="step-num"></div><h3>Apri la pagina o incolla un URL</h3><p>Usa la scheda corrente o incolla un URL. Scegli la profondità: solo questa pagina, 1–5 livelli o illimitato.</p></div>
+          <div class="step"><div class="step-num"></div><h3>L'estensione elenca tutti i file rilevabili</h3><p>I risultati mostrano nome, tipo, dimensione, titolo e URL. Filtra, ordina e cerca prima di salvare.</p></div>
+          <div class="step"><div class="step-num"></div><h3>Seleziona e salva, archivia o unisci</h3><p>Download in massa nella cartella scelta, archivio ZIP o unione PDF — tutto in locale.</p></div>
+        </div></div>
+        <div data-lang="ko"><div class="steps">
+          <div class="step"><div class="step-num"></div><h3>페이지를 열거나 URL을 붙여넣기</h3><p>현재 탭을 사용하거나 URL을 붙여넣고, 크롤링 깊이를 선택합니다(이 페이지만, 1~5단계, 무제한).</p></div>
+          <div class="step"><div class="step-num"></div><h3>감지 가능한 모든 파일이 나열됨</h3><p>파일 이름, 유형, 크기, 페이지 제목, URL을 확인. 저장 전에 필터링, 정렬, 검색 가능.</p></div>
+          <div class="step"><div class="step-num"></div><h3>선택 후 저장, ZIP 압축, PDF 병합</h3><p>선택한 폴더에 일괄 다운로드, ZIP으로 묶기, PDF 병합 — 모두 브라우저 내에서.</p></div>
+        </div></div>
+        <div data-lang="pt_BR"><div class="steps">
+          <div class="step"><div class="step-num"></div><h3>Abra a página ou cole uma URL</h3><p>Use a aba atual ou cole uma URL. Escolha a profundidade: apenas esta página, 1–5 níveis, ou ilimitado.</p></div>
+          <div class="step"><div class="step-num"></div><h3>A extensão lista todos os arquivos detectáveis</h3><p>Os resultados mostram nome, tipo, tamanho, título e URL. Filtre, ordene e pesquise antes de salvar.</p></div>
+          <div class="step"><div class="step-num"></div><h3>Selecione e salve, compacte ou mescle</h3><p>Download em massa para a pasta escolhida, arquivo ZIP ou mesclagem de PDF — tudo localmente.</p></div>
+        </div></div>
+        <div data-lang="zh_CN"><div class="steps">
+          <div class="step"><div class="step-num"></div><h3>打开页面或粘贴URL</h3><p>使用当前标签页或粘贴URL。选择爬取深度：仅此页面、1–5级或无限。</p></div>
+          <div class="step"><div class="step-num"></div><h3>扩展列出所有可检测文件</h3><p>结果显示文件名、类型、大小、标题和URL。保存前可过滤、排序、搜索。</p></div>
+          <div class="step"><div class="step-num"></div><h3>选择并保存、压缩或合并</h3><p>批量下载到所选文件夹、打包为ZIP，或合并PDF — 全部在本地完成。</p></div>
+        </div></div>
+        <div data-lang="zh_TW"><div class="steps">
+          <div class="step"><div class="step-num"></div><h3>開啟頁面或貼上URL</h3><p>使用目前分頁或貼上URL。選擇爬取深度：僅此頁面、1–5層或無限。</p></div>
+          <div class="step"><div class="step-num"></div><h3>擴充功能列出所有可偵測檔案</h3><p>結果顯示檔案名稱、類型、大小、標題和URL。儲存前可篩選、排序、搜尋。</p></div>
+          <div class="step"><div class="step-num"></div><h3>選擇並儲存、封存或合併</h3><p>批次下載至所選資料夾、封存為ZIP，或合併PDF — 全部在本機完成。</p></div>
+        </div></div>
       </div>
     </section>
 
-    <section id="pricing" class="block">
-      <div class="container">
-
-        <div data-lang="en">
-          <h2 style="text-align:center;">Pricing</h2>
-          <div class="pricing-card">
-            <p style="color:#64748b;font-size:0.9rem;">One-time purchase</p>
-            <div class="price">$19.99 <small>USD</small></div>
-            <ul>
-              <li>14-day free trial, no credit card</li>
-              <li>Lifetime license, no subscription</li>
-              <li>Activates on up to 3 devices</li>
-              <li>Free updates</li>
-              <li>Stripe checkout, license key by email</li>
-            </ul>
-            <a href="purchase/" class="btn btn-primary" style="display:block;text-align:center;">Buy now</a>
-          </div>
+    <!-- PRICING -->
+    <section class="block alt" id="pricing">
+      <div class="wrap">
+        <div class="section-head">
+          <div data-lang="en"><h2>One price. One purchase. Forever.</h2></div>
+          <div data-lang="ja"><h2>買い切り、永続ライセンス、サブスクなし。</h2></div>
+          <div data-lang="es"><h2>Un precio. Una compra. Para siempre.</h2></div>
+          <div data-lang="fr"><h2>Un prix. Un achat. Pour toujours.</h2></div>
+          <div data-lang="de"><h2>Ein Preis. Ein Kauf. Für immer.</h2></div>
+          <div data-lang="it"><h2>Un prezzo. Un acquisto. Per sempre.</h2></div>
+          <div data-lang="ko"><h2>한 가격. 한 번 구매. 평생.</h2></div>
+          <div data-lang="pt_BR"><h2>Um preço. Uma compra. Para sempre.</h2></div>
+          <div data-lang="zh_CN"><h2>一个价格。一次购买。永久使用。</h2></div>
+          <div data-lang="zh_TW"><h2>一個價格。一次購買。永久使用。</h2></div>
         </div>
 
-        <div data-lang="ja">
-          <h2 style="text-align:center;">価格</h2>
+        <div class="pricing-split">
           <div class="pricing-card">
-            <p style="color:#64748b;font-size:0.9rem;">永続ライセンス（サブスクなし）</p>
-            <div class="price">$19.99 <small>USD</small></div>
-            <ul>
-              <li>14日間無料トライアル（クレジットカード不要）</li>
-              <li>永続ライセンス（サブスクなし）</li>
-              <li>最大3台で利用可能</li>
-              <li>アップデート無償</li>
-              <li>Stripe決済 / ライセンスキーはメール送付</li>
-            </ul>
-            <a href="purchase/" class="btn btn-primary" style="display:block;text-align:center;">購入する</a>
+            <span class="ribbon"><span data-lang="en" class="active">14-day free trial</span><span data-lang="ja">14日間無料</span><span data-lang="es">Prueba 14 días</span><span data-lang="fr">Essai 14 jours</span><span data-lang="de">14 Tage Test</span><span data-lang="it">Prova 14 giorni</span><span data-lang="ko">14일 무료</span><span data-lang="pt_BR">Teste 14 dias</span><span data-lang="zh_CN">14天免费试用</span><span data-lang="zh_TW">14天免費試用</span></span>
+            <div class="price">$19.99<small>USD</small></div>
+            <div class="price-sub">
+              <span data-lang="en" class="active">One-time purchase. Lifetime license.</span>
+              <span data-lang="ja">永続ライセンス（サブスクなし）</span>
+              <span data-lang="es">Pago único. Licencia de por vida.</span>
+              <span data-lang="fr">Achat unique. Licence à vie.</span>
+              <span data-lang="de">Einmaliger Kauf. Lebenslange Lizenz.</span>
+              <span data-lang="it">Acquisto singolo. Licenza a vita.</span>
+              <span data-lang="ko">일회성 결제. 평생 라이선스.</span>
+              <span data-lang="pt_BR">Compra única. Licença vitalícia.</span>
+              <span data-lang="zh_CN">一次性购买。永久授权。</span>
+              <span data-lang="zh_TW">一次性購買。永久授權。</span>
+            </div>
+            <div data-lang="en"><ul><li>14-day free trial, no credit card</li><li>Lifetime license, no subscription</li><li>Activates on up to 3 devices</li><li>Free updates</li><li>Stripe checkout, license key by email</li></ul></div>
+            <div data-lang="ja"><ul><li>14日間無料トライアル（クレジットカード不要）</li><li>永続ライセンス（サブスクなし）</li><li>最大3台で利用可能</li><li>アップデート無償</li><li>Stripe決済 / ライセンスキーはメール送付</li></ul></div>
+            <div data-lang="es"><ul><li>Prueba gratuita de 14 días</li><li>Licencia de por vida, sin suscripción</li><li>Hasta 3 dispositivos</li><li>Actualizaciones gratuitas</li><li>Pago Stripe, clave por email</li></ul></div>
+            <div data-lang="fr"><ul><li>Essai gratuit de 14 jours</li><li>Licence à vie, sans abonnement</li><li>Jusqu'à 3 appareils</li><li>Mises à jour gratuites</li><li>Paiement Stripe, clé par e-mail</li></ul></div>
+            <div data-lang="de"><ul><li>14 Tage kostenlos testen</li><li>Lebenslange Lizenz, kein Abo</li><li>Bis zu 3 Geräte</li><li>Kostenlose Updates</li><li>Stripe-Zahlung, Schlüssel per E-Mail</li></ul></div>
+            <div data-lang="it"><ul><li>Prova gratuita di 14 giorni</li><li>Licenza a vita, nessun abbonamento</li><li>Fino a 3 dispositivi</li><li>Aggiornamenti gratuiti</li><li>Pagamento Stripe, chiave via email</li></ul></div>
+            <div data-lang="ko"><ul><li>14일 무료 체험</li><li>평생 라이선스, 구독 없음</li><li>최대 3대 기기</li><li>무료 업데이트</li><li>Stripe 결제, 라이선스 키는 이메일로</li></ul></div>
+            <div data-lang="pt_BR"><ul><li>Teste gratuito de 14 dias</li><li>Licença vitalícia, sem assinatura</li><li>Até 3 dispositivos</li><li>Atualizações gratuitas</li><li>Pagamento Stripe, chave por e-mail</li></ul></div>
+            <div data-lang="zh_CN"><ul><li>14天免费试用</li><li>永久授权，无订阅</li><li>最多3台设备</li><li>免费更新</li><li>Stripe支付，许可证密钥邮件发送</li></ul></div>
+            <div data-lang="zh_TW"><ul><li>14天免費試用</li><li>永久授權，無訂閱</li><li>最多3台裝置</li><li>免費更新</li><li>Stripe付款，授權金鑰電子郵件寄送</li></ul></div>
+            <div class="pricing-cta">
+              <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener">
+                <span data-lang="en" class="active">Start free trial</span><span data-lang="ja">無料で試す</span><span data-lang="es">Probar gratis</span><span data-lang="fr">Essai gratuit</span><span data-lang="de">Kostenlos testen</span><span data-lang="it">Prova gratis</span><span data-lang="ko">무료 체험</span><span data-lang="pt_BR">Teste grátis</span><span data-lang="zh_CN">免费试用</span><span data-lang="zh_TW">免費試用</span>
+                <span class="arrow" aria-hidden="true">→</span>
+              </a>
+              <a class="btn btn-ghost" href="purchase/">
+                <span data-lang="en" class="active">Buy license — $19.99</span><span data-lang="ja">ライセンス購入 — $19.99</span><span data-lang="es">Comprar — $19.99</span><span data-lang="fr">Acheter — $19.99</span><span data-lang="de">Jetzt kaufen — $19.99</span><span data-lang="it">Acquista — $19.99</span><span data-lang="ko">구매 — $19.99</span><span data-lang="pt_BR">Comprar — $19.99</span><span data-lang="zh_CN">立即购买 — $19.99</span><span data-lang="zh_TW">立即購買 — $19.99</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="pricing-aside">
+            <div class="mini-card">
+              <h4><span class="icon">🔒</span><span data-lang="en" class="active">Your files stay on your device</span><span data-lang="ja">ファイルは端末から出ません</span><span data-lang="es">Tus archivos permanecen en tu dispositivo</span><span data-lang="fr">Vos fichiers restent sur votre appareil</span><span data-lang="de">Ihre Dateien bleiben auf Ihrem Gerät</span><span data-lang="it">I tuoi file rimangono sul tuo dispositivo</span><span data-lang="ko">파일은 기기에 남아 있습니다</span><span data-lang="pt_BR">Seus arquivos ficam no seu dispositivo</span><span data-lang="zh_CN">文件保留在您的设备上</span><span data-lang="zh_TW">檔案保留在您的裝置上</span></h4>
+              <p><span data-lang="en" class="active">Files are downloaded directly from the source site to your computer. Only license verification touches our servers.</span><span data-lang="ja">ファイルはサイトから直接お使いのPCへ。サーバーに届くのはライセンス認証のみです。</span><span data-lang="es">Los archivos se descargan directamente del sitio fuente. Solo la verificación de licencia llega a nuestros servidores.</span><span data-lang="fr">Les fichiers sont téléchargés directement depuis le site source. Seule la vérification de licence atteint nos serveurs.</span><span data-lang="de">Dateien werden direkt von der Quellseite heruntergeladen. Nur die Lizenzprüfung erreicht unsere Server.</span><span data-lang="it">I file vengono scaricati direttamente dal sito sorgente. Solo la verifica della licenza raggiunge i nostri server.</span><span data-lang="ko">파일은 소스 사이트에서 직접 기기로 다운로드됩니다. 라이선스 확인만 서버에 도달합니다.</span><span data-lang="pt_BR">Os arquivos são baixados diretamente do site fonte. Apenas a verificação de licença chega aos nossos servidores.</span><span data-lang="zh_CN">文件直接从源网站下载到您的电脑。只有许可证验证会到达我们的服务器。</span><span data-lang="zh_TW">檔案直接從來源網站下載到您的電腦。只有授權驗證會到達我們的伺服器。</span></p>
+            </div>
+            <div class="mini-card">
+              <h4><span class="icon">💳</span><span data-lang="en" class="active">Pay once, keep forever</span><span data-lang="ja">買い切り・永続利用</span><span data-lang="es">Paga una vez, conserva para siempre</span><span data-lang="fr">Payez une fois, gardez pour toujours</span><span data-lang="de">Einmal zahlen, immer behalten</span><span data-lang="it">Paghi una volta, mantieni per sempre</span><span data-lang="ko">한 번 결제, 평생 사용</span><span data-lang="pt_BR">Pague uma vez, mantenha para sempre</span><span data-lang="zh_CN">一次付款，永久使用</span><span data-lang="zh_TW">一次付款，永久使用</span></h4>
+              <p><span data-lang="en" class="active">Stripe checkout. No subscriptions, no auto-renew. License key delivered by email.</span><span data-lang="ja">Stripe決済。サブスクなし・自動更新なし。ライセンスキーはメールでお送りします。</span><span data-lang="es">Pago Stripe. Sin suscripciones, sin renovación automática. Clave por email.</span><span data-lang="fr">Paiement Stripe. Sans abonnement, sans renouvellement automatique. Clé par e-mail.</span><span data-lang="de">Stripe-Zahlung. Keine Abos, keine automatische Verlängerung. Schlüssel per E-Mail.</span><span data-lang="it">Pagamento Stripe. Nessun abbonamento, nessun rinnovo automatico. Chiave via email.</span><span data-lang="ko">Stripe 결제. 구독 없음, 자동 갱신 없음. 라이선스 키는 이메일로.</span><span data-lang="pt_BR">Pagamento Stripe. Sem assinatura, sem renovação automática. Chave por e-mail.</span><span data-lang="zh_CN">Stripe支付。无订阅，无自动续费。许可证密钥邮件发送。</span><span data-lang="zh_TW">Stripe付款。無訂閱，無自動續費。授權金鑰電子郵件寄送。</span></p>
+            </div>
+            <div class="mini-card">
+              <h4><span class="icon">🌐</span><span data-lang="en" class="active">10 UI languages, sessions reused</span><span data-lang="ja">10言語UI・ログインも継続</span><span data-lang="es">10 idiomas, sesiones reutilizadas</span><span data-lang="fr">10 langues, sessions réutilisées</span><span data-lang="de">10 UI-Sprachen, Sitzungen wiederverwendet</span><span data-lang="it">10 lingue UI, sessioni riutilizzate</span><span data-lang="ko">10개 언어 UI, 세션 재사용</span><span data-lang="pt_BR">10 idiomas, sessões reutilizadas</span><span data-lang="zh_CN">10种界面语言，复用登录会话</span><span data-lang="zh_TW">10種介面語言，重複使用登入工作階段</span></h4>
+              <p><span data-lang="en" class="active">EN / JA / ES / FR / DE / IT / KO / PT-BR / ZH-CN / ZH-TW. Logged-in sessions are reused — works on protected portals.</span><span data-lang="ja">EN/JA/ES/FR/DE/IT/KO/PT-BR/ZH-CN/ZH-TW。ブラウザのログイン状態をそのまま使うので、社内ポータルにも対応。</span><span data-lang="es">EN / JA / ES / FR / DE / IT / KO / PT-BR / ZH-CN / ZH-TW. Reutiliza tu sesión iniciada — funciona en portales protegidos.</span><span data-lang="fr">EN / JA / ES / FR / DE / IT / KO / PT-BR / ZH-CN / ZH-TW. Réutilise vos sessions — fonctionne sur les portails protégés.</span><span data-lang="de">EN / JA / ES / FR / DE / IT / KO / PT-BR / ZH-CN / ZH-TW. Angemeldete Sitzungen werden wiederverwendet — funktioniert auf geschützten Portalen.</span><span data-lang="it">EN / JA / ES / FR / DE / IT / KO / PT-BR / ZH-CN / ZH-TW. Le sessioni di login vengono riutilizzate — funziona su portali protetti.</span><span data-lang="ko">EN / JA / ES / FR / DE / IT / KO / PT-BR / ZH-CN / ZH-TW. 로그인된 세션을 재사용 — 보호된 포털에서도 작동.</span><span data-lang="pt_BR">EN / JA / ES / FR / DE / IT / KO / PT-BR / ZH-CN / ZH-TW. Sessões logadas são reutilizadas — funciona em portais protegidos.</span><span data-lang="zh_CN">EN / JA / ES / FR / DE / IT / KO / PT-BR / ZH-CN / ZH-TW。复用浏览器登录会话——在受保护的门户上也可使用。</span><span data-lang="zh_TW">EN / JA / ES / FR / DE / IT / KO / PT-BR / ZH-CN / ZH-TW。重複使用瀏覽器登入工作階段——在受保護的入口網站上也可使用。</span></p>
+            </div>
           </div>
         </div>
-
-        <div data-lang="es">
-          <h2 style="text-align:center;">Precio</h2>
-          <div class="pricing-card">
-            <p style="color:#64748b;font-size:0.9rem;">Pago único</p>
-            <div class="price">$19.99 <small>USD</small></div>
-            <ul><li>Prueba gratuita de 14 días</li><li>Licencia de por vida, sin suscripción</li><li>Hasta 3 dispositivos</li><li>Actualizaciones gratuitas</li><li>Pago Stripe, clave por email</li></ul>
-            <a href="purchase/" class="btn btn-primary" style="display:block;text-align:center;">Comprar</a>
-          </div>
-        </div>
-
-        <div data-lang="fr">
-          <h2 style="text-align:center;">Tarif</h2>
-          <div class="pricing-card">
-            <p style="color:#64748b;font-size:0.9rem;">Achat unique</p>
-            <div class="price">$19.99 <small>USD</small></div>
-            <ul><li>Essai gratuit de 14 jours</li><li>Licence à vie, sans abonnement</li><li>Jusqu'à 3 appareils</li><li>Mises à jour gratuites</li><li>Paiement Stripe, clé par e-mail</li></ul>
-            <a href="purchase/" class="btn btn-primary" style="display:block;text-align:center;">Acheter</a>
-          </div>
-        </div>
-
-        <div data-lang="de">
-          <h2 style="text-align:center;">Preis</h2>
-          <div class="pricing-card">
-            <p style="color:#64748b;font-size:0.9rem;">Einmaliger Kauf</p>
-            <div class="price">$19.99 <small>USD</small></div>
-            <ul><li>14 Tage kostenlos testen</li><li>Lebenslange Lizenz, kein Abo</li><li>Bis zu 3 Geräte</li><li>Kostenlose Updates</li><li>Stripe-Zahlung, Schlüssel per E-Mail</li></ul>
-            <a href="purchase/" class="btn btn-primary" style="display:block;text-align:center;">Jetzt kaufen</a>
-          </div>
-        </div>
-
-        <div data-lang="it">
-          <h2 style="text-align:center;">Prezzo</h2>
-          <div class="pricing-card">
-            <p style="color:#64748b;font-size:0.9rem;">Acquisto singolo</p>
-            <div class="price">$19.99 <small>USD</small></div>
-            <ul><li>Prova gratuita di 14 giorni</li><li>Licenza a vita, nessun abbonamento</li><li>Fino a 3 dispositivi</li><li>Aggiornamenti gratuiti</li><li>Pagamento Stripe, chiave via email</li></ul>
-            <a href="purchase/" class="btn btn-primary" style="display:block;text-align:center;">Acquista ora</a>
-          </div>
-        </div>
-
-        <div data-lang="ko">
-          <h2 style="text-align:center;">가격</h2>
-          <div class="pricing-card">
-            <p style="color:#64748b;font-size:0.9rem;">일회성 결제</p>
-            <div class="price">$19.99 <small>USD</small></div>
-            <ul><li>14일 무료 체험</li><li>평생 라이선스, 구독 없음</li><li>최대 3대 기기</li><li>무료 업데이트</li><li>Stripe 결제, 라이선스 키는 이메일로</li></ul>
-            <a href="purchase/" class="btn btn-primary" style="display:block;text-align:center;">지금 구매</a>
-          </div>
-        </div>
-
-        <div data-lang="pt_BR">
-          <h2 style="text-align:center;">Preço</h2>
-          <div class="pricing-card">
-            <p style="color:#64748b;font-size:0.9rem;">Compra única</p>
-            <div class="price">$19.99 <small>USD</small></div>
-            <ul><li>Teste gratuito de 14 dias</li><li>Licença vitalícia, sem assinatura</li><li>Até 3 dispositivos</li><li>Atualizações gratuitas</li><li>Pagamento Stripe, chave por e-mail</li></ul>
-            <a href="purchase/" class="btn btn-primary" style="display:block;text-align:center;">Comprar agora</a>
-          </div>
-        </div>
-
-        <div data-lang="zh_CN">
-          <h2 style="text-align:center;">价格</h2>
-          <div class="pricing-card">
-            <p style="color:#64748b;font-size:0.9rem;">一次性购买</p>
-            <div class="price">$19.99 <small>USD</small></div>
-            <ul><li>14天免费试用</li><li>永久授权，无订阅</li><li>最多3台设备</li><li>免费更新</li><li>Stripe支付，许可证密钥邮件发送</li></ul>
-            <a href="purchase/" class="btn btn-primary" style="display:block;text-align:center;">立即购买</a>
-          </div>
-        </div>
-
-        <div data-lang="zh_TW">
-          <h2 style="text-align:center;">價格</h2>
-          <div class="pricing-card">
-            <p style="color:#64748b;font-size:0.9rem;">一次性購買</p>
-            <div class="price">$19.99 <small>USD</small></div>
-            <ul><li>14天免費試用</li><li>永久授權，無訂閱</li><li>最多3台裝置</li><li>免費更新</li><li>Stripe付款，授權金鑰電子郵件寄送</li></ul>
-            <a href="purchase/" class="btn btn-primary" style="display:block;text-align:center;">立即購買</a>
-          </div>
-        </div>
-
       </div>
     </section>
 
-    <section id="faq" class="block alt">
-      <div class="container faq">
-
-        <div data-lang="en">
-          <h2>FAQ</h2>
+    <!-- FAQ -->
+    <section class="block" id="faq">
+      <div class="wrap-narrow">
+        <div class="section-head">
+          <div data-lang="en"><h2>FAQ</h2></div>
+          <div data-lang="ja"><h2>よくある質問</h2></div>
+          <div data-lang="es"><h2>Preguntas frecuentes</h2></div>
+          <div data-lang="fr"><h2>FAQ</h2></div>
+          <div data-lang="de"><h2>FAQ</h2></div>
+          <div data-lang="it"><h2>FAQ</h2></div>
+          <div data-lang="ko"><h2>자주 묻는 질문</h2></div>
+          <div data-lang="pt_BR"><h2>Perguntas frequentes</h2></div>
+          <div data-lang="zh_CN"><h2>常见问题</h2></div>
+          <div data-lang="zh_TW"><h2>常見問題</h2></div>
+        </div>
+        <div data-lang="en"><div class="faq-list">
           <details><summary>Is there a free trial?</summary><p>Yes — 14 days with full features, no credit card required.</p></details>
           <details><summary>How much does it cost after the trial?</summary><p>$19.99 USD as a one-time purchase. Lifetime license, no subscription. Activates on up to 3 devices.</p></details>
           <details><summary>Does it send my browsing data anywhere?</summary><p>No. Files are downloaded directly from the source site to your device. Only license verification reaches our servers.</p></details>
           <details><summary>Which browsers are supported?</summary><p>Google Chrome™ and Microsoft Edge™ (Chromium 102 or later).</p></details>
           <details><summary>Can I get a refund?</summary><p>As a digital product delivered immediately, refunds are not accepted in principle. The 14-day free trial lets you fully evaluate before purchasing. If a technical defect prevents the extension from working, contact us within 30 days for a full refund.</p></details>
           <details><summary>Does it work on protected sites that require a login?</summary><p>Yes — the extension uses your existing browser session, so any site you can access manually works the same way.</p></details>
-        </div>
-
-        <div data-lang="ja">
-          <h2>よくある質問</h2>
+        </div></div>
+        <div data-lang="ja"><div class="faq-list">
           <details><summary>無料トライアルはありますか？</summary><p>はい、14日間すべての機能を無料でご利用いただけます。クレジットカード登録は不要です。</p></details>
           <details><summary>トライアル後の料金は？</summary><p>$19.99 USDの永続ライセンス（サブスクなし）です。最大3台のデバイスで利用できます。</p></details>
           <details><summary>閲覧データはどこかへ送信されますか？</summary><p>いいえ。ファイルはソースサイトから端末へ直接ダウンロードされます。当社サーバーへ送信されるのはライセンス検証のみです。</p></details>
           <details><summary>対応ブラウザは？</summary><p>Google Chrome および Microsoft Edge（Chromium 102 以降）。</p></details>
           <details><summary>返金はできますか？</summary><p>即時提供のデジタル製品のため、原則として返金には応じておりません。14日間無料トライアルで購入前に十分にお試しください。技術的な不具合により動作しない場合は、初回報告から30日以内であれば全額返金いたします。</p></details>
           <details><summary>ログインが必要なサイトでも動きますか？</summary><p>はい、お使いのブラウザのセッションを利用するため、手動でアクセスできるサイトはすべて同じように動作します。</p></details>
-        </div>
-
-        <div data-lang="es">
-          <h2>Preguntas frecuentes</h2>
+        </div></div>
+        <div data-lang="es"><div class="faq-list">
           <details><summary>¿Hay prueba gratuita?</summary><p>Sí — 14 días con todas las funciones, sin tarjeta de crédito.</p></details>
           <details><summary>¿Cuánto cuesta después de la prueba?</summary><p>$19.99 USD pago único. Licencia de por vida, sin suscripción. Hasta 3 dispositivos.</p></details>
           <details><summary>¿Envía mis datos de navegación?</summary><p>No. Los archivos se descargan directamente del sitio fuente. Solo la verificación de licencia llega a nuestros servidores.</p></details>
           <details><summary>¿Qué navegadores son compatibles?</summary><p>Google Chrome y Microsoft Edge (Chromium 102 o posterior).</p></details>
           <details><summary>¿Puedo obtener un reembolso?</summary><p>Como producto digital entregado de inmediato, no se aceptan reembolsos en principio. La prueba de 14 días permite evaluación completa antes de comprar.</p></details>
-        </div>
-
-        <div data-lang="fr">
-          <h2>FAQ</h2>
+        </div></div>
+        <div data-lang="fr"><div class="faq-list">
           <details><summary>Y a-t-il un essai gratuit ?</summary><p>Oui — 14 jours avec toutes les fonctionnalités, sans carte de crédit.</p></details>
           <details><summary>Combien ça coûte après l'essai ?</summary><p>$19.99 USD en paiement unique. Licence à vie, sans abonnement. Jusqu'à 3 appareils.</p></details>
           <details><summary>L'extension envoie-t-elle mes données ?</summary><p>Non. Les fichiers sont téléchargés directement depuis le site source. Seule la vérification de licence atteint nos serveurs.</p></details>
           <details><summary>Quels navigateurs sont pris en charge ?</summary><p>Google Chrome et Microsoft Edge (Chromium 102 ou ultérieur).</p></details>
           <details><summary>Puis-je obtenir un remboursement ?</summary><p>En tant que produit numérique livré immédiatement, les remboursements ne sont pas acceptés en principe. L'essai de 14 jours permet une évaluation complète avant l'achat.</p></details>
-        </div>
-
-        <div data-lang="de">
-          <h2>FAQ</h2>
+        </div></div>
+        <div data-lang="de"><div class="faq-list">
           <details><summary>Gibt es eine kostenlose Testversion?</summary><p>Ja — 14 Tage mit vollem Funktionsumfang, ohne Kreditkarte.</p></details>
           <details><summary>Was kostet es nach der Testphase?</summary><p>$19.99 USD als Einmalzahlung. Lebenslange Lizenz, kein Abo. Bis zu 3 Geräte.</p></details>
           <details><summary>Werden meine Browserdaten gesendet?</summary><p>Nein. Dateien werden direkt von der Quellseite zu Ihrem Gerät heruntergeladen. Nur die Lizenzprüfung erreicht unsere Server.</p></details>
           <details><summary>Welche Browser werden unterstützt?</summary><p>Google Chrome und Microsoft Edge (Chromium 102 oder neuer).</p></details>
           <details><summary>Kann ich eine Rückerstattung erhalten?</summary><p>Als digital sofort geliefertes Produkt sind Rückerstattungen grundsätzlich nicht möglich. Die 14-tägige Testphase erlaubt eine vollständige Bewertung vor dem Kauf.</p></details>
-        </div>
-
-        <div data-lang="it">
-          <h2>FAQ</h2>
+        </div></div>
+        <div data-lang="it"><div class="faq-list">
           <details><summary>C'è una prova gratuita?</summary><p>Sì — 14 giorni con tutte le funzionalità, senza carta di credito.</p></details>
           <details><summary>Quanto costa dopo la prova?</summary><p>$19.99 USD acquisto singolo. Licenza a vita, nessun abbonamento. Fino a 3 dispositivi.</p></details>
           <details><summary>Invia i miei dati di navigazione?</summary><p>No. I file vengono scaricati direttamente dal sito sorgente. Solo la verifica della licenza raggiunge i nostri server.</p></details>
           <details><summary>Quali browser sono supportati?</summary><p>Google Chrome e Microsoft Edge (Chromium 102 o successivo).</p></details>
           <details><summary>Posso ottenere un rimborso?</summary><p>Come prodotto digitale consegnato immediatamente, i rimborsi non sono accettati in linea di principio. La prova di 14 giorni consente una valutazione completa prima dell'acquisto.</p></details>
-        </div>
-
-        <div data-lang="ko">
-          <h2>자주 묻는 질문</h2>
+        </div></div>
+        <div data-lang="ko"><div class="faq-list">
           <details><summary>무료 체험이 있나요?</summary><p>네 — 14일간 모든 기능 무료, 신용카드 불필요.</p></details>
           <details><summary>체험 후 가격은?</summary><p>$19.99 USD 일회성 결제. 평생 라이선스, 구독 없음. 최대 3대 기기.</p></details>
           <details><summary>브라우저 데이터를 어디로 보내나요?</summary><p>아니요. 파일은 소스 사이트에서 직접 기기로 다운로드됩니다. 라이선스 확인만 서버에 도달합니다.</p></details>
           <details><summary>지원 브라우저는?</summary><p>Google Chrome 및 Microsoft Edge (Chromium 102 이상).</p></details>
           <details><summary>환불이 가능한가요?</summary><p>즉시 제공되는 디지털 제품으로 원칙적으로 환불은 불가합니다. 14일 무료 체험으로 구매 전 충분히 검토하실 수 있습니다.</p></details>
-        </div>
-
-        <div data-lang="pt_BR">
-          <h2>Perguntas frequentes</h2>
+        </div></div>
+        <div data-lang="pt_BR"><div class="faq-list">
           <details><summary>Há teste gratuito?</summary><p>Sim — 14 dias com todos os recursos, sem cartão de crédito.</p></details>
           <details><summary>Quanto custa após o teste?</summary><p>$19.99 USD compra única. Licença vitalícia, sem assinatura. Até 3 dispositivos.</p></details>
           <details><summary>Envia meus dados de navegação?</summary><p>Não. Os arquivos são baixados diretamente do site fonte para seu dispositivo. Apenas a verificação de licença chega aos nossos servidores.</p></details>
           <details><summary>Quais navegadores são suportados?</summary><p>Google Chrome e Microsoft Edge (Chromium 102 ou posterior).</p></details>
           <details><summary>Posso obter reembolso?</summary><p>Como produto digital entregue imediatamente, reembolsos não são aceitos em princípio. O teste de 14 dias permite avaliação completa antes da compra.</p></details>
-        </div>
-
-        <div data-lang="zh_CN">
-          <h2>常见问题</h2>
+        </div></div>
+        <div data-lang="zh_CN"><div class="faq-list">
           <details><summary>是否提供免费试用？</summary><p>是 — 14天免费使用所有功能，无需信用卡。</p></details>
           <details><summary>试用后费用是多少？</summary><p>$19.99 USD 一次性购买。永久授权，无订阅。最多3台设备。</p></details>
           <details><summary>会发送我的浏览数据吗？</summary><p>不会。文件直接从源网站下载到您的设备。只有许可证验证会到达我们的服务器。</p></details>
           <details><summary>支持哪些浏览器？</summary><p>Google Chrome 和 Microsoft Edge（Chromium 102 或更高版本）。</p></details>
           <details><summary>可以退款吗？</summary><p>作为立即交付的数字产品，原则上不接受退款。14天免费试用可让您在购买前充分评估。</p></details>
-        </div>
-
-        <div data-lang="zh_TW">
-          <h2>常見問題</h2>
+        </div></div>
+        <div data-lang="zh_TW"><div class="faq-list">
           <details><summary>是否提供免費試用？</summary><p>是 — 14天免費使用所有功能，無需信用卡。</p></details>
           <details><summary>試用後費用是多少？</summary><p>$19.99 USD 一次性購買。永久授權，無訂閱。最多3台裝置。</p></details>
           <details><summary>會傳送我的瀏覽資料嗎？</summary><p>不會。檔案直接從來源網站下載到您的裝置。只有授權驗證會到達我們的伺服器。</p></details>
           <details><summary>支援哪些瀏覽器？</summary><p>Google Chrome 和 Microsoft Edge（Chromium 102 或更新版本）。</p></details>
           <details><summary>可以退款嗎？</summary><p>作為立即交付的數位產品，原則上不接受退款。14天免費試用可讓您在購買前充分評估。</p></details>
-        </div>
-
+        </div></div>
       </div>
     </section>
 
+    <!-- CTA STRIP -->
+    <section class="block">
+      <div class="wrap">
+        <div class="cta-strip">
+          <div data-lang="en"><h2>Stop clicking "Save as…" hundreds of times.</h2><p>Install the extension. Try every feature for 14 days, free. Decide if it earns its $19.99.</p></div>
+          <div data-lang="ja"><h2>「保存」を何度もクリックする作業から、解放されよう。</h2><p>インストールして14日間無料でフル機能をお試しください。納得してから $19.99 をご購入いただけます。</p></div>
+          <div data-lang="es"><h2>Deja de hacer clic en "Guardar como..." cientos de veces.</h2><p>Instala la extensión. Prueba todas las funciones durante 14 días, gratis. Decide si vale $19.99.</p></div>
+          <div data-lang="fr"><h2>Arrêtez de cliquer "Enregistrer sous..." des centaines de fois.</h2><p>Installez l'extension. Essayez toutes les fonctionnalités pendant 14 jours, gratuitement. Décidez si ça vaut $19.99.</p></div>
+          <div data-lang="de"><h2>Hören Sie auf, hunderte Male "Speichern unter…" zu klicken.</h2><p>Installieren Sie die Erweiterung. Testen Sie 14 Tage kostenlos alle Funktionen. Entscheiden Sie dann über die $19.99.</p></div>
+          <div data-lang="it"><h2>Smetti di fare clic su "Salva con nome…" centinaia di volte.</h2><p>Installa l'estensione. Prova tutte le funzionalità per 14 giorni, gratis. Decidi se vale $19.99.</p></div>
+          <div data-lang="ko"><h2>"다른 이름으로 저장…"을 수백 번 클릭하는 작업에서 해방되세요.</h2><p>확장 프로그램을 설치하고 14일간 모든 기능을 무료로 사용해보세요. 그 후 $19.99의 가치가 있는지 결정하세요.</p></div>
+          <div data-lang="pt_BR"><h2>Pare de clicar em "Salvar como..." centenas de vezes.</h2><p>Instale a extensão. Teste todos os recursos por 14 dias, grátis. Decida se vale $19.99.</p></div>
+          <div data-lang="zh_CN"><h2>不再数百次点击"另存为…"。</h2><p>安装扩展程序，免费试用所有功能14天。然后再决定是否值$19.99。</p></div>
+          <div data-lang="zh_TW"><h2>不再數百次點選「另存新檔…」。</h2><p>安裝擴充功能，免費試用所有功能14天。然後再決定是否值$19.99。</p></div>
+          <div class="cta-btns">
+            <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener">
+              <span data-lang="en" class="active">Install free trial</span><span data-lang="ja">無料インストール</span><span data-lang="es">Instalar gratis</span><span data-lang="fr">Installer gratuitement</span><span data-lang="de">Kostenlos installieren</span><span data-lang="it">Installa gratis</span><span data-lang="ko">무료 설치</span><span data-lang="pt_BR">Instalar grátis</span><span data-lang="zh_CN">免费安装</span><span data-lang="zh_TW">免費安裝</span>
+              <span class="arrow" aria-hidden="true">→</span>
+            </a>
+            <a class="btn btn-ghost" href="purchase/">
+              <span data-lang="en" class="active">Buy license</span><span data-lang="ja">ライセンス購入</span><span data-lang="es">Comprar licencia</span><span data-lang="fr">Acheter une licence</span><span data-lang="de">Lizenz kaufen</span><span data-lang="it">Acquista licenza</span><span data-lang="ko">라이선스 구매</span><span data-lang="pt_BR">Comprar licença</span><span data-lang="zh_CN">购买许可证</span><span data-lang="zh_TW">購買授權</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <div class="container">
-      <h3>Grab All Files</h3>
-      <p>Browser extension for Google Chrome™ and Microsoft Edge™. Made by an independent developer.</p>
-
-      <div class="legal-links">
-        <a href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener">Chrome Web Store</a>
-        <a href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener">Edge Add-ons</a>
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-        <a href="legal.html">Legal Notice</a>
-        <a href="purchase/">Purchase</a>
-        <a href="https://github.com/SerimaTeddyBear/grab-all-files" target="_blank" rel="noopener">GitHub</a>
+    <div class="wrap foot-grid">
+      <div class="brand-block">
+        <div class="b">
+          <img src="icon-512.png" alt="">
+          <span>Grab All Files</span>
+        </div>
+        <div data-lang="en"><p>Browser extension for Google Chrome™ and Microsoft Edge™. Made by an independent developer.</p></div>
+        <div data-lang="ja"><p>Google Chrome™ / Microsoft Edge™ 向けの拡張機能。個人開発者による独立した製品です。</p></div>
+        <div data-lang="es"><p>Extensión para Google Chrome™ y Microsoft Edge™. Desarrollada por un desarrollador independiente.</p></div>
+        <div data-lang="fr"><p>Extension pour Google Chrome™ et Microsoft Edge™. Développée par un développeur indépendant.</p></div>
+        <div data-lang="de"><p>Browser-Erweiterung für Google Chrome™ und Microsoft Edge™. Von einem unabhängigen Entwickler.</p></div>
+        <div data-lang="it"><p>Estensione per Google Chrome™ e Microsoft Edge™. Realizzata da uno sviluppatore indipendente.</p></div>
+        <div data-lang="ko"><p>Google Chrome™ 및 Microsoft Edge™용 확장 프로그램. 독립 개발자가 제작.</p></div>
+        <div data-lang="pt_BR"><p>Extensão para Google Chrome™ e Microsoft Edge™. Feita por um desenvolvedor independente.</p></div>
+        <div data-lang="zh_CN"><p>Google Chrome™ 和 Microsoft Edge™ 浏览器扩展程序。由独立开发者制作。</p></div>
+        <div data-lang="zh_TW"><p>Google Chrome™ 和 Microsoft Edge™ 瀏覽器擴充功能。由獨立開發者製作。</p></div>
       </div>
-
-      <div class="footer-meta">
-        <p>Sold by <strong>Tetsunobu Kawai</strong> (sole proprietor, Japan). This is an independent product. It is not sold by, affiliated with, or endorsed by Google or Microsoft.</p>
-        <p>販売者：<strong>Tetsunobu Kawai</strong>（個人事業主、日本）。本製品は独立した製品であり、Google または Microsoft が販売、提携、推奨するものではありません。</p>
-        <p>"Google Chrome" and "Chrome Web Store" are trademarks of Google LLC. "Microsoft Edge" and "Microsoft Edge Add-ons" are trademarks of Microsoft Corporation.</p>
+      <div>
+        <h4><span data-lang="en" class="active">Product</span><span data-lang="ja">プロダクト</span><span data-lang="es">Producto</span><span data-lang="fr">Produit</span><span data-lang="de">Produkt</span><span data-lang="it">Prodotto</span><span data-lang="ko">제품</span><span data-lang="pt_BR">Produto</span><span data-lang="zh_CN">产品</span><span data-lang="zh_TW">產品</span></h4>
+        <ul>
+          <li><a href="#features"><span data-lang="en" class="active">Features</span><span data-lang="ja">機能</span><span data-lang="es">Características</span><span data-lang="fr">Fonctionnalités</span><span data-lang="de">Funktionen</span><span data-lang="it">Funzionalità</span><span data-lang="ko">기능</span><span data-lang="pt_BR">Recursos</span><span data-lang="zh_CN">功能</span><span data-lang="zh_TW">功能</span></a></li>
+          <li><a href="#how"><span data-lang="en" class="active">How it works</span><span data-lang="ja">使い方</span><span data-lang="es">Cómo funciona</span><span data-lang="fr">Comment ça marche</span><span data-lang="de">So funktioniert es</span><span data-lang="it">Come funziona</span><span data-lang="ko">사용 방법</span><span data-lang="pt_BR">Como funciona</span><span data-lang="zh_CN">使用方法</span><span data-lang="zh_TW">使用方法</span></a></li>
+          <li><a href="#pricing"><span data-lang="en" class="active">Pricing</span><span data-lang="ja">料金</span><span data-lang="es">Precio</span><span data-lang="fr">Tarif</span><span data-lang="de">Preis</span><span data-lang="it">Prezzo</span><span data-lang="ko">가격</span><span data-lang="pt_BR">Preço</span><span data-lang="zh_CN">价格</span><span data-lang="zh_TW">價格</span></a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
       </div>
+      <div>
+        <h4><span data-lang="en" class="active">Install</span><span data-lang="ja">インストール</span><span data-lang="es">Instalar</span><span data-lang="fr">Installer</span><span data-lang="de">Installieren</span><span data-lang="it">Installa</span><span data-lang="ko">설치</span><span data-lang="pt_BR">Instalar</span><span data-lang="zh_CN">安装</span><span data-lang="zh_TW">安裝</span></h4>
+        <ul>
+          <li><a href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener">Chrome Web Store ↗</a></li>
+          <li><a href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener">Edge Add-ons ↗</a></li>
+          <li><a href="https://github.com/SerimaTeddyBear/grab-all-files" target="_blank" rel="noopener">GitHub ↗</a></li>
+          <li><a href="purchase/"><span data-lang="en" class="active">Purchase</span><span data-lang="ja">購入</span><span data-lang="es">Compra</span><span data-lang="fr">Achat</span><span data-lang="de">Kauf</span><span data-lang="it">Acquisto</span><span data-lang="ko">구매</span><span data-lang="pt_BR">Comprar</span><span data-lang="zh_CN">购买</span><span data-lang="zh_TW">購買</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <h4><span data-lang="en" class="active">Legal</span><span data-lang="ja">規約</span><span data-lang="es">Legal</span><span data-lang="fr">Mentions légales</span><span data-lang="de">Rechtliches</span><span data-lang="it">Legale</span><span data-lang="ko">법적 고지</span><span data-lang="pt_BR">Legal</span><span data-lang="zh_CN">法律</span><span data-lang="zh_TW">法律</span></h4>
+        <ul>
+          <li><a href="legal.html"><span data-lang="en" class="active">Legal info</span><span data-lang="ja">特商法・運営情報</span><span data-lang="es">Información legal</span><span data-lang="fr">Informations légales</span><span data-lang="de">Rechtliche Hinweise</span><span data-lang="it">Informazioni legali</span><span data-lang="ko">법적 정보</span><span data-lang="pt_BR">Informações legais</span><span data-lang="zh_CN">法律信息</span><span data-lang="zh_TW">法律資訊</span></a></li>
+          <li><a href="terms.html"><span data-lang="en" class="active">Terms of Service</span><span data-lang="ja">利用規約</span><span data-lang="es">Términos del servicio</span><span data-lang="fr">Conditions d'utilisation</span><span data-lang="de">Nutzungsbedingungen</span><span data-lang="it">Termini di servizio</span><span data-lang="ko">서비스 약관</span><span data-lang="pt_BR">Termos de serviço</span><span data-lang="zh_CN">服务条款</span><span data-lang="zh_TW">服務條款</span></a></li>
+          <li><a href="privacy-policy.html"><span data-lang="en" class="active">Privacy Policy</span><span data-lang="ja">プライバシー</span><span data-lang="es">Privacidad</span><span data-lang="fr">Confidentialité</span><span data-lang="de">Datenschutz</span><span data-lang="it">Privacy</span><span data-lang="ko">개인정보 처리방침</span><span data-lang="pt_BR">Privacidade</span><span data-lang="zh_CN">隐私政策</span><span data-lang="zh_TW">隱私政策</span></a></li>
+          <li><a href="tokushoho.html">特定商取引法に基づく表記</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap meta">
+      <p>© 2025 Tetsunobu Kawai. All rights reserved.</p>
+      <p>Sold by <strong>Tetsunobu Kawai</strong> (sole proprietor, Japan). Independent product, not affiliated with Google or Microsoft. "Google Chrome" and "Chrome Web Store" are trademarks of Google LLC. "Microsoft Edge" and "Microsoft Edge Add-ons" are trademarks of Microsoft Corporation.</p>
     </div>
   </footer>
 
   <script>
     var SUPPORTED = ['en','ja','es','fr','de','it','ko','pt_BR','zh_CN','zh_TW'];
     var LANGUAGE_LABELS = {
-      en: 'Language',
-      ja: '言語',
-      es: 'Idioma',
-      fr: 'Langue',
-      de: 'Sprache',
-      it: 'Lingua',
-      ko: '언어',
-      pt_BR: 'Idioma',
-      zh_CN: '语言',
-      zh_TW: '語言'
+      en: 'Language', ja: '言語', es: 'Idioma', fr: 'Langue', de: 'Sprache', it: 'Lingua',
+      ko: '언어', pt_BR: 'Idioma', zh_CN: '语言', zh_TW: '語言'
     };
     var META = {
       en: { title: 'Grab All Files — Bulk file downloader for Google Chrome™ and Microsoft Edge™', desc: 'Find every downloadable PDF, Office document, image, ZIP and CSV on any web page. Filter, bulk-download, and merge selected PDFs locally. 14-day free trial, $19.99 lifetime license.' },
@@ -1144,7 +1242,8 @@
         sel.setAttribute('aria-label', LANGUAGE_LABELS[l] || LANGUAGE_LABELS.en);
       }
     }
-    document.getElementById('lang-sel').addEventListener('change', function(e) { setLang(e.target.value); });
+    var langSel = document.getElementById('lang-sel');
+    if (langSel) langSel.addEventListener('change', function(e) { setLang(e.target.value); });
     setLang(detectLang());
 
     function getTheme() {
