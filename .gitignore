@@ -1,0 +1,31 @@
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*-credentials.json
+*service-account*.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+*.sublime-*
+
+# Logs / temp
+*.log
+npm-debug.log*
+yarn-debug.log*
+.cache/
+tmp/
+
+# Dependencies (in case node tooling is added later)
+node_modules/
+
+# Work-in-progress prototypes that should not ship to the public site
+_redesign/
