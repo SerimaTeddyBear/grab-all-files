@@ -248,6 +248,19 @@
     .store-btn:hover { border-color: var(--primary); color: var(--primary); }
     .store-btn svg { width: 14px; height: 14px; }
 
+    /* Pending / under-review state (e.g. Chrome Web Store while submission is in review) */
+    .is-pending { cursor: not-allowed; pointer-events: none; }
+    .store-btn.is-pending { color: var(--text-faint); border-style: dashed; background: var(--surface-soft); }
+    .btn-primary.is-pending { background: var(--surface-soft); color: var(--text-faint); border: 1px dashed var(--border-strong); box-shadow: none; }
+    .btn-primary.is-pending .arrow { display: none; }
+    .cta-strip .btn-primary.is-pending { background: rgba(255,255,255,0.14); color: rgba(255,255,255,0.82); border: 1px dashed rgba(255,255,255,0.45); }
+    .badge-pending { display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.66rem; font-weight: 600; padding: 0.1rem 0.45rem; border-radius: 999px; background: rgba(245, 158, 11, 0.18); color: #b45309; letter-spacing: 0.01em; margin-left: 0.4rem; white-space: nowrap; }
+    .badge-pending::before { content: "●"; font-size: 0.55rem; color: #f59e0b; }
+    .cta-strip .badge-pending { background: rgba(253, 224, 71, 0.22); color: #fde68a; }
+    .cta-strip .badge-pending::before { color: #fde68a; }
+    footer .is-pending { color: var(--footer-text); opacity: 0.65; }
+    footer .badge-pending { background: rgba(245, 158, 11, 0.22); color: #fcd34d; }
+
     .hero-trust { display: flex; gap: 1.6rem; flex-wrap: wrap; margin-top: 2.2rem; padding-top: 1.4rem; border-top: 1px dashed var(--border-strong); font-size: 0.82rem; color: var(--text-faint); }
     .hero-trust .ti strong { display: block; color: var(--text-strong); font-size: 1.05rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 0.05rem; }
 
@@ -477,7 +490,7 @@
               <a href="#features" class="btn btn-ghost">See what it does</a>
             </div>
             <div class="hero-stores"><span>Install free trial:</span>
-              <a class="store-btn" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-label="Install from Chrome Web Store">Chrome Web Store <span aria-hidden="true">↗</span></a>
+              <a class="store-btn is-pending" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-disabled="true" tabindex="-1" aria-label="Chrome Web Store — pending review">Chrome Web Store <span class="badge-pending">Pending review</span></a>
               <a class="store-btn" href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" aria-label="Install from Microsoft Edge Add-ons">Edge Add-ons <span aria-hidden="true">↗</span></a>
             </div>
           </div>
@@ -490,7 +503,7 @@
               <a href="#features" class="btn btn-ghost">機能を見る</a>
             </div>
             <div class="hero-stores"><span>無料トライアル：</span>
-              <a class="store-btn" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-label="Chrome ウェブストアからインストール">Chrome ウェブストア <span aria-hidden="true">↗</span></a>
+              <a class="store-btn is-pending" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-disabled="true" tabindex="-1" aria-label="Chrome ウェブストア — 申請中">Chrome ウェブストア <span class="badge-pending">申請中</span></a>
               <a class="store-btn" href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" aria-label="Microsoft Edge アドオンからインストール">Edge アドオン <span aria-hidden="true">↗</span></a>
             </div>
           </div>
@@ -503,7 +516,7 @@
               <a href="#features" class="btn btn-ghost">Ver características</a>
             </div>
             <div class="hero-stores"><span>Probar gratis:</span>
-              <a class="store-btn" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-label="Instalar desde Chrome Web Store">Chrome Web Store <span aria-hidden="true">↗</span></a>
+              <a class="store-btn is-pending" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-disabled="true" tabindex="-1" aria-label="Chrome Web Store — en revisión">Chrome Web Store <span class="badge-pending">En revisión</span></a>
               <a class="store-btn" href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" aria-label="Instalar desde Microsoft Edge Add-ons">Edge Add-ons <span aria-hidden="true">↗</span></a>
             </div>
           </div>
@@ -516,7 +529,7 @@
               <a href="#features" class="btn btn-ghost">Voir les fonctionnalités</a>
             </div>
             <div class="hero-stores"><span>Essai gratuit :</span>
-              <a class="store-btn" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-label="Installer depuis le Chrome Web Store">Chrome Web Store <span aria-hidden="true">↗</span></a>
+              <a class="store-btn is-pending" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-disabled="true" tabindex="-1" aria-label="Chrome Web Store — en cours d'examen">Chrome Web Store <span class="badge-pending">En cours d'examen</span></a>
               <a class="store-btn" href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" aria-label="Installer depuis Microsoft Edge Add-ons">Edge Add-ons <span aria-hidden="true">↗</span></a>
             </div>
           </div>
@@ -529,7 +542,7 @@
               <a href="#features" class="btn btn-ghost">Funktionen ansehen</a>
             </div>
             <div class="hero-stores"><span>Kostenlos testen:</span>
-              <a class="store-btn" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-label="Im Chrome Web Store installieren">Chrome Web Store <span aria-hidden="true">↗</span></a>
+              <a class="store-btn is-pending" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-disabled="true" tabindex="-1" aria-label="Chrome Web Store — in Prüfung">Chrome Web Store <span class="badge-pending">In Prüfung</span></a>
               <a class="store-btn" href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" aria-label="In Microsoft Edge Add-ons installieren">Edge Add-ons <span aria-hidden="true">↗</span></a>
             </div>
           </div>
@@ -542,7 +555,7 @@
               <a href="#features" class="btn btn-ghost">Vedi le funzionalità</a>
             </div>
             <div class="hero-stores"><span>Prova gratuita:</span>
-              <a class="store-btn" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-label="Installa dal Chrome Web Store">Chrome Web Store <span aria-hidden="true">↗</span></a>
+              <a class="store-btn is-pending" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-disabled="true" tabindex="-1" aria-label="Chrome Web Store — in revisione">Chrome Web Store <span class="badge-pending">In revisione</span></a>
               <a class="store-btn" href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" aria-label="Installa da Microsoft Edge Add-ons">Edge Add-ons <span aria-hidden="true">↗</span></a>
             </div>
           </div>
@@ -555,7 +568,7 @@
               <a href="#features" class="btn btn-ghost">기능 보기</a>
             </div>
             <div class="hero-stores"><span>무료 체험:</span>
-              <a class="store-btn" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-label="Chrome 웹 스토어에서 설치">Chrome 웹 스토어 <span aria-hidden="true">↗</span></a>
+              <a class="store-btn is-pending" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-disabled="true" tabindex="-1" aria-label="Chrome 웹 스토어 — 심사 중">Chrome 웹 스토어 <span class="badge-pending">심사 중</span></a>
               <a class="store-btn" href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" aria-label="Microsoft Edge 추가 기능에서 설치">Edge 추가 기능 <span aria-hidden="true">↗</span></a>
             </div>
           </div>
@@ -568,7 +581,7 @@
               <a href="#features" class="btn btn-ghost">Ver recursos</a>
             </div>
             <div class="hero-stores"><span>Teste grátis:</span>
-              <a class="store-btn" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-label="Instalar na Chrome Web Store">Chrome Web Store <span aria-hidden="true">↗</span></a>
+              <a class="store-btn is-pending" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-disabled="true" tabindex="-1" aria-label="Chrome Web Store — em análise">Chrome Web Store <span class="badge-pending">Em análise</span></a>
               <a class="store-btn" href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" aria-label="Instalar em Microsoft Edge Add-ons">Edge Add-ons <span aria-hidden="true">↗</span></a>
             </div>
           </div>
@@ -581,7 +594,7 @@
               <a href="#features" class="btn btn-ghost">查看功能</a>
             </div>
             <div class="hero-stores"><span>免费试用：</span>
-              <a class="store-btn" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-label="从 Chrome 应用商店安装">Chrome 应用商店 <span aria-hidden="true">↗</span></a>
+              <a class="store-btn is-pending" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-disabled="true" tabindex="-1" aria-label="Chrome 应用商店 — 审核中">Chrome 应用商店 <span class="badge-pending">审核中</span></a>
               <a class="store-btn" href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" aria-label="从 Microsoft Edge 加载项安装">Edge 加载项 <span aria-hidden="true">↗</span></a>
             </div>
           </div>
@@ -594,7 +607,7 @@
               <a href="#features" class="btn btn-ghost">查看功能</a>
             </div>
             <div class="hero-stores"><span>免費試用：</span>
-              <a class="store-btn" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-label="從 Chrome 線上應用程式商店安裝">Chrome 線上應用程式商店 <span aria-hidden="true">↗</span></a>
+              <a class="store-btn is-pending" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-disabled="true" tabindex="-1" aria-label="Chrome 線上應用程式商店 — 審核中">Chrome 線上應用程式商店 <span class="badge-pending">審核中</span></a>
               <a class="store-btn" href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener" aria-label="從 Microsoft Edge 附加元件安裝">Edge 附加元件 <span aria-hidden="true">↗</span></a>
             </div>
           </div>
@@ -976,9 +989,9 @@
             <div data-lang="zh_CN"><ul><li>14天免费试用</li><li>永久授权，无订阅</li><li>最多3台设备</li><li>免费更新</li><li>Stripe支付，许可证密钥邮件发送</li></ul></div>
             <div data-lang="zh_TW"><ul><li>14天免費試用</li><li>永久授權，無訂閱</li><li>最多3台裝置</li><li>免費更新</li><li>Stripe付款，授權金鑰電子郵件寄送</li></ul></div>
             <div class="pricing-cta">
-              <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener">
+              <a class="btn btn-primary is-pending" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-disabled="true" tabindex="-1">
                 <span data-lang="en" class="active">Try on Chrome</span><span data-lang="ja">Chromeで試す</span><span data-lang="es">Probar en Chrome</span><span data-lang="fr">Essayer sur Chrome</span><span data-lang="de">Auf Chrome testen</span><span data-lang="it">Prova su Chrome</span><span data-lang="ko">Chrome에서 체험</span><span data-lang="pt_BR">Testar no Chrome</span><span data-lang="zh_CN">在 Chrome 试用</span><span data-lang="zh_TW">在 Chrome 試用</span>
-                <span class="arrow" aria-hidden="true">→</span>
+                <span class="badge-pending"><span data-lang="en" class="active">Pending review</span><span data-lang="ja">申請中</span><span data-lang="es">En revisión</span><span data-lang="fr">En cours d'examen</span><span data-lang="de">In Prüfung</span><span data-lang="it">In revisione</span><span data-lang="ko">심사 중</span><span data-lang="pt_BR">Em análise</span><span data-lang="zh_CN">审核中</span><span data-lang="zh_TW">審核中</span></span>
               </a>
               <a class="btn btn-primary" href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener">
                 <span data-lang="en" class="active">Try on Edge</span><span data-lang="ja">Edgeで試す</span><span data-lang="es">Probar en Edge</span><span data-lang="fr">Essayer sur Edge</span><span data-lang="de">Auf Edge testen</span><span data-lang="it">Prova su Edge</span><span data-lang="ko">Edge에서 체험</span><span data-lang="pt_BR">Testar no Edge</span><span data-lang="zh_CN">在 Edge 试用</span><span data-lang="zh_TW">在 Edge 試用</span>
@@ -1113,9 +1126,9 @@
           <div data-lang="zh_CN"><h2>不再数百次点击"另存为…"。</h2><p>安装扩展程序，免费试用所有功能14天。然后再决定是否值$19.99。</p></div>
           <div data-lang="zh_TW"><h2>不再數百次點選「另存新檔…」。</h2><p>安裝擴充功能，免費試用所有功能14天。然後再決定是否值$19.99。</p></div>
           <div class="cta-btns">
-            <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener">
+            <a class="btn btn-primary is-pending" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-disabled="true" tabindex="-1">
               <span data-lang="en" class="active">Install for Chrome</span><span data-lang="ja">Chromeに無料インストール</span><span data-lang="es">Instalar en Chrome</span><span data-lang="fr">Installer pour Chrome</span><span data-lang="de">Für Chrome installieren</span><span data-lang="it">Installa per Chrome</span><span data-lang="ko">Chrome에 무료 설치</span><span data-lang="pt_BR">Instalar no Chrome</span><span data-lang="zh_CN">安装到 Chrome</span><span data-lang="zh_TW">安裝到 Chrome</span>
-              <span class="arrow" aria-hidden="true">→</span>
+              <span class="badge-pending"><span data-lang="en" class="active">Pending review</span><span data-lang="ja">申請中</span><span data-lang="es">En revisión</span><span data-lang="fr">En cours d'examen</span><span data-lang="de">In Prüfung</span><span data-lang="it">In revisione</span><span data-lang="ko">심사 중</span><span data-lang="pt_BR">Em análise</span><span data-lang="zh_CN">审核中</span><span data-lang="zh_TW">審核中</span></span>
             </a>
             <a class="btn btn-primary" href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener">
               <span data-lang="en" class="active">Install for Edge</span><span data-lang="ja">Edgeに無料インストール</span><span data-lang="es">Instalar en Edge</span><span data-lang="fr">Installer pour Edge</span><span data-lang="de">Für Edge installieren</span><span data-lang="it">Installa per Edge</span><span data-lang="ko">Edge에 무료 설치</span><span data-lang="pt_BR">Instalar no Edge</span><span data-lang="zh_CN">安装到 Edge</span><span data-lang="zh_TW">安裝到 Edge</span>
@@ -1160,7 +1173,7 @@
       <div>
         <h4><span data-lang="en" class="active">Install</span><span data-lang="ja">インストール</span><span data-lang="es">Instalar</span><span data-lang="fr">Installer</span><span data-lang="de">Installieren</span><span data-lang="it">Installa</span><span data-lang="ko">설치</span><span data-lang="pt_BR">Instalar</span><span data-lang="zh_CN">安装</span><span data-lang="zh_TW">安裝</span></h4>
         <ul>
-          <li><a href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener">Chrome Web Store ↗</a></li>
+          <li><a class="is-pending" href="https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf" target="_blank" rel="noopener" aria-disabled="true" tabindex="-1">Chrome Web Store <span class="badge-pending"><span data-lang="en" class="active">Pending</span><span data-lang="ja">申請中</span><span data-lang="es">En revisión</span><span data-lang="fr">En examen</span><span data-lang="de">In Prüfung</span><span data-lang="it">In revisione</span><span data-lang="ko">심사 중</span><span data-lang="pt_BR">Em análise</span><span data-lang="zh_CN">审核中</span><span data-lang="zh_TW">審核中</span></span></a></li>
           <li><a href="https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn" target="_blank" rel="noopener">Edge Add-ons ↗</a></li>
           <li><a href="https://github.com/SerimaTeddyBear/grab-all-files" target="_blank" rel="noopener">GitHub ↗</a></li>
           <li><a href="purchase/"><span data-lang="en" class="active">Purchase</span><span data-lang="ja">購入</span><span data-lang="es">Compra</span><span data-lang="fr">Achat</span><span data-lang="de">Kauf</span><span data-lang="it">Acquisto</span><span data-lang="ko">구매</span><span data-lang="pt_BR">Comprar</span><span data-lang="zh_CN">购买</span><span data-lang="zh_TW">購買</span></a></li>
