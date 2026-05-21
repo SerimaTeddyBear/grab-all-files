@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Contact / お問い合わせ - Grab All Files</title>
+  <script defer src="/analytics.js"></script>
+  <link rel="icon" type="image/png" sizes="128x128" href="../favicon-128.png">
+  <link rel="canonical" href="https://grab-all-files.app/contact/">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f8f9fa; --surface: #ffffff; --surface-alt: #f8fafc; --surface-soft: #f1f5f9;
+      --text: #1a1a1a; --text-strong: #0f172a; --text-muted: #475569; --text-faint: #64748b;
+      --border: #e2e8f0; --border-strong: #cbd5e1;
+      --primary: #2563eb; --primary-hover: #1d4ed8; --primary-text: #ffffff; --primary-disabled: #94a3b8;
+      --accent-soft: #dbeafe; --accent-soft-text: #1e40af;
+      --success-bg: #dcfce7; --success-text: #14532d; --success-border: #86efac;
+      --error-bg: #fee2e2; --error-text: #7f1d1d; --error-border: #fca5a5;
+      --shadow-soft: 0 1px 3px rgba(15,23,42,0.05);
+      --shadow-card-lg: 0 1px 2px rgba(15,23,42,0.05), 0 20px 50px -16px rgba(15,23,42,0.18);
+    }
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #0b1220; --surface: #111827; --surface-alt: #0f172a; --surface-soft: #1f2937;
+      --text: #e2e8f0; --text-strong: #f1f5f9; --text-muted: #cbd5e1; --text-faint: #94a3b8;
+      --border: #1f2937; --border-strong: #334155;
+      --primary: #3b82f6; --primary-hover: #60a5fa; --primary-disabled: #475569;
+      --accent-soft: #1e3a8a; --accent-soft-text: #bfdbfe;
+      --success-bg: #14532d; --success-text: #bbf7d0; --success-border: #16a34a;
+      --error-bg: #7f1d1d; --error-text: #fecaca; --error-border: #ef4444;
+      --shadow-soft: 0 1px 3px rgba(0,0,0,0.5);
+      --shadow-card-lg: 0 1px 2px rgba(0,0,0,0.5), 0 30px 60px -20px rgba(0,0,0,0.7);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; transition: background-color 0.2s ease, color 0.2s ease; -webkit-font-smoothing: antialiased; }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .topbar { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: saturate(180%) blur(14px); -webkit-backdrop-filter: saturate(180%) blur(14px); border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent); }
+    .topbar-inner { max-width: 720px; margin: 0 auto; padding: 0.7rem 1.4rem; display: flex; align-items: center; gap: 0.7rem; }
+    .brand { display: flex; align-items: center; gap: 0.55rem; text-decoration: none; color: var(--text-strong); font-weight: 700; font-size: 0.95rem; }
+    .brand:hover { text-decoration: none; }
+    .brand img { width: 26px; height: 26px; border-radius: 6px; }
+    .topbar-spacer { flex: 1; }
+    .icon-btn, .back-link, .lang-sel { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--text-strong); cursor: pointer; font-family: inherit; height: 32px; padding: 0 0.65rem; font-size: 0.82rem; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; transition: background 0.15s ease, border-color 0.15s ease; text-decoration: none; }
+    .icon-btn { width: 32px; padding: 0; font-size: 0.9rem; }
+    .icon-btn:hover, .back-link:hover, .lang-sel:hover { background: var(--surface-soft); border-color: var(--border-strong); text-decoration: none; }
+    .icon-btn .theme-icon-light, .icon-btn .theme-icon-dark { display: none; }
+    :root[data-theme="dark"] .icon-btn .theme-icon-light { display: inline; }
+    :root:not([data-theme="dark"]) .icon-btn .theme-icon-dark { display: inline; }
+    @media (max-width: 540px) { .back-link span:last-child { display: none; } }
+
+    main { flex: 1; padding: 2.5rem 1.4rem 4rem; display: flex; align-items: flex-start; justify-content: center; }
+    .wrap { max-width: 720px; width: 100%; }
+
+    .hero { text-align: center; margin-bottom: 2rem; }
+    .hero h1 { font-size: 1.8rem; font-weight: 700; color: var(--text-strong); letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+    .hero p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; max-width: 520px; margin: 0 auto; }
+
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 1.8rem; box-shadow: var(--shadow-soft); }
+    @media (max-width: 540px) { .card { padding: 1.2rem; } }
+
+    form { display: grid; gap: 1rem; }
+    .field { display: grid; gap: 0.35rem; }
+    .field label { font-size: 0.85rem; font-weight: 600; color: var(--text-strong); }
+    .field label .req { color: #dc2626; margin-left: 0.15rem; }
+    .field input, .field select, .field textarea {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 9px;
+      padding: 0.65rem 0.8rem; font-size: 0.92rem; font-family: inherit; color: var(--text);
+      transition: border-color 0.15s ease, box-shadow 0.15s ease; width: 100%;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      outline: none; border-color: var(--primary);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 18%, transparent);
+    }
+    .field textarea { min-height: 140px; resize: vertical; line-height: 1.55; }
+    .field .help { font-size: 0.74rem; color: var(--text-faint); }
+
+    .row-2 { display: grid; gap: 1rem; grid-template-columns: 1fr 1fr; }
+    @media (max-width: 540px) { .row-2 { grid-template-columns: 1fr; } }
+
+    .honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+
+    .meta-toggle { font-size: 0.82rem; color: var(--text-muted); }
+    .meta-toggle summary { cursor: pointer; color: var(--primary); list-style: none; padding: 0.4rem 0; }
+    .meta-toggle summary::-webkit-details-marker { display: none; }
+    .meta-toggle summary::before { content: "▸ "; }
+    .meta-toggle[open] summary::before { content: "▾ "; }
+    .meta-toggle .meta-body { padding-top: 0.5rem; display: grid; gap: 0.8rem; }
+
+    .submit-btn {
+      background: var(--primary); color: var(--primary-text); border: 0;
+      padding: 0.85rem 1.2rem; border-radius: 11px; font-family: inherit;
+      font-size: 1rem; font-weight: 600; cursor: pointer;
+      transition: background 0.15s ease, box-shadow 0.15s ease;
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    }
+    .submit-btn:hover:not(:disabled) { background: var(--primary-hover); box-shadow: 0 8px 24px rgba(37,99,235,0.22); }
+    .submit-btn:disabled { background: var(--primary-disabled); cursor: not-allowed; }
+
+    .status { padding: 0.85rem 1rem; border-radius: 10px; font-size: 0.9rem; line-height: 1.5; display: none; }
+    .status.show { display: block; }
+    .status.success { background: var(--success-bg); color: var(--success-text); border: 1px solid var(--success-border); }
+    .status.error { background: var(--error-bg); color: var(--error-text); border: 1px solid var(--error-border); }
+
+    .btn-spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.45); border-top-color: #fff; border-radius: 50%; animation: btn-spin 0.7s linear infinite; }
+    @keyframes btn-spin { to { transform: rotate(360deg); } }
+
+    .links { font-size: 0.78rem; color: var(--text-faint); text-align: center; margin-top: 1.4rem; }
+    .links a { color: var(--text-muted); }
+    .links a:hover { color: var(--primary); }
+  </style>
+  <script>
+    (function(){
+      try {
+        var t = localStorage.getItem('gaf-theme');
+        if (t !== 'light' && t !== 'dark') {
+          t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (_) {}
+    })();
+  </script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../">
+      <img src="../icon-512.png" alt="">
+      <span>Grab All Files</span>
+    </a>
+    <div class="topbar-spacer"></div>
+    <a class="back-link" href="../" id="back-link">
+      <span aria-hidden="true">←</span>
+      <span id="back-label">Back</span>
+    </a>
+    <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle dark mode / ダークモード切替" title="Toggle dark mode / ダークモード切替">
+      <span class="theme-icon-dark" aria-hidden="true">🌙</span>
+      <span class="theme-icon-light" aria-hidden="true">☀️</span>
+    </button>
+    <select id="lang-sel" class="lang-sel" aria-label="Language">
+      <option value="en">English</option>
+      <option value="ja">日本語</option>
+      <option value="es">Español</option>
+      <option value="fr">Français</option>
+      <option value="ko">한국어</option>
+      <option value="it">Italiano</option>
+      <option value="zh_CN">简体中文</option>
+      <option value="zh_TW">繁體中文</option>
+      <option value="pt_BR">Português</option>
+      <option value="de">Deutsch</option>
+    </select>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="hero">
+      <h1 id="t-title">Contact</h1>
+      <p id="t-subtitle">Have a bug to report, a feature to request, or a question? Send us a message and we'll get back to you by email.</p>
+    </div>
+
+    <div class="card">
+      <form id="contact-form" novalidate>
+        <div class="field">
+          <label for="f-category" id="l-category">What is this about? <span class="req">*</span></label>
+          <select id="f-category" name="category" required>
+            <option value="bug" id="opt-bug">Bug report</option>
+            <option value="feature" id="opt-feature">Feature request</option>
+            <option value="question" id="opt-question">Question</option>
+            <option value="other" id="opt-other">Other</option>
+          </select>
+        </div>
+
+        <div class="row-2">
+          <div class="field">
+            <label for="f-name" id="l-name">Your name</label>
+            <input type="text" id="f-name" name="name" autocomplete="name" maxlength="100">
+          </div>
+          <div class="field">
+            <label for="f-email" id="l-email">Your email <span class="req">*</span></label>
+            <input type="email" id="f-email" name="email" autocomplete="email" required maxlength="254">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-subject" id="l-subject">Subject</label>
+          <input type="text" id="f-subject" name="subject" maxlength="200">
+        </div>
+
+        <div class="field">
+          <label for="f-message" id="l-message">Message <span class="req">*</span></label>
+          <textarea id="f-message" name="message" required maxlength="5000"></textarea>
+          <span class="help" id="l-message-help">Please include steps to reproduce if reporting a bug.</span>
+        </div>
+
+        <details class="meta-toggle" id="meta-toggle">
+          <summary id="l-meta-toggle">Technical details (optional)</summary>
+          <div class="meta-body">
+            <div class="row-2">
+              <div class="field">
+                <label for="f-version" id="l-version">Extension version</label>
+                <input type="text" id="f-version" name="version" maxlength="200" placeholder="e.g. 4.4.1">
+              </div>
+              <div class="field">
+                <label for="f-browser" id="l-browser">Browser</label>
+                <input type="text" id="f-browser" name="browser" maxlength="200" placeholder="auto-filled">
+              </div>
+            </div>
+            <div class="row-2">
+              <div class="field">
+                <label for="f-os" id="l-os">OS</label>
+                <input type="text" id="f-os" name="os" maxlength="200" placeholder="auto-filled">
+              </div>
+              <div class="field">
+                <label for="f-page-url" id="l-page-url">Page URL where issue occurred</label>
+                <input type="url" id="f-page-url" name="page_url" maxlength="200">
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <div class="honeypot" aria-hidden="true">
+          <label for="f-company">Company (leave empty)</label>
+          <input type="text" id="f-company" name="company" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button type="submit" class="submit-btn" id="submit-btn">
+          <span id="submit-label">Send message</span>
+        </button>
+
+        <div class="status" id="status" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+
+    <p class="links">
+      <a href="../terms.html" id="lnk-terms">Terms of Service</a> ·
+      <a href="../privacy-policy.html" id="lnk-privacy">Privacy Policy</a> ·
+      <a href="../legal.html" id="lnk-legal">Legal Notice</a>
+    </p>
+  </div>
+</main>
+
+<script>
+(function() {
+  var ENDPOINT = 'https://umczaaooqinddgnhxbvp.supabase.co/functions/v1/contact-form';
+
+  var STRINGS = {
+    en: {
+      title: 'Contact',
+      subtitle: "Have a bug to report, a feature to request, or a question? Send us a message and we'll get back to you by email.",
+      back: 'Back',
+      lCategory: 'What is this about?',
+      optBug: 'Bug report',
+      optFeature: 'Feature request',
+      optQuestion: 'Question',
+      optOther: 'Other',
+      lName: 'Your name',
+      lEmail: 'Your email',
+      lSubject: 'Subject',
+      lMessage: 'Message',
+      lMessageHelp: 'Please include steps to reproduce if reporting a bug.',
+      lVersion: 'Extension version',
+      lBrowser: 'Browser',
+      lOs: 'OS',
+      lPageUrl: 'Page URL where issue occurred',
+      lMetaToggle: 'Technical details (optional)',
+      submit: 'Send message',
+      submitting: 'Sending…',
+      success: "Thanks — your message has been sent. We'll reply to your email address.",
+      errEmail: 'Please enter a valid email address.',
+      errMessage: 'Please enter a message (at least 5 characters).',
+      errNetwork: 'Could not send your message. Please check your connection and try again.',
+      errServer: 'Sorry, the server rejected the request. Please try again later.',
+      docTitle: 'Contact - Grab All Files',
+      langLabel: 'Language',
+    },
+    ja: {
+      title: 'お問い合わせ',
+      subtitle: '不具合報告・機能要望・ご質問など、お気軽にお送りください。メールでご返信いたします。',
+      back: '戻る',
+      lCategory: 'お問い合わせの種類',
+      optBug: '不具合報告',
+      optFeature: '機能要望',
+      optQuestion: '質問',
+      optOther: 'その他',
+      lName: 'お名前',
+      lEmail: 'メールアドレス',
+      lSubject: '件名',
+      lMessage: 'メッセージ',
+      lMessageHelp: '不具合の場合は再現手順もご記入いただけると助かります。',
+      lVersion: '拡張機能のバージョン',
+      lBrowser: 'ブラウザ',
+      lOs: 'OS',
+      lPageUrl: '問題が起きたページのURL',
+      lMetaToggle: '技術情報（任意）',
+      submit: '送信する',
+      submitting: '送信中…',
+      success: 'ありがとうございます。メッセージを受け付けました。ご記入のメールアドレス宛にご返信いたします。',
+      errEmail: '有効なメールアドレスを入力してください。',
+      errMessage: 'メッセージを5文字以上入力してください。',
+      errNetwork: '送信できませんでした。通信状況をご確認のうえ、もう一度お試しください。',
+      errServer: 'サーバーがリクエストを拒否しました。時間をおいてもう一度お試しください。',
+      docTitle: 'お問い合わせ - ファイル一括ダウンロード',
+      langLabel: '言語',
+    },
+    es: {
+      title: 'Contacto',
+      subtitle: '¿Tiene un error que reportar, una función que solicitar o una pregunta? Envíenos un mensaje y le responderemos por correo electrónico.',
+      back: 'Atrás',
+      lCategory: '¿De qué se trata?',
+      optBug: 'Reporte de error',
+      optFeature: 'Solicitud de función',
+      optQuestion: 'Pregunta',
+      optOther: 'Otro',
+      lName: 'Su nombre',
+      lEmail: 'Su correo electrónico',
+      lSubject: 'Asunto',
+      lMessage: 'Mensaje',
+      lMessageHelp: 'Si reporta un error, incluya los pasos para reproducirlo.',
+      lVersion: 'Versión de la extensión',
+      lBrowser: 'Navegador',
+      lOs: 'SO',
+      lPageUrl: 'URL de la página donde ocurrió el problema',
+      lMetaToggle: 'Detalles técnicos (opcional)',
+      submit: 'Enviar mensaje',
+      submitting: 'Enviando…',
+      success: 'Gracias — su mensaje ha sido enviado. Le responderemos por correo electrónico.',
+      errEmail: 'Por favor introduzca una dirección de correo electrónico válida.',
+      errMessage: 'Por favor introduzca un mensaje (al menos 5 caracteres).',
+      errNetwork: 'No se pudo enviar su mensaje. Verifique su conexión e inténtelo de nuevo.',
+      errServer: 'El servidor rechazó la solicitud. Inténtelo de nuevo más tarde.',
+      docTitle: 'Contacto - Grab All Files',
+      langLabel: 'Idioma',
+    },
+    fr: {
+      title: 'Contact',
+      subtitle: 'Un bug à signaler, une fonctionnalité à demander ou une question ? Envoyez-nous un message et nous vous répondrons par e-mail.',
+      back: 'Retour',
+      lCategory: 'De quoi s\'agit-il ?',
+      optBug: 'Signalement de bug',
+      optFeature: 'Demande de fonctionnalité',
+      optQuestion: 'Question',
+      optOther: 'Autre',
+      lName: 'Votre nom',
+      lEmail: 'Votre e-mail',
+      lSubject: 'Sujet',
+      lMessage: 'Message',
+      lMessageHelp: 'Si vous signalez un bug, incluez les étapes pour le reproduire.',
+      lVersion: 'Version de l\'extension',
+      lBrowser: 'Navigateur',
+      lOs: 'Système',
+      lPageUrl: 'URL de la page où le problème est survenu',
+      lMetaToggle: 'Détails techniques (facultatif)',
+      submit: 'Envoyer le message',
+      submitting: 'Envoi…',
+      success: 'Merci — votre message a été envoyé. Nous vous répondrons par e-mail.',
+      errEmail: 'Veuillez entrer une adresse e-mail valide.',
+      errMessage: 'Veuillez entrer un message (au moins 5 caractères).',
+      errNetwork: 'Impossible d\'envoyer votre message. Vérifiez votre connexion et réessayez.',
+      errServer: 'Le serveur a rejeté la requête. Veuillez réessayer plus tard.',
+      docTitle: 'Contact - Grab All Files',
+      langLabel: 'Langue',
+    },
+    ko: {
+      title: '문의하기',
+      subtitle: '버그 신고, 기능 요청, 질문이 있으신가요? 메시지를 보내주시면 이메일로 답변해 드립니다.',
+      back: '뒤로',
+      lCategory: '문의 종류',
+      optBug: '버그 신고',
+      optFeature: '기능 요청',
+      optQuestion: '질문',
+      optOther: '기타',
+      lName: '이름',
+      lEmail: '이메일',
+      lSubject: '제목',
+      lMessage: '메시지',
+      lMessageHelp: '버그 신고 시 재현 단계도 함께 알려주세요.',
+      lVersion: '확장 프로그램 버전',
+      lBrowser: '브라우저',
+      lOs: 'OS',
+      lPageUrl: '문제가 발생한 페이지 URL',
+      lMetaToggle: '기술 정보 (선택사항)',
+      submit: '메시지 보내기',
+      submitting: '전송 중…',
+      success: '감사합니다 — 메시지가 전송되었습니다. 이메일로 답변 드리겠습니다.',
+      errEmail: '유효한 이메일 주소를 입력해 주세요.',
+      errMessage: '메시지를 5자 이상 입력해 주세요.',
+      errNetwork: '메시지를 보낼 수 없습니다. 연결을 확인하고 다시 시도해 주세요.',
+      errServer: '서버가 요청을 거부했습니다. 잠시 후 다시 시도해 주세요.',
+      docTitle: '문의하기 - Grab All Files',
+      langLabel: '언어',
+    },
+    it: {
+      title: 'Contatti',
+      subtitle: 'Hai un bug da segnalare, una funzione da richiedere o una domanda? Inviaci un messaggio e ti risponderemo via email.',
+      back: 'Indietro',
+      lCategory: 'Di cosa si tratta?',
+      optBug: 'Segnalazione bug',
+      optFeature: 'Richiesta di funzionalità',
+      optQuestion: 'Domanda',
+      optOther: 'Altro',
+      lName: 'Il tuo nome',
+      lEmail: 'La tua email',
+      lSubject: 'Oggetto',
+      lMessage: 'Messaggio',
+      lMessageHelp: 'Se segnali un bug, includi i passaggi per riprodurlo.',
+      lVersion: 'Versione estensione',
+      lBrowser: 'Browser',
+      lOs: 'OS',
+      lPageUrl: 'URL della pagina in cui si è verificato il problema',
+      lMetaToggle: 'Dettagli tecnici (opzionale)',
+      submit: 'Invia messaggio',
+      submitting: 'Invio in corso…',
+      success: 'Grazie — il tuo messaggio è stato inviato. Ti risponderemo via email.',
+      errEmail: 'Inserisci un indirizzo email valido.',
+      errMessage: 'Inserisci un messaggio (almeno 5 caratteri).',
+      errNetwork: 'Impossibile inviare il messaggio. Controlla la connessione e riprova.',
+      errServer: 'Il server ha rifiutato la richiesta. Riprova più tardi.',
+      docTitle: 'Contatti - Grab All Files',
+      langLabel: 'Lingua',
+    },
+    zh_CN: {
+      title: '联系我们',
+      subtitle: '想报告错误、申请新功能或有问题？请发送消息，我们将通过邮件回复您。',
+      back: '返回',
+      lCategory: '咨询类型',
+      optBug: '错误报告',
+      optFeature: '功能请求',
+      optQuestion: '问题',
+      optOther: '其他',
+      lName: '您的姓名',
+      lEmail: '您的邮箱',
+      lSubject: '主题',
+      lMessage: '消息',
+      lMessageHelp: '若报告错误，请附上复现步骤。',
+      lVersion: '扩展程序版本',
+      lBrowser: '浏览器',
+      lOs: '操作系统',
+      lPageUrl: '出现问题的页面 URL',
+      lMetaToggle: '技术信息（可选）',
+      submit: '发送消息',
+      submitting: '发送中…',
+      success: '感谢 — 您的消息已发送。我们将通过邮件回复您。',
+      errEmail: '请输入有效的邮箱地址。',
+      errMessage: '请输入消息（至少 5 个字符）。',
+      errNetwork: '无法发送消息。请检查网络后重试。',
+      errServer: '服务器拒绝了请求。请稍后重试。',
+      docTitle: '联系我们 - Grab All Files',
+      langLabel: '语言',
+    },
+    zh_TW: {
+      title: '聯絡我們',
+      subtitle: '想回報錯誤、申請新功能或有疑問？請傳送訊息，我們將透過電子郵件回覆您。',
+      back: '返回',
+      lCategory: '諮詢類型',
+      optBug: '錯誤回報',
+      optFeature: '功能請求',
+      optQuestion: '問題',
+      optOther: '其他',
+      lName: '您的姓名',
+      lEmail: '您的電子郵件',
+      lSubject: '主旨',
+      lMessage: '訊息',
+      lMessageHelp: '若回報錯誤，請附上重現步驟。',
+      lVersion: '擴充功能版本',
+      lBrowser: '瀏覽器',
+      lOs: '作業系統',
+      lPageUrl: '發生問題的頁面 URL',
+      lMetaToggle: '技術資訊（選用）',
+      submit: '傳送訊息',
+      submitting: '傳送中…',
+      success: '感謝 — 您的訊息已送出。我們將透過電子郵件回覆。',
+      errEmail: '請輸入有效的電子郵件地址。',
+      errMessage: '請輸入訊息（至少 5 個字元）。',
+      errNetwork: '無法傳送訊息。請檢查網路連線後再試。',
+      errServer: '伺服器拒絕了要求。請稍後再試。',
+      docTitle: '聯絡我們 - Grab All Files',
+      langLabel: '語言',
+    },
+    pt_BR: {
+      title: 'Contato',
+      subtitle: 'Tem um bug para relatar, uma funcionalidade para solicitar ou uma dúvida? Envie-nos uma mensagem e responderemos por e-mail.',
+      back: 'Voltar',
+      lCategory: 'Sobre o que é?',
+      optBug: 'Relato de bug',
+      optFeature: 'Pedido de funcionalidade',
+      optQuestion: 'Dúvida',
+      optOther: 'Outro',
+      lName: 'Seu nome',
+      lEmail: 'Seu e-mail',
+      lSubject: 'Assunto',
+      lMessage: 'Mensagem',
+      lMessageHelp: 'Se relatar um bug, inclua os passos para reproduzi-lo.',
+      lVersion: 'Versão da extensão',
+      lBrowser: 'Navegador',
+      lOs: 'SO',
+      lPageUrl: 'URL da página onde o problema ocorreu',
+      lMetaToggle: 'Detalhes técnicos (opcional)',
+      submit: 'Enviar mensagem',
+      submitting: 'Enviando…',
+      success: 'Obrigado — sua mensagem foi enviada. Responderemos por e-mail.',
+      errEmail: 'Por favor, insira um endereço de e-mail válido.',
+      errMessage: 'Por favor, insira uma mensagem (mínimo 5 caracteres).',
+      errNetwork: 'Não foi possível enviar sua mensagem. Verifique sua conexão e tente novamente.',
+      errServer: 'O servidor rejeitou a solicitação. Tente novamente mais tarde.',
+      docTitle: 'Contato - Grab All Files',
+      langLabel: 'Idioma',
+    },
+    de: {
+      title: 'Kontakt',
+      subtitle: 'Einen Fehler zu melden, ein Feature zu wünschen oder eine Frage? Senden Sie uns eine Nachricht und wir antworten per E-Mail.',
+      back: 'Zurück',
+      lCategory: 'Worum geht es?',
+      optBug: 'Fehlerbericht',
+      optFeature: 'Funktionswunsch',
+      optQuestion: 'Frage',
+      optOther: 'Sonstiges',
+      lName: 'Ihr Name',
+      lEmail: 'Ihre E-Mail',
+      lSubject: 'Betreff',
+      lMessage: 'Nachricht',
+      lMessageHelp: 'Bei einem Fehlerbericht bitte die Schritte zur Reproduktion angeben.',
+      lVersion: 'Erweiterungsversion',
+      lBrowser: 'Browser',
+      lOs: 'Betriebssystem',
+      lPageUrl: 'URL der Seite, auf der das Problem aufgetreten ist',
+      lMetaToggle: 'Technische Details (optional)',
+      submit: 'Nachricht senden',
+      submitting: 'Senden…',
+      success: 'Danke — Ihre Nachricht wurde gesendet. Wir antworten per E-Mail.',
+      errEmail: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.',
+      errMessage: 'Bitte geben Sie eine Nachricht ein (mindestens 5 Zeichen).',
+      errNetwork: 'Nachricht konnte nicht gesendet werden. Verbindung prüfen und erneut versuchen.',
+      errServer: 'Der Server hat die Anfrage abgelehnt. Bitte versuchen Sie es später erneut.',
+      docTitle: 'Kontakt - Grab All Files',
+      langLabel: 'Sprache',
+    },
+  };
+
+  function detectLang() {
+    var p = new URLSearchParams(location.search);
+    var fromQuery = p.get('lang');
+    if (fromQuery && STRINGS[fromQuery]) return fromQuery;
+    try {
+      var stored = localStorage.getItem('gaf-lang');
+      if (stored && STRINGS[stored]) return stored;
+    } catch (_) {}
+    var n = (navigator.language || 'en').toLowerCase();
+    if (n.startsWith('ja')) return 'ja';
+    if (n.startsWith('ko')) return 'ko';
+    if (n.startsWith('it')) return 'it';
+    if (n.startsWith('de')) return 'de';
+    if (n.startsWith('es')) return 'es';
+    if (n.startsWith('fr')) return 'fr';
+    if (n.startsWith('pt')) return 'pt_BR';
+    if (n === 'zh-tw' || n === 'zh-hant' || n.startsWith('zh-hant')) return 'zh_TW';
+    if (n.startsWith('zh')) return 'zh_CN';
+    return 'en';
+  }
+
+  function setText(id, value) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = value;
+  }
+
+  var currentLang = 'en';
+
+  function applyLang(lang) {
+    currentLang = lang;
+    var t = STRINGS[lang] || STRINGS.en;
+    document.documentElement.lang = lang.replace('_', '-');
+    document.title = t.docTitle;
+    setText('t-title', t.title);
+    setText('t-subtitle', t.subtitle);
+    setText('back-label', t.back);
+    setText('l-category', t.lCategory);
+    document.querySelector('#l-category .req') || (function() {
+      var lab = document.getElementById('l-category');
+      if (lab) {
+        var span = document.createElement('span');
+        span.className = 'req';
+        span.textContent = ' *';
+        lab.appendChild(span);
+      }
+    })();
+    setText('opt-bug', t.optBug);
+    setText('opt-feature', t.optFeature);
+    setText('opt-question', t.optQuestion);
+    setText('opt-other', t.optOther);
+    setText('l-name', t.lName);
+    setText('l-email', t.lEmail);
+    setText('l-subject', t.lSubject);
+    setText('l-message', t.lMessage);
+    setText('l-message-help', t.lMessageHelp);
+    setText('l-version', t.lVersion);
+    setText('l-browser', t.lBrowser);
+    setText('l-os', t.lOs);
+    setText('l-page-url', t.lPageUrl);
+    setText('l-meta-toggle', t.lMetaToggle);
+    setText('submit-label', t.submit);
+    // Re-add required asterisks (textContent above clobbered them).
+    ['l-category', 'l-email', 'l-message'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el && !el.querySelector('.req')) {
+        var s = document.createElement('span');
+        s.className = 'req';
+        s.textContent = ' *';
+        el.appendChild(s);
+      }
+    });
+    var sel = document.getElementById('lang-sel');
+    if (sel) {
+      sel.value = lang;
+      sel.setAttribute('aria-label', t.langLabel);
+    }
+    try { localStorage.setItem('gaf-lang', lang); } catch (_) {}
+  }
+
+  function detectBrowser() {
+    var ua = navigator.userAgent || '';
+    if (/Edg\//.test(ua)) return 'Microsoft Edge';
+    if (/Chrome\//.test(ua) && !/Edg\//.test(ua)) return 'Google Chrome';
+    if (/Firefox\//.test(ua)) return 'Firefox';
+    if (/Safari\//.test(ua) && !/Chrome\//.test(ua)) return 'Safari';
+    return ua.slice(0, 100);
+  }
+  function detectOS() {
+    var ua = navigator.userAgent || '';
+    if (/Windows NT 10/.test(ua)) return 'Windows';
+    if (/Windows/.test(ua)) return 'Windows';
+    if (/Mac OS X/.test(ua)) return 'macOS';
+    if (/Linux/.test(ua)) return 'Linux';
+    if (/Android/.test(ua)) return 'Android';
+    if (/iPhone|iPad/.test(ua)) return 'iOS';
+    return 'Unknown';
+  }
+
+  function prefillFromQuery() {
+    var p = new URLSearchParams(location.search);
+    var version = p.get('version');
+    var os = p.get('os');
+    var browser = p.get('browser');
+    var pageUrl = p.get('page_url');
+    var category = p.get('category');
+    var subject = p.get('subject');
+    if (version) document.getElementById('f-version').value = version;
+    if (os) document.getElementById('f-os').value = os;
+    else document.getElementById('f-os').value = detectOS();
+    if (browser) document.getElementById('f-browser').value = browser;
+    else document.getElementById('f-browser').value = detectBrowser();
+    if (pageUrl) document.getElementById('f-page-url').value = pageUrl;
+    if (category && ['bug', 'feature', 'question', 'other'].indexOf(category) !== -1) {
+      document.getElementById('f-category').value = category;
+    }
+    if (subject) document.getElementById('f-subject').value = subject;
+    // Open the metadata details if any was prefilled by the extension link.
+    if (version || os || browser || pageUrl) {
+      var details = document.getElementById('meta-toggle');
+      if (details) details.open = true;
+    }
+  }
+
+  function isPlausibleEmail(s) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
+  }
+
+  function showStatus(kind, text) {
+    var el = document.getElementById('status');
+    el.className = 'status show ' + kind;
+    el.textContent = text;
+  }
+  function hideStatus() {
+    var el = document.getElementById('status');
+    el.className = 'status';
+    el.textContent = '';
+  }
+
+  function submitForm(e) {
+    e.preventDefault();
+    var t = STRINGS[currentLang] || STRINGS.en;
+    hideStatus();
+
+    var payload = {
+      category: document.getElementById('f-category').value,
+      name: document.getElementById('f-name').value,
+      email: document.getElementById('f-email').value.trim(),
+      subject: document.getElementById('f-subject').value,
+      message: document.getElementById('f-message').value,
+      version: document.getElementById('f-version').value,
+      os: document.getElementById('f-os').value,
+      browser: document.getElementById('f-browser').value,
+      page_url: document.getElementById('f-page-url').value,
+      locale: currentLang,
+      company: document.getElementById('f-company').value,
+    };
+
+    if (!isPlausibleEmail(payload.email)) {
+      showStatus('error', t.errEmail);
+      document.getElementById('f-email').focus();
+      return;
+    }
+    if (!payload.message || payload.message.trim().length < 5) {
+      showStatus('error', t.errMessage);
+      document.getElementById('f-message').focus();
+      return;
+    }
+
+    var btn = document.getElementById('submit-btn');
+    var labelEl = document.getElementById('submit-label');
+    var originalLabel = labelEl.textContent;
+    btn.disabled = true;
+    labelEl.innerHTML = '<span class="btn-spinner" aria-hidden="true"></span> ' + t.submitting;
+
+    fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    }).then(function(res) {
+      return res.json().then(function(j) { return { ok: res.ok, status: res.status, body: j }; })
+        .catch(function() { return { ok: res.ok, status: res.status, body: null }; });
+    }).then(function(r) {
+      if (r.ok && r.body && r.body.ok) {
+        showStatus('success', t.success);
+        document.getElementById('contact-form').reset();
+        // Re-fill auto-detected meta after reset.
+        prefillFromQuery();
+      } else {
+        showStatus('error', t.errServer);
+      }
+    }).catch(function() {
+      showStatus('error', t.errNetwork);
+    }).then(function() {
+      btn.disabled = false;
+      labelEl.textContent = originalLabel;
+    });
+  }
+
+  function init() {
+    var lang = detectLang();
+    applyLang(lang);
+
+    document.getElementById('lang-sel').addEventListener('change', function(e) {
+      applyLang(e.target.value);
+    });
+
+    var themeBtn = document.getElementById('theme-toggle');
+    themeBtn.addEventListener('click', function() {
+      var current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', current);
+      try { localStorage.setItem('gaf-theme', current); } catch (_) {}
+    });
+
+    prefillFromQuery();
+    document.getElementById('contact-form').addEventListener('submit', submitForm);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+</body>
+</html>
