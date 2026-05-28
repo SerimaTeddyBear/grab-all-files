@@ -67,13 +67,25 @@
       "https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn"
     ],
     "image": "https://grab-all-files.app/og-image.png",
+    "screenshot": "https://grab-all-files.app/og-image.png",
     "softwareVersion": "4.3.0",
+    "datePublished": "2025-05-05",
+    "dateModified": "2026-05-28",
+    "browserRequirements": "Requires Chromium 102 or later (Google Chrome or Microsoft Edge).",
+    "permissions": "Files are downloaded directly from the source site to the user's device; only license verification reaches the developer's servers.",
     "inLanguage": ["en", "ja", "es", "fr", "de", "it", "ko", "pt-BR", "zh-CN", "zh-TW"],
+    "keywords": "bulk file downloader, download all files from a web page, download all PDFs from a website, batch download, save all images, merge PDF locally, ZIP archive, CSV export, Chrome extension, Edge extension, same-site crawl",
+    "sameAs": [
+      "https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf",
+      "https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn",
+      "https://github.com/SerimaTeddyBear/grab-all-files"
+    ],
     "offers": {
       "@type": "Offer",
       "price": "19.99",
       "priceCurrency": "USD",
       "category": "OneTimePayment",
+      "availability": "https://schema.org/InStock",
       "description": "One-time purchase, perpetual license, activates on up to 3 devices. / 永続ライセンス（サブスクなし）。最大3台まで有効化。購入前に14日間無料トライアルあり。",
       "url": "https://grab-all-files.app/purchase/"
     },
@@ -82,8 +94,10 @@
       "name": "Serima Kawai"
     },
     "publisher": {
-      "@type": "Person",
-      "name": "Serima Kawai"
+      "@type": "Organization",
+      "name": "Grab All Files",
+      "url": "https://grab-all-files.app/",
+      "logo": "https://grab-all-files.app/icon-512.png"
     },
     "featureList": [
       "Detects iframe PDFs, lazy-loaded assets, fetch/XHR responses, blob URLs, and CMS download routes / iframe PDF、遅延読み込み、fetch/XHR、blob URL、CMSダウンロード経路を検出",
@@ -149,6 +163,79 @@
           "@type": "Answer",
           "text": "Yes — the extension uses your existing browser session, so any site you can access manually works the same way."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I download all files from a web page at once?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Install Grab All Files for Google Chrome or Microsoft Edge, open the page (or paste its URL), and the extension lists every detectable file — including files hidden behind iframes, viewers, lazy loading, fetch/XHR responses, blob URLs, and CMS download routes. Select the files you want and download them all in one click."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I download all PDFs from a website?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Grab All Files detects every PDF on a page — even iframe-embedded PDFs and PDF viewer URLs — and can crawl same-site links up to 100,000 pages per run. Filter the results to PDF, select all, then bulk-download them or merge them into one PDF locally in your browser."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the best Chrome extension to bulk-download files?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Grab All Files is a bulk file downloader for Google Chrome and Microsoft Edge. It finds downloadable PDFs, Office documents, images, ZIPs, and CSVs that ordinary link scrapers miss, then saves selected files in one click, merges PDFs, builds ZIP archives, and exports a CSV of file URLs. It offers a 14-day free trial and a $19.99 one-time lifetime license."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I save all images from a web page?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Grab All Files detects images including lazy-loaded images, CSS background images, and blob URLs. Filter the results to image types, select them, and download them all at once — or export the list of image URLs as CSV."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I merge PDFs without uploading them to a server?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Grab All Files merges selected PDFs locally inside your browser. Nothing is uploaded — your files never leave your device."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to download all files from a web page",
+    "description": "Use the Grab All Files browser extension to detect, select, and bulk-download every downloadable file on a web page, including hidden ones.",
+    "totalTime": "PT1M",
+    "tool": [
+      { "@type": "HowToTool", "name": "Grab All Files extension for Google Chrome or Microsoft Edge" }
+    ],
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Open the page or paste a URL",
+        "text": "Use the current tab, or paste a URL into the popup. Choose how deep to crawl: just this page, 1–5 levels of same-site links, or unlimited (up to 100,000 pages per run)."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Let the extension list every detectable file",
+        "text": "Results show file name, type, size, page title, and source URL — including iframe PDFs, lazy-loaded assets, fetch/XHR responses, blob URLs, and CMS download routes. Filter, sort, search, and reorder before saving."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Select what you want, then save or merge",
+        "text": "Bulk-download to a folder of your choice, bundle files into a ZIP, or merge selected PDFs into one — all locally in your browser, with no uploads."
       }
     ]
   }
@@ -1030,6 +1117,11 @@
           <details><summary>Which browsers are supported?</summary><p>Google Chrome™ and Microsoft Edge™ (Chromium 102 or later).</p></details>
           <details><summary>Can I get a refund?</summary><p>As a digital product delivered immediately, refunds are not accepted in principle. The 14-day free trial lets you fully evaluate before purchasing. If a technical defect prevents the extension from working, contact us within 30 days for a full refund.</p></details>
           <details><summary>Does it work on protected sites that require a login?</summary><p>Yes — the extension uses your existing browser session, so any site you can access manually works the same way.</p></details>
+          <details><summary>How do I download all files from a web page at once?</summary><p>Install Grab All Files for Google Chrome or Microsoft Edge, open the page (or paste its URL), and the extension lists every detectable file — including files hidden behind iframes, viewers, lazy loading, fetch/XHR responses, blob URLs, and CMS download routes. Select the files you want and download them all in one click.</p></details>
+          <details><summary>How can I download all PDFs from a website?</summary><p>Grab All Files detects every PDF on a page — even iframe-embedded PDFs and PDF viewer URLs — and can crawl same-site links up to 100,000 pages per run. Filter the results to PDF, select all, then bulk-download them or merge them into one PDF locally in your browser.</p></details>
+          <details><summary>What is the best Chrome extension to bulk-download files?</summary><p>Grab All Files is a bulk file downloader for Google Chrome and Microsoft Edge. It finds downloadable PDFs, Office documents, images, ZIPs, and CSVs that ordinary link scrapers miss, then saves selected files in one click, merges PDFs, builds ZIP archives, and exports a CSV of file URLs. It offers a 14-day free trial and a $19.99 one-time lifetime license.</p></details>
+          <details><summary>How do I save all images from a web page?</summary><p>Grab All Files detects images including lazy-loaded images, CSS background images, and blob URLs. Filter the results to image types, select them, and download them all at once — or export the list of image URLs as CSV.</p></details>
+          <details><summary>Can I merge PDFs without uploading them to a server?</summary><p>Yes. Grab All Files merges selected PDFs locally inside your browser. Nothing is uploaded — your files never leave your device.</p></details>
         </div></div>
         <div data-lang="ja"><div class="faq-list">
           <details><summary>無料トライアルはありますか？</summary><p>はい、14日間すべての機能を無料でご利用いただけます。クレジットカード登録は不要です。</p></details>
@@ -1038,6 +1130,10 @@
           <details><summary>対応ブラウザは？</summary><p>Google Chrome および Microsoft Edge（Chromium 102 以降）。</p></details>
           <details><summary>返金はできますか？</summary><p>即時提供のデジタル製品のため、原則として返金には応じておりません。14日間無料トライアルで購入前に十分にお試しください。技術的な不具合により動作しない場合は、初回報告から30日以内であれば全額返金いたします。</p></details>
           <details><summary>ログインが必要なサイトでも動きますか？</summary><p>はい、お使いのブラウザのセッションを利用するため、手動でアクセスできるサイトはすべて同じように動作します。</p></details>
+          <details><summary>Webページ上のファイルをまとめてダウンロードするには？</summary><p>Grab All Files を Google Chrome または Microsoft Edge にインストールし、対象ページを開く（またはURLを貼り付ける）だけで、iframe、ビューア、遅延読み込み、fetch/XHR、blob URL、CMSダウンロードルートに隠れたファイルまで含めて検出・一覧表示します。必要なファイルを選んでワンクリックで一括保存できます。</p></details>
+          <details><summary>サイト上のPDFをすべてダウンロードするには？</summary><p>iframe埋め込みPDFやPDFビューアのURLも含めてページ上のPDFを検出し、同一サイト内を1回の実行で最大10万ページまでクロールできます。PDFで絞り込んで全選択し、一括ダウンロード、またはブラウザ内で1つのPDFに結合できます。</p></details>
+          <details><summary>Webページ上の画像をすべて保存するには？</summary><p>遅延読み込み画像、CSS背景画像、blob URLも含めて画像を検出します。画像種別で絞り込んで選択し、一括ダウンロード、または画像URLの一覧をCSV出力できます。</p></details>
+          <details><summary>PDFをサーバーにアップロードせずに結合できますか？</summary><p>はい。選択したPDFはブラウザ内（ローカル）で結合されます。アップロードは一切なく、ファイルが端末の外に出ることはありません。</p></details>
         </div></div>
         <div data-lang="es"><div class="faq-list">
           <details><summary>¿Hay prueba gratuita?</summary><p>Sí — 14 días con todas las funciones, sin tarjeta de crédito.</p></details>

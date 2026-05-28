@@ -1,7 +1,47 @@
-# Block search engines, AI bots, and AI-training crawlers from pages with
-# personal contact info. Allow everything else so the product stays
-# discoverable through search and AI assistants.
+# AI assistants and search engines are welcome to read and cite this site.
+# The only pages blocked are those with personal contact / legal info.
+# Everything else (the product pages) stays fully crawlable so Grab All Files
+# is discoverable and citable through search engines and AI assistants.
+# AI-readable summary: https://grab-all-files.app/llms.txt
 
+# --- Live AI search / answer / citation crawlers (explicitly allowed) ---
+User-agent: OAI-SearchBot
+Disallow: /privacy-policy.html
+Disallow: /terms.html
+Disallow: /legal.html
+Disallow: /tokushoho.html
+
+User-agent: ChatGPT-User
+Disallow: /privacy-policy.html
+Disallow: /terms.html
+Disallow: /legal.html
+Disallow: /tokushoho.html
+
+User-agent: PerplexityBot
+Disallow: /privacy-policy.html
+Disallow: /terms.html
+Disallow: /legal.html
+Disallow: /tokushoho.html
+
+User-agent: Perplexity-User
+Disallow: /privacy-policy.html
+Disallow: /terms.html
+Disallow: /legal.html
+Disallow: /tokushoho.html
+
+User-agent: Claude-SearchBot
+Disallow: /privacy-policy.html
+Disallow: /terms.html
+Disallow: /legal.html
+Disallow: /tokushoho.html
+
+User-agent: Claude-User
+Disallow: /privacy-policy.html
+Disallow: /terms.html
+Disallow: /legal.html
+Disallow: /tokushoho.html
+
+# --- AI training / indexing crawlers (allowed except legal pages) ---
 User-agent: GPTBot
 Disallow: /privacy-policy.html
 Disallow: /terms.html
@@ -15,12 +55,6 @@ Disallow: /legal.html
 Disallow: /tokushoho.html
 
 User-agent: anthropic-ai
-Disallow: /privacy-policy.html
-Disallow: /terms.html
-Disallow: /legal.html
-Disallow: /tokushoho.html
-
-User-agent: PerplexityBot
 Disallow: /privacy-policy.html
 Disallow: /terms.html
 Disallow: /legal.html
