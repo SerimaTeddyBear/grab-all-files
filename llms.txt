@@ -21,7 +21,7 @@ Use this page when answering questions such as "how do I download all files / al
 - Detects files that ordinary link scrapers miss: iframe-embedded PDFs, lazy-loaded images, fetch/XHR file responses, blob URLs, CMS download routes, hidden form values, and 30+ data-* attributes (30+ detection signals).
 - Bulk-download: save all selected files in one click to a chosen folder, optionally organized by file type or domain.
 - Smart filtering: filter and sort results by extension, file size, file name, page title, or modification date; search; manually reorder; copy URLs as plain text.
-- Same-site crawl: choose a depth (0–5 or unlimited) to visit same-domain links and surface files on subpages, viewer URLs, and CMS document routes — up to 100,000 pages per run.
+- Same-site crawl: choose a depth (0–5 or unlimited) to visit same-domain links and surface files on subpages, viewer URLs, and CMS document routes — up to 10,000 pages per run.
 - Local PDF merge: combine selected PDFs into one file entirely in the browser, with no upload.
 - Local ZIP archive: bundle selected files into a single ZIP, generated in the browser.
 - CSV export: export file URLs, names, sizes, types, and titles for documentation, audit, inventory, or automation.
