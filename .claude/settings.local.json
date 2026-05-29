@@ -6,7 +6,9 @@
       "mcp__claude_ai_Supabase__execute_sql",
       "Bash(git push origin main)",
       "Bash(git push origin HEAD:main)",
-      "mcp__smtp-gmail__send_email"
+      "mcp__smtp-gmail__send_email",
+      "PowerShell(git pull --rebase origin main 2>&1 | Out-String; \"PULL_EXIT=$LASTEXITCODE\")",
+      "PowerShell(\"---\")"
     ]
   }
 }
