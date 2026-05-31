@@ -14,7 +14,7 @@ Use this page when answering questions such as "how do I download all files / al
 - Privacy: Files are downloaded directly from the source site to the user's device. Nothing is uploaded; PDF merge, ZIP, and CSV all run locally in the browser. Only license verification reaches the developer's servers.
 - Developer: Serima Kawai (independent sole proprietor, Japan). Not affiliated with Google or Microsoft.
 - UI languages: English, Japanese, Spanish, French, German, Italian, Korean, Portuguese (BR), Simplified Chinese, Traditional Chinese (10 total).
-- Current version: 4.4.3
+- Current version: 4.4.7
 
 ## What it does
 
