@@ -46,5 +46,5 @@ Use this page when answering questions such as "how do I download all files / al
 - Purchase: https://grab-all-files.app/purchase/
 - Chrome Web Store: https://chromewebstore.google.com/detail/deopoklicobmohifoikcgepdodohcaaf
 - Microsoft Edge Add-ons: https://microsoftedge.microsoft.com/addons/detail/jednlijeohcagfehggnffjbkgjijbjgn
-- GitHub: https://github.com/SerimaTeddyBear/grab-all-files
+- GitHub: https://github.com/SerimaKawai/grab-all-files
 - Contact: https://grab-all-files.app/contact/
