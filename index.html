@@ -100,12 +100,13 @@
       "logo": "https://grab-all-files.app/icon-512.png"
     },
     "featureList": [
-      "Detects iframe PDFs, lazy-loaded assets, fetch/XHR responses, blob URLs, CMS download routes, and hidden form values / iframe PDF、遅延読み込み、fetch/XHR、blob URL、CMSダウンロード経路、hidden inputの値を検出",
+      "Detects iframe PDFs, lazy-loaded assets, fetch/XHR responses, blob URLs, CMS download routes, hidden form values, Shadow DOM / Web Components, SPA hydration data (Next.js, JSON-LD), Cache Storage / OPFS / IndexedDB, and signed cloud-storage URLs (Cloudflare R2, Firebase, Supabase, Vercel Blob) / iframe PDF、遅延読み込み、fetch/XHR、blob URL、CMSダウンロード経路、hidden inputの値、Shadow DOM／Web Components、SPAハイドレーションデータ（Next.js・JSON-LD）、Cache Storage／OPFS／IndexedDB、署名付きクラウドストレージURL（Cloudflare R2・Firebase・Supabase・Vercel Blob）を検出",
       "Selectable same-site crawl depth / 同一サイト内クロール深度を選択可能",
       "Bulk download with smart filtering / 拡張子、サイズ、名前、日付で絞り込んで一括保存",
       "Local PDF merge in the browser / サーバーへアップロードせずブラウザ内でPDF結合",
       "Local ZIP archive generation / 選択ファイルのZIPをローカル生成",
       "CSV export of file URLs and metadata / ファイルURLとメタデータをCSV出力",
+      "Scans HTTP and HTTPS sites, including legacy non-HTTPS pages / HTTP・HTTPS両対応、非HTTPSの旧サイトもスキャン",
       "10-language UI / 10言語UI対応"
     ]
   }
@@ -773,131 +774,131 @@
 
         <div data-lang="en">
           <div class="features-grid">
-            <div class="feature-card"><span class="tile">🔎</span><h3>Finds files others miss</h3><p>Detects iframe-embedded PDFs, lazy-loaded images, fetch/XHR file responses, blob URLs, CMS download routes, hidden form values, and 30+ data-* attributes that plain link scrapers ignore.</p></div>
+            <div class="feature-card"><span class="tile">🔎</span><h3>Finds files others miss</h3><p>Detects iframe-embedded PDFs, lazy-loaded images, fetch/XHR file responses, blob URLs, CMS download routes, hidden form values, and 30+ data-* attributes that plain link scrapers ignore. Also reaches into Shadow DOM / Web Components, SPA hydration data (Next.js, JSON-LD), Cache Storage / OPFS / IndexedDB, and signed cloud-storage URLs (Cloudflare R2, Firebase, Supabase, Vercel Blob).</p></div>
             <div class="feature-card"><span class="tile">⚙️</span><h3>Smart filtering</h3><p>Filter results by extension, file size, file name, page title, or modification date. Sort, manually reorder, and copy URLs as plain text.</p></div>
             <div class="feature-card"><span class="tile">🕸️</span><h3>Same-site crawl</h3><p>Choose a depth (0–5 or unlimited) and visit every same-domain link to surface PDFs on subpages, viewer URLs, and CMS document routes — up to 10,000 pages per run.</p></div>
             <div class="feature-card"><span class="tile">📚</span><h3>Local PDF merge</h3><p>Combine selected PDFs into a single file with one click. No upload, no server. Your files stay on your device.</p></div>
             <div class="feature-card"><span class="tile">🗜️</span><h3>ZIP archive</h3><p>Bundle selected files into a single ZIP for tidy distribution, archiving, or sharing — generated entirely in your browser.</p></div>
             <div class="feature-card"><span class="tile">📊</span><h3>CSV export</h3><p>Export URLs, file names, sizes, types, and titles to CSV for documentation, audit, inventory, or downstream automation.</p></div>
             <div class="feature-card"><span class="tile">🔐</span><h3>Scans behind logins</h3><p>Uses your current browser session — switch on cookie mode to pull files from intranets, LMS portals, and member-only or paywalled pages. If you can open it, it can grab it.</p></div>
-            <div class="feature-card"><span class="tile">🛡️</span><h3>Works where others fail</h3><p>Gets past Cloudflare/WAF bot-walls, JavaScript-only SPAs (React, Next, Nuxt, Vue), and CSRF-protected POST forms that defeat ordinary downloaders — and confirms file types by signature, not just extension.</p></div>
+            <div class="feature-card"><span class="tile">🛡️</span><h3>Works where others fail</h3><p>Gets past Cloudflare/WAF bot-walls, JavaScript-only SPAs (React, Next, Nuxt, Vue), and CSRF-protected POST forms that defeat ordinary downloaders — and confirms file types by signature, not just extension. It even scans legacy HTTP (non-HTTPS) sites.</p></div>
             <div class="feature-card"><span class="tile">⚙️</span><h3>Built for big jobs</h3><p>Scan many URLs at once or crawl an entire site, then control parallel downloads, pause/resume, auto-retry failures, sort into folders by type or domain, and rename files from their PDF title.</p></div>
           </div>
         </div>
         <div data-lang="ja">
           <div class="features-grid">
-            <div class="feature-card"><span class="tile">🔎</span><h3>見落としがちなファイルも検出</h3><p>iframe内のPDF、遅延読み込み画像、fetch/XHRで取得されるファイル、blob URL、CMSダウンロードルート、hidden inputの値、30種類以上のdata-*属性まで網羅。通常のリンクスクレイパーでは拾えないファイルも検出します。</p></div>
+            <div class="feature-card"><span class="tile">🔎</span><h3>見落としがちなファイルも検出</h3><p>iframe内のPDF、遅延読み込み画像、fetch/XHRで取得されるファイル、blob URL、CMSダウンロードルート、hidden inputの値、30種類以上のdata-*属性まで網羅。通常のリンクスクレイパーでは拾えないファイルも検出します。さらにShadow DOM／Web Components内、SPAのハイドレーションデータ（Next.js・JSON-LD）、Cache Storage／OPFS／IndexedDB、署名付きクラウドストレージURL（Cloudflare R2・Firebase・Supabase・Vercel Blob）まで踏み込んで検出します。</p></div>
             <div class="feature-card"><span class="tile">⚙️</span><h3>スマートフィルタ</h3><p>拡張子、ファイルサイズ、ファイル名、ページタイトル、更新日で絞り込み・並べ替え・手動並べ替え。URLのプレーンテキストコピーにも対応。</p></div>
             <div class="feature-card"><span class="tile">🕸️</span><h3>同一サイトクロール</h3><p>深度0〜5または無制限を選んで、同一ドメインのリンク先を巡回。サブページに散らばったPDF、ビューアURL、CMS文書ルートまで一気に収集。1回の実行で最大1万ページまで。</p></div>
             <div class="feature-card"><span class="tile">📚</span><h3>PDF結合（ローカル）</h3><p>選択したPDFを1つにまとめます。アップロード不要・サーバー送信なし。ファイルは端末から外に出ません。</p></div>
             <div class="feature-card"><span class="tile">🗜️</span><h3>ZIP化</h3><p>選択したファイルを1つのZIPにまとめて配布・アーカイブ・共有しやすく。ブラウザ内ですべて完結します。</p></div>
             <div class="feature-card"><span class="tile">📊</span><h3>CSV出力</h3><p>URL、ファイル名、サイズ、種類、タイトルをCSV出力。資料台帳、棚卸し、報告書、後続の自動処理にそのまま使えます。</p></div>
             <div class="feature-card"><span class="tile">🔐</span><h3>ログイン必須サイトも</h3><p>お使いのブラウザのセッションをそのまま利用。Cookieモードを使えば、社内ポータルやLMS、会員制・有料サイトのファイルも取得できます。手動で開けるページなら何でも取り込めます。</p></div>
-            <div class="feature-card"><span class="tile">🛡️</span><h3>他ツールが失敗する所でも</h3><p>Cloudflare/WAFのボット判定、JavaScript描画のSPA（React・Next・Nuxt・Vue）、CSRF保護のPOSTフォームなど、通常のダウンローダーが取りこぼす場面でも取得。種別は拡張子だけでなくバイト署名でも判定します。</p></div>
+            <div class="feature-card"><span class="tile">🛡️</span><h3>他ツールが失敗する所でも</h3><p>Cloudflare/WAFのボット判定、JavaScript描画のSPA（React・Next・Nuxt・Vue）、CSRF保護のPOSTフォームなど、通常のダウンローダーが取りこぼす場面でも取得。種別は拡張子だけでなくバイト署名でも判定します。さらに、HTTP（非HTTPS）の旧サイトもスキャンできます。</p></div>
             <div class="feature-card"><span class="tile">⚙️</span><h3>大量処理に対応</h3><p>複数URLを一度にスキャン、またはサイト全体をクロール。並列数の調整、一時停止/再開、失敗の自動リトライ、種類別・ドメイン別のフォルダ仕分け、PDFタイトルからのファイル名変更まで。</p></div>
           </div>
         </div>
         <div data-lang="es">
           <div class="features-grid">
-            <div class="feature-card"><span class="tile">🔎</span><h3>Encuentra archivos ocultos</h3><p>Detecta PDFs en iframes, imágenes con carga diferida, respuestas fetch/XHR, URLs blob, rutas de descarga de CMS y más de 30 atributos data-*.</p></div>
+            <div class="feature-card"><span class="tile">🔎</span><h3>Encuentra archivos ocultos</h3><p>Detecta PDFs en iframes, imágenes con carga diferida, respuestas fetch/XHR, URLs blob, rutas de descarga de CMS y más de 30 atributos data-*. Llega incluso al Shadow DOM / Web Components, los datos de hidratación de SPA (Next.js, JSON-LD), Cache Storage / OPFS / IndexedDB y las URLs firmadas de almacenamiento en la nube (Cloudflare R2, Firebase, Supabase, Vercel Blob).</p></div>
             <div class="feature-card"><span class="tile">⚙️</span><h3>Filtrado inteligente</h3><p>Filtra por extensión, tamaño, nombre, fecha. Ordena, reordena manualmente y copia URLs como texto plano.</p></div>
             <div class="feature-card"><span class="tile">🕸️</span><h3>Rastreo del mismo sitio</h3><p>Elige una profundidad (0–5 o ilimitada) y visita cada enlace del mismo dominio. Hasta 10,000 páginas por ejecución.</p></div>
             <div class="feature-card"><span class="tile">📚</span><h3>Fusión local de PDF</h3><p>Combina PDFs seleccionados en un solo archivo. Sin subida, sin servidor. Tus archivos permanecen en tu dispositivo.</p></div>
             <div class="feature-card"><span class="tile">🗜️</span><h3>Archivo ZIP</h3><p>Empaqueta archivos seleccionados en un único ZIP — generado totalmente en tu navegador.</p></div>
             <div class="feature-card"><span class="tile">📊</span><h3>Exportación CSV</h3><p>Exporta URLs, nombres, tamaños, tipos y títulos a CSV para documentación, auditoría o automatización.</p></div>
             <div class="feature-card"><span class="tile">🔐</span><h3>Funciona tras inicios de sesión</h3><p>Usa tu sesión actual del navegador — activa el modo de cookies para extraer archivos de intranets, portales/LMS y páginas privadas o de pago. Si puedes abrirlo, puede descargarlo.</p></div>
-            <div class="feature-card"><span class="tile">🛡️</span><h3>Funciona donde otros fallan</h3><p>Supera los muros anti-bots de Cloudflare/WAF, las SPA de solo JavaScript (React, Next, Nuxt, Vue) y los formularios POST con CSRF que bloquean a los descargadores comunes — y confirma el tipo de archivo por su firma, no solo por la extensión.</p></div>
+            <div class="feature-card"><span class="tile">🛡️</span><h3>Funciona donde otros fallan</h3><p>Supera los muros anti-bots de Cloudflare/WAF, las SPA de solo JavaScript (React, Next, Nuxt, Vue) y los formularios POST con CSRF que bloquean a los descargadores comunes — y confirma el tipo de archivo por su firma, no solo por la extensión. Además, escanea incluso sitios HTTP antiguos (no HTTPS).</p></div>
             <div class="feature-card"><span class="tile">⚙️</span><h3>Pensado para trabajos grandes</h3><p>Escanea muchas URLs a la vez o rastrea un sitio entero, luego controla las descargas en paralelo, pausa/reanuda, reintenta los fallos, organiza en carpetas por tipo o dominio y renombra archivos con el título del PDF.</p></div>
           </div>
         </div>
         <div data-lang="fr">
           <div class="features-grid">
-            <div class="feature-card"><span class="tile">🔎</span><h3>Trouve les fichiers cachés</h3><p>Détecte les PDF dans les iframes, les images chargées paresseusement, les réponses fetch/XHR, les URLs blob, les routes CMS et plus de 30 attributs data-*.</p></div>
+            <div class="feature-card"><span class="tile">🔎</span><h3>Trouve les fichiers cachés</h3><p>Détecte les PDF dans les iframes, les images chargées paresseusement, les réponses fetch/XHR, les URLs blob, les routes CMS et plus de 30 attributs data-*. Va même chercher dans le Shadow DOM / Web Components, les données d'hydratation des SPA (Next.js, JSON-LD), Cache Storage / OPFS / IndexedDB et les URLs signées de stockage cloud (Cloudflare R2, Firebase, Supabase, Vercel Blob).</p></div>
             <div class="feature-card"><span class="tile">⚙️</span><h3>Filtrage intelligent</h3><p>Filtrez par extension, taille, nom, date. Triez, réorganisez manuellement et copiez les URLs en texte brut.</p></div>
             <div class="feature-card"><span class="tile">🕸️</span><h3>Crawl du même site</h3><p>Choisissez une profondeur (0–5 ou illimitée) et visitez chaque lien du même domaine. Jusqu'à 10 000 pages par exécution.</p></div>
             <div class="feature-card"><span class="tile">📚</span><h3>Fusion PDF locale</h3><p>Combinez les PDF sélectionnés en un seul fichier. Aucun téléchargement, aucun serveur. Vos fichiers restent sur votre appareil.</p></div>
             <div class="feature-card"><span class="tile">🗜️</span><h3>Archive ZIP</h3><p>Regroupez les fichiers sélectionnés dans un ZIP — généré entièrement dans votre navigateur.</p></div>
             <div class="feature-card"><span class="tile">📊</span><h3>Export CSV</h3><p>Exportez les URLs, noms, tailles, types et titres en CSV pour documentation, audit ou automatisation.</p></div>
             <div class="feature-card"><span class="tile">🔐</span><h3>Fonctionne derrière les connexions</h3><p>Utilise votre session de navigateur — activez le mode cookies pour récupérer des fichiers sur les intranets, portails/LMS et pages privées ou payantes. Si vous pouvez l'ouvrir, l'extension peut le récupérer.</p></div>
-            <div class="feature-card"><span class="tile">🛡️</span><h3>Fonctionne là où les autres échouent</h3><p>Passe les murs anti-bots Cloudflare/WAF, les SPA en JavaScript (React, Next, Nuxt, Vue) et les formulaires POST protégés par CSRF qui bloquent les téléchargeurs ordinaires — et confirme le type de fichier par sa signature, pas seulement par l'extension.</p></div>
+            <div class="feature-card"><span class="tile">🛡️</span><h3>Fonctionne là où les autres échouent</h3><p>Passe les murs anti-bots Cloudflare/WAF, les SPA en JavaScript (React, Next, Nuxt, Vue) et les formulaires POST protégés par CSRF qui bloquent les téléchargeurs ordinaires — et confirme le type de fichier par sa signature, pas seulement par l'extension. Il scanne même les anciens sites HTTP (non-HTTPS).</p></div>
             <div class="feature-card"><span class="tile">⚙️</span><h3>Conçu pour les gros travaux</h3><p>Scannez plusieurs URLs à la fois ou explorez un site entier, puis contrôlez les téléchargements parallèles, pause/reprise, relance automatique des échecs, organisation en dossiers par type ou domaine, et renommage des fichiers d'après le titre du PDF.</p></div>
           </div>
         </div>
         <div data-lang="de">
           <div class="features-grid">
-            <div class="feature-card"><span class="tile">🔎</span><h3>Findet versteckte Dateien</h3><p>Erkennt PDFs in iFrames, lazy-loaded Bilder, fetch/XHR-Antworten, Blob-URLs, CMS-Download-Routen und über 30 data-*-Attribute.</p></div>
+            <div class="feature-card"><span class="tile">🔎</span><h3>Findet versteckte Dateien</h3><p>Erkennt PDFs in iFrames, lazy-loaded Bilder, fetch/XHR-Antworten, Blob-URLs, CMS-Download-Routen und über 30 data-*-Attribute. Greift sogar auf Shadow DOM / Web Components, SPA-Hydration-Daten (Next.js, JSON-LD), Cache Storage / OPFS / IndexedDB und signierte Cloud-Storage-URLs (Cloudflare R2, Firebase, Supabase, Vercel Blob) zu.</p></div>
             <div class="feature-card"><span class="tile">⚙️</span><h3>Intelligente Filterung</h3><p>Filtern nach Erweiterung, Größe, Name, Datum. Sortieren, manuell neu anordnen und URLs als Klartext kopieren.</p></div>
             <div class="feature-card"><span class="tile">🕸️</span><h3>Same-Site-Crawl</h3><p>Wählen Sie eine Tiefe (0–5 oder unbegrenzt) und besuchen Sie jeden Link derselben Domain. Bis zu 10.000 Seiten pro Lauf.</p></div>
             <div class="feature-card"><span class="tile">📚</span><h3>Lokale PDF-Zusammenführung</h3><p>Kombinieren Sie ausgewählte PDFs zu einer Datei. Kein Upload, kein Server. Ihre Dateien bleiben auf Ihrem Gerät.</p></div>
             <div class="feature-card"><span class="tile">🗜️</span><h3>ZIP-Archiv</h3><p>Bündeln Sie ausgewählte Dateien in einem einzigen ZIP — vollständig in Ihrem Browser generiert.</p></div>
             <div class="feature-card"><span class="tile">📊</span><h3>CSV-Export</h3><p>Exportieren Sie URLs, Namen, Größen, Typen und Titel als CSV für Dokumentation, Audit oder Automatisierung.</p></div>
             <div class="feature-card"><span class="tile">🔐</span><h3>Funktioniert hinter Logins</h3><p>Nutzt Ihre aktuelle Browser-Sitzung — aktivieren Sie den Cookie-Modus, um Dateien aus Intranets, LMS/Portalen und Mitglieder- oder Bezahlseiten zu holen. Was Sie öffnen können, kann die Erweiterung erfassen.</p></div>
-            <div class="feature-card"><span class="tile">🛡️</span><h3>Funktioniert, wo andere scheitern</h3><p>Überwindet Cloudflare/WAF-Bot-Sperren, reine JavaScript-SPAs (React, Next, Nuxt, Vue) und CSRF-geschützte POST-Formulare, an denen gewöhnliche Downloader scheitern — und bestätigt den Dateityp anhand der Signatur, nicht nur der Endung.</p></div>
+            <div class="feature-card"><span class="tile">🛡️</span><h3>Funktioniert, wo andere scheitern</h3><p>Überwindet Cloudflare/WAF-Bot-Sperren, reine JavaScript-SPAs (React, Next, Nuxt, Vue) und CSRF-geschützte POST-Formulare, an denen gewöhnliche Downloader scheitern — und bestätigt den Dateityp anhand der Signatur, nicht nur der Endung. Er scannt sogar veraltete HTTP-Seiten (ohne HTTPS).</p></div>
             <div class="feature-card"><span class="tile">⚙️</span><h3>Für große Aufgaben gemacht</h3><p>Scannen Sie viele URLs auf einmal oder crawlen Sie eine ganze Website, steuern Sie parallele Downloads, Pause/Fortsetzen, automatische Wiederholung von Fehlern, Ordnung nach Typ oder Domain und Umbenennung anhand des PDF-Titels.</p></div>
           </div>
         </div>
         <div data-lang="it">
           <div class="features-grid">
-            <div class="feature-card"><span class="tile">🔎</span><h3>Trova file nascosti</h3><p>Rileva PDF in iframe, immagini lazy-loaded, risposte fetch/XHR, URL blob, percorsi di download CMS e oltre 30 attributi data-*.</p></div>
+            <div class="feature-card"><span class="tile">🔎</span><h3>Trova file nascosti</h3><p>Rileva PDF in iframe, immagini lazy-loaded, risposte fetch/XHR, URL blob, percorsi di download CMS e oltre 30 attributi data-*. Arriva persino nello Shadow DOM / Web Components, nei dati di hydration delle SPA (Next.js, JSON-LD), in Cache Storage / OPFS / IndexedDB e negli URL firmati di cloud storage (Cloudflare R2, Firebase, Supabase, Vercel Blob).</p></div>
             <div class="feature-card"><span class="tile">⚙️</span><h3>Filtro intelligente</h3><p>Filtra per estensione, dimensione, nome, data. Ordina, riordina manualmente e copia URL come testo semplice.</p></div>
             <div class="feature-card"><span class="tile">🕸️</span><h3>Crawl dello stesso sito</h3><p>Scegli una profondità (0–5 o illimitata) e visita ogni link dello stesso dominio. Fino a 10.000 pagine per esecuzione.</p></div>
             <div class="feature-card"><span class="tile">📚</span><h3>Unione PDF locale</h3><p>Combina i PDF selezionati in un unico file. Nessun upload, nessun server. I tuoi file rimangono sul tuo dispositivo.</p></div>
             <div class="feature-card"><span class="tile">🗜️</span><h3>Archivio ZIP</h3><p>Raggruppa i file selezionati in un unico ZIP — generato interamente nel tuo browser.</p></div>
             <div class="feature-card"><span class="tile">📊</span><h3>Esportazione CSV</h3><p>Esporta URL, nomi, dimensioni, tipi e titoli in CSV per documentazione, audit o automazione.</p></div>
             <div class="feature-card"><span class="tile">🔐</span><h3>Funziona dietro i login</h3><p>Usa la sessione attuale del browser — attiva la modalità cookie per scaricare file da intranet, portali/LMS e pagine riservate o a pagamento. Se puoi aprirlo, l'estensione può scaricarlo.</p></div>
-            <div class="feature-card"><span class="tile">🛡️</span><h3>Funziona dove altri falliscono</h3><p>Supera i muri anti-bot di Cloudflare/WAF, le SPA solo JavaScript (React, Next, Nuxt, Vue) e i moduli POST protetti da CSRF che bloccano i downloader comuni — e conferma il tipo di file dalla firma, non solo dall'estensione.</p></div>
+            <div class="feature-card"><span class="tile">🛡️</span><h3>Funziona dove altri falliscono</h3><p>Supera i muri anti-bot di Cloudflare/WAF, le SPA solo JavaScript (React, Next, Nuxt, Vue) e i moduli POST protetti da CSRF che bloccano i downloader comuni — e conferma il tipo di file dalla firma, non solo dall'estensione. Esegue la scansione persino di vecchi siti HTTP (non HTTPS).</p></div>
             <div class="feature-card"><span class="tile">⚙️</span><h3>Pensato per grandi lavori</h3><p>Scansiona molti URL insieme o esegui il crawl di un intero sito, poi controlla i download paralleli, pausa/ripresa, riprova gli errori, organizza in cartelle per tipo o dominio e rinomina i file dal titolo del PDF.</p></div>
           </div>
         </div>
         <div data-lang="ko">
           <div class="features-grid">
-            <div class="feature-card"><span class="tile">🔎</span><h3>숨겨진 파일 검출</h3><p>iframe 내 PDF, 지연 로딩 이미지, fetch/XHR 응답, blob URL, CMS 다운로드 경로, 30개 이상의 data-* 속성을 감지합니다.</p></div>
+            <div class="feature-card"><span class="tile">🔎</span><h3>숨겨진 파일 검출</h3><p>iframe 내 PDF, 지연 로딩 이미지, fetch/XHR 응답, blob URL, CMS 다운로드 경로, 30개 이상의 data-* 속성을 감지합니다. Shadow DOM / Web Components 내부, SPA 하이드레이션 데이터(Next.js, JSON-LD), Cache Storage / OPFS / IndexedDB, 서명된 클라우드 스토리지 URL(Cloudflare R2, Firebase, Supabase, Vercel Blob)까지 찾아냅니다.</p></div>
             <div class="feature-card"><span class="tile">⚙️</span><h3>스마트 필터링</h3><p>확장자, 크기, 이름, 날짜로 필터링. 정렬, 수동 재정렬, URL 일반 텍스트 복사 지원.</p></div>
             <div class="feature-card"><span class="tile">🕸️</span><h3>동일 사이트 크롤링</h3><p>깊이(0~5 또는 무제한)를 선택하여 동일 도메인의 모든 링크를 방문. 한 번 실행에 최대 10,000 페이지.</p></div>
             <div class="feature-card"><span class="tile">📚</span><h3>로컬 PDF 병합</h3><p>선택한 PDF를 하나의 파일로 결합. 업로드 없음, 서버 없음. 파일은 기기에 남아 있습니다.</p></div>
             <div class="feature-card"><span class="tile">🗜️</span><h3>ZIP 아카이브</h3><p>선택한 파일을 하나의 ZIP으로 묶어 배포 — 브라우저에서 모두 생성.</p></div>
             <div class="feature-card"><span class="tile">📊</span><h3>CSV 내보내기</h3><p>URL, 이름, 크기, 유형, 제목을 CSV로 내보내 문서화, 감사, 자동화에 활용.</p></div>
             <div class="feature-card"><span class="tile">🔐</span><h3>로그인 사이트에서도 작동</h3><p>현재 브라우저 세션을 그대로 사용 — 쿠키 모드를 켜면 인트라넷, LMS/포털, 회원 전용·유료 페이지의 파일도 가져옵니다. 직접 열 수 있는 페이지라면 무엇이든 수집합니다.</p></div>
-            <div class="feature-card"><span class="tile">🛡️</span><h3>다른 도구가 실패하는 곳에서도</h3><p>Cloudflare/WAF 봇 차단, JavaScript로만 렌더링되는 SPA(React, Next, Nuxt, Vue), CSRF 보호 POST 폼까지 — 일반 다운로더가 놓치는 상황에서도 수집하고, 파일 형식을 확장자가 아닌 시그니처로 확인합니다.</p></div>
+            <div class="feature-card"><span class="tile">🛡️</span><h3>다른 도구가 실패하는 곳에서도</h3><p>Cloudflare/WAF 봇 차단, JavaScript로만 렌더링되는 SPA(React, Next, Nuxt, Vue), CSRF 보호 POST 폼까지 — 일반 다운로더가 놓치는 상황에서도 수집하고, 파일 형식을 확장자가 아닌 시그니처로 확인합니다. 게다가 HTTP(비-HTTPS) 구형 사이트도 스캔합니다.</p></div>
             <div class="feature-card"><span class="tile">⚙️</span><h3>대량 작업에 최적</h3><p>여러 URL을 한 번에 스캔하거나 사이트 전체를 크롤링한 뒤, 병렬 다운로드 수 조절, 일시정지/재개, 실패 자동 재시도, 유형·도메인별 폴더 정리, PDF 제목으로 파일명 변경까지.</p></div>
           </div>
         </div>
         <div data-lang="pt_BR">
           <div class="features-grid">
-            <div class="feature-card"><span class="tile">🔎</span><h3>Encontra arquivos ocultos</h3><p>Detecta PDFs em iframes, imagens com carregamento preguiçoso, respostas fetch/XHR, URLs blob, rotas de download de CMS e mais de 30 atributos data-*.</p></div>
+            <div class="feature-card"><span class="tile">🔎</span><h3>Encontra arquivos ocultos</h3><p>Detecta PDFs em iframes, imagens com carregamento preguiçoso, respostas fetch/XHR, URLs blob, rotas de download de CMS e mais de 30 atributos data-*. Chega até o Shadow DOM / Web Components, os dados de hidratação de SPAs (Next.js, JSON-LD), Cache Storage / OPFS / IndexedDB e URLs assinadas de armazenamento em nuvem (Cloudflare R2, Firebase, Supabase, Vercel Blob).</p></div>
             <div class="feature-card"><span class="tile">⚙️</span><h3>Filtragem inteligente</h3><p>Filtre por extensão, tamanho, nome, data. Ordene, reordene manualmente e copie URLs como texto simples.</p></div>
             <div class="feature-card"><span class="tile">🕸️</span><h3>Rastreamento do mesmo site</h3><p>Escolha uma profundidade (0–5 ou ilimitada) e visite cada link do mesmo domínio. Até 10.000 páginas por execução.</p></div>
             <div class="feature-card"><span class="tile">📚</span><h3>Mesclagem local de PDF</h3><p>Combine PDFs selecionados em um único arquivo. Sem upload, sem servidor. Seus arquivos ficam no seu dispositivo.</p></div>
             <div class="feature-card"><span class="tile">🗜️</span><h3>Arquivo ZIP</h3><p>Agrupe arquivos selecionados em um único ZIP — gerado totalmente no seu navegador.</p></div>
             <div class="feature-card"><span class="tile">📊</span><h3>Exportação CSV</h3><p>Exporte URLs, nomes, tamanhos, tipos e títulos para CSV para documentação, auditoria ou automação.</p></div>
             <div class="feature-card"><span class="tile">🔐</span><h3>Funciona atrás de logins</h3><p>Usa a sessão atual do navegador — ative o modo de cookies para baixar arquivos de intranets, portais/LMS e páginas restritas ou pagas. Se você consegue abrir, a extensão consegue baixar.</p></div>
-            <div class="feature-card"><span class="tile">🛡️</span><h3>Funciona onde outros falham</h3><p>Supera os muros anti-bots do Cloudflare/WAF, as SPAs só de JavaScript (React, Next, Nuxt, Vue) e os formulários POST protegidos por CSRF que travam os baixadores comuns — e confirma o tipo de arquivo pela assinatura, não só pela extensão.</p></div>
+            <div class="feature-card"><span class="tile">🛡️</span><h3>Funciona onde outros falham</h3><p>Supera os muros anti-bots do Cloudflare/WAF, as SPAs só de JavaScript (React, Next, Nuxt, Vue) e os formulários POST protegidos por CSRF que travam os baixadores comuns — e confirma o tipo de arquivo pela assinatura, não só pela extensão. Ele ainda escaneia sites HTTP antigos (não HTTPS).</p></div>
             <div class="feature-card"><span class="tile">⚙️</span><h3>Feito para grandes tarefas</h3><p>Escaneie muitas URLs de uma vez ou rastreie um site inteiro, depois controle downloads paralelos, pausa/retomada, repetição automática de falhas, organização em pastas por tipo ou domínio e renomeação pelo título do PDF.</p></div>
           </div>
         </div>
         <div data-lang="zh_CN">
           <div class="features-grid">
-            <div class="feature-card"><span class="tile">🔎</span><h3>查找隐藏文件</h3><p>检测iframe中的PDF、懒加载图片、fetch/XHR响应、blob URL、CMS下载路径以及30多个data-*属性。</p></div>
+            <div class="feature-card"><span class="tile">🔎</span><h3>查找隐藏文件</h3><p>检测iframe中的PDF、懒加载图片、fetch/XHR响应、blob URL、CMS下载路径以及30多个data-*属性。还能深入 Shadow DOM / Web Components、SPA 水合数据（Next.js、JSON-LD）、Cache Storage / OPFS / IndexedDB 以及带签名的云存储 URL（Cloudflare R2、Firebase、Supabase、Vercel Blob）。</p></div>
             <div class="feature-card"><span class="tile">⚙️</span><h3>智能过滤</h3><p>按扩展名、大小、名称、日期过滤。排序、手动重排序，将URL复制为纯文本。</p></div>
             <div class="feature-card"><span class="tile">🕸️</span><h3>同站点爬取</h3><p>选择深度（0–5或无限）访问同一域名的每个链接。每次运行最多10,000页。</p></div>
             <div class="feature-card"><span class="tile">📚</span><h3>本地PDF合并</h3><p>将选定的PDF合并为单个文件。无上传，无服务器。文件保留在您的设备上。</p></div>
             <div class="feature-card"><span class="tile">🗜️</span><h3>ZIP打包</h3><p>将选定文件打包为单个ZIP — 完全在浏览器中生成。</p></div>
             <div class="feature-card"><span class="tile">📊</span><h3>CSV导出</h3><p>将URL、名称、大小、类型和标题导出为CSV，用于文档、审计或自动化。</p></div>
             <div class="feature-card"><span class="tile">🔐</span><h3>登录后的页面也能用</h3><p>沿用您当前的浏览器会话 — 开启 Cookie 模式即可抓取内网、LMS/门户、会员或付费页面中的文件。只要您能打开，扩展就能抓取。</p></div>
-            <div class="feature-card"><span class="tile">🛡️</span><h3>在其他工具失败的地方也能成功</h3><p>可越过 Cloudflare/WAF 的机器人验证、纯 JavaScript 渲染的 SPA（React、Next、Nuxt、Vue）以及受 CSRF 保护的 POST 表单——这些都会让普通下载器失效；并通过文件签名而非仅凭扩展名判断类型。</p></div>
+            <div class="feature-card"><span class="tile">🛡️</span><h3>在其他工具失败的地方也能成功</h3><p>可越过 Cloudflare/WAF 的机器人验证、纯 JavaScript 渲染的 SPA（React、Next、Nuxt、Vue）以及受 CSRF 保护的 POST 表单——这些都会让普通下载器失效；并通过文件签名而非仅凭扩展名判断类型。甚至还能扫描老旧的 HTTP（非 HTTPS）网站。</p></div>
             <div class="feature-card"><span class="tile">⚙️</span><h3>为大批量任务而生</h3><p>一次扫描多个网址或爬取整个网站，再控制并行下载数、暂停/继续、失败自动重试、按类型或域名归入子文件夹，并用 PDF 标题重命名文件。</p></div>
           </div>
         </div>
         <div data-lang="zh_TW">
           <div class="features-grid">
-            <div class="feature-card"><span class="tile">🔎</span><h3>找出隱藏檔案</h3><p>偵測iframe內的PDF、延遲載入圖片、fetch/XHR回應、blob URL、CMS下載路徑及30多種data-*屬性。</p></div>
+            <div class="feature-card"><span class="tile">🔎</span><h3>找出隱藏檔案</h3><p>偵測iframe內的PDF、延遲載入圖片、fetch/XHR回應、blob URL、CMS下載路徑及30多種data-*屬性。更能深入 Shadow DOM / Web Components、SPA 水合資料（Next.js、JSON-LD）、Cache Storage / OPFS / IndexedDB 以及帶簽章的雲端儲存 URL（Cloudflare R2、Firebase、Supabase、Vercel Blob）。</p></div>
             <div class="feature-card"><span class="tile">⚙️</span><h3>智慧篩選</h3><p>依副檔名、大小、名稱、日期篩選。排序、手動重新排序、將URL複製為純文字。</p></div>
             <div class="feature-card"><span class="tile">🕸️</span><h3>同站爬取</h3><p>選擇深度（0–5或無限）造訪同網域的每個連結。每次執行最多10,000頁。</p></div>
             <div class="feature-card"><span class="tile">📚</span><h3>本機PDF合併</h3><p>將選取的PDF合併為單一檔案。無需上傳、無需伺服器。檔案保留在您的裝置上。</p></div>
             <div class="feature-card"><span class="tile">🗜️</span><h3>ZIP封存</h3><p>將選取的檔案封存為單一ZIP — 完全在瀏覽器中產生。</p></div>
             <div class="feature-card"><span class="tile">📊</span><h3>CSV匯出</h3><p>將URL、名稱、大小、類型和標題匯出為CSV，用於文件、稽核或自動化。</p></div>
             <div class="feature-card"><span class="tile">🔐</span><h3>登入後的頁面也能用</h3><p>沿用您目前的瀏覽器工作階段 — 開啟 Cookie 模式即可擷取內網、LMS/入口網站、會員或付費頁面中的檔案。只要您能開啟，擴充功能就能擷取。</p></div>
-            <div class="feature-card"><span class="tile">🛡️</span><h3>在其他工具失敗的地方也能成功</h3><p>可越過 Cloudflare/WAF 的機器人驗證、純 JavaScript 算繪的 SPA（React、Next、Nuxt、Vue）以及受 CSRF 保護的 POST 表單——這些都會讓一般下載器失效；並透過檔案簽章而非僅憑副檔名判斷類型。</p></div>
+            <div class="feature-card"><span class="tile">🛡️</span><h3>在其他工具失敗的地方也能成功</h3><p>可越過 Cloudflare/WAF 的機器人驗證、純 JavaScript 算繪的 SPA（React、Next、Nuxt、Vue）以及受 CSRF 保護的 POST 表單——這些都會讓一般下載器失效；並透過檔案簽章而非僅憑副檔名判斷類型。甚至還能掃描老舊的 HTTP（非 HTTPS）網站。</p></div>
             <div class="feature-card"><span class="tile">⚙️</span><h3>為大量作業而生</h3><p>一次掃描多個網址或爬取整個網站，再控制並行下載數、暫停/繼續、失敗自動重試、依類型或網域歸入子資料夾，並用 PDF 標題重新命名檔案。</p></div>
           </div>
         </div>
